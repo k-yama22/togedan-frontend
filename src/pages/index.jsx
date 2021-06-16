@@ -1,84 +1,60 @@
-import Head from 'next/head'
+import Head from "next/head";
+import Link from "next/link";
 
- const Home = () => {
+const Home = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Together Dance</title>
+        <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
-
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <header className='bg-gray-300'>
+        <div className='border-solid border-4 border-gray-600 hover:text-grey-dark'>
+          <Link href='/login'>
+            <a>ログインはこちらから</a>
+          </Link>
         </div>
-      </main>
+      </header>
 
-      <footer className="flex items-center justify-center w-full h-24 border-t">
+      <div className='bg-black'>
+        <div className='flex relative text-center'>
+          <h1 className='text-3xl tracking-wider text-white text-sha uppercase font-bold p-4 self-center z-10 content-center absolute text-center w-full md:text-4xl'>
+            ようこそ！！Together Danceへ
+          </h1>
+          <img
+            className='w-full object-cover h-3/4 block mx-auto  sm:block sm:w-full'
+            src='https://source.unsplash.com/FC4z3l4sUYc/1920x588'
+            alt='Banner'
+            width='1920'
+            height='588'
+          />
+        </div>
+      </div>
+      <div className='content'>
+        <div className='flex items-center justify-between w-full my-4 pl-4 sm:pr-4'>
+          <div className='mr-6'>
+            <h2 className='text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate'>
+              ホーム画面
+            </h2>
+            <div className='font-base tracking-tight text-gray-600'>モック</div>
+          </div>
+        </div>
+      </div>
+
+      <footer className='flex items-center justify-center w-full h-24 border-t'>
         <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          className='flex items-center justify-center'
+          href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
+          target='_blank'
+          rel='noopener noreferrer'
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
+          Powered by{" "}
+          <img src='/vercel.svg' alt='Vercel Logo' className='h-4 ml-2' />
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
 export default Home;
