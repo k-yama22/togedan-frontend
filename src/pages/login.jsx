@@ -2,11 +2,13 @@ import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useAuth } from "src/hooks/useAuth";
 
 const Login = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter();
+  const { login } = useAuth();
 
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -17,7 +19,7 @@ const Login = () => {
   };
 
   const onClickLogin = () => {
-    router.push("/");
+    login(email, password);
   };
 
   return (
@@ -29,7 +31,7 @@ const Login = () => {
       <main className='flex flex-col items-center justify-center w-full flex-1 px-20 text-center'>
         <div className='container mx-auto h-full flex flex-1 justify-center items-center'>
           <div className='w-full max-w-md'>
-            <h1 className='bg-green-100'>ユーザ管理アプリ</h1>
+            <h1 className='bg-green-100'>Together Dance</h1>
             <div className='leading-loose'>
               <div className='max-w-md m-4 p-10 bg-white bg-opacity-25 rounded shadow-xl'>
                 <p className='text-white font-medium text-center text-lg font-bold'>
