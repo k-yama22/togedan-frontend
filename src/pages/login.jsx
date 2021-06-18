@@ -3,9 +3,9 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "src/hooks/useAuth";
+import { Footer } from "src/components/Footer";
 
 const Login = () => {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useAuth();
@@ -38,7 +38,7 @@ const Login = () => {
                   LOGIN
                 </p>
                 <div className=''>
-                  <label className='block text-sm text-white' for='email'>
+                  <label className='block text-sm text-white'>
                     メールアドレス
                   </label>
                   <input
@@ -94,17 +94,7 @@ const Login = () => {
         </div>
       </main>
 
-      <footer className='flex items-center justify-center w-full h-24 border-t'>
-        <a
-          className='flex items-center justify-center'
-          href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Powered by{" "}
-          <img src='/vercel.svg' alt='Vercel Logo' className='h-4 ml-2' />
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 };

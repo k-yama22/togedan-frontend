@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useNotify } from "../hooks/useNotify";
+import { useNotify } from "src/hooks/useNotify";
 
 export const useAuth = () => {
   const router = useRouter();
@@ -23,7 +23,9 @@ export const useAuth = () => {
       .catch(() => {
         showNotify({ title: "ログインできません", status: "error" });
       })
-      .finally(() => console.log("finally確認用"));
+      .finally(() => {
+        console.log("finally確認用");
+      });
   };
   return { login };
 };

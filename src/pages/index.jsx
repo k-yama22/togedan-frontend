@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-
+import { Footer } from "src/components/Footer";
+import { Header } from "src/components/Header";
 const Home = () => {
   return (
     <div>
@@ -9,13 +10,7 @@ const Home = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <header className='bg-gray-300'>
-        <div className='border-solid border-4 border-gray-600 hover:text-grey-dark'>
-          <Link href='/login'>
-            <a>ログインはこちらから</a>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       <div className='bg-black'>
         <div className='flex relative text-center'>
@@ -42,17 +37,7 @@ const Home = () => {
         </div>
       </div>
 
-      <footer className='flex items-center justify-center w-full h-24 border-t'>
-        <a
-          className='flex items-center justify-center'
-          href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Powered by{" "}
-          <img src='/vercel.svg' alt='Vercel Logo' className='h-4 ml-2' />
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 };
