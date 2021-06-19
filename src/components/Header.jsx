@@ -43,8 +43,13 @@ export const Header = () => {
               </a>
             </Link>
             <Link href='/about'>
-              <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white'>
+              <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4'>
                 About
+              </a>
+            </Link>
+            <Link href='/newEvent'>
+              <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white'>
+                踊ろう会の開催はこちら
               </a>
             </Link>
           </div>
