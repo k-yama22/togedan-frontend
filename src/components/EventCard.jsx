@@ -31,15 +31,15 @@ export const EventCard = memo((props) => {
                   stroke='currentColor'
                 >
                   <path
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
                     d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z'
                   ></path>
                   <path
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
                     d='M15 11a3 3 0 11-6 0 3 3 0 016 0z'
                   ></path>
                 </svg>
@@ -54,9 +54,9 @@ export const EventCard = memo((props) => {
                   stroke='currentColor'
                 >
                   <path
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
                     d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
                   ></path>
                 </svg>
@@ -91,7 +91,7 @@ export const EventCard = memo((props) => {
                 className='mb-2 md:mb-0 bg-gray-900 px-5 py-2 shadow-sm tracking-wider text-white rounded-full hover:bg-gray-800'
                 type='button'
                 aria-label='like'
-                // onClick={() => onClick(id)}
+                onClick={() => onClick(id)}
               >
                 予約申込はこちら
               </button>

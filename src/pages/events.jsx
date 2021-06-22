@@ -1,23 +1,19 @@
 import Head from "next/head";
-import Link from "next/link";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import Modal from "src/components/Modal";
 import { useAllEvents } from "src/hooks/useAllEvents";
 import { EventCard } from "src/components/EventCard";
-import { useEffect } from "react";
-import { useSelectUser } from "src/hooks/useSelectEvent";
-import { EventModal } from "src/components/EventModal";
+import { useCallback, useEffect } from "react";
+import { useRouter } from "next/router";
 
 const Events = () => {
+  const router = useRouter();
   const { getEvents, events } = useAllEvents();
-  //   const { onSelectEvent, selectedEvent, showModal, setShowModal } =
-  //     useSelectUser();
+  // const { onSelectEvent, selectedEvent } = useSelectUser();
 
-  //   const onClickEvent = (id) => {
-  //     setShowModal(true);
-  //     onSelectEvent({ id, events });
-  //   };
+  const onClickEvent = useCallback((id) => {
+    router.push({ pathname: "/eventDetail", query: { id: id } });
+  });
 
   useEffect(() => getEvents(), []);
 
@@ -38,12 +34,11 @@ const Events = () => {
               eventName={event.event_name}
               genre={event.genre}
               location={event.location}
-              //   onClick={() => onClickEvent(event.id)}
+              onClick={() => onClickEvent(event.id)}
             />
           </div>
         ))}
       </div>
-      {/* <EventModal event={selectedEvent} showModal={showModal} /> */}
       <Footer />
     </div>
   );
