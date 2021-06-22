@@ -14,6 +14,7 @@ export const useAuth = () => {
       })
       .then((res) => {
         if (res.data) {
+          localStorage.setItem("loginId", JSON.stringify(res.data.data.id));
           showNotify({ title: "ログインしました", status: "success" });
           router.push("/");
         } else {
