@@ -82,7 +82,7 @@ const Login = () => {
                   </Link>
                 </div>
                 <div className='text-center'>
-                  <Link href='#'>
+                  <Link href='/signUp'>
                     <a className='inline-block right-0 align-baseline font-light text-sm text-500 hover:text-red-400'>
                       新規登録はこちら
                     </a>

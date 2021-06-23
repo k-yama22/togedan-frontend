@@ -50,7 +50,7 @@ export const Header = () => {
                 Login
               </a>
             </Link>
-            <Link href='/login'>
+            <Link href='/myPage'>
               <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4'>
                 MyPage
               </a>
@@ -67,7 +67,7 @@ export const Header = () => {
             </Link>
           </div>
           <div>
-            <Link href='#'>
+            <Link href='/signUp'>
               <a className='inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-black mt-4 lg:mt-0'>
                 新規登録
               </a>
