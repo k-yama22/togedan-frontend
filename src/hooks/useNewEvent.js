@@ -16,8 +16,10 @@ export const useNewEvent = () => {
     eventMessage,
     maxPeople
   ) => {
+    const loginId = localStorage.getItem("loginId");
     axios
       .post(`http://localhost:3001/api/v1/events`, {
+        user_id: loginId,
         event_name: eventName,
         genre: genre,
         location: location,
