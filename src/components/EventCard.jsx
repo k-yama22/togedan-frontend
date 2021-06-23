@@ -1,7 +1,7 @@
 import { memo } from "react";
 
 export const EventCard = memo((props) => {
-  const { id, eventName, genre, location, onClick } = props;
+  const { id, eventName, genre, location, buttonMessage, onClick } = props;
   return (
     <div className='flex flex-col'>
       <div className='bg-white shadow-md  rounded-3xl p-4'>
@@ -93,7 +93,7 @@ export const EventCard = memo((props) => {
                 aria-label='like'
                 onClick={() => onClick(id)}
               >
-                予約申込はこちら
+                {buttonMessage}
               </button>
             </div>
           </div>

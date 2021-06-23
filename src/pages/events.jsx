@@ -34,6 +34,7 @@ const Events = () => {
               eventName={event.event_name}
               genre={event.genre}
               location={event.location}
+              buttonMessage='予約申込はこちら'
               onClick={() => onClickEvent(event.id)}
             />
           </div>
