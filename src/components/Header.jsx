@@ -4,6 +4,11 @@ import { SideMenu } from "src/components/SideMenu";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [loginId, setLoginId] = useState();
+
+  useEffect(() => {
+    setLoginId(localStorage.getItem("loginId"));
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -45,33 +50,38 @@ export const Header = () => {
 
         <div className='w-full block flex-grow lg:flex lg:items-center lg:w-auto sm:hidden'>
           <div className='text-sm lg:flex-grow'>
-            <Link href='/login'>
-              <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4'>
-                Login
-              </a>
-            </Link>
-            <Link href='/myPage'>
-              <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4'>
-                MyPage
-              </a>
-            </Link>
-            <Link href='/about'>
-              <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4'>
-                About
-              </a>
-            </Link>
-            <Link href='/newEvent'>
-              <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white'>
-                踊ろう会の開催はこちら
-              </a>
-            </Link>
-          </div>
-          <div>
-            <Link href='/signUp'>
-              <a className='inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-black mt-4 lg:mt-0'>
-                新規登録
-              </a>
-            </Link>
+            {loginId ? (
+              <>
+                <Link href='/myPage'>
+                  <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4'>
+                    MyPage
+                  </a>
+                </Link>
+                <Link href='/about'>
+                  <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4'>
+                    About
+                  </a>
+                </Link>
+                <Link href='/newEvent'>
+                  <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white'>
+                    踊ろう会の開催はこちら
+                  </a>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link href='/login'>
+                  <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4'>
+                    Login
+                  </a>
+                </Link>
+                <Link href='/signUp'>
+                  <a className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4'>
+                    新規登録
+                  </a>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </nav>
