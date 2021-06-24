@@ -16,7 +16,7 @@ export const Header = () => {
 
   return (
     <>
-      <SideMenu isOpen={isOpen} />
+      <SideMenu isOpen={isOpen} loginId={loginId} />
       <nav className='flex items-center justify-between flex-wrap bg-teal-300 p-6'>
         <div className='flex items-center flex-no-shrink text-white mr-6'>
           <svg
