@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useNewEvent = () => {
   const router = useRouter();
   const { showNotify } = useNotify();
+  const [loading, setLoading] = useState(false);
 
   const newEvent = (
     eventName,
@@ -16,6 +18,7 @@ export const useNewEvent = () => {
     eventMessage,
     maxPeople
   ) => {
+    setLoading(true);
     const loginId = localStorage.getItem("loginId");
     axios
       .post(`http://localhost:3001/api/v1/events`, {
@@ -41,8 +44,8 @@ export const useNewEvent = () => {
         showNotify({ title: "登録できません", status: "error" });
       })
       .finally(() => {
-        console.log("finally確認用");
+        setLoading(false);
       });
   };
-  return { newEvent };
+  return { newEvent, loading };
 };

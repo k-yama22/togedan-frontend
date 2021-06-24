@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useSignUp = () => {
   const router = useRouter();
   const { showNotify } = useNotify();
+  const [loading, setLoading] = useState(false);
 
   const signUp = (
     lastName,
@@ -19,6 +21,7 @@ export const useSignUp = () => {
     image,
     introduce
   ) => {
+    setLoading(true);
     axios
       .post(`http://localhost:3001/auth`, {
         last_name: lastName,
@@ -45,8 +48,8 @@ export const useSignUp = () => {
         showNotify({ title: "登録できません", status: "error" });
       })
       .finally(() => {
-        console.log("finally確認用");
+        setLoading(false);
       });
   };
-  return { signUp };
+  return { signUp, loading };
 };

@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import { useNewEvent } from "src/hooks/useNewEvent";
 import { Footer } from "src/components/Footer";
+import { Loading } from "src/components/Loading";
 
 const NewEvent = () => {
   const [eventName, setEventName] = useState("");
@@ -12,7 +13,7 @@ const NewEvent = () => {
   const [endTime, setEndTime] = useState("");
   const [eventMessage, setEventMessage] = useState("");
   const [maxPeople, setMaxPeople] = useState("");
-  const { newEvent } = useNewEvent();
+  const { newEvent, loading } = useNewEvent();
 
   const onChangeEventName = (e) => {
     setEventName(e.target.value);
@@ -163,7 +164,7 @@ const NewEvent = () => {
                     className='px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded'
                     onClick={onClickNewEvent}
                   >
-                    登録
+                    {loading ? <Loading /> : <>登録</>}
                   </button>
                 </div>
               </div>

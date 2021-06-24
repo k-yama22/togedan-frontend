@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import { useSignUp } from "src/hooks/useSignUp";
 import { Footer } from "src/components/Footer";
+import { Loading } from "src/components/Loading";
 
 const SignUp = () => {
   const [lastName, setLastName] = useState("");
@@ -15,7 +16,7 @@ const SignUp = () => {
   const [phone, setPhone] = useState("");
   const [image, setImage] = useState("");
   const [introduce, setIntroduce] = useState("");
-  const { signUp } = useSignUp();
+  const { signUp, loading } = useSignUp();
 
   const onChangeLastName = (e) => {
     setLastName(e.target.value);
@@ -217,7 +218,7 @@ const SignUp = () => {
                     className='px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded'
                     onClick={onClickSignUp}
                   >
-                    登録
+                    {loading ? <Loading /> : <>登録</>}
                   </button>
                 </div>
               </div>

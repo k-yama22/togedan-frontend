@@ -4,11 +4,12 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "src/hooks/useAuth";
 import { Footer } from "src/components/Footer";
+import { Loading } from "src/components/Loading";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth();
+  const { login, loading } = useAuth();
 
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -73,7 +74,7 @@ const Login = () => {
                     className='px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded'
                     onClick={onClickLogin}
                   >
-                    ログイン
+                    {loading ? <Loading /> : <>ログイン</>}
                   </button>
                   <Link href='#'>
                     <a className='inline-block right-0 align-baseline font-bold text-sm text-500 text-white hover:text-red-400'>

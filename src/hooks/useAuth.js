@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useAuth = () => {
   const router = useRouter();
   const { showNotify } = useNotify();
+  const [loading, setLoading] = useState(false);
 
   const login = (email, password) => {
+    setLoading(true);
     axios
       .post(`http://localhost:3001/auth/sign_in`, {
         email: email,
@@ -25,8 +28,9 @@ export const useAuth = () => {
         showNotify({ title: "ログインできません", status: "error" });
       })
       .finally(() => {
+        setLoading(false);
         console.log("finally確認用");
       });
   };
-  return { login };
+  return { login, loading };
 };
