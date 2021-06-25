@@ -61,6 +61,13 @@ const MyPage = () => {
             <h2 className='text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate'>
               開催しているイベント一覧
             </h2>
+            <span>
+              <Link href='/eventHistory'>
+                <a className='text-teal-600 hover:bg-teal-300 hover:text-gray-500'>
+                  過去の開催履歴はこちら
+                </a>
+              </Link>
+            </span>
             <div className='font-base tracking-tight text-gray-600'>一覧</div>
           </div>
         </div>
