@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import { slide as Menu } from "react-burger-menu";
-import styles from "src/components/Sidemenu.module.css";
 
 export const SideMenu = (props) => {
-  const { isOpen, loginId } = props;
+  const { isOpen, loginId, onClick } = props;
 
   return (
     <>
@@ -27,10 +26,16 @@ export const SideMenu = (props) => {
               </a>
             </Link>
             <Link href='/newEvent'>
-              <a className='block mt-4 text-teal-lighter hover:text-gray-500'>
+              <a className='block mt-4 text-teal-lighter hover:text-gray-500 mr-4'>
                 踊ろう会の開催はこちら
               </a>
             </Link>
+            <button
+              className='block mt-4 text-teal-lighter hover:text-gray-500 m-auto outline-none focus:outline-none'
+              onClick={onClick}
+            >
+              ログアウト
+            </button>
           </>
         ) : (
           <>
