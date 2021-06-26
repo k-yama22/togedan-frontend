@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
-export const useSelectUser = () => {
+export const useSelectEvent = () => {
   const { showNotify } = useNotify();
   const [selectedEvent, setSelectedEvent] = useState({});
   const [showModal, setShowModal] = useState(false);

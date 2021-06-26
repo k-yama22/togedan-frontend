@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { useEffect } from "react";
-import { useSelectUser } from "src/hooks/useSelectEvent";
+import { useSelectEvent } from "src/hooks/useSelectEvent";
 import { useRouter } from "next/router";
 import { useNewReserve } from "src/hooks/useNewReserve";
 
@@ -10,7 +10,7 @@ const EventDetail = () => {
   const router = useRouter();
   const { newReserve } = useNewReserve();
 
-  const { onSelectEvent, selectedEvent } = useSelectUser();
+  const { onSelectEvent, selectedEvent } = useSelectEvent();
 
   const onClickReserve = () => {
     newReserve(selectedEvent.id);
