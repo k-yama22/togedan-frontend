@@ -18,8 +18,8 @@ const MyPage = () => {
   console.log(myUserInfo);
   console.log(myUserInfo.firstName);
 
-  const onClickUserEdit = (id) => {
-    router.push({ pathname: "/userEdit", query: { id: id } });
+  const onClickUserEdit = () => {
+    router.push({ pathname: "/userEdit" });
   };
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const MyPage = () => {
               firstName={myUserInfo.firstName}
               email={myUserInfo.email}
               buttonMessage='ユーザ詳細'
-              onClick={() => onClickUserEdit(myUserInfo.id)}
+              onClick={() => onClickUserEdit()}
             />
           </div>
         </div>

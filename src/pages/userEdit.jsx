@@ -2,26 +2,22 @@ import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { useMyUserInfo } from "src/hooks/useMyUserInfo";
 import { useUserChange } from "src/hooks/useUserChange";
+import { Loading } from "src/components/Loading";
 
 const UserEdit = () => {
-  const router = useRouter();
-  const { getMyUserInfo, myUserInfo } = useMyUserInfo();
-  const loginId = localStorage.getItem("loginId");
-
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastNameKana, setLastNameKana] = useState("");
   const [firstNameKana, setFirstNameKana] = useState("");
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [birthday, setBirthday] = useState({});
   const [phone, setPhone] = useState("");
   const [image, setImage] = useState("");
   const [introduce, setIntroduce] = useState("");
-  const { userChange } = useUserChange();
+
+  const { userChange, loading } = useUserChange();
 
   const onChangeLastName = (e) => {
     setLastName(e.target.value);
@@ -70,25 +66,23 @@ const UserEdit = () => {
   };
 
   useEffect(() => {
-    if (loginId === router.query.id) {
-      getMyUserInfo();
-      setLastName(myUserInfo.lastName);
-      setFirstName(myUserInfo.firstName);
-      setLastNameKana(myUserInfo.lastNameKana);
-      setFirstNameKana(myUserInfo.firstNameKana);
-      setUserName(myUserInfo.userName);
-      setEmail(myUserInfo.email);
-      setBirthday(myUserInfo.birthday);
-      setPhone(myUserInfo.phone);
-      setImage(myUserInfo.image);
-      setIntroduce(myUserInfo.introduce);
-    }
+    const defaultValue = JSON.parse(localStorage.getItem("loginUser"));
+    setLastName(defaultValue.lastName);
+    setFirstName(defaultValue.firstName);
+    setLastNameKana(defaultValue.lastNameKana);
+    setFirstNameKana(defaultValue.firstNameKana);
+    setUserName(defaultValue.userName);
+    setEmail(defaultValue.email);
+    setBirthday(defaultValue.birthday);
+    setPhone(defaultValue.phone);
+    setImage(defaultValue.image);
+    setIntroduce(defaultValue.introduce);
   }, []);
 
   return (
     <>
       <Head>
-        <title>ユーザ新規登録画面</title>
+        <title>ユーザ情報変更画面</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
@@ -233,7 +227,7 @@ const UserEdit = () => {
                       className='px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded'
                       onClick={onClickUserChange}
                     >
-                      変更
+                      {loading ? <Loading /> : <>変更</>}
                     </button>
                   </div>
                 </div>

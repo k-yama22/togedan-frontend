@@ -8,6 +8,28 @@ export const useUserChange = () => {
   const { showNotify } = useNotify();
   const [loading, setLoading] = useState(false);
 
+  // スネークケースからキャメルケースに変換（文字列）.
+  const toCamelCase = (str) => {
+    return str
+      .split("_")
+      .map(function (word, index) {
+        if (index === 0) {
+          return word.toLowerCase();
+        }
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .join("");
+  };
+
+  // スネークケースからキャメルケースに変換（オブジェクト）.
+  const toCamelCaseObject = (obj) => {
+    const result = {};
+    Object.keys(obj).forEach((key) => {
+      result[toCamelCase(key)] = obj[key];
+    });
+    return result;
+  };
+
   const userChange = (
     lastName,
     firstName,
@@ -15,6 +37,7 @@ export const useUserChange = () => {
     firstNameKana,
     userName,
     email,
+    birthday,
     phone,
     image,
     introduce
@@ -36,6 +59,7 @@ export const useUserChange = () => {
           first_name_kana: firstNameKana,
           user_name: userName,
           email: email,
+          birthday: birthday,
           phone: phone,
           image: image,
           introduce: introduce,
@@ -44,8 +68,11 @@ export const useUserChange = () => {
       )
       .then((res) => {
         if (res.data) {
+          const resData = toCamelCaseObject(res.data.data);
+          localStorage.setItem("loginId", JSON.stringify(res.data.data.id));
+          localStorage.setItem("loginUser", JSON.stringify(resData));
           showNotify({ title: "変更完了しました", status: "success" });
-          router.push("/");
+          router.push("/myPage");
         } else {
           showNotify({ title: "変更に失敗しました", status: "error" });
         }
