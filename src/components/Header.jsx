@@ -5,7 +5,7 @@ import { SideMenu } from "src/components/SideMenu";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [loginId, setLoginId] = useState();
+  const [loginId, setLoginId] = useState("");
   const router = useRouter();
 
   useEffect(() => {

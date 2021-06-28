@@ -11,6 +11,7 @@ export const useNewReserve = () => {
       .post(`http://localhost:3001/api/v1/reserves`, {
         event_id: eventId,
         user_id: localStorage.getItem("loginId"),
+        reserve_sts: "1",
       })
       .then((res) => {
         if (res.data) {

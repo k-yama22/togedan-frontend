@@ -35,6 +35,7 @@ export const useSignUp = () => {
         phone: phone,
         image: image,
         introduce: introduce,
+        user_sts: "1",
       })
       .then((res) => {
         if (res.data) {

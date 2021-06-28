@@ -31,6 +31,7 @@ export const useNewEvent = () => {
         end_time: endTime,
         event_message: eventMessage,
         max_people: maxPeople,
+        event_sts: "1",
       })
       .then((res) => {
         if (res.data) {
