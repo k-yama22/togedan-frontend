@@ -20,5 +20,5 @@ export const useAllEvents = () => {
         // setLoading(false);
       });
   }, []);
-  return { getEvents, events };
+  return { getEvents, events, setEvents };
 };

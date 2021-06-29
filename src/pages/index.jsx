@@ -33,6 +33,11 @@ const Home = () => {
               ホーム画面
             </h2>
             <div className='font-base tracking-tight text-gray-600'>モック</div>
+            <div className='text-teal-600 hover:bg-teal-300 hover:text-gray-500'>
+              <Link href='/events'>
+                <a>イベント一覧画面へ</a>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
