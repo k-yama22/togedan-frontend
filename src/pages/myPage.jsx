@@ -9,17 +9,23 @@ import { EventCard } from "src/components/EventCard";
 import { useMyUserInfo } from "src/hooks/useMyUserInfo";
 import { UserCard } from "src/components/UserCard";
 import { useRouter } from "next/router";
+import { useDeleteReserve } from "src/hooks/useDeleteReserve";
 
 const MyPage = () => {
   const router = useRouter();
   const { getMyReserves, myReserves } = useMyReserves();
   const { getMyEvents, myEvents } = useMyEvents();
   const { getMyUserInfo, myUserInfo } = useMyUserInfo();
+  const { deleteMyReserves, deleteReserve } = useDeleteReserve();
   console.log(myUserInfo);
   console.log(myUserInfo.firstName);
 
   const onClickUserEdit = () => {
     router.push({ pathname: "/userEdit" });
+  };
+
+  const onClickReserveCancel = (id) => {
+    deleteMyReserves(id);
   };
 
   useEffect(() => {
@@ -62,6 +68,7 @@ const MyPage = () => {
               firstName={myUserInfo.firstName}
               email={myUserInfo.email}
               buttonMessage='ユーザ詳細'
+              subButtonMessage='退会する'
               onClick={() => onClickUserEdit()}
             />
           </div>
@@ -86,7 +93,9 @@ const MyPage = () => {
                 genre={myReserve.genre}
                 location={myReserve.location}
                 buttonMessage='予約した内容をみる'
+                subButtonMessage='予約をキャンセルする'
                 onClick={() => onClickEvent(myReserve.id)}
+                onClickSub={() => onClickReserveCancel(myReserve.id)}
               />
             </div>
           ))}
@@ -117,6 +126,7 @@ const MyPage = () => {
                 genre={myEvent.genre}
                 location={myEvent.location}
                 buttonMessage='開催情報を修正する'
+                subButtonMessage='開催を取り消す'
                 onClick={() => onClickEvent(myEvent.id)}
               />
             </div>

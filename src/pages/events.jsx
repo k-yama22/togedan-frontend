@@ -69,6 +69,7 @@ const Events = () => {
               genre={event.genre}
               location={event.location}
               buttonMessage='予約申込はこちら'
+              subButtonMessage='開催者の詳細を見る'
               onClick={() => onClickEvent(event.id)}
             />
           </div>
