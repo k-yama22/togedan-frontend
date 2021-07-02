@@ -20,9 +20,6 @@ const MyPage = () => {
   const { deleteMyReserves, deleteReserve } = useDeleteReserve();
   const { deleteMyEvent, deleteEvent } = useDeleteEvent();
 
-  console.log(myUserInfo);
-  console.log(myUserInfo.firstName);
-
   const onClickUserEdit = () => {
     router.push({ pathname: "/userEdit" });
   };
@@ -36,7 +33,6 @@ const MyPage = () => {
   };
 
   const onClickEventEdit = (id) => {
-    console.log(id);
     router.push({ pathname: "/eventEdit", query: { id: id } });
   };
 
@@ -44,7 +40,6 @@ const MyPage = () => {
     getMyReserves();
     getMyEvents();
     getMyUserInfo();
-    console.log(myUserInfo);
   }, []);
   return (
     <div>

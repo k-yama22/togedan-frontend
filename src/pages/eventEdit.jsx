@@ -4,10 +4,16 @@ import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { useSelectEvent } from "src/hooks/useSelectEvent";
 import { useRouter } from "next/router";
+import { useUpdateEvent } from "src/hooks/useUpdateEvent";
+import { Loading } from "src/components/Loading";
+import dayjs from "dayjs";
 
 const EventEdit = () => {
   const router = useRouter();
+  const { onSelectEvent, selectedEvent } = useSelectEvent();
 
+  const { updateEvent, loading } = useUpdateEvent();
+  const [id, setId] = useState("");
   const [eventName, setEventName] = useState("");
   const [genre, setGenre] = useState("");
   const [location, setLocation] = useState("");
@@ -16,7 +22,6 @@ const EventEdit = () => {
   const [endTime, setEndTime] = useState("");
   const [eventMessage, setEventMessage] = useState("");
   const [maxPeople, setMaxPeople] = useState("");
-  const { onSelectEvent, selectedEvent } = useSelectEvent();
 
   const onChangeEventName = (e) => {
     setEventName(e.target.value);
@@ -43,8 +48,9 @@ const EventEdit = () => {
     setMaxPeople(e.target.value);
   };
 
-  const onClickNewEvent = () => {
-    newEvent(
+  const onClickUpdateEvent = () => {
+    updateEvent(
+      id,
       eventName,
       genre,
       location,
@@ -57,20 +63,22 @@ const EventEdit = () => {
   };
   useEffect(() => {
     const id = router.query.id;
-    console.log(id);
     onSelectEvent(id);
-    const defaultValue = selectedEvent;
-
-    setEventName(defaultValue.event_name);
-    setGenre(defaultValue.genre);
-    setLocation(defaultValue.location);
-    setEventDate(defaultValue.event_date);
-    setStartTime(defaultValue.start_date);
-    setEndTime(defaultValue.end_date);
-    setEventMessage(defaultValue.event_message);
-    setMaxPeople(defaultValue.max_people);
-    console.log(defaultValue);
   }, []);
+
+  useEffect(() => {
+    const startTime = dayjs(selectedEvent.start_time);
+    const endTime = dayjs(selectedEvent.end_time);
+    setId(selectedEvent.id);
+    setEventName(selectedEvent.event_name);
+    setGenre(selectedEvent.genre);
+    setLocation(selectedEvent.location);
+    setEventDate(selectedEvent.event_date);
+    setStartTime(startTime.format("HH:mm"));
+    setEndTime(endTime.format("HH:mm"));
+    setEventMessage(selectedEvent.event_message);
+    setMaxPeople(selectedEvent.max_people);
+  }, [selectedEvent]);
 
   return (
     <>
@@ -195,9 +203,9 @@ const EventEdit = () => {
                   <div className='mt-4 items-center flex justify-between'>
                     <button
                       className='px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded'
-                      onClick={onClickNewEvent}
+                      onClick={onClickUpdateEvent}
                     >
-                      登録
+                      {loading ? <Loading /> : <>変更</>}
                     </button>
                   </div>
                 </div>
