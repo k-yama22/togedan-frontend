@@ -4,6 +4,7 @@ import { Header } from "src/components/Header";
 import { useEffect, useState } from "react";
 import { useUserChange } from "src/hooks/useUserChange";
 import { Loading } from "src/components/Loading";
+import Link from "next/link";
 
 const UserEdit = () => {
   const [lastName, setLastName] = useState("");
@@ -12,7 +13,7 @@ const UserEdit = () => {
   const [firstNameKana, setFirstNameKana] = useState("");
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState({});
+  const [birthday, setBirthday] = useState("");
   const [phone, setPhone] = useState("");
   const [image, setImage] = useState("");
   const [introduce, setIntroduce] = useState("");
@@ -89,6 +90,11 @@ const UserEdit = () => {
       <Header />
 
       <div className='bg-gray-500 flex flex-col items-center justify-center min-h-screen py-2'>
+        <div className='text-teal-100 ml-auto mb-5 mt-5 mr-5 border-solid	border-2 border-light-blue-500 rounded-md'>
+          <Link href='/passChange'>
+            <a>パスワードの変更はこちら</a>
+          </Link>
+        </div>
         <main className='flex flex-col items-center justify-center w-full flex-1 px-20 text-center'>
           <div className='container mx-auto h-full flex flex-1 justify-center items-center'>
             <div className='w-full max-w-md'>
