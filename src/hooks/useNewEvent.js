@@ -34,9 +34,11 @@ export const useNewEvent = () => {
         event_sts: "1",
       })
       .then((res) => {
-        if (res.data) {
+        if (res.data.status === 200) {
           showNotify({ title: "登録完了しました", status: "success" });
           router.push("/newEvent");
+        } else if (res.data.status === 400) {
+          showNotify({ title: res.data.message, status: "error" });
         } else {
           showNotify({ title: "登録に失敗しました", status: "error" });
         }
