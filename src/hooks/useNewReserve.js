@@ -15,13 +15,14 @@ export const useNewReserve = () => {
       })
       .then((res) => {
         if (res.data.status === 200) {
-          showNotify({ title: "登録完了しました", status: "success" });
+          showNotify({ title: res.data.message, status: "success" });
           router.push("/events");
         } else if (res.data.status === 400) {
           showNotify({ title: res.data.message, status: "error" });
         }
       })
-      .catch(() => {
+      .catch((error) => {
+        // console.log(error);
         showNotify({ title: "登録できません", status: "error" });
       })
       .finally(() => {
