@@ -4,54 +4,19 @@ import { useNewEvent } from "src/hooks/useNewEvent";
 import { Footer } from "src/components/Footer";
 import { Loading } from "src/components/Loading";
 import { Header } from "src/components/Header";
+import { useForm } from "react-hook-form";
 
 const NewEvent = () => {
-  const [eventName, setEventName] = useState("");
-  const [genre, setGenre] = useState("");
-  const [location, setLocation] = useState("");
-  const [eventDate, setEventDate] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
-  const [eventMessage, setEventMessage] = useState("");
-  const [maxPeople, setMaxPeople] = useState("");
   const { newEvent, loading } = useNewEvent();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const onChangeEventName = (e) => {
-    setEventName(e.target.value);
-  };
-  const onChangeGenre = (e) => {
-    setGenre(e.target.value);
-  };
-  const onChangeLocation = (e) => {
-    setLocation(e.target.value);
-  };
-  const onChangeEventDate = (e) => {
-    setEventDate(e.target.value);
-  };
-  const onChangeStartTime = (e) => {
-    setStartTime(e.target.value);
-  };
-  const onChangeEndTime = (e) => {
-    setEndTime(e.target.value);
-  };
-  const onChangeEventMessage = (e) => {
-    setEventMessage(e.target.value);
-  };
-  const onChangeMaxPeople = (e) => {
-    setMaxPeople(e.target.value);
-  };
-
-  const onClickNewEvent = () => {
-    newEvent(
-      eventName,
-      genre,
-      location,
-      eventDate,
-      startTime,
-      endTime,
-      eventMessage,
-      maxPeople
-    );
+  const onSubmit = (data) => {
+    newEvent(data);
+    console.log(data);
   };
 
   return (
@@ -73,115 +38,131 @@ const NewEvent = () => {
                   <p className='text-white font-medium text-center text-lg font-bold'>
                     開催情報を入力してください
                   </p>
-                  <div className=''>
-                    <label className='block text-sm text-white'>
-                      イベント名称
-                    </label>
-                    <input
-                      className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                      type='text'
-                      placeholder='イベント名称'
-                      required
-                      value={eventName}
-                      onChange={onChangeEventName}
-                    />
-                  </div>
-                  <div className='mt-2'>
-                    <label className='block  text-sm text-white'>
-                      ジャンル
-                    </label>
-                    <input
-                      className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                      type='text'
-                      placeholder='ジャンル'
-                      required
-                      value={genre}
-                      onChange={onChangeGenre}
-                    />
-                  </div>
-                  <div className='mt-2'>
-                    <label className='block  text-sm text-white'>
-                      開催場所
-                    </label>
-                    <input
-                      className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                      type='text'
-                      placeholder='開催場所'
-                      required
-                      value={location}
-                      onChange={onChangeLocation}
-                    />
-                  </div>
-                  <div className='mt-2'>
-                    <label className='block  text-sm text-white'>開催日</label>
-                    <input
-                      className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                      type='date'
-                      placeholder='開催日'
-                      required
-                      value={eventDate}
-                      onChange={onChangeEventDate}
-                    />
-                  </div>
-                  <div className='mt-2'>
-                    <label className='block  text-sm text-white'>
-                      開始時刻
-                    </label>
-                    <input
-                      className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                      type='time'
-                      placeholder='開催時刻'
-                      required
-                      value={startTime}
-                      onChange={onChangeStartTime}
-                    />
-                  </div>
-                  <div className='mt-2'>
-                    <label className='block  text-sm text-white'>
-                      終了時刻
-                    </label>
-                    <input
-                      className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                      type='time'
-                      placeholder='終了時刻'
-                      required
-                      value={endTime}
-                      onChange={onChangeEndTime}
-                    />
-                  </div>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className=''>
+                      <label className='block text-sm text-white'>
+                        イベント名称
+                      </label>
+                      <input
+                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
+                        type='text'
+                        placeholder='イベント名称'
+                        {...register("eventName", { required: true })}
+                      />
+                      {errors.eventName &&
+                        errors.eventName.type === "required" && (
+                          <span className='text-red-700'>"必須項目です"</span>
+                        )}
+                    </div>
+                    <div className='mt-2'>
+                      <label className='block  text-sm text-white'>
+                        ジャンル
+                      </label>
+                      <input
+                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
+                        type='text'
+                        placeholder='ジャンル'
+                        {...register("genre", { required: true })}
+                      />
+                      {errors.genre && errors.genre.type === "required" && (
+                        <span className='text-red-700'>"必須項目です"</span>
+                      )}
+                    </div>
+                    <div className='mt-2'>
+                      <label className='block  text-sm text-white'>
+                        開催場所
+                      </label>
+                      <input
+                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
+                        type='text'
+                        placeholder='開催場所'
+                        {...register("location", { required: true })}
+                      />
+                      {errors.location &&
+                        errors.location.type === "required" && (
+                          <span className='text-red-700'>"必須項目です"</span>
+                        )}
+                    </div>
+                    <div className='mt-2'>
+                      <label className='block  text-sm text-white'>
+                        開催日
+                      </label>
+                      <input
+                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
+                        type='date'
+                        placeholder='開催日'
+                        {...register("eventDate", { required: true })}
+                      />
+                      {errors.eventDate &&
+                        errors.eventDate.type === "required" && (
+                          <span className='text-red-700'>"必須項目です"</span>
+                        )}
+                    </div>
+                    <div className='mt-2'>
+                      <label className='block  text-sm text-white'>
+                        開始時刻
+                      </label>
+                      <input
+                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
+                        type='time'
+                        placeholder='開催時刻'
+                        {...register("startTime", { required: true })}
+                      />
+                      {errors.startTime &&
+                        errors.startTime.type === "required" && (
+                          <span className='text-red-700'>"必須項目です"</span>
+                        )}
+                    </div>
+                    <div className='mt-2'>
+                      <label className='block  text-sm text-white'>
+                        終了時刻
+                      </label>
+                      <input
+                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
+                        type='time'
+                        placeholder='終了時刻'
+                        {...register("endTime", { required: true })}
+                      />
+                      {errors.endTime && errors.endTime.type === "required" && (
+                        <span className='text-red-700'>"必須項目です"</span>
+                      )}
+                    </div>
 
-                  <div className='mt-2'>
-                    <label className='block  text-sm text-white'>
-                      開催者メッセージ
-                    </label>
-                    <textarea
-                      className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                      placeholder='開催者メッセージ'
-                      value={eventMessage}
-                      onChange={onChangeEventMessage}
-                    ></textarea>
-                  </div>
-                  <div className='mt-2'>
-                    <label className='block  text-sm text-white'>
-                      最大人数
-                    </label>
-                    <input
-                      className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                      type='number'
-                      placeholder='最大人数'
-                      required
-                      value={maxPeople}
-                      onChange={onChangeMaxPeople}
-                    />
-                  </div>
-                  <div className='mt-4 items-center flex justify-between'>
-                    <button
-                      className='px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded'
-                      onClick={onClickNewEvent}
-                    >
-                      {loading ? <Loading /> : <>登録</>}
-                    </button>
-                  </div>
+                    <div className='mt-2'>
+                      <label className='block  text-sm text-white'>
+                        開催者メッセージ
+                      </label>
+                      <textarea
+                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
+                        placeholder='開催者メッセージ'
+                        {...register("eventMessage", { required: true })}
+                      ></textarea>
+                      {errors.eventMessage &&
+                        errors.eventMessage.type === "required" && (
+                          <span className='text-red-700'>"必須項目です"</span>
+                        )}
+                    </div>
+                    <div className='mt-2'>
+                      <label className='block  text-sm text-white'>
+                        最大人数
+                      </label>
+                      <input
+                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
+                        type='number'
+                        placeholder='最大人数'
+                        {...register("maxPeople", { required: true })}
+                      />
+                      {errors.maxPeople &&
+                        errors.maxPeople.type === "required" && (
+                          <span className='text-red-700'>"必須項目です"</span>
+                        )}
+                    </div>
+                    <div className='mt-4 items-center flex justify-between'>
+                      <button className='px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded'>
+                        {loading ? <Loading /> : <>登録</>}
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>

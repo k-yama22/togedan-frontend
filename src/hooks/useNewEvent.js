@@ -8,42 +8,35 @@ export const useNewEvent = () => {
   const { showNotify } = useNotify();
   const [loading, setLoading] = useState(false);
 
-  const newEvent = (
-    eventName,
-    genre,
-    location,
-    eventDate,
-    startTime,
-    endTime,
-    eventMessage,
-    maxPeople
-  ) => {
+  const newEvent = (data) => {
     setLoading(true);
     const loginId = localStorage.getItem("loginId");
     axios
       .post(`http://localhost:3001/api/v1/events`, {
         user_id: loginId,
-        event_name: eventName,
-        genre: genre,
-        location: location,
-        event_date: eventDate,
-        start_time: startTime,
-        end_time: endTime,
-        event_message: eventMessage,
-        max_people: maxPeople,
+        event_name: data.eventName,
+        genre: data.genre,
+        location: data.location,
+        event_date: data.eventDate,
+        start_time: data.startTime,
+        end_time: data.endTime,
+        event_message: data.eventMessage,
+        max_people: data.maxPeople,
         event_sts: "1",
       })
       .then((res) => {
         if (res.data.status === 200) {
-          showNotify({ title: "登録完了しました", status: "success" });
+          showNotify({ title: res.data.message, status: "success" });
           router.push("/newEvent");
         } else if (res.data.status === 400) {
           showNotify({ title: res.data.message, status: "error" });
+        } else if (res.data.status === 422) {
+          showNotify({ title: res.data.data.res_message, status: "error" });
         } else {
           showNotify({ title: "登録に失敗しました", status: "error" });
         }
       })
-      .catch(() => {
+      .catch((error) => {
         showNotify({ title: "登録できません", status: "error" });
       })
       .finally(() => {
