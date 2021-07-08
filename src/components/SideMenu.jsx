@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { useState } from "react";
 import { slide as Menu } from "react-burger-menu";
+import { Loading } from "src/components/Loading";
 
 export const SideMenu = (props) => {
-  const { isOpen, loginId, onClick } = props;
+  const { isOpen, loginId, loading, onClick } = props;
 
   return (
     <>
@@ -34,7 +35,7 @@ export const SideMenu = (props) => {
               className='block mt-4 text-teal-lighter hover:text-gray-500 m-auto outline-none focus:outline-none'
               onClick={onClick}
             >
-              ログアウト
+              {loading ? <Loading /> : <>ログアウト</>}
             </button>
           </>
         ) : (

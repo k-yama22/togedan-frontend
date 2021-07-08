@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { Loading } from "src/components/Loading";
 import { SideMenu } from "src/components/SideMenu";
+import { useSignOut } from "src/hooks/useSignOut";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [loginId, setLoginId] = useState("");
-  const router = useRouter();
+  const { signOut, loading } = useSignOut();
 
   useEffect(() => {
     setLoginId(localStorage.getItem("loginId"));
@@ -17,13 +19,17 @@ export const Header = () => {
   };
 
   const onClickLogout = () => {
-    localStorage.clear();
-    router.push("/login");
+    signOut();
   };
 
   return (
     <>
-      <SideMenu isOpen={isOpen} loginId={loginId} onClick={onClickLogout} />
+      <SideMenu
+        isOpen={isOpen}
+        loginId={loginId}
+        loading={loading}
+        onClick={onClickLogout}
+      />
       <nav className='flex items-center justify-between flex-wrap bg-teal-300 p-6'>
         <Link href='/'>
           <div className='flex items-center flex-no-shrink text-white mr-6'>
@@ -80,7 +86,7 @@ export const Header = () => {
                   className='block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white outline-none focus:outline-none'
                   onClick={onClickLogout}
                 >
-                  ログアウト
+                  {loading ? <Loading /> : <>ログアウト</>}
                 </button>
               </>
             ) : (
