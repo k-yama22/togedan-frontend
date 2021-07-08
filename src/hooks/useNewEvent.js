@@ -11,19 +11,29 @@ export const useNewEvent = () => {
   const newEvent = (data) => {
     setLoading(true);
     const loginId = localStorage.getItem("loginId");
+    const headers = {
+      "Content-Type": "application/json",
+      "access-token": localStorage.getItem("accessToken"),
+      client: localStorage.getItem("client"),
+      uid: localStorage.getItem("uid"),
+    };
     axios
-      .post(`http://localhost:3001/api/v1/events`, {
-        user_id: loginId,
-        event_name: data.eventName,
-        genre: data.genre,
-        location: data.location,
-        event_date: data.eventDate,
-        start_time: data.startTime,
-        end_time: data.endTime,
-        event_message: data.eventMessage,
-        max_people: data.maxPeople,
-        event_sts: "1",
-      })
+      .post(
+        `http://localhost:3001/api/v1/events`,
+        {
+          user_id: loginId,
+          event_name: data.eventName,
+          genre: data.genre,
+          location: data.location,
+          event_date: data.eventDate,
+          start_time: data.startTime,
+          end_time: data.endTime,
+          event_message: data.eventMessage,
+          max_people: data.maxPeople,
+          event_sts: "1",
+        },
+        { headers: headers }
+      )
       .then((res) => {
         if (res.data.status === 200) {
           showNotify({ title: res.data.message, status: "success" });

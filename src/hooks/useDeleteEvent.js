@@ -6,13 +6,24 @@ export const useDeleteEvent = () => {
   const { showNotify } = useNotify();
   const [deleteEvent, setDeleteEvent] = useState([]);
   const deleteMyEvent = useCallback((id) => {
-    // const { id } = props;
     const loginId = localStorage.getItem("loginId");
+    const headers = {
+      "Content-Type": "application/json",
+      "access-token": localStorage.getItem("accessToken"),
+      client: localStorage.getItem("client"),
+      uid: localStorage.getItem("uid"),
+    };
     axios
-      .post(`http://localhost:3001/api/v1/events/${id}/cancel`, {
-        user_id: loginId,
-        id: id,
-      })
+      .post(
+        `http://localhost:3001/api/v1/events/${id}/cancel`,
+        {
+          user_id: loginId,
+          id: id,
+        },
+        {
+          headers: headers,
+        }
+      )
       .then((res) => {
         setDeleteEvent(res.data.data);
         console.log(res.data);

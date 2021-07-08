@@ -8,8 +8,16 @@ export const useHistoryEvents = () => {
 
   const getHistoryEvents = useCallback(() => {
     const loginId = localStorage.getItem("loginId");
+    const headers = {
+      "Content-Type": "application/json",
+      "access-token": localStorage.getItem("accessToken"),
+      client: localStorage.getItem("client"),
+      uid: localStorage.getItem("uid"),
+    };
     axios
-      .get(`http://localhost:3001/api/v1/events/${loginId}/history`)
+      .get(`http://localhost:3001/api/v1/events/${loginId}/history`, {
+        headers: headers,
+      })
       .then((res) => {
         setHistoryEvents(res.data.data);
       })
