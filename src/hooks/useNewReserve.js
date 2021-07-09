@@ -7,12 +7,22 @@ export const useNewReserve = () => {
   const { showNotify } = useNotify();
 
   const newReserve = (eventId) => {
+    const headers = {
+      "Content-Type": "application/json",
+      "access-token": localStorage.getItem("accessToken"),
+      client: localStorage.getItem("client"),
+      uid: localStorage.getItem("uid"),
+    };
     axios
-      .post(`http://localhost:3001/api/v1/reserves`, {
-        event_id: eventId,
-        user_id: localStorage.getItem("loginId"),
-        reserve_sts: "1",
-      })
+      .post(
+        `http://localhost:3001/api/v1/reserves`,
+        {
+          event_id: eventId,
+          user_id: localStorage.getItem("loginId"),
+          reserve_sts: "1",
+        },
+        { headers: headers }
+      )
       .then((res) => {
         if (res.data.status === 200) {
           showNotify({ title: res.data.message, status: "success" });
@@ -22,7 +32,6 @@ export const useNewReserve = () => {
         }
       })
       .catch((error) => {
-        // console.log(error);
         showNotify({ title: "登録できません", status: "error" });
       })
       .finally(() => {
