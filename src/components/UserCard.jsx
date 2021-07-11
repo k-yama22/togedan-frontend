@@ -7,6 +7,7 @@ export const UserCard = memo((props) => {
     lastName,
     firstName,
     email,
+    image,
     buttonMessage,
     subButtonMessage,
     onClick,
@@ -17,8 +18,8 @@ export const UserCard = memo((props) => {
         <div className='flex-none lg:flex'>
           <div className=' h-full w-full lg:h-48 lg:w-48   lg:mb-0 mb-3'>
             <img
-              src='https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80'
-              alt='Just a flower'
+              src={image?.url}
+              alt='アイコン画像'
               className=' w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl'
             />
           </div>

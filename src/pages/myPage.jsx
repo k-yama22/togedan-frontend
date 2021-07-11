@@ -74,6 +74,7 @@ const MyPage = () => {
               lastName={myUserInfo.lastName}
               firstName={myUserInfo.firstName}
               email={myUserInfo.email}
+              image={myUserInfo.image}
               buttonMessage='ユーザ詳細'
               subButtonMessage='退会する'
               onClick={() => onClickUserEdit()}
