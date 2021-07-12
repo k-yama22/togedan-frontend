@@ -30,42 +30,15 @@ export const useUserChange = () => {
     return result;
   };
 
-  const userChange = (
-    lastName,
-    firstName,
-    lastNameKana,
-    firstNameKana,
-    userName,
-    email,
-    birthday,
-    phone,
-    image,
-    introduce
-  ) => {
+  const userChange = (editData) => {
     setLoading(true);
     const headers = {
-      "Content-Type": "application/json",
       "access-token": localStorage.getItem("accessToken"),
       client: localStorage.getItem("client"),
       uid: localStorage.getItem("uid"),
     };
     axios
-      .put(
-        `http://localhost:3001/auth`,
-        {
-          last_name: lastName,
-          first_name: firstName,
-          last_name_kana: lastNameKana,
-          first_name_kana: firstNameKana,
-          user_name: userName,
-          email: email,
-          birthday: birthday,
-          phone: phone,
-          image: image,
-          introduce: introduce,
-        },
-        { headers: headers }
-      )
+      .put(`http://localhost:3001/auth`, editData, { headers: headers })
       .then((res) => {
         if (res.data) {
           const resData = toCamelCaseObject(res.data.data);
@@ -77,7 +50,7 @@ export const useUserChange = () => {
           showNotify({ title: "変更に失敗しました", status: "error" });
         }
       })
-      .catch(() => {
+      .catch((error) => {
         showNotify({ title: "変更できません", status: "error" });
       })
       .finally(() => {
