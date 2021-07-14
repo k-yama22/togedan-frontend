@@ -35,7 +35,7 @@ const EventEdit = () => {
   useEffect(() => {
     const startTime = dayjs(selectedEvent.start_time);
     const endTime = dayjs(selectedEvent.end_time);
-    setId(selectedEvent.id);
+    setId(selectedEvent.event_id);
     setValue("eventName", selectedEvent.event_name);
     setValue("genre", selectedEvent.genre);
     setValue("location", selectedEvent.location);

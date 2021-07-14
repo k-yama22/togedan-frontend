@@ -36,6 +36,10 @@ const MyPage = () => {
     router.push({ pathname: "/eventEdit", query: { id: id } });
   };
 
+  const onClickMyEvents = () => {
+    router.push({ pathname: "/myEvents" });
+  };
+
   useEffect(() => {
     getMyReserves();
     getMyEvents();
@@ -100,6 +104,7 @@ const MyPage = () => {
                 eventName={myReserve.event_name}
                 genre={myReserve.genre}
                 location={myReserve.location}
+                image={myReserve.image}
                 buttonMessage='予約した内容をみる'
                 subButtonMessage='予約をキャンセルする'
                 onClick={() => onClickEvent(myReserve.id)}
@@ -126,20 +131,16 @@ const MyPage = () => {
           </div>
         </div>
         <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2'>
-          {myEvents.map((myEvent) => (
-            <div key={myEvent.id}>
-              <EventCard
-                id={myEvent.id}
-                eventName={myEvent.event_name}
-                genre={myEvent.genre}
-                location={myEvent.location}
-                buttonMessage='開催情報を修正する'
-                subButtonMessage='開催を取り消す'
-                onClick={onClickEventEdit}
-                onClickSub={onClickEventCancel}
-              />
-            </div>
-          ))}
+          <ul>
+            {myEvents.map((myEvent) => (
+              <li key={myEvent.id}>
+                <div onClick={() => onClickEventEdit(myEvent.id)}>
+                  {myEvent.event_name}
+                </div>
+              </li>
+            ))}
+          </ul>
+          <button onClick={onClickMyEvents}> 開催イベント一覧はこちら</button>
         </div>
       </div>
       <Footer />

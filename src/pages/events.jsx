@@ -125,15 +125,16 @@ const Events = () => {
       <div>検索結果</div>
       <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2'>
         {events.map((event) => (
-          <div key={event.id}>
+          <div key={event.event_id}>
             <EventCard
-              id={event.id}
+              id={event.event_id}
               eventName={event.event_name}
               genre={event.genre}
               location={event.location}
+              image={event.image}
               buttonMessage='予約申込はこちら'
               subButtonMessage='開催者の詳細を見る'
-              onClick={() => onClickEvent(event.id)}
+              onClick={() => onClickEvent(event.event_id)}
             />
           </div>
         ))}
