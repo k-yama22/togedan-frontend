@@ -13,7 +13,7 @@ const EventDetail = () => {
   const { onSelectEvent, selectedEvent } = useSelectEvent();
 
   const onClickReserve = () => {
-    newReserve(selectedEvent.id);
+    newReserve(selectedEvent.event_id);
   };
 
   useEffect(() => onSelectEvent(router.query.id), []);
