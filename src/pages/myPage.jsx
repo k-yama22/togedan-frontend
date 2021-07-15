@@ -28,16 +28,16 @@ const MyPage = () => {
     deleteMyReserves(id);
   };
 
+  const onClickEvent = (id) => {
+    router.push({ pathname: "/eventDetail", query: { id: id } });
+  };
+
   const onClickEventCancel = (id) => {
     deleteMyEvent(id);
   };
 
   const onClickEventEdit = (id) => {
     router.push({ pathname: "/eventEdit", query: { id: id } });
-  };
-
-  const onClickMyEvents = () => {
-    router.push({ pathname: "/myEvents" });
   };
 
   useEffect(() => {
@@ -100,14 +100,14 @@ const MyPage = () => {
           {myReserves.map((myReserve) => (
             <div key={myReserve.id}>
               <EventCard
-                id={myReserve.id}
+                id={myReserve.event_id}
                 eventName={myReserve.event_name}
                 genre={myReserve.genre}
                 location={myReserve.location}
                 image={myReserve.image}
                 buttonMessage='予約した内容をみる'
                 subButtonMessage='予約をキャンセルする'
-                onClick={() => onClickEvent(myReserve.id)}
+                onClick={() => onClickEvent(myReserve.event_id)}
                 onClickSub={onClickReserveCancel}
               />
             </div>
@@ -131,16 +131,21 @@ const MyPage = () => {
           </div>
         </div>
         <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2'>
-          <ul>
-            {myEvents.map((myEvent) => (
-              <li key={myEvent.id}>
-                <div onClick={() => onClickEventEdit(myEvent.id)}>
-                  {myEvent.event_name}
-                </div>
-              </li>
-            ))}
-          </ul>
-          <button onClick={onClickMyEvents}> 開催イベント一覧はこちら</button>
+          {myEvents.map((myEvent) => (
+            <div key={myEvent.event_id}>
+              <EventCard
+                id={myEvent.event_id}
+                eventName={myEvent.event_name}
+                genre={myEvent.genre}
+                location={myEvent.location}
+                image={myEvent.image}
+                buttonMessage='開催情報を修正する'
+                subButtonMessage='開催を取り消す'
+                onClick={() => onClickEventEdit(myEvent.event_id)}
+                onClickSub={onClickEventCancel}
+              />
+            </div>
+          ))}
         </div>
       </div>
       <Footer />

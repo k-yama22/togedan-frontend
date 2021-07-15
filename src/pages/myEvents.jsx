@@ -56,7 +56,7 @@ const MyEvents = () => {
             <div className='font-base tracking-tight text-gray-600'>一覧</div>
           </div>
         </div>
-        <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2'>
+        <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1'>
           {myEvents.map((myEvent) => (
             <EventCard
               id={myEvent.event_id}
