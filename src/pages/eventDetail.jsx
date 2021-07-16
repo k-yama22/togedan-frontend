@@ -1,15 +1,17 @@
 import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelectEvent } from "src/hooks/useSelectEvent";
 import { useRouter } from "next/router";
 import { useNewReserve } from "src/hooks/useNewReserve";
+import dayjs from "dayjs";
 
 const EventDetail = () => {
   const router = useRouter();
   const { newReserve } = useNewReserve();
-
+  const [startTime, setStartTime] = useState();
+  const [endTime, setEndTime] = useState();
   const { onSelectEvent, selectedEvent } = useSelectEvent();
 
   const onClickReserve = () => {
@@ -18,6 +20,12 @@ const EventDetail = () => {
 
   useEffect(() => onSelectEvent(router.query.id), []);
 
+  useEffect(() => {
+    const formatStartTime = dayjs(selectedEvent.start_time);
+    const formatEndTime = dayjs(selectedEvent.end_time);
+    setStartTime(formatStartTime.format("HH:mm"));
+    setEndTime(formatEndTime.format("HH:mm"));
+  }, [selectedEvent]);
   return (
     <div>
       <Head>
@@ -87,8 +95,7 @@ const EventDetail = () => {
                     ></path>
                   </svg>
                   <p className=''>
-                    {selectedEvent.event_date}の{selectedEvent.start_time}〜
-                    {selectedEvent.end_time}
+                    {selectedEvent.event_date}の{startTime}〜{endTime}
                   </p>
                 </div>
               </div>
