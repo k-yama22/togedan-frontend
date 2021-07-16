@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { useMyReserves } from "src/hooks/useMyReserves";
@@ -19,6 +19,8 @@ const MyPage = () => {
   const { getMyUserInfo, myUserInfo } = useMyUserInfo();
   const { deleteMyReserves, deleteReserve } = useDeleteReserve();
   const { deleteMyEvent, deleteEvent } = useDeleteEvent();
+
+  const [myReserveArr, setMyReserveArr] = useState([]);
 
   const onClickUserEdit = () => {
     router.push({ pathname: "/userEdit" });
@@ -40,11 +42,28 @@ const MyPage = () => {
     router.push({ pathname: "/eventEdit", query: { id: id } });
   };
 
+  const onClickMyEvents = () => {
+    router.push({ pathname: "/myEvents" });
+  };
+  const onClickMyReserves = () => {
+    router.push({ pathname: "/myReserves" });
+  };
+
   useEffect(() => {
     getMyReserves();
     getMyEvents();
     getMyUserInfo();
   }, []);
+
+  useEffect(() => {
+    const arr = [];
+    for (let i = 0; i < 4; i++) {
+      arr.push(myReserves[i]);
+      console.log(arr);
+    }
+    setMyReserveArr(arr);
+  }, [myReserves]);
+
   return (
     <div>
       <Head>
@@ -71,7 +90,7 @@ const MyPage = () => {
           </div>
         </div>
 
-        <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2'>
+        <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1'>
           <div>
             <UserCard
               userName={myUserInfo.userName}
@@ -97,14 +116,14 @@ const MyPage = () => {
         </div>
 
         <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2'>
-          {myReserves.map((myReserve) => (
-            <div key={myReserve.id}>
+          {myReserveArr.map((myReserve) => (
+            <div key={myReserve?.id}>
               <EventCard
-                id={myReserve.event_id}
-                eventName={myReserve.event_name}
-                genre={myReserve.genre}
-                location={myReserve.location}
-                image={myReserve.image}
+                id={myReserve?.event_id}
+                eventName={myReserve?.event_name}
+                genre={myReserve?.genre}
+                location={myReserve?.location}
+                image={myReserve?.image}
                 buttonMessage='予約した内容をみる'
                 subButtonMessage='予約をキャンセルする'
                 onClick={() => onClickEvent(myReserve.event_id)}
@@ -113,6 +132,12 @@ const MyPage = () => {
             </div>
           ))}
         </div>
+        <button
+          className='text-teal-600 hover:bg-teal-300 hover:text-gray-500 mt-4'
+          onClick={onClickMyReserves}
+        >
+          予約したイベント一覧はこちら
+        </button>
       </div>
       <div className='content'>
         <div className='flex items-center justify-between w-full my-4 pl-4 sm:pr-4'>
@@ -147,6 +172,12 @@ const MyPage = () => {
             </div>
           ))}
         </div>
+        <button
+          className='text-teal-600 hover:bg-teal-300 hover:text-gray-500 mt-4'
+          onClick={onClickMyEvents}
+        >
+          開催イベント一覧はこちら
+        </button>
       </div>
       <Footer />
     </div>
