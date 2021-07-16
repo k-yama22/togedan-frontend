@@ -7,6 +7,9 @@ export const EventCard = memo((props) => {
     genre,
     location,
     image,
+    eventDate,
+    startTime,
+    endTime,
     buttonMessage,
     subButtonMessage,
     onClick,
@@ -70,7 +73,9 @@ export const EventCard = memo((props) => {
                     d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
                   ></path>
                 </svg>
-                <p className=''>2021年6月25日 17:00〜</p>
+                <p className=''>
+                  {eventDate}の{startTime}〜{endTime}
+                </p>
               </div>
             </div>
             <div className='flex p-4 pb-2 border-t border-gray-200 '></div>

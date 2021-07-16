@@ -21,6 +21,7 @@ const MyPage = () => {
   const { deleteMyEvent, deleteEvent } = useDeleteEvent();
 
   const [myReserveArr, setMyReserveArr] = useState([]);
+  const [myEventArr, setMyEventArr] = useState([]);
 
   const onClickUserEdit = () => {
     router.push({ pathname: "/userEdit" });
@@ -57,12 +58,37 @@ const MyPage = () => {
 
   useEffect(() => {
     const arr = [];
-    for (let i = 0; i < 4; i++) {
-      arr.push(myReserves[i]);
-      console.log(arr);
+    if (myReserves.length > 4) {
+      for (let i = 0; i < 4; i++) {
+        arr.push(myReserves[i]);
+        console.log(arr);
+      }
+    } else {
+      for (let i = 0; i < myReserves.length; i++) {
+        arr.push(myReserves[i]);
+        console.log(arr);
+      }
     }
     setMyReserveArr(arr);
+    console.log(arr);
   }, [myReserves]);
+
+  useEffect(() => {
+    const arr = [];
+    if (myEvents.length > 4) {
+      for (let i = 0; i < 4; i++) {
+        arr.push(myEvents[i]);
+        console.log(arr);
+      }
+    } else {
+      for (let i = 0; i < myEvents.length; i++) {
+        arr.push(myEvents[i]);
+        console.log(arr);
+      }
+    }
+    setMyEventArr(arr);
+    console.log(arr);
+  }, [myEvents]);
 
   return (
     <div>
@@ -124,6 +150,9 @@ const MyPage = () => {
                 genre={myReserve?.genre}
                 location={myReserve?.location}
                 image={myReserve?.image}
+                eventDate={myReserve?.event_date}
+                startTime={myReserve?.start_time}
+                endTime={myReserve?.end_time}
                 buttonMessage='予約した内容をみる'
                 subButtonMessage='予約をキャンセルする'
                 onClick={() => onClickEvent(myReserve.event_id)}
@@ -156,14 +185,17 @@ const MyPage = () => {
           </div>
         </div>
         <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2'>
-          {myEvents.map((myEvent) => (
-            <div key={myEvent.event_id}>
+          {myEventArr.map((myEvent) => (
+            <div key={myEvent?.event_id}>
               <EventCard
-                id={myEvent.event_id}
-                eventName={myEvent.event_name}
-                genre={myEvent.genre}
-                location={myEvent.location}
-                image={myEvent.image}
+                id={myEvent?.event_id}
+                eventName={myEvent?.event_name}
+                genre={myEvent?.genre}
+                location={myEvent?.location}
+                image={myEvent?.image}
+                eventDate={myEvent?.event_date}
+                startTime={myEvent?.start_time}
+                endTime={myEvent?.end_time}
                 buttonMessage='開催情報を修正する'
                 subButtonMessage='開催を取り消す'
                 onClick={() => onClickEventEdit(myEvent.event_id)}
