@@ -11,6 +11,7 @@ import { UserCard } from "src/components/UserCard";
 import { useRouter } from "next/router";
 import { useDeleteReserve } from "src/hooks/useDeleteReserve";
 import { useDeleteEvent } from "src/hooks/useDeleteEvent";
+import dayjs from "dayjs";
 
 const MyPage = () => {
   const router = useRouter();
@@ -61,16 +62,21 @@ const MyPage = () => {
     if (myReserves.length > 4) {
       for (let i = 0; i < 4; i++) {
         arr.push(myReserves[i]);
-        console.log(arr);
+        const startTime = dayjs(myReserves[i].start_time);
+        const endTime = dayjs(myReserves[i].end_time);
+        arr[i].start_time = startTime.format("HH:mm");
+        arr[i].end_time = endTime.format("HH:mm");
       }
     } else {
       for (let i = 0; i < myReserves.length; i++) {
         arr.push(myReserves[i]);
-        console.log(arr);
+        const startTime = dayjs(myReserves[i].start_time);
+        const endTime = dayjs(myReserves[i].end_time);
+        arr[i].start_time = startTime.format("HH:mm");
+        arr[i].end_time = endTime.format("HH:mm");
       }
     }
     setMyReserveArr(arr);
-    console.log(arr);
   }, [myReserves]);
 
   useEffect(() => {
@@ -78,16 +84,21 @@ const MyPage = () => {
     if (myEvents.length > 4) {
       for (let i = 0; i < 4; i++) {
         arr.push(myEvents[i]);
-        console.log(arr);
+        const startTime = dayjs(myEvents[i].start_time);
+        const endTime = dayjs(myEvents[i].end_time);
+        arr[i].start_time = startTime.format("HH:mm");
+        arr[i].end_time = endTime.format("HH:mm");
       }
     } else {
       for (let i = 0; i < myEvents.length; i++) {
         arr.push(myEvents[i]);
-        console.log(arr);
+        const startTime = dayjs(myEvents[i].start_time);
+        const endTime = dayjs(myEvents[i].end_time);
+        arr[i].start_time = startTime.format("HH:mm");
+        arr[i].end_time = endTime.format("HH:mm");
       }
     }
     setMyEventArr(arr);
-    console.log(arr);
   }, [myEvents]);
 
   return (

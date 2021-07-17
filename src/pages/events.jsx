@@ -7,6 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { Link } from "next/link";
 import { useSearchEvent } from "src/hooks/useSearchEvents";
+import dayjs from "dayjs";
 
 const Events = () => {
   const router = useRouter();
@@ -15,11 +16,11 @@ const Events = () => {
   const [location, setLocation] = useState();
   const [eventDate, setEventDate] = useState();
   const { searchEvent, searchEvents } = useSearchEvent();
+  const [eventArr, setEventArr] = useState([]);
 
   const onChangeGenre = (e) => {
     setGenre(e.target.value);
   };
-
   const onChangeLocation = (e) => {
     setLocation(e.target.value);
   };
@@ -27,9 +28,9 @@ const Events = () => {
     setEventDate(e.target.value);
   };
 
-  const onClickEvent = useCallback((id) => {
+  const onClickEvent = (id) => {
     router.push({ pathname: "/eventDetail", query: { id: id } });
-  });
+  };
 
   const onClickSearch = () => {
     searchEvent(genre, location, eventDate);
@@ -41,6 +42,20 @@ const Events = () => {
     isFirstRender.current = true;
     console.log(events);
   }, []);
+
+  useEffect(() => {
+    const arr = [];
+    if (events.length > 4) {
+      for (let i = 0; i < events.length; i++) {
+        arr.push(events[i]);
+        const startTime = dayjs(events[i].start_time);
+        const endTime = dayjs(events[i].end_time);
+        arr[i].start_time = startTime.format("HH:mm");
+        arr[i].end_time = endTime.format("HH:mm");
+      }
+    }
+    setEventArr(arr);
+  }, [events]);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -124,7 +139,7 @@ const Events = () => {
       </div>
       <div>検索結果</div>
       <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2'>
-        {events.map((event) => (
+        {eventArr.map((event) => (
           <div key={event.event_id}>
             <EventCard
               id={event.event_id}
@@ -132,6 +147,9 @@ const Events = () => {
               genre={event.genre}
               location={event.location}
               image={event.image}
+              eventDate={event.event_date}
+              startTime={event.start_time}
+              endTime={event.end_time}
               buttonMessage='予約申込はこちら'
               subButtonMessage='開催者の詳細を見る'
               onClick={() => onClickEvent(event.event_id)}
