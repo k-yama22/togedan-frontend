@@ -14,5 +14,12 @@
 .bm-cross {
   background: #bdc3c7;
 }
+.pagination {
+  display: flex;
+  margin: 0 auto;
+}
+.pagination li {
+  margin: 0 12px;
+}
 
 @tailwind utilities;

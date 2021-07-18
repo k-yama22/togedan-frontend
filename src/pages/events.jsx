@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { Link } from "next/link";
 import { useSearchEvent } from "src/hooks/useSearchEvents";
 import dayjs from "dayjs";
+import ReactPaginate from "react-paginate";
 
 const Events = () => {
   const router = useRouter();
@@ -17,6 +18,14 @@ const Events = () => {
   const [eventDate, setEventDate] = useState();
   const { searchEvent, searchEvents } = useSearchEvent();
   const [eventArr, setEventArr] = useState([]);
+
+  const [offset, setOffset] = useState(0);
+  const perPage = 5;
+
+  const handlePageChange = (data) => {
+    let page_number = data["selected"];
+    setOffset(page_number * perPage);
+  };
 
   const onChangeGenre = (e) => {
     setGenre(e.target.value);
@@ -139,7 +148,7 @@ const Events = () => {
       </div>
       <div>検索結果</div>
       <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2'>
-        {eventArr.map((event) => (
+        {eventArr.slice(offset, offset + perPage).map((event) => (
           <div key={event.event_id}>
             <EventCard
               id={event.event_id}
@@ -157,6 +166,21 @@ const Events = () => {
           </div>
         ))}
       </div>
+      <ReactPaginate
+        previousLabel={"<"}
+        nextLabel={">"}
+        breakLabel={"..."}
+        pageCount={Math.ceil(eventArr.length / perPage)}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageChange}
+        containerClassName={"pagination"}
+        subContainerClassName={"pages pagination"}
+        activeClassName={"active"}
+        previousClassName={"pagination__previous"}
+        nextClassName={"pagination__next"}
+        disabledClassName={"pagination__disabled"}
+      />
       <Footer />
     </div>
   );
