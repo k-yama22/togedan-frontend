@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -59,11 +60,15 @@ const MyEvents = () => {
         <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1'>
           {myEvents.map((myEvent) => (
             <EventCard
+              key={myEvent.event_id}
               id={myEvent.event_id}
               eventName={myEvent.event_name}
               genre={myEvent.genre}
               location={myEvent.location}
               image={myEvent.image}
+              eventDate={myEvent.event_date}
+              startTime={myEvent.start_time}
+              endTime={myEvent.end_time}
               buttonMessage='開催情報を修正する'
               subButtonMessage='開催を取り消す'
               onClick={onClickEventEdit}

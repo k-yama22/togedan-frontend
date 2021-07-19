@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
@@ -91,53 +92,53 @@ const Events = () => {
         </div>
       </div>
       <div>
-        <div class=' bg-gray-300'>
+        <div className=' bg-gray-300'>
           <div>検索フォーム</div>
-          <div class='w-screen container mx-auto flex justify-center items-center p-2 md:p-0'>
-            <div class=' border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6'>
-              <div class='grid grid-cols-1 md:grid-cols-1 gap-4'>
-                <div class='grid grid-cols-4 gap-2 border border-gray-200 p-2 rounded'>
-                  <div class='flex border rounded bg-gray-300 items-center p-2 '>
+          <div className='w-screen container mx-auto flex justify-center items-center p-2 md:p-0'>
+            <div className=' border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6'>
+              <div className='grid grid-cols-1 md:grid-cols-1 gap-4'>
+                <div className='grid grid-cols-4 gap-2 border border-gray-200 p-2 rounded'>
+                  <div className='flex border rounded bg-gray-300 items-center p-2 '>
                     <input
                       type='text'
                       placeholder='ジャンル'
-                      class='bg-gray-300 max-w-full focus:outline-none text-gray-700'
+                      className='bg-gray-300 max-w-full focus:outline-none text-gray-700'
                       value={genre}
                       onChange={onChangeGenre}
                     />
                   </div>
-                  <div class='flex border rounded bg-gray-300 items-center p-2 '>
+                  <div className='flex border rounded bg-gray-300 items-center p-2 '>
                     <input
                       type='text'
                       placeholder='場所'
-                      class='bg-gray-300 max-w-full focus:outline-none text-gray-700'
+                      className='bg-gray-300 max-w-full focus:outline-none text-gray-700'
                       value={location}
                       onChange={onChangeLocation}
                     />
                   </div>
 
-                  <div class='flex border rounded bg-gray-300 items-center p-2 '>
+                  <div className='flex border rounded bg-gray-300 items-center p-2 '>
                     <input
                       type='date'
                       placeholder='年月日'
-                      class='bg-gray-300 max-w-full focus:outline-none text-gray-700'
+                      className='bg-gray-300 max-w-full focus:outline-none text-gray-700'
                       value={eventDate}
                       onChange={onChangeEventDate}
                     />
                   </div>
-                  <div class='flex border rounded bg-gray-300 items-center p-2 '>
+                  <div className='flex border rounded bg-gray-300 items-center p-2 '>
                     <input
                       type='text'
                       placeholder='Enter text here...'
-                      class='bg-gray-300 max-w-full focus:outline-none text-gray-700'
+                      className='bg-gray-300 max-w-full focus:outline-none text-gray-700'
                     />
                   </div>
                 </div>
               </div>
-              <div class='flex justify-center'>
+              <div className='flex justify-center'>
                 <button
                   onClick={onClickSearch}
-                  class='p-2 border w-1/4 rounded-md bg-gray-800 text-white'
+                  className='p-2 border w-1/4 rounded-md bg-gray-800 text-white'
                 >
                   検索
                 </button>
