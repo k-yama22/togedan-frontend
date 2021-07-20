@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import { useCallback, useState } from "react";
 import { useSignUp } from "src/hooks/useSignUp";
@@ -52,185 +53,234 @@ const SignUp = () => {
     <>
       <Head>
         <title>ユーザ新規登録画面</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
 
-      <div className='bg-gray-500 flex flex-col items-center justify-center min-h-screen py-2'>
-        <main className='flex flex-col items-center justify-center w-full flex-1 px-20 text-center'>
-          <div className='container mx-auto h-full flex flex-1 justify-center items-center'>
-            <div className='w-full max-w-md'>
-              <h1 className='bg-green-100'>Together Dance</h1>
-              <div className='leading-loose'>
-                <div className='max-w-md m-4 p-10 bg-white bg-opacity-25 rounded shadow-xl'>
-                  <p className='text-white font-medium text-center text-lg font-bold'>
+      <div className="bg-gray-500 flex flex-col items-center justify-center min-h-screen py-2">
+        <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+          <div className="container mx-auto h-full flex flex-1 justify-center items-center">
+            <div className="w-full max-w-md">
+              <h1 className="bg-green-100">Together Dance</h1>
+              <div className="leading-loose">
+                <div className="max-w-md m-4 p-10 bg-white bg-opacity-25 rounded shadow-xl">
+                  <p className="text-white font-medium text-center text-lg font-bold">
                     ユーザ情報を入力してください
                   </p>
                   <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className=''>
-                      <label className='block text-sm text-white'>苗字</label>
+                    <div className="">
+                      <label
+                        className="block text-sm text-white"
+                        htmlFor="lastName"
+                      >
+                        苗字
+                      </label>
                       <input
-                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                        type='text'
-                        placeholder='苗字'
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="lastName"
+                        type="text"
+                        placeholder="苗字"
                         {...register("lastName", { required: true })}
                       />
                       {errors.lastName &&
                         errors.lastName.type === "required" && (
-                          <span className='text-red-700'>"必須項目です"</span>
+                          <span className="text-red-700">必須項目です</span>
                         )}
                     </div>
-                    <div className='mt-2'>
-                      <label className='block  text-sm text-white'>名前</label>
+                    <div className="mt-2">
+                      <label
+                        className="block  text-sm text-white"
+                        htmlFor="firstName"
+                      >
+                        名前
+                      </label>
                       <input
-                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                        type='text'
-                        placeholder='名前'
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="firstName"
+                        type="text"
+                        placeholder="名前"
                         {...register("firstName", { required: true })}
                       />
                       {errors.firstName &&
                         errors.firstName.type === "required" && (
-                          <span className='text-red-700'>"必須項目です"</span>
+                          <span className="text-red-700">必須項目です</span>
                         )}
                     </div>
-                    <div className='mt-2'>
-                      <label className='block  text-sm text-white'>
+                    <div className="mt-2">
+                      <label
+                        className="block text-sm text-white"
+                        htmlFor="lastNameKana"
+                      >
                         苗字（カナ）
                       </label>
                       <input
-                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                        type='text'
-                        placeholder='苗字（カナ）'
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="lastNameKana"
+                        type="text"
+                        placeholder="苗字（カナ）"
                         {...register("lastNameKana", { required: true })}
                       />
                       {errors.lastNameKana &&
                         errors.lastNameKana.type === "required" && (
-                          <span className='text-red-700'>"必須項目です"</span>
+                          <span className="text-red-700">必須項目です</span>
                         )}
                     </div>
-                    <div className='mt-2'>
-                      <label className='block  text-sm text-white'>
+                    <div className="mt-2">
+                      <label
+                        className="block  text-sm text-white"
+                        htmlFor="firstNameKana"
+                      >
                         名前（カナ）
                       </label>
                       <input
-                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                        type='text'
-                        placeholder='名前（カナ）'
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="firstNameKana"
+                        type="text"
+                        placeholder="名前（カナ）"
                         {...register("firstNameKana", { required: true })}
                       />
                       {errors.firstNameKana &&
                         errors.firstNameKana.type === "required" && (
-                          <span className='text-red-700'>"必須項目です"</span>
+                          <span className="text-red-700">必須項目です</span>
                         )}
                     </div>
-                    <div className='mt-2'>
-                      <label className='block  text-sm text-white'>
+                    <div className="mt-2">
+                      <label
+                        className="block  text-sm text-white"
+                        htmlFor="userName"
+                      >
                         ユーザーネーム
                       </label>
                       <input
-                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                        type='text'
-                        placeholder='ユーザーネーム'
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="userName"
+                        type="text"
+                        placeholder="ユーザーネーム"
                         {...register("userName", { required: true })}
                       />
                       {errors.userName &&
                         errors.userName.type === "required" && (
-                          <span className='text-red-700'>"必須項目です"</span>
+                          <span className="text-red-700">必須項目です</span>
                         )}
                     </div>
-                    <div className='mt-2'>
-                      <label className='block  text-sm text-white'>
+                    <div className="mt-2">
+                      <label
+                        className="block  text-sm text-white"
+                        htmlFor="email"
+                      >
                         メールアドレス
                       </label>
                       <input
-                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                        type='email'
-                        placeholder='メールアドレス'
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="email"
+                        type="email"
+                        placeholder="メールアドレス"
                         {...register("email", { required: true })}
                       />
                       {errors.email && errors.email.type === "required" && (
-                        <span className='text-red-700'>"必須項目です"</span>
+                        <span className="text-red-700">必須項目です</span>
                       )}
                     </div>
 
-                    <div className='mt-2'>
-                      <label className='block  text-sm text-white'>
+                    <div className="mt-2">
+                      <label
+                        className="block text-sm text-white"
+                        htmlFor="password"
+                      >
                         パスワード
                       </label>
                       <input
-                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                        type='password'
-                        placeholder='パスワード'
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="password"
+                        type="password"
+                        placeholder="パスワード"
                         {...register("password", { required: true })}
                       />
                       {errors.password &&
                         errors.password.type === "required" && (
-                          <span className='text-red-700'>"必須項目です"</span>
+                          <span className="text-red-700">必須項目です</span>
                         )}
                     </div>
-                    <div className='mt-2'>
-                      <label className='block  text-sm text-white'>
+                    <div className="mt-2">
+                      <label
+                        className="block text-sm text-white"
+                        htmlFor="birthday"
+                      >
                         生年月日
                       </label>
                       <input
-                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                        type='date'
-                        placeholder='生年月日'
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="birthday"
+                        type="date"
+                        placeholder="生年月日"
                         {...register("birthday", { required: true })}
                       />
                       {errors.birthday &&
                         errors.birthday.type === "required" && (
-                          <span className='text-red-700'>"必須項目です"</span>
+                          <span className="text-red-700">必須項目です</span>
                         )}
                     </div>
-                    <div className='mt-2'>
-                      <label className='block  text-sm text-white'>
+                    <div className="mt-2">
+                      <label
+                        className="block text-sm text-white"
+                        htmlFor="phone"
+                      >
                         電話番号
                       </label>
                       <input
-                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                        type='text'
-                        placeholder='電話番号'
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="phone"
+                        type="text"
+                        placeholder="電話番号"
                         {...register("phone", { required: true })}
                       />
                       {errors.phone && errors.phone.type === "required" && (
-                        <span className='text-red-700'>"必須項目です"</span>
+                        <span className="text-red-700">必須項目です</span>
                       )}
                     </div>
-                    <div className='mt-2'>
-                      <label className='block  text-sm text-white'>
+                    <div className="mt-2">
+                      <label
+                        className="block text-sm text-white"
+                        htmlFor="image"
+                      >
                         アイコン画像
                       </label>
                       <input
-                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                        type='file'
-                        placeholder='アイコン画像'
-                        accept='image/*'
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="image"
+                        type="file"
+                        placeholder="アイコン画像"
+                        accept="image/*"
                         {...register("image", { required: true })}
                         onChange={onChangeImage}
                       />
                       {errors.image && errors.image.type === "required" && (
-                        <span className='text-red-700'>"必須項目です"</span>
+                        <span className="text-red-700">必須項目です</span>
                       )}
                     </div>
-                    {preview ? <img src={preview} alt='preview img' /> : null}
-                    <div className='mt-2'>
-                      <label className='block  text-sm text-white'>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    {preview ? <img src={preview} alt="preview img" /> : null}
+                    <div className="mt-2">
+                      <label
+                        className="block  text-sm text-white"
+                        htmlFor="introduce"
+                      >
                         自己紹介
                       </label>
                       <textarea
-                        className='w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white'
-                        placeholder='自己紹介'
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="introduce"
+                        placeholder="自己紹介"
                         {...register("introduce", { required: true })}
                       ></textarea>
                       {errors.introduce &&
                         errors.introduce.type === "required" && (
-                          <span className='text-red-700'>"必須項目です"</span>
+                          <span className="text-red-700">必須項目です</span>
                         )}
                     </div>
-                    <div className='mt-4 items-center flex justify-between'>
-                      <button className='px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded'>
+                    <div className="mt-4 items-center flex justify-between">
+                      <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded">
                         {loading ? <Loading /> : <>登録</>}
                       </button>
                     </div>

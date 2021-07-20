@@ -46,7 +46,7 @@ export const useNewEvent = () => {
           showNotify({ title: "登録に失敗しました", status: "error" });
         }
       })
-      .catch((error) => {
+      .catch(() => {
         showNotify({ title: "登録できません", status: "error" });
       })
       .finally(() => {

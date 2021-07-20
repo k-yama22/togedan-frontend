@@ -19,8 +19,8 @@ const MyPage = () => {
   const { getMyReserves, myReserves } = useMyReserves();
   const { getMyEvents, myEvents } = useMyEvents();
   const { getMyUserInfo, myUserInfo } = useMyUserInfo();
-  const { deleteMyReserves, deleteReserve } = useDeleteReserve();
-  const { deleteMyEvent, deleteEvent } = useDeleteEvent();
+  const { deleteMyReserves } = useDeleteReserve();
+  const { deleteMyEvent } = useDeleteEvent();
 
   const [myReserveArr, setMyReserveArr] = useState([]);
   const [myEventArr, setMyEventArr] = useState([]);
@@ -56,6 +56,7 @@ const MyPage = () => {
     getMyReserves();
     getMyEvents();
     getMyUserInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -106,29 +107,29 @@ const MyPage = () => {
     <div>
       <Head>
         <title>Together Dance</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
 
-      <div className='bg-gray-600'>
-        <div className='flex relative text-center'>
-          <h1 className='text-3xl tracking-wider text-white text-sha font-bold p-4 self-center z-10 content-center text-center w-full md:text-4xl'>
+      <div className="bg-gray-600">
+        <div className="flex relative text-center">
+          <h1 className="text-3xl tracking-wider text-white text-sha font-bold p-4 self-center z-10 content-center text-center w-full md:text-4xl">
             マイページ
           </h1>
         </div>
       </div>
-      <div className='content'>
-        <div className='flex items-center justify-between w-full my-4 pl-4 sm:pr-4'>
-          <div className='mr-6'>
-            <h2 className='text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate'>
+      <div className="content">
+        <div className="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
+          <div className="mr-6">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
               ユーザ情報
             </h2>
-            <div className='font-base tracking-tight text-gray-600'>一覧</div>
+            <div className="font-base tracking-tight text-gray-600">一覧</div>
           </div>
         </div>
 
-        <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1'>
+        <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
           <div>
             <UserCard
               userName={myUserInfo.userName}
@@ -136,24 +137,24 @@ const MyPage = () => {
               firstName={myUserInfo.firstName}
               email={myUserInfo.email}
               image={myUserInfo.image}
-              buttonMessage='ユーザ詳細'
-              subButtonMessage='退会する'
+              buttonMessage="ユーザ詳細"
+              subButtonMessage="退会する"
               onClick={() => onClickUserEdit()}
             />
           </div>
         </div>
       </div>
-      <div className='content'>
-        <div className='flex items-center justify-between w-full my-4 pl-4 sm:pr-4'>
-          <div className='mr-6'>
-            <h2 className='text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate'>
+      <div className="content">
+        <div className="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
+          <div className="mr-6">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
               予約情報一覧
             </h2>
-            <div className='font-base tracking-tight text-gray-600'>一覧</div>
+            <div className="font-base tracking-tight text-gray-600">一覧</div>
           </div>
         </div>
 
-        <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2'>
+        <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
           {myReserveArr.map((myReserve) => (
             <div key={myReserve?.id}>
               <EventCard
@@ -165,8 +166,8 @@ const MyPage = () => {
                 eventDate={myReserve?.event_date}
                 startTime={myReserve?.start_time}
                 endTime={myReserve?.end_time}
-                buttonMessage='予約した内容をみる'
-                subButtonMessage='予約をキャンセルする'
+                buttonMessage="予約した内容をみる"
+                subButtonMessage="予約をキャンセルする"
                 onClick={() => onClickEvent(myReserve.event_id)}
                 onClickSub={onClickReserveCancel}
               />
@@ -174,29 +175,29 @@ const MyPage = () => {
           ))}
         </div>
         <button
-          className='text-teal-600 hover:bg-teal-300 hover:text-gray-500 mt-4'
+          className="text-teal-600 hover:bg-teal-300 hover:text-gray-500 mt-4"
           onClick={onClickMyReserves}
         >
           予約したイベント一覧はこちら
         </button>
       </div>
-      <div className='content'>
-        <div className='flex items-center justify-between w-full my-4 pl-4 sm:pr-4'>
-          <div className='mr-6'>
-            <h2 className='text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate'>
+      <div className="content">
+        <div className="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
+          <div className="mr-6">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
               開催しているイベント一覧
             </h2>
             <span>
-              <Link href='/eventHistory'>
-                <a className='text-teal-600 hover:bg-teal-300 hover:text-gray-500'>
+              <Link href="/eventHistory">
+                <a className="text-teal-600 hover:bg-teal-300 hover:text-gray-500">
                   過去の開催履歴はこちら
                 </a>
               </Link>
             </span>
-            <div className='font-base tracking-tight text-gray-600'>一覧</div>
+            <div className="font-base tracking-tight text-gray-600">一覧</div>
           </div>
         </div>
-        <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2'>
+        <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
           {myEventArr.map((myEvent) => (
             <div key={myEvent?.event_id}>
               <EventCard
@@ -208,8 +209,8 @@ const MyPage = () => {
                 eventDate={myEvent?.event_date}
                 startTime={myEvent?.start_time}
                 endTime={myEvent?.end_time}
-                buttonMessage='開催情報を修正する'
-                subButtonMessage='開催を取り消す'
+                buttonMessage="開催情報を修正する"
+                subButtonMessage="開催を取り消す"
                 onClick={() => onClickEventEdit(myEvent.event_id)}
                 onClickSub={onClickEventCancel}
               />
@@ -217,7 +218,7 @@ const MyPage = () => {
           ))}
         </div>
         <button
-          className='text-teal-600 hover:bg-teal-300 hover:text-gray-500 mt-4'
+          className="text-teal-600 hover:bg-teal-300 hover:text-gray-500 mt-4"
           onClick={onClickMyEvents}
         >
           開催イベント一覧はこちら

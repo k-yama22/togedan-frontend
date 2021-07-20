@@ -50,7 +50,7 @@ export const useUserChange = () => {
           showNotify({ title: "変更に失敗しました", status: "error" });
         }
       })
-      .catch((error) => {
+      .catch(() => {
         showNotify({ title: "変更できません", status: "error" });
       })
       .finally(() => {

@@ -4,9 +4,8 @@ import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { useAllEvents } from "src/hooks/useAllEvents";
 import { EventCard } from "src/components/EventCard";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
-import { Link } from "next/link";
 import { useSearchEvent } from "src/hooks/useSearchEvents";
 import dayjs from "dayjs";
 import ReactPaginate from "react-paginate";
@@ -51,6 +50,7 @@ const Events = () => {
     getEvents();
     isFirstRender.current = true;
     console.log(events);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -74,71 +74,72 @@ const Events = () => {
     } else {
       setEvents(searchEvents);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchEvents]);
 
   return (
     <div>
       <Head>
         <title>イベント一覧</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
-      <div className='bg-gray-600'>
-        <div className='flex relative text-center'>
-          <h1 className='text-3xl tracking-wider text-white text-sha font-bold p-4 self-center z-10 content-center text-center w-full md:text-4xl'>
+      <div className="bg-gray-600">
+        <div className="flex relative text-center">
+          <h1 className="text-3xl tracking-wider text-white text-sha font-bold p-4 self-center z-10 content-center text-center w-full md:text-4xl">
             イベント一覧画面
           </h1>
         </div>
       </div>
       <div>
-        <div className=' bg-gray-300'>
+        <div className=" bg-gray-300">
           <div>検索フォーム</div>
-          <div className='w-screen container mx-auto flex justify-center items-center p-2 md:p-0'>
-            <div className=' border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6'>
-              <div className='grid grid-cols-1 md:grid-cols-1 gap-4'>
-                <div className='grid grid-cols-4 gap-2 border border-gray-200 p-2 rounded'>
-                  <div className='flex border rounded bg-gray-300 items-center p-2 '>
+          <div className="w-screen container mx-auto flex justify-center items-center p-2 md:p-0">
+            <div className=" border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <div className="grid grid-cols-4 gap-2 border border-gray-200 p-2 rounded">
+                  <div className="flex border rounded bg-gray-300 items-center p-2 ">
                     <input
-                      type='text'
-                      placeholder='ジャンル'
-                      className='bg-gray-300 max-w-full focus:outline-none text-gray-700'
+                      type="text"
+                      placeholder="ジャンル"
+                      className="bg-gray-300 max-w-full focus:outline-none text-gray-700"
                       value={genre}
                       onChange={onChangeGenre}
                     />
                   </div>
-                  <div className='flex border rounded bg-gray-300 items-center p-2 '>
+                  <div className="flex border rounded bg-gray-300 items-center p-2 ">
                     <input
-                      type='text'
-                      placeholder='場所'
-                      className='bg-gray-300 max-w-full focus:outline-none text-gray-700'
+                      type="text"
+                      placeholder="場所"
+                      className="bg-gray-300 max-w-full focus:outline-none text-gray-700"
                       value={location}
                       onChange={onChangeLocation}
                     />
                   </div>
 
-                  <div className='flex border rounded bg-gray-300 items-center p-2 '>
+                  <div className="flex border rounded bg-gray-300 items-center p-2 ">
                     <input
-                      type='date'
-                      placeholder='年月日'
-                      className='bg-gray-300 max-w-full focus:outline-none text-gray-700'
+                      type="date"
+                      placeholder="年月日"
+                      className="bg-gray-300 max-w-full focus:outline-none text-gray-700"
                       value={eventDate}
                       onChange={onChangeEventDate}
                     />
                   </div>
-                  <div className='flex border rounded bg-gray-300 items-center p-2 '>
+                  <div className="flex border rounded bg-gray-300 items-center p-2 ">
                     <input
-                      type='text'
-                      placeholder='Enter text here...'
-                      className='bg-gray-300 max-w-full focus:outline-none text-gray-700'
+                      type="text"
+                      placeholder="Enter text here..."
+                      className="bg-gray-300 max-w-full focus:outline-none text-gray-700"
                     />
                   </div>
                 </div>
               </div>
-              <div className='flex justify-center'>
+              <div className="flex justify-center">
                 <button
                   onClick={onClickSearch}
-                  className='p-2 border w-1/4 rounded-md bg-gray-800 text-white'
+                  className="p-2 border w-1/4 rounded-md bg-gray-800 text-white"
                 >
                   検索
                 </button>
@@ -148,7 +149,7 @@ const Events = () => {
         </div>
       </div>
       <div>検索結果</div>
-      <div className='grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2'>
+      <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
         {eventArr.slice(offset, offset + perPage).map((event) => (
           <div key={event.event_id}>
             <EventCard
@@ -160,8 +161,8 @@ const Events = () => {
               eventDate={event.event_date}
               startTime={event.start_time}
               endTime={event.end_time}
-              buttonMessage='予約申込はこちら'
-              subButtonMessage='開催者の詳細を見る'
+              buttonMessage="予約申込はこちら"
+              subButtonMessage="開催者の詳細を見る"
               onClick={() => onClickEvent(event.event_id)}
             />
           </div>

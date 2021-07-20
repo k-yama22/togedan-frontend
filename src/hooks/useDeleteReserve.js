@@ -32,6 +32,7 @@ export const useDeleteReserve = () => {
         showNotify({ title: "取得できませんでした", status: "error" });
       })
       .finally(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return { deleteMyReserves, deleteReserve };
 };

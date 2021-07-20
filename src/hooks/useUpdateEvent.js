@@ -47,7 +47,7 @@ export const useUpdateEvent = () => {
           console.log(res);
         }
       })
-      .catch((error) => {
+      .catch(() => {
         showNotify({ title: "変更できません", status: "error" });
       })
       .finally(() => {

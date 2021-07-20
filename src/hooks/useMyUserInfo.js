@@ -1,14 +1,12 @@
-import axios from "axios";
-import { useCallback, useState } from "react";
-import { useNotify } from "src/hooks/useNotify";
+import { useState } from "react";
 
 export const useMyUserInfo = () => {
   // const { showNotify } = useNotify();
   const [myUserInfo, setMyUserInfo] = useState({});
 
-  const getMyUserInfo = useCallback(() => {
+  const getMyUserInfo = () => {
     // const loginId = localStorage.getItem("loginId");
     setMyUserInfo(JSON.parse(localStorage.getItem("loginUser")));
-  }, []);
+  };
   return { getMyUserInfo, myUserInfo };
 };

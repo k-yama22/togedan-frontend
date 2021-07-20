@@ -1,8 +1,13 @@
 {
   "javascript.preferences.importModuleSpecifier": "non-relative",
-  "editor.formatOnSave": true,
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#4aa1c4",
     "activityBarBadge.background": "#4aa1c4"
-  }
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript"],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
