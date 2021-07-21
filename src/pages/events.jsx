@@ -55,14 +55,12 @@ const Events = () => {
 
   useEffect(() => {
     const arr = [];
-    if (events.length > 4) {
-      for (let i = 0; i < events.length; i++) {
-        arr.push(events[i]);
-        const startTime = dayjs(events[i].start_time);
-        const endTime = dayjs(events[i].end_time);
-        arr[i].start_time = startTime.format("HH:mm");
-        arr[i].end_time = endTime.format("HH:mm");
-      }
+    for (let i = 0; i < events.length; i++) {
+      arr.push(events[i]);
+      const startTime = dayjs(events[i].start_time);
+      const endTime = dayjs(events[i].end_time);
+      arr[i].start_time = startTime.format("HH:mm");
+      arr[i].end_time = endTime.format("HH:mm");
     }
     setEventArr(arr);
   }, [events]);
