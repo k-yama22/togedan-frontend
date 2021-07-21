@@ -4,16 +4,25 @@ import { useEffect, useState } from "react";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { useSelectEvent } from "src/hooks/useSelectEvent";
-import { useRouter } from "next/router";
 import { useUpdateEvent } from "src/hooks/useUpdateEvent";
 import { Loading } from "src/components/Loading";
 import { useForm } from "react-hook-form";
 import dayjs from "dayjs";
 
-const EventEdit = () => {
-  const router = useRouter();
-  const { onSelectEvent, selectedEvent } = useSelectEvent();
+//サーバーサイドレンダリング
+export async function getServerSideProps(context) {
+  //クエリパラメータのID取得
+  const id = context.query.id;
 
+  return {
+    props: {
+      id: id,
+    },
+  };
+}
+
+const EventEdit = (props) => {
+  const { onSelectEvent, selectedEvent } = useSelectEvent();
   const { updateEvent, loading } = useUpdateEvent();
   const [id, setId] = useState("");
 
@@ -29,8 +38,7 @@ const EventEdit = () => {
   };
 
   useEffect(() => {
-    const id = router.query.id;
-    onSelectEvent(id);
+    onSelectEvent(props.id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

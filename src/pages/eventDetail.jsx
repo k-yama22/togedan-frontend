@@ -4,12 +4,22 @@ import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { useEffect, useState } from "react";
 import { useSelectEvent } from "src/hooks/useSelectEvent";
-import { useRouter } from "next/router";
 import { useNewReserve } from "src/hooks/useNewReserve";
 import dayjs from "dayjs";
 
-const EventDetail = () => {
-  const router = useRouter();
+//サーバーサイドレンダリング
+export async function getServerSideProps(context) {
+  //クエリパラメータのID取得
+  const id = context.query.id;
+
+  return {
+    props: {
+      id: id,
+    },
+  };
+}
+
+const EventDetail = (props) => {
   const { newReserve } = useNewReserve();
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
@@ -20,7 +30,7 @@ const EventDetail = () => {
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => onSelectEvent(router.query.id), []);
+  useEffect(() => onSelectEvent(props.id), []);
 
   useEffect(() => {
     const formatStartTime = dayjs(selectedEvent.start_time);

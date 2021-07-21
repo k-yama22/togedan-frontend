@@ -37,7 +37,10 @@ export const useUpdateEvent = () => {
       .then((res) => {
         if (res.data.status === 200) {
           showNotify({ title: res.data.message, status: "success" });
-          router.push("/eventEdit");
+          router.push({
+            pathname: "/eventEdit",
+            query: { id: id },
+          });
         } else if (res.data.status === 400) {
           showNotify({ title: res.data.message, status: "error" });
         } else if (res.data.status === 422) {

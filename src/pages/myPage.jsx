@@ -42,7 +42,10 @@ const MyPage = () => {
   };
 
   const onClickEventEdit = (id) => {
-    router.push({ pathname: "/eventEdit", query: { id: id } });
+    router.push({
+      pathname: "/eventEdit",
+      query: { id: id },
+    });
   };
 
   const onClickMyEvents = () => {
