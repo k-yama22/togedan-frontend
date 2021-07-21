@@ -33,8 +33,12 @@ const MyPage = () => {
     deleteMyReserves(id);
   };
 
-  const onClickEvent = (id) => {
-    router.push({ pathname: "/eventDetail", query: { id: id } });
+  // const onClickEvent = (id) => {
+  //   router.push({ pathname: "/eventDetail", query: { id: id } });
+  // };
+
+  const onClickMyReserveDetail = (id) => {
+    router.push({ pathname: "/myReserveDetail", query: { id: id } });
   };
 
   const onClickEventCancel = (id) => {
@@ -171,7 +175,7 @@ const MyPage = () => {
                 endTime={myReserve?.end_time}
                 buttonMessage="予約した内容をみる"
                 subButtonMessage="予約をキャンセルする"
-                onClick={() => onClickEvent(myReserve.event_id)}
+                onClick={() => onClickMyReserveDetail(myReserve.event_id)}
                 onClickSub={onClickReserveCancel}
               />
             </div>
