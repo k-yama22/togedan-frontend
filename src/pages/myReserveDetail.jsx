@@ -3,11 +3,11 @@ import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { useEffect, useState } from "react";
-import { useSelectEvent } from "src/hooks/useSelectEvent";
 import { useNewReserve } from "src/hooks/useNewReserve";
 import dayjs from "dayjs";
 import { useDeleteReserve } from "src/hooks/useDeleteReserve";
 import CancelConfirmModal from "src/components/CancelConfirmModal";
+import { useSelectReservedEvent } from "src/hooks/useSelectReservedEvent";
 
 //サーバーサイドレンダリング
 export async function getServerSideProps(context) {
@@ -25,7 +25,7 @@ const MyReserveDetail = (props) => {
   const { newReserve } = useNewReserve();
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
-  const { onSelectEvent, selectedEvent } = useSelectEvent();
+  const { onSelectReservedEvent, selectedEvent } = useSelectReservedEvent();
   const { deleteMyReserves } = useDeleteReserve();
 
   const onClickReserveCancel = (id) => {
@@ -37,7 +37,9 @@ const MyReserveDetail = (props) => {
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => onSelectEvent(props.id), []);
+  // useEffect(() => onSelectEvent(props.id), []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => onSelectReservedEvent(props.id), []);
 
   useEffect(() => {
     const formatStartTime = dayjs(selectedEvent.start_time);
@@ -138,7 +140,7 @@ const MyReserveDetail = (props) => {
                   aria-label="like"
                   onClick={onClickReserve}
                 >
-                  予約申込はこちら
+                  開催者の情報を見る
                 </button>
               </div>
             </div>

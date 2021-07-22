@@ -1,9 +1,11 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useDeleteReserve = () => {
   const { showNotify } = useNotify();
+  const router = useRouter();
   const [deleteReserve, setDeleteReserve] = useState([]);
   const deleteMyReserves = useCallback((id) => {
     const loginId = localStorage.getItem("loginId");
@@ -27,6 +29,7 @@ export const useDeleteReserve = () => {
       .then((res) => {
         setDeleteReserve(res.data.data);
         showNotify({ title: res.data.message, status: "success" });
+        router.push("/myReserves");
       })
       .catch(() => {
         showNotify({ title: "取得できませんでした", status: "error" });
