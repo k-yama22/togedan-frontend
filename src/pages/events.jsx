@@ -3,7 +3,7 @@ import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { useAllEvents } from "src/hooks/useAllEvents";
-import { EventCard } from "src/components/EventCard";
+import { MiniEventCard } from "src/components/MiniEventCard";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { useSearchEvent } from "src/hooks/useSearchEvents";
@@ -150,7 +150,7 @@ const Events = () => {
       <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
         {eventArr.slice(offset, offset + perPage).map((event) => (
           <div key={event.event_id}>
-            <EventCard
+            <MiniEventCard
               id={event.event_id}
               eventName={event.event_name}
               genre={event.genre}
@@ -159,8 +159,7 @@ const Events = () => {
               eventDate={event.event_date}
               startTime={event.start_time}
               endTime={event.end_time}
-              buttonMessage="予約申込はこちら"
-              subButtonMessage="開催者の詳細を見る"
+              buttonMessage="詳細を見る"
               onClick={() => onClickEvent(event.event_id)}
             />
           </div>

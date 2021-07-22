@@ -6,7 +6,7 @@ import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { useMyReserves } from "src/hooks/useMyReserves";
 import { useMyEvents } from "src/hooks/useMyEvents";
-import { EventCard } from "src/components/EventCard";
+import { MiniEventCard } from "src/components/MiniEventCard";
 import { useMyUserInfo } from "src/hooks/useMyUserInfo";
 import { UserCard } from "src/components/UserCard";
 import { useRouter } from "next/router";
@@ -164,7 +164,7 @@ const MyPage = () => {
         <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
           {myReserveArr.map((myReserve) => (
             <div key={myReserve?.id}>
-              <EventCard
+              <MiniEventCard
                 id={myReserve?.event_id}
                 eventName={myReserve?.event_name}
                 genre={myReserve?.genre}
@@ -207,7 +207,7 @@ const MyPage = () => {
         <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
           {myEventArr.map((myEvent) => (
             <div key={myEvent?.event_id}>
-              <EventCard
+              <MiniEventCard
                 id={myEvent?.event_id}
                 eventName={myEvent?.event_name}
                 genre={myEvent?.genre}
