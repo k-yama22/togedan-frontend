@@ -43,7 +43,7 @@ export const CancelConfirmModal = (props) => {
                     ■{eventName}
                     <br />
                     <br />
-                    上記の予約を削除しますがよろしいですか？
+                    上記の内容を削除しますがよろしいですか？
                     <br />
                   </p>
                 </div>
@@ -64,7 +64,7 @@ export const CancelConfirmModal = (props) => {
                       setShowModal(false);
                     }}
                   >
-                    予約を削除
+                    削除
                   </button>
                 </div>
               </div>

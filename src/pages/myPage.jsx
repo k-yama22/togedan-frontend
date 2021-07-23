@@ -10,8 +10,6 @@ import { MiniEventCard } from "src/components/MiniEventCard";
 import { useMyUserInfo } from "src/hooks/useMyUserInfo";
 import { UserCard } from "src/components/UserCard";
 import { useRouter } from "next/router";
-import { useDeleteReserve } from "src/hooks/useDeleteReserve";
-import { useDeleteEvent } from "src/hooks/useDeleteEvent";
 import dayjs from "dayjs";
 
 const MyPage = () => {
@@ -19,8 +17,6 @@ const MyPage = () => {
   const { getMyReserves, myReserves } = useMyReserves();
   const { getMyEvents, myEvents } = useMyEvents();
   const { getMyUserInfo, myUserInfo } = useMyUserInfo();
-  const { deleteMyReserves } = useDeleteReserve();
-  const { deleteMyEvent } = useDeleteEvent();
 
   const [myReserveArr, setMyReserveArr] = useState([]);
   const [myEventArr, setMyEventArr] = useState([]);
@@ -29,25 +25,13 @@ const MyPage = () => {
     router.push({ pathname: "/userEdit" });
   };
 
-  const onClickReserveCancel = (id) => {
-    deleteMyReserves(id);
-  };
-
-  // const onClickEvent = (id) => {
-  //   router.push({ pathname: "/eventDetail", query: { id: id } });
-  // };
-
   const onClickMyReserveDetail = (id) => {
     router.push({ pathname: "/myReserveDetail", query: { id: id } });
   };
 
-  const onClickEventCancel = (id) => {
-    deleteMyEvent(id);
-  };
-
-  const onClickEventEdit = (id) => {
+  const onClickMyEventDetail = (id) => {
     router.push({
-      pathname: "/eventEdit",
+      pathname: "/myEventDetail",
       query: { id: id },
     });
   };
@@ -174,9 +158,7 @@ const MyPage = () => {
                 startTime={myReserve?.start_time}
                 endTime={myReserve?.end_time}
                 buttonMessage="予約した内容をみる"
-                subButtonMessage="予約をキャンセルする"
                 onClick={() => onClickMyReserveDetail(myReserve.event_id)}
-                onClickSub={onClickReserveCancel}
               />
             </div>
           ))}
@@ -216,10 +198,8 @@ const MyPage = () => {
                 eventDate={myEvent?.event_date}
                 startTime={myEvent?.start_time}
                 endTime={myEvent?.end_time}
-                buttonMessage="開催情報を修正する"
-                subButtonMessage="開催を取り消す"
-                onClick={() => onClickEventEdit(myEvent.event_id)}
-                onClickSub={onClickEventCancel}
+                buttonMessage="開催情報の詳細を見る"
+                onClick={() => onClickMyEventDetail(myEvent.event_id)}
               />
             </div>
           ))}

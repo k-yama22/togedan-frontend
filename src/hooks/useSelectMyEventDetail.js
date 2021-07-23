@@ -1,13 +1,12 @@
 import axios from "axios";
-import { useRouter } from "next/router";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
-
-export const useDeleteEvent = () => {
-  const router = useRouter();
+export const useSelectMyEventDetail = () => {
   const { showNotify } = useNotify();
-  const [deleteEvent, setDeleteEvent] = useState([]);
-  const deleteMyEvent = useCallback((id) => {
+  const [selectedEvent, setSelectedEvent] = useState({});
+  const [showModal, setShowModal] = useState(false);
+
+  const onSelectMyEventDetail = (eventId) => {
     const loginId = localStorage.getItem("loginId");
     const headers = {
       "Content-Type": "application/json",
@@ -17,24 +16,22 @@ export const useDeleteEvent = () => {
     };
     axios
       .post(
-        `http://localhost:3001/api/v1/events/${id}/cancel`,
+        `http://localhost:3001/api/v1/events/${eventId}/detail`,
         {
+          id: eventId,
           user_id: loginId,
-          id: id,
+          event_sts: "1",
         },
-        {
-          headers: headers,
-        }
+        { headers: headers }
       )
       .then((res) => {
-        setDeleteEvent(res.data.data);
-        router.push({ pathname: "/myEvents" });
+        setSelectedEvent(res.data.data);
+        showNotify({ title: "取得に成功しました", status: "SUCCESS" });
       })
       .catch(() => {
         showNotify({ title: "取得できませんでした", status: "error" });
       })
       .finally(() => {});
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  return { deleteMyEvent, deleteEvent };
+  };
+  return { onSelectMyEventDetail, selectedEvent, showModal, setShowModal };
 };
