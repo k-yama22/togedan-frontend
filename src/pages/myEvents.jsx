@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -8,11 +8,18 @@ import { useMyEvents } from "src/hooks/useMyEvents";
 import { EventCard } from "src/components/EventCard";
 import { useRouter } from "next/router";
 import { useDeleteEvent } from "src/hooks/useDeleteEvent";
+import { useHistoryEvents } from "src/hooks/useHistoryEvents";
+import { MiniEventCard } from "src/components/MiniEventCard";
+import dayjs from "dayjs";
 
 const MyEvents = () => {
   const router = useRouter();
   const { getMyEvents, myEvents } = useMyEvents();
+  const { getHistoryEvents, historyEvents } = useHistoryEvents();
   const { deleteMyEvent } = useDeleteEvent();
+  const [myEventArr, setMyEventArr] = useState([]);
+  const [historyEventArr, setHistoryEventArr] = useState([]);
+  const [changeFlg, setChangeFlg] = useState(false);
 
   const onClickEventCancel = (id) => {
     deleteMyEvent(id);
@@ -22,10 +29,44 @@ const MyEvents = () => {
     router.push({ pathname: "/eventEdit", query: { id: id } });
   };
 
+  const onClickWillEvent = () => {
+    setChangeFlg(false);
+  };
+
+  const onClickDidEvent = () => {
+    setChangeFlg(true);
+  };
+
   useEffect(() => {
     getMyEvents();
+    getHistoryEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const arr = [];
+    for (let i = 0; i < myEvents.length; i++) {
+      arr.push(myEvents[i]);
+      const startTime = dayjs(myEvents[i].start_time);
+      const endTime = dayjs(myEvents[i].end_time);
+      arr[i].start_time = startTime.format("HH:mm");
+      arr[i].end_time = endTime.format("HH:mm");
+    }
+    setMyEventArr(arr);
+  }, [myEvents]);
+
+  useEffect(() => {
+    const arr = [];
+    for (let i = 0; i < historyEvents.length; i++) {
+      arr.push(historyEvents[i]);
+      const startTime = dayjs(historyEvents[i].start_time);
+      const endTime = dayjs(historyEvents[i].end_time);
+      arr[i].start_time = startTime.format("HH:mm");
+      arr[i].end_time = endTime.format("HH:mm");
+    }
+    setHistoryEventArr(arr);
+  }, [historyEvents]);
+
   return (
     <div>
       <Head>
@@ -58,25 +99,65 @@ const MyEvents = () => {
             <div className="font-base tracking-tight text-gray-600">一覧</div>
           </div>
         </div>
-        <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
-          {myEvents.map((myEvent) => (
-            <EventCard
-              key={myEvent.event_id}
-              id={myEvent.event_id}
-              eventName={myEvent.event_name}
-              genre={myEvent.genre}
-              location={myEvent.location}
-              image={myEvent.image}
-              eventDate={myEvent.event_date}
-              startTime={myEvent.start_time}
-              endTime={myEvent.end_time}
-              buttonMessage="開催情報を修正する"
-              subButtonMessage="開催を取り消す"
-              onClick={onClickEventEdit}
-              onClickSub={onClickEventCancel}
-            />
-          ))}
+        <div className="grid mt-8 gap-8 grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
+          <div
+            className="bg-gray-200 text-2xl pt-8 h-full w-full h-24 text-center"
+            role="button"
+            tabIndex={0}
+            onClick={onClickWillEvent}
+            onKeyDown={onClickWillEvent}
+          >
+            開催予定のイベント
+          </div>
+          <div
+            className="bg-gray-200 text-2xl pt-8 h-full w-full h-24 text-center"
+            role="button"
+            tabIndex={0}
+            onClick={onClickDidEvent}
+            onKeyDown={onClickDidEvent}
+          >
+            過去に開催済みのイベント
+          </div>
         </div>
+        {!changeFlg ? (
+          <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
+            {myEventArr.map((myEvent) => (
+              <EventCard
+                key={myEvent.event_id}
+                id={myEvent.event_id}
+                eventName={myEvent.event_name}
+                genre={myEvent.genre}
+                location={myEvent.location}
+                image={myEvent.image}
+                eventDate={myEvent.event_date}
+                startTime={myEvent.start_time}
+                endTime={myEvent.end_time}
+                buttonMessage="開催情報を修正する"
+                subButtonMessage="開催を取り消す"
+                onClick={onClickEventEdit}
+                onClickSub={onClickEventCancel}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
+            {historyEventArr.map((historyEvent) => (
+              <MiniEventCard
+                key={historyEvent.event_id}
+                id={historyEvent.event_id}
+                eventName={historyEvent.event_name}
+                genre={historyEvent.genre}
+                location={historyEvent.location}
+                image={historyEvent.image}
+                eventDate={historyEvent.event_date}
+                startTime={historyEvent.start_time}
+                endTime={historyEvent.end_time}
+                buttonMessage="開催情報を確認する"
+                onClick={onClickEventEdit}
+              />
+            ))}
+          </div>
+        )}
       </div>
       <Footer />
     </div>
