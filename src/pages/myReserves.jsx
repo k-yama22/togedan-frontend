@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import { useEffect } from "react";
 import { Footer } from "src/components/Footer";
@@ -7,11 +7,17 @@ import { EventCard } from "src/components/EventCard";
 import { useRouter } from "next/router";
 import { useDeleteReserve } from "src/hooks/useDeleteReserve";
 import { useMyReserves } from "src/hooks/useMyReserves";
+import { useHistoryReserves } from "src/hooks/useHistoryReserves";
+import dayjs from "dayjs";
 
 const MyReserves = () => {
   const router = useRouter();
   const { getMyReserves, myReserves } = useMyReserves();
   const { deleteMyReserves } = useDeleteReserve();
+  const { getHistoryReserves, historyReserves } = useHistoryReserves();
+  const [myReserveArr, setMyReserveArr] = useState([]);
+  const [historyReserveArr, setHistoryReserveArr] = useState([]);
+  const [changeFlg, setChangeFlg] = useState(false);
 
   const onClickMyReserveDetail = (id) => {
     router.push({ pathname: "/myReserveDetail", query: { id: id } });
@@ -21,10 +27,44 @@ const MyReserves = () => {
     deleteMyReserves(id);
   };
 
+  const onClickWillReserve = () => {
+    setChangeFlg(false);
+  };
+
+  const onClickDidReserve = () => {
+    setChangeFlg(true);
+  };
+
   useEffect(() => {
     getMyReserves();
+    getHistoryReserves();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const arr = [];
+    for (let i = 0; i < myReserves.length; i++) {
+      arr.push(myReserves[i]);
+      const startTime = dayjs(myReserves[i].start_time);
+      const endTime = dayjs(myReserves[i].end_time);
+      arr[i].start_time = startTime.format("HH:mm");
+      arr[i].end_time = endTime.format("HH:mm");
+    }
+    setMyReserveArr(arr);
+  }, [myReserves]);
+
+  useEffect(() => {
+    const arr = [];
+    for (let i = 0; i < historyReserves.length; i++) {
+      arr.push(historyReserves[i]);
+      const startTime = dayjs(historyReserves[i].start_time);
+      const endTime = dayjs(historyReserves[i].end_time);
+      arr[i].start_time = startTime.format("HH:mm");
+      arr[i].end_time = endTime.format("HH:mm");
+    }
+    setHistoryReserveArr(arr);
+  }, [historyReserves]);
+
   return (
     <div>
       <Head>
@@ -50,24 +90,71 @@ const MyReserves = () => {
             <div className="font-base tracking-tight text-gray-600">一覧</div>
           </div>
         </div>
-
-        <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
-          {myReserves.map((myReserve) => (
-            <div key={myReserve.id}>
-              <EventCard
-                id={myReserve.event_id}
-                eventName={myReserve.event_name}
-                genre={myReserve.genre}
-                location={myReserve.location}
-                image={myReserve.image}
-                buttonMessage="予約した内容をみる"
-                subButtonMessage="予約をキャンセルする"
-                onClick={() => onClickMyReserveDetail(myReserve.event_id)}
-                onClickSub={onClickReserveCancel}
-              />
-            </div>
-          ))}
+        <div className="grid mt-8 gap-8 grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
+          <div
+            className="bg-gray-200 text-2xl pt-8 h-full w-full h-24 text-center"
+            role="button"
+            tabIndex={0}
+            onClick={onClickWillReserve}
+            onKeyDown={onClickWillReserve}
+          >
+            参加予定のイベント
+          </div>
+          <div
+            className="bg-gray-200 text-2xl pt-8 h-full w-full h-24 text-center"
+            role="button"
+            tabIndex={0}
+            onClick={onClickDidReserve}
+            onKeyDown={onClickDidReserve}
+          >
+            参加済みのイベント
+          </div>
         </div>
+        {!changeFlg ? (
+          <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
+            {myReserveArr.map((myReserve) => (
+              <div key={myReserve.event_id}>
+                <EventCard
+                  id={myReserve.event_id}
+                  eventName={myReserve.event_name}
+                  genre={myReserve.genre}
+                  location={myReserve.location}
+                  image={myReserve.image}
+                  eventDate={myReserve.event_date}
+                  startTime={myReserve.start_time}
+                  endTime={myReserve.end_time}
+                  buttonMessage="予約した内容をみる"
+                  subButtonMessage="予約をキャンセルする"
+                  onClick={() => onClickMyReserveDetail(myReserve.event_id)}
+                  onClickSub={onClickReserveCancel}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
+            {historyReserveArr.map((historyReserve) => (
+              <div key={historyReserve.event_id}>
+                <EventCard
+                  id={historyReserve.event_id}
+                  eventName={historyReserve.event_name}
+                  genre={historyReserve.genre}
+                  location={historyReserve.location}
+                  image={historyReserve.image}
+                  eventDate={historyReserve.event_date}
+                  startTime={historyReserve.start_time}
+                  endTime={historyReserve.end_time}
+                  buttonMessage="予約した内容をみる"
+                  subButtonMessage="予約をキャンセルする"
+                  onClick={() =>
+                    onClickMyReserveDetail(historyReserve.event_id)
+                  }
+                  onClickSub={onClickReserveCancel}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <Footer />
     </div>
