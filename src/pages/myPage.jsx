@@ -11,18 +11,23 @@ import { useMyUserInfo } from "src/hooks/useMyUserInfo";
 import { UserCard } from "src/components/UserCard";
 import { useRouter } from "next/router";
 import dayjs from "dayjs";
+import { useDeleteAccount } from "src/hooks/useDeleteAccount";
 
 const MyPage = () => {
   const router = useRouter();
   const { getMyReserves, myReserves } = useMyReserves();
   const { getMyEvents, myEvents } = useMyEvents();
   const { getMyUserInfo, myUserInfo } = useMyUserInfo();
-
+  const { deleteAccount } = useDeleteAccount();
   const [myReserveArr, setMyReserveArr] = useState([]);
   const [myEventArr, setMyEventArr] = useState([]);
 
   const onClickUserEdit = () => {
     router.push({ pathname: "/userEdit" });
+  };
+
+  const onClickDeleteAccount = () => {
+    deleteAccount();
   };
 
   const onClickMyReserveDetail = (id) => {
@@ -131,6 +136,7 @@ const MyPage = () => {
               buttonMessage="ユーザ詳細"
               subButtonMessage="退会する"
               onClick={() => onClickUserEdit()}
+              onClickSub={() => onClickDeleteAccount()}
             />
           </div>
         </div>
@@ -147,7 +153,7 @@ const MyPage = () => {
 
         <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
           {myReserveArr.map((myReserve) => (
-            <div key={myReserve?.id}>
+            <div key={myReserve?.event_id}>
               <MiniEventCard
                 id={myReserve?.event_id}
                 eventName={myReserve?.event_name}
