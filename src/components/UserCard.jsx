@@ -20,12 +20,21 @@ export const UserCard = memo((props) => {
       <div className="bg-white shadow-md  rounded-3xl p-4">
         <div className="flex-none lg:flex">
           <div className=" h-full w-full lg:h-48 lg:w-48   lg:mb-0 mb-3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={image?.url}
-              alt="アイコン画像"
-              className=" w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl"
-            />
+            {image ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={image?.url}
+                alt="アイコン画像"
+                className=" w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl"
+              />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src="default.png"
+                alt="アイコン画像"
+                className=" w-full object-scale-down lg:object-cover  lg:h-48 rounded-2xl"
+              />
+            )}
           </div>
           <div className="flex-auto ml-3 justify-evenly py-2">
             <div className="flex flex-wrap ">

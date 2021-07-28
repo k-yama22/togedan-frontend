@@ -42,8 +42,13 @@ const UserEdit = () => {
 
   const onChangeImage = (e) => {
     const iconFile = e.target.files[0];
-    setImage(iconFile);
-    setPreview(window.URL.createObjectURL(iconFile));
+    if (iconFile) {
+      setImage(iconFile);
+      setPreview(window.URL.createObjectURL(iconFile));
+    } else {
+      setImage("");
+      setPreview("");
+    }
   };
 
   const onSubmit = (data) => {
@@ -260,7 +265,7 @@ const UserEdit = () => {
                         type="file"
                         accept="image/*"
                         placeholder="アイコン画像"
-                        {...register("image", { required: true })}
+                        // {...register("image", { required: true })}
                         onChange={onChangeImage}
                       />
                       {errors.image && errors.image.type === "required" && (
@@ -271,7 +276,7 @@ const UserEdit = () => {
                     {preview ? <img src={preview} alt="preview img" /> : null}
                     <div className="mt-2">
                       <label
-                        className="block  text-sm text-white"
+                        className="block text-sm text-white"
                         htmlFor="introduce"
                       >
                         自己紹介
