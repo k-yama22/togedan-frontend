@@ -39,6 +39,7 @@ const SignUp = () => {
     formData.append("birthday", data.birthday);
     formData.append("phone", data.phone);
     formData.append("introduce", data.introduce);
+    formData.append("user_sts", "1");
 
     // imageはstateから取得
     formData.append("image", image);
@@ -252,7 +253,7 @@ const SignUp = () => {
                         type="file"
                         placeholder="アイコン画像"
                         accept="image/*"
-                        {...register("image", { required: true })}
+                        // {...register("image", { required: true })}
                         onChange={onChangeImage}
                       />
                       {errors.image && errors.image.type === "required" && (
