@@ -39,9 +39,10 @@ export const useNewEvent = () => {
           showNotify({ title: res.data.message, status: "success" });
           router.push("/newEvent");
         } else if (res.data.status === 400) {
-          showNotify({ title: res.data.message, status: "error" });
+          const elements = res.data.data.join("\n");
+          showNotify({ title: elements, status: "error" });
         } else if (res.data.status === 422) {
-          showNotify({ title: res.data.data.res_message, status: "error" });
+          showNotify({ title: res.data.message, status: "error" });
         } else {
           showNotify({ title: "登録に失敗しました", status: "error" });
         }

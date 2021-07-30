@@ -9,7 +9,14 @@ export const useNotify = () => {
       });
     } else if (status === "error") {
       toast.error(title, {
-        duration: 4000,
+        id: "toastId",
+        duration: 10000,
+        style: {
+          whiteSpace: "pre-line",
+          maxWidth: "600px",
+          lineHeight: "2",
+          fontWeight: "bold",
+        },
       });
     }
   };

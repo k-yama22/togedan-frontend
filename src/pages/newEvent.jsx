@@ -132,6 +132,8 @@ const NewEvent = () => {
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                         id="eventDate"
                         type="date"
+                        min="1900-01-01"
+                        max="2100-12-31"
                         placeholder="開催日"
                         {...register("eventDate", { required: true })}
                       />
@@ -151,7 +153,7 @@ const NewEvent = () => {
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                         id="startTime"
                         type="time"
-                        placeholder="開催時刻"
+                        placeholder="開始時刻"
                         {...register("startTime", { required: true })}
                       />
                       {errors.startTime &&
