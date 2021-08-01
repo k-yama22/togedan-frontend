@@ -39,8 +39,8 @@ export const useNewEvent = () => {
           showNotify({ title: res.data.message, status: "success" });
           router.push("/newEvent");
         } else if (res.data.status === 400) {
-          const elements = res.data.data.join("\n");
-          showNotify({ title: elements, status: "error" });
+          const errorMessages = res.data.data.join("\n");
+          showNotify({ title: errorMessages, status: "error" });
         } else if (res.data.status === 422) {
           showNotify({ title: res.data.message, status: "error" });
         } else {

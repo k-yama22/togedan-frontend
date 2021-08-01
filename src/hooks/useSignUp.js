@@ -20,8 +20,14 @@ export const useSignUp = () => {
           showNotify({ title: "登録に失敗しました", status: "error" });
         }
       })
-      .catch(() => {
-        showNotify({ title: "登録できません", status: "error" });
+      .catch((error) => {
+        if (error.response.status === 422) {
+          const errorMessages =
+            error.response.data.errors.full_messages.join("\n");
+          showNotify({ title: errorMessages, status: "error" });
+        } else {
+          showNotify({ title: "登録できません", status: "error" });
+        }
       })
       .finally(() => {
         setLoading(false);
