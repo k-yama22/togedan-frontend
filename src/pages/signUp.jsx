@@ -82,11 +82,20 @@ const SignUp = () => {
                         id="lastName"
                         type="text"
                         placeholder="苗字"
-                        {...register("lastName", { required: true })}
+                        {...register("lastName", {
+                          required: true,
+                          maxLength: 20,
+                        })}
                       />
                       {errors.lastName &&
                         errors.lastName.type === "required" && (
                           <span className="text-red-700">必須項目です</span>
+                        )}
+                      {errors.lastName &&
+                        errors.lastName.type === "maxLength" && (
+                          <span className="text-red-700">
+                            20文字以下で入力してください
+                          </span>
                         )}
                     </div>
                     <div className="mt-2">
@@ -101,11 +110,20 @@ const SignUp = () => {
                         id="firstName"
                         type="text"
                         placeholder="名前"
-                        {...register("firstName", { required: true })}
+                        {...register("firstName", {
+                          required: true,
+                          maxLength: 20,
+                        })}
                       />
                       {errors.firstName &&
                         errors.firstName.type === "required" && (
                           <span className="text-red-700">必須項目です</span>
+                        )}
+                      {errors.firstName &&
+                        errors.firstName.type === "maxLength" && (
+                          <span className="text-red-700">
+                            20文字以下で入力してください
+                          </span>
                         )}
                     </div>
                     <div className="mt-2">
@@ -120,11 +138,20 @@ const SignUp = () => {
                         id="lastNameKana"
                         type="text"
                         placeholder="苗字（カナ）"
-                        {...register("lastNameKana", { required: true })}
+                        {...register("lastNameKana", {
+                          required: true,
+                          maxLength: 40,
+                        })}
                       />
                       {errors.lastNameKana &&
                         errors.lastNameKana.type === "required" && (
                           <span className="text-red-700">必須項目です</span>
+                        )}
+                      {errors.lastNameKana &&
+                        errors.lastNameKana.type === "maxLength" && (
+                          <span className="text-red-700">
+                            40文字以下で入力してください
+                          </span>
                         )}
                     </div>
                     <div className="mt-2">
@@ -139,11 +166,20 @@ const SignUp = () => {
                         id="firstNameKana"
                         type="text"
                         placeholder="名前（カナ）"
-                        {...register("firstNameKana", { required: true })}
+                        {...register("firstNameKana", {
+                          required: true,
+                          maxLength: 40,
+                        })}
                       />
                       {errors.firstNameKana &&
                         errors.firstNameKana.type === "required" && (
                           <span className="text-red-700">必須項目です</span>
+                        )}
+                      {errors.firstNameKana &&
+                        errors.firstNameKana.type === "maxLength" && (
+                          <span className="text-red-700">
+                            40文字以下で入力してください
+                          </span>
                         )}
                     </div>
                     <div className="mt-2">
@@ -158,11 +194,20 @@ const SignUp = () => {
                         id="userName"
                         type="text"
                         placeholder="ユーザーネーム"
-                        {...register("userName", { required: true })}
+                        {...register("userName", {
+                          required: true,
+                          maxLength: 20,
+                        })}
                       />
                       {errors.userName &&
                         errors.userName.type === "required" && (
                           <span className="text-red-700">必須項目です</span>
+                        )}
+                      {errors.userName &&
+                        errors.userName.type === "maxLength" && (
+                          <span className="text-red-700">
+                            20文字以下で入力してください
+                          </span>
                         )}
                     </div>
                     <div className="mt-2">
@@ -196,11 +241,20 @@ const SignUp = () => {
                         id="password"
                         type="password"
                         placeholder="パスワード"
-                        {...register("password", { required: true })}
+                        {...register("password", {
+                          required: true,
+                          minLength: 8,
+                        })}
                       />
                       {errors.password &&
                         errors.password.type === "required" && (
                           <span className="text-red-700">必須項目です</span>
+                        )}
+                      {errors.password &&
+                        errors.password.type === "minLength" && (
+                          <span className="text-red-700">
+                            8文字以上で入力してください
+                          </span>
                         )}
                     </div>
                     <div className="mt-2">
@@ -214,6 +268,8 @@ const SignUp = () => {
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                         id="birthday"
                         type="date"
+                        min="1900-01-01"
+                        max="2100-12-31"
                         placeholder="生年月日"
                         {...register("birthday", { required: true })}
                       />
@@ -234,10 +290,18 @@ const SignUp = () => {
                         id="phone"
                         type="text"
                         placeholder="電話番号"
-                        {...register("phone", { required: true })}
+                        {...register("phone", {
+                          required: true,
+                          maxLength: 11,
+                        })}
                       />
                       {errors.phone && errors.phone.type === "required" && (
                         <span className="text-red-700">必須項目です</span>
+                      )}
+                      {errors.phone && errors.phone.type === "maxLength" && (
+                        <span className="text-red-700">
+                          11文字以下で入力してください
+                        </span>
                       )}
                     </div>
                     <div className="mt-2">
@@ -273,11 +337,16 @@ const SignUp = () => {
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                         id="introduce"
                         placeholder="自己紹介"
-                        {...register("introduce", { required: true })}
+                        {...register("introduce", {
+                          required: false,
+                          maxLength: 255,
+                        })}
                       ></textarea>
                       {errors.introduce &&
-                        errors.introduce.type === "required" && (
-                          <span className="text-red-700">必須項目です</span>
+                        errors.introduce.type === "maxLength" && (
+                          <span className="text-red-700">
+                            255文字以下で入力してください
+                          </span>
                         )}
                     </div>
                     <div className="mt-4 items-center flex justify-between">
