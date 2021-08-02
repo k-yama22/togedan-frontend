@@ -13,9 +13,9 @@ import ReactPaginate from "react-paginate";
 const Events = () => {
   const router = useRouter();
   const { getEvents, events, setEvents } = useAllEvents();
-  const [genre, setGenre] = useState();
-  const [location, setLocation] = useState();
-  const [eventDate, setEventDate] = useState();
+  const [genre, setGenre] = useState("");
+  const [location, setLocation] = useState("");
+  const [eventDate, setEventDate] = useState("");
   const { searchEvent, searchEvents } = useSearchEvent();
   const [eventArr, setEventArr] = useState([]);
 

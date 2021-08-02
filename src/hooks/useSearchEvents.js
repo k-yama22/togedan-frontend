@@ -11,7 +11,7 @@ export const useSearchEvent = () => {
 
   const searchEvent = (genre, location, eventDate) => {
     setLoading(true);
-    const loginId = localStorage.getItem("loginId");
+    // const loginId = localStorage.getItem("loginId");
     const headers = {
       "Content-Type": "application/json",
       "access-token": localStorage.getItem("accessToken"),
@@ -20,7 +20,7 @@ export const useSearchEvent = () => {
     };
     axios
       .post(
-        `http://localhost:3001/api/v1/events/${loginId}/search`,
+        `http://localhost:3001/api/v1/events/search`,
         { genre: genre, location: location, event_date: eventDate },
         { headers: headers }
       )
