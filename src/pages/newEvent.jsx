@@ -209,7 +209,7 @@ const NewEvent = () => {
                     </div>
                     <div className="mt-2">
                       <label
-                        className="block  text-sm text-white"
+                        className="block text-sm text-white"
                         htmlFor="maxPeople"
                       >
                         最大人数

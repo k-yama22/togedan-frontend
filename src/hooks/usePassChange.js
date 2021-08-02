@@ -8,7 +8,7 @@ export const usePassChange = () => {
   const { showNotify } = useNotify();
   const [loading, setLoading] = useState(false);
 
-  const passChange = (currentPassword, password, confirmPassword) => {
+  const passChange = (data) => {
     setLoading(true);
     const headers = {
       "Content-Type": "application/json",
@@ -20,9 +20,9 @@ export const usePassChange = () => {
       .put(
         `http://localhost:3001/auth/password`,
         {
-          current_password: currentPassword,
-          password: password,
-          password_confirmation: confirmPassword,
+          current_password: data.currentPassword,
+          password: data.password,
+          password_confirmation: data.confirmPassword,
         },
         { headers: headers }
       )

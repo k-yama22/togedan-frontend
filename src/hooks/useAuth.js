@@ -30,12 +30,12 @@ export const useAuth = () => {
     return result;
   };
 
-  const login = (email, password) => {
+  const login = (data) => {
     setLoading(true);
     axios
       .post(`http://localhost:3001/auth/sign_in`, {
-        email: email,
-        password: password,
+        email: data.email,
+        password: data.password,
       })
       .then((res) => {
         if (res.data) {

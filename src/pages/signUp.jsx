@@ -317,12 +317,8 @@ const SignUp = () => {
                         type="file"
                         placeholder="アイコン画像"
                         accept="image/*"
-                        // {...register("image", { required: true })}
                         onChange={onChangeImage}
                       />
-                      {errors.image && errors.image.type === "required" && (
-                        <span className="text-red-700">必須項目です</span>
-                      )}
                     </div>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     {preview ? <img src={preview} alt="preview img" /> : null}

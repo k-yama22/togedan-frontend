@@ -170,6 +170,8 @@ const EventEdit = (props) => {
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                         id="eventDate"
                         type="date"
+                        min="1900-01-01"
+                        max="2100-12-31"
                         placeholder="開催日"
                         {...register("eventDate", { required: true })}
                       />
@@ -180,7 +182,7 @@ const EventEdit = (props) => {
                     </div>
                     <div className="mt-2">
                       <label
-                        className="block  text-sm text-white"
+                        className="block text-sm text-white"
                         htmlFor="startTime"
                       >
                         開始時刻

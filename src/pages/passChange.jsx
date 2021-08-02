@@ -2,31 +2,23 @@ import React from "react";
 import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import { useState } from "react";
 
 import { Loading } from "src/components/Loading";
 import { usePassChange } from "src/hooks/usePassChange";
+import { useForm } from "react-hook-form";
 
 const UserEdit = () => {
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const { passChange, loading } = usePassChange();
 
-  const onChangeCurrentPassword = (e) => {
-    setCurrentPassword(e.target.value);
-  };
-
-  const onChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
-  const onChangeConfirmPassword = (e) => {
-    setConfirmPassword(e.target.value);
-  };
-
-  const onClickPassChange = () => {
-    passChange(currentPassword, password, confirmPassword);
+  const onSubmit = (data) => {
+    passChange(data);
+    console.log(data);
   };
 
   return (
@@ -48,66 +40,98 @@ const UserEdit = () => {
                   <p className="text-white font-medium text-center text-lg font-bold">
                     パスワードを入力してください
                   </p>
-                  <div className="">
-                    <label
-                      className="block text-sm text-white"
-                      htmlFor="currentPassword"
-                    >
-                      現在のパスワード
-                    </label>
-                    <input
-                      className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                      id="currentPassword"
-                      type="password"
-                      placeholder="現在のパスワード"
-                      required
-                      value={currentPassword}
-                      onChange={onChangeCurrentPassword}
-                    />
-                  </div>
-                  <div className="">
-                    <label
-                      className="block text-sm text-white"
-                      htmlFor="password"
-                    >
-                      新しいパスワード
-                    </label>
-                    <input
-                      className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                      id="password"
-                      type="password"
-                      placeholder="新しいパスワード"
-                      required
-                      value={password}
-                      onChange={onChangePassword}
-                    />
-                  </div>
-                  <div className="mt-2">
-                    <label
-                      className="block text-sm text-white"
-                      htmlFor="confirmPassword"
-                    >
-                      確認用パスワード
-                    </label>
-                    <input
-                      className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                      id="confirmPassword"
-                      type="password"
-                      placeholder="確認用パスワード"
-                      required
-                      value={confirmPassword}
-                      onChange={onChangeConfirmPassword}
-                    />
-                  </div>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="">
+                      <label
+                        className="block text-sm text-white"
+                        htmlFor="currentPassword"
+                      >
+                        現在のパスワード
+                      </label>
+                      <input
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="currentPassword"
+                        type="password"
+                        placeholder="現在のパスワード"
+                        {...register("currentPassword", {
+                          required: true,
+                          minLength: 8,
+                        })}
+                      />
+                      {errors.currentPassword &&
+                        errors.currentPassword.type === "required" && (
+                          <span className="text-red-700">必須項目です</span>
+                        )}
+                      {errors.currentPassword &&
+                        errors.currentPassword.type === "minLength" && (
+                          <span className="text-red-700">
+                            8文字以上で入力してください
+                          </span>
+                        )}
+                    </div>
+                    <div className="">
+                      <label
+                        className="block text-sm text-white"
+                        htmlFor="password"
+                      >
+                        新しいパスワード
+                      </label>
+                      <input
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="password"
+                        type="password"
+                        placeholder="新しいパスワード"
+                        {...register("password", {
+                          required: true,
+                          minLength: 8,
+                        })}
+                      />
+                      {errors.password &&
+                        errors.password.type === "required" && (
+                          <span className="text-red-700">必須項目です</span>
+                        )}
+                      {errors.password &&
+                        errors.password.type === "minLength" && (
+                          <span className="text-red-700">
+                            8文字以上で入力してください
+                          </span>
+                        )}
+                    </div>
+                    <div className="mt-2">
+                      <label
+                        className="block text-sm text-white"
+                        htmlFor="confirmPassword"
+                      >
+                        確認用パスワード
+                      </label>
+                      <input
+                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="confirmPassword"
+                        type="password"
+                        placeholder="確認用パスワード"
+                        {...register("confirmPassword", {
+                          required: true,
+                          minLength: 8,
+                        })}
+                      />
+                      {errors.confirmPassword &&
+                        errors.confirmPassword.type === "required" && (
+                          <span className="text-red-700">必須項目です</span>
+                        )}
+                      {errors.confirmPassword &&
+                        errors.confirmPassword.type === "minLength" && (
+                          <span className="text-red-700">
+                            8文字以上で入力してください
+                          </span>
+                        )}
+                    </div>
 
-                  <div className="mt-4 items-center flex justify-between">
-                    <button
-                      className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded"
-                      onClick={onClickPassChange}
-                    >
-                      {loading ? <Loading /> : <>変更</>}
-                    </button>
-                  </div>
+                    <div className="mt-4 items-center flex justify-between">
+                      <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded">
+                        {loading ? <Loading /> : <>変更</>}
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
