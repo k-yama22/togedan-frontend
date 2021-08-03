@@ -40,6 +40,7 @@ const SignUp = () => {
     formData.append("phone", data.phone);
     formData.append("introduce", data.introduce);
     formData.append("user_sts", "1");
+    formData.append("confirm_success_url", "http://localhost:3000/login");
 
     // imageはstateから取得
     formData.append("image", image);
