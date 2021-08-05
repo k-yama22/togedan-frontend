@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Loading } from "src/components/Loading";
 import { SideMenu } from "src/components/SideMenu";
 import { useSignOut } from "src/hooks/useSignOut";
+import lscache from "lscache";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,7 @@ export const Header = () => {
   const { signOut, loading } = useSignOut();
 
   useEffect(() => {
-    setLoginId(localStorage.getItem("loginId"));
+    setLoginId(lscache.get("loginId"));
   }, []);
 
   const toggleMenu = () => {

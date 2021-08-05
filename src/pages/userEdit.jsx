@@ -7,6 +7,7 @@ import { useUserChange } from "src/hooks/useUserChange";
 import { Loading } from "src/components/Loading";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import lscache from "lscache";
 
 const UserEdit = () => {
   const [image, setImage] = useState("");
@@ -60,7 +61,7 @@ const UserEdit = () => {
   // }, []);
 
   useEffect(() => {
-    const defaultValue = JSON.parse(localStorage.getItem("loginUser"));
+    const defaultValue = JSON.parse(lscache.get("loginUser"));
     setValue("lastName", defaultValue.lastName);
     setValue("firstName", defaultValue.firstName);
     setValue("lastNameKana", defaultValue.lastNameKana);
