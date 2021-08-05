@@ -1,24 +1,21 @@
 import axios from "axios";
 import { useRouter } from "next/router";
+import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
+import lscache from "lscache";
 
 export const useNewReserve = () => {
   const router = useRouter();
   const { showNotify } = useNotify();
 
   const newReserve = (eventId) => {
-    const headers = {
-      "Content-Type": "application/json",
-      "access-token": localStorage.getItem("accessToken"),
-      client: localStorage.getItem("client"),
-      uid: localStorage.getItem("uid"),
-    };
+    const headers = authHeaders();
     axios
       .post(
         `http://localhost:3001/api/v1/reserves`,
         {
           event_id: eventId,
-          user_id: localStorage.getItem("loginId"),
+          user_id: lscache.get("loginId"),
           reserve_sts: "1",
         },
         { headers: headers }
@@ -33,6 +30,7 @@ export const useNewReserve = () => {
       })
       .catch((error) => {
         showNotify({ title: "登録できません", status: "error" });
+        console.log(error);
       })
       .finally(() => {
         console.log("finally確認用");

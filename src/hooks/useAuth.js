@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
+import lscache from "lscache";
 
 export const useAuth = () => {
   const router = useRouter();
@@ -39,13 +40,14 @@ export const useAuth = () => {
       })
       .then((res) => {
         if (res.data) {
-          localStorage.setItem("accessToken", res.headers["access-token"]);
-          localStorage.setItem("client", res.headers["client"]);
-          localStorage.setItem("uid", res.headers["uid"]);
+          console.log(res.data);
+          lscache.set("accessToken", res.headers["access-token"], 10);
+          lscache.set("client", res.headers["client"], 10);
+          lscache.set("uid", res.headers["uid"], 10);
 
           const resData = toCamelCaseObject(res.data.data);
-          localStorage.setItem("loginId", JSON.stringify(res.data.data.id));
-          localStorage.setItem("loginUser", JSON.stringify(resData));
+          lscache.set("loginId", JSON.stringify(resData.id), 10);
+          lscache.set("loginUser", JSON.stringify(resData), 10);
           showNotify({ title: "ログインしました", status: "success" });
           router.push("/");
         } else {

@@ -2,6 +2,8 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
+import lscache from "lscache";
+import { authHeaders } from "src/hooks/authHeaders";
 
 export const useDeleteAccount = () => {
   const router = useRouter();
@@ -10,19 +12,14 @@ export const useDeleteAccount = () => {
 
   const deleteAccount = () => {
     setLoading(true);
-    const headers = {
-      "Content-Type": "application/json",
-      "access-token": localStorage.getItem("accessToken"),
-      client: localStorage.getItem("client"),
-      uid: localStorage.getItem("uid"),
-    };
+    const headers = authHeaders();
     axios
       .delete(`http://localhost:3001/auth/`, {
         headers: headers,
       })
       .then((res) => {
         if (res.data) {
-          localStorage.clear();
+          lscache.flush();
           showNotify({ title: "退会しました", status: "success" });
           router.push("/login");
         } else {

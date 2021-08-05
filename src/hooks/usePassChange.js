@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
 
 export const usePassChange = () => {
@@ -10,12 +11,7 @@ export const usePassChange = () => {
 
   const passChange = (data) => {
     setLoading(true);
-    const headers = {
-      "Content-Type": "application/json",
-      "access-token": localStorage.getItem("accessToken"),
-      client: localStorage.getItem("client"),
-      uid: localStorage.getItem("uid"),
-    };
+    const headers = authHeaders();
     axios
       .put(
         `http://localhost:3001/auth/password`,

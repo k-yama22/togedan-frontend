@@ -1,18 +1,15 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
+import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
+import lscache from "lscache";
 
 export const useMyEvents = () => {
   const { showNotify } = useNotify();
   const [myEvents, setMyEvents] = useState([]);
   const getMyEvents = useCallback(() => {
-    const loginId = localStorage.getItem("loginId");
-    const headers = {
-      "Content-Type": "application/json",
-      "access-token": localStorage.getItem("accessToken"),
-      client: localStorage.getItem("client"),
-      uid: localStorage.getItem("uid"),
-    };
+    const loginId = lscache.get("loginId");
+    const headers = authHeaders();
     axios
       .get(`http://localhost:3001/api/v1/events/${loginId}/own`, {
         headers: headers,

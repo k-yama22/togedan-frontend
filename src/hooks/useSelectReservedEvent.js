@@ -1,19 +1,17 @@
 import axios from "axios";
 import { useState } from "react";
+import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
+import lscache from "lscache";
+
 export const useSelectReservedEvent = () => {
   const { showNotify } = useNotify();
   const [selectedEvent, setSelectedEvent] = useState({});
   const [showModal, setShowModal] = useState(false);
 
   const onSelectReservedEvent = (eventId) => {
-    const loginId = localStorage.getItem("loginId");
-    const headers = {
-      "Content-Type": "application/json",
-      "access-token": localStorage.getItem("accessToken"),
-      client: localStorage.getItem("client"),
-      uid: localStorage.getItem("uid"),
-    };
+    const loginId = lscache.get("loginId");
+    const headers = authHeaders();
     axios
       .post(
         `http://localhost:3001/api/v1/reserves/${eventId}/event`,

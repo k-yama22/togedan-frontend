@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useSearchEvent = () => {
@@ -11,13 +12,7 @@ export const useSearchEvent = () => {
 
   const searchEvent = (genre, location, eventDate) => {
     setLoading(true);
-    // const loginId = localStorage.getItem("loginId");
-    const headers = {
-      "Content-Type": "application/json",
-      "access-token": localStorage.getItem("accessToken"),
-      client: localStorage.getItem("client"),
-      uid: localStorage.getItem("uid"),
-    };
+    const headers = authHeaders();
     axios
       .post(
         `http://localhost:3001/api/v1/events/search`,

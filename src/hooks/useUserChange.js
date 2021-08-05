@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
+import lscache from "lscache";
 
 export const useUserChange = () => {
   const router = useRouter();
@@ -32,18 +34,14 @@ export const useUserChange = () => {
 
   const userChange = (editData) => {
     setLoading(true);
-    const headers = {
-      "access-token": localStorage.getItem("accessToken"),
-      client: localStorage.getItem("client"),
-      uid: localStorage.getItem("uid"),
-    };
+    const headers = authHeaders();
     axios
       .put(`http://localhost:3001/auth`, editData, { headers: headers })
       .then((res) => {
         if (res.data) {
           const resData = toCamelCaseObject(res.data.data);
-          localStorage.setItem("loginId", JSON.stringify(res.data.data.id));
-          localStorage.setItem("loginUser", JSON.stringify(resData));
+          lscache.set("loginId", JSON.stringify(res.data.data.id));
+          lscache.set("loginUser", JSON.stringify(resData));
           showNotify({ title: "変更完了しました", status: "success" });
           router.push("/myPage");
         } else {

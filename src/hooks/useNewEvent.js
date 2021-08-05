@@ -2,6 +2,8 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
+import lscache from "lscache";
+import { authHeaders } from "src/hooks/authHeaders";
 
 export const useNewEvent = () => {
   const router = useRouter();
@@ -10,13 +12,9 @@ export const useNewEvent = () => {
 
   const newEvent = (data) => {
     setLoading(true);
-    const loginId = localStorage.getItem("loginId");
-    const headers = {
-      "Content-Type": "application/json",
-      "access-token": localStorage.getItem("accessToken"),
-      client: localStorage.getItem("client"),
-      uid: localStorage.getItem("uid"),
-    };
+    const loginId = lscache.get("loginId");
+    const headers = authHeaders();
+    console.log(headers);
     axios
       .post(
         `http://localhost:3001/api/v1/events`,
