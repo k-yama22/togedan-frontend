@@ -11,13 +11,34 @@ const MyApp = ({ Component, pageProps }) => {
   const { showNotify } = useNotify();
   useEffect(() => {
     console.log("初期レンダーしてる");
-    if (router.pathname === "/login") return;
-    lscache.flushExpired();
-    if (!lscache.get("loginId")) {
-      showNotify({ title: "タイムアウトしました", status: "error" });
+    if (
+      router.pathname === "/login" ||
+      router.pathname === "/" ||
+      router.pathname === "/signUp"
+    )
+      return;
+    if (lscache.get("loginCheck")) {
+      lscache.flushExpired();
+      if (!lscache.get("loginId")) {
+        lscache.flush();
+        showNotify({ title: "タイムアウトしました", status: "error" });
+        router.push("/login");
+      }
+    } else if (
+      !(
+        router.pathname === "/login" ||
+        router.pathname === "/" ||
+        router.pathname === "/signUp" ||
+        router.pathname === "/events" ||
+        router.pathname === "/eventDetail"
+      )
+    ) {
+      showNotify({
+        title: "ログインまたは新規登録をしてください",
+        status: "success",
+      });
       router.push("/login");
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Component]);
   return (
