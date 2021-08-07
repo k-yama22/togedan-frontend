@@ -7,11 +7,12 @@ import { useUserChange } from "src/hooks/useUserChange";
 import { Loading } from "src/components/Loading";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import lscache from "lscache";
+import { useMyUserInfo } from "src/hooks/useMyUserInfo";
 
 const UserEdit = () => {
   const [image, setImage] = useState("");
   const [preview, setPreview] = useState("");
+  const { getMyUserInfo, myUserInfo } = useMyUserInfo();
 
   const { userChange, loading } = useUserChange();
 
@@ -56,26 +57,26 @@ const UserEdit = () => {
     const editData = createFormData(data);
     userChange(editData);
   };
-  // useEffect(() => {
-  //   const defaultValue = JSON.parse(localStorage.getItem("loginUser"));
-  // }, []);
 
   useEffect(() => {
-    const defaultValue = JSON.parse(lscache.get("loginUser"));
-    setValue("lastName", defaultValue.lastName);
-    setValue("firstName", defaultValue.firstName);
-    setValue("lastNameKana", defaultValue.lastNameKana);
-    setValue("firstNameKana", defaultValue.firstNameKana);
-    setValue("userName", defaultValue.userName);
-    setValue("email", defaultValue.email);
-    setValue("birthday", defaultValue.birthday);
-    setValue("phone", defaultValue.phone);
-    setValue("introduce", defaultValue.introduce);
-
-    setImage(defaultValue.image);
-    setPreview(defaultValue.image.url);
+    getMyUserInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {
+    setValue("lastName", myUserInfo.last_name);
+    setValue("firstName", myUserInfo.first_name);
+    setValue("lastNameKana", myUserInfo.last_name_kana);
+    setValue("firstNameKana", myUserInfo.first_name_kana);
+    setValue("userName", myUserInfo.user_name);
+    setValue("email", myUserInfo.email);
+    setValue("birthday", myUserInfo.birthday);
+    setValue("phone", myUserInfo.phone);
+    setValue("introduce", myUserInfo.introduce);
+
+    setImage(myUserInfo.image);
+    setPreview(myUserInfo.image?.url);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [myUserInfo]);
 
   return (
     <>
@@ -342,10 +343,6 @@ const UserEdit = () => {
                           maxLength: 255,
                         })}
                       ></textarea>
-                      {/* {errors.introduce &&
-                        errors.introduce.type === "required" && (
-                          <span className="text-red-700">必須項目です</span>
-                        )} */}
                       {errors.introduce &&
                         errors.introduce.type === "maxLength" && (
                           <span className="text-red-700">
