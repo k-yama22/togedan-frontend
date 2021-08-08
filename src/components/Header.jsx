@@ -24,14 +24,14 @@ export const Header = () => {
   };
 
   return (
-    <>
+    <div className="fixed top-0 right-0 w-full h-24px">
       <SideMenu
         isOpen={isOpen}
         loginId={loginId}
         loading={loading}
         onClick={onClickLogout}
       />
-      <nav className="flex items-center justify-between flex-wrap bg-teal-300 p-6">
+      <nav className="flex absolute items-center justify-between flex-wrap bg-teal-300 p-6 w-full pt-18">
         <Link href="/">
           <a className="flex items-center flex-no-shrink text-white mr-6">
             <svg
@@ -107,6 +107,6 @@ export const Header = () => {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 };

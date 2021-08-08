@@ -43,8 +43,10 @@ const MyApp = ({ Component, pageProps }) => {
   }, [Component]);
   return (
     <>
-      <Component {...pageProps} />
-      <Toaster />
+      <div className="pt-20">
+        <Component {...pageProps} />
+        <Toaster />
+      </div>
     </>
   );
 };
