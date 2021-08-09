@@ -14,7 +14,8 @@ const MyApp = ({ Component, pageProps }) => {
     if (
       router.pathname === "/login" ||
       router.pathname === "/" ||
-      router.pathname === "/signUp"
+      router.pathname === "/signUp" ||
+      router.pathname === "/tempRegistration"
     )
       return;
     if (lscache.get("loginCheck")) {

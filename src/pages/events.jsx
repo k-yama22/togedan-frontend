@@ -20,7 +20,7 @@ const Events = () => {
   const [eventArr, setEventArr] = useState([]);
 
   const [offset, setOffset] = useState(0);
-  const perPage = 5;
+  const perPage = 8;
 
   const handlePageChange = (data) => {
     let page_number = data["selected"];
