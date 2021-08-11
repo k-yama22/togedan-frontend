@@ -2,11 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
+import lscache from "lscache";
+
 export const useSelectMyEventDetail = () => {
   const { showNotify } = useNotify();
   const [selectedEvent, setSelectedEvent] = useState({});
   const [showModal, setShowModal] = useState(false);
-  import lscache from "lscache";
 
   const onSelectMyEventDetail = (eventId) => {
     const loginId = lscache.get("loginId");

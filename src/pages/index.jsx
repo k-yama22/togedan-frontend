@@ -56,7 +56,7 @@ const Home = () => {
 
       <div className="bg-black">
         <div className="flex relative text-center">
-          <h1 className="text-3xl tracking-wider text-white text-sha uppercase font-bold p-4 self-center z-99 content-center absolute text-center w-full md:text-4xl">
+          <h1 className="text-3xl tracking-wider text-white text-sha uppercase font-bold p-4 self-center content-center absolute text-center w-full md:text-4xl">
             ようこそ！！Together Danceへ
           </h1>
           {/* eslint-disable-next-line @next/next/no-img-element */}
