@@ -1,5 +1,6 @@
 import React from "react";
 import { memo } from "react";
+import CancelConfirmModal from "src/components/CancelConfirmModal";
 
 // eslint-disable-next-line react/display-name
 export const EventCard = memo((props) => {
@@ -84,12 +85,12 @@ export const EventCard = memo((props) => {
             <div className="flex p-4 pb-2 border-t border-gray-200 "></div>
             <div className="flex space-x-3 text-sm font-medium">
               <div className="flex-auto flex space-x-3">
-                <button
-                  className="mb-2 md:mb-0 bg-white px-5 py-2 shadow-sm tracking-wider border text-gray-600 rounded-full hover:bg-gray-100 inline-flex items-center space-x-2"
+                <CancelConfirmModal
+                  id={id}
+                  buttonMessage={subButtonMessage}
+                  eventName={eventName}
                   onClick={() => onClickSub(id)}
-                >
-                  <span>{subButtonMessage}</span>
-                </button>
+                />
               </div>
               <button
                 className="mb-2 md:mb-0 bg-gray-900 px-5 py-2 shadow-sm tracking-wider text-white rounded-full hover:bg-gray-800"

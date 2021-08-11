@@ -25,7 +25,7 @@ export const useDeleteEvent = () => {
       )
       .then((res) => {
         setDeleteEvent(res.data.data);
-        router.push({ pathname: "/myEvents" });
+        router.reload();
       })
       .catch(() => {
         showNotify({ title: "取得できませんでした", status: "error" });
