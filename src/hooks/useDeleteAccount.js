@@ -26,8 +26,17 @@ export const useDeleteAccount = () => {
           showNotify({ title: "退会に失敗しました", status: "error" });
         }
       })
-      .catch(() => {
-        showNotify({ title: "退会できません", status: "error" });
+      .catch((error) => {
+        if (error.response.status === 400) {
+          if (error.response.data.errors) {
+            const errorMessages = error.response.data.errors.join("\n");
+            showNotify({ title: errorMessages, status: "error" });
+          } else {
+            showNotify({ title: "退会できません", status: "error" });
+          }
+        } else {
+          showNotify({ title: "退会できません", status: "error" });
+        }
       })
       .finally(() => {
         setLoading(false);
