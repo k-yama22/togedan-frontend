@@ -10,13 +10,19 @@ export const useSearchEvent = () => {
   const [loading, setLoading] = useState(false);
   const [searchEvents, setSearchEvents] = useState({});
 
-  const searchEvent = (genre, location, eventDate) => {
+  const searchEvent = (genre, location, eventDate, startTime, endTime) => {
     setLoading(true);
     const headers = authHeaders();
     axios
       .post(
         `http://localhost:3001/api/v1/events/search`,
-        { genre: genre, location: location, event_date: eventDate },
+        {
+          genre: genre,
+          location: location,
+          event_date: eventDate,
+          start_time: startTime,
+          end_time: endTime,
+        },
         { headers: headers }
       )
       .then((res) => {

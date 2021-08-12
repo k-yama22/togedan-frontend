@@ -16,6 +16,9 @@ const Events = () => {
   const [genre, setGenre] = useState("");
   const [location, setLocation] = useState("");
   const [eventDate, setEventDate] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+
   const { searchEvent, searchEvents } = useSearchEvent();
   const [eventArr, setEventArr] = useState([]);
 
@@ -36,13 +39,19 @@ const Events = () => {
   const onChangeEventDate = (e) => {
     setEventDate(e.target.value);
   };
+  const onChangeStartTime = (e) => {
+    setStartTime(e.target.value);
+  };
+  const onChangeEndTime = (e) => {
+    setEndTime(e.target.value);
+  };
 
   const onClickEvent = (id) => {
     router.push({ pathname: "/eventDetail", query: { id: id } });
   };
 
   const onClickSearch = () => {
-    searchEvent(genre, location, eventDate);
+    searchEvent(genre, location, eventDate, startTime, endTime);
   };
   const isFirstRender = useRef(false);
 
@@ -96,8 +105,8 @@ const Events = () => {
           <div className="w-screen container mx-auto flex justify-center items-center p-2 md:p-0">
             <div className=" border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6">
               <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-                <div className="grid grid-cols-4 gap-2 border border-gray-200 p-2 rounded">
-                  <div className="flex border rounded bg-gray-300 items-center p-2 ">
+                <div className="grid grid-cols-5 gap-2 border border-gray-200 p-2 rounded">
+                  <div className="flex border rounded bg-gray-300 items-center p-2">
                     <input
                       type="text"
                       placeholder="ジャンル"
@@ -106,7 +115,7 @@ const Events = () => {
                       onChange={onChangeGenre}
                     />
                   </div>
-                  <div className="flex border rounded bg-gray-300 items-center p-2 ">
+                  <div className="flex border rounded bg-gray-300 items-center p-2">
                     <input
                       type="text"
                       placeholder="場所"
@@ -116,20 +125,47 @@ const Events = () => {
                     />
                   </div>
 
-                  <div className="flex border rounded bg-gray-300 items-center p-2 ">
+                  <div className="flex border rounded bg-gray-300 items-center p-2">
                     <input
                       type="date"
+                      min="1900-01-01"
+                      max="2100-12-31"
                       placeholder="年月日"
                       className="bg-gray-300 max-w-full focus:outline-none text-gray-700"
                       value={eventDate}
                       onChange={onChangeEventDate}
                     />
                   </div>
-                  <div className="flex border rounded bg-gray-300 items-center p-2 ">
+                  <div className="flex border rounded bg-gray-300 items-center p-2">
+                    {/* <label
+                        className="block text-sm text-white"
+                        htmlFor="startTime"
+                      >
+                        開始時刻
+                      </label> */}
                     <input
-                      type="text"
-                      placeholder="Enter text here..."
-                      className="bg-gray-300 max-w-full focus:outline-none text-gray-700"
+                      className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                      id="startTime"
+                      type="time"
+                      placeholder="開始時刻"
+                      value={startTime}
+                      onChange={onChangeStartTime}
+                    />
+                  </div>
+                  <div className="flex border rounded bg-gray-300 items-center p-2">
+                    {/* <label
+                        className="block text-sm text-white"
+                        htmlFor="endTime"
+                      >
+                        終了時刻
+                      </label> */}
+                    <input
+                      className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                      id="endTime"
+                      type="time"
+                      placeholder="終了時刻"
+                      value={endTime}
+                      onChange={onChangeEndTime}
                     />
                   </div>
                 </div>
