@@ -41,13 +41,13 @@ export const useAuth = () => {
       .then((res) => {
         if (res.data) {
           console.log(res.data);
-          lscache.set("accessToken", res.headers["access-token"], 10);
-          lscache.set("client", res.headers["client"], 10);
-          lscache.set("uid", res.headers["uid"], 10);
+          lscache.set("accessToken", res.headers["access-token"], 100);
+          lscache.set("client", res.headers["client"], 100);
+          lscache.set("uid", res.headers["uid"], 100);
 
           const resData = toCamelCaseObject(res.data.data);
-          lscache.set("loginId", JSON.stringify(resData.id), 10);
-          // lscache.set("loginUser", JSON.stringify(resData), 1);
+          lscache.set("loginId", JSON.stringify(resData.id), 100);
+          lscache.set("loginImg", resData.image, 100);
           lscache.set("loginCheck", true);
           showNotify({ title: "ログインしました", status: "success" });
           router.push("/");

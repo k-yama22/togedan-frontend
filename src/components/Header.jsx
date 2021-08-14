@@ -9,6 +9,10 @@ import lscache from "lscache";
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [loginId, setLoginId] = useState("");
+  const loginImg = lscache.get("loginImg");
+
+  console.log(loginImg);
+  console.log(loginImg?.url);
   const { signOut, loading } = useSignOut();
 
   useEffect(() => {
@@ -24,7 +28,7 @@ export const Header = () => {
   };
 
   return (
-    <div className="fixed top-0 right-0 w-full h-24px">
+    <div className="fixed top-0 right-0 w-full h-24px z-20">
       <SideMenu
         isOpen={isOpen}
         loginId={loginId}
@@ -89,6 +93,25 @@ export const Header = () => {
                 >
                   {loading ? <Loading /> : <>ログアウト</>}
                 </button>
+                <Link href="/myPage">
+                  <a className="flex-shrink-0 h-14 w-14 absolute top-3 right-10">
+                    {lscache.get("loginImg") ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        className="h-14 w-14 rounded-full border"
+                        src={loginImg?.url}
+                        alt="アイコン画像"
+                      />
+                    ) : (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        className="h-16 w-16 rounded-full border"
+                        src="default.png"
+                        alt="アイコン画像"
+                      />
+                    )}
+                  </a>
+                </Link>
               </>
             ) : (
               <>
