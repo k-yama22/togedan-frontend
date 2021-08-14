@@ -337,6 +337,8 @@ const UserEdit = () => {
                       <textarea
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                         id="introduce"
+                        rows="3"
+                        wrap="hard"
                         placeholder="自己紹介"
                         {...register("introduce", {
                           required: false,

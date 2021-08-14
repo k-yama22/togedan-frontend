@@ -61,7 +61,7 @@ const Home = () => {
           </h1>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            className="w-full object-cover h-3/4 block mx-auto  sm:block sm:w-full"
+            className="w-full object-cover h-3/4 block mx-auto sm:block sm:w-full"
             src="https://source.unsplash.com/FC4z3l4sUYc/1920x588"
             alt="Banner"
             width="1920"
@@ -75,30 +75,30 @@ const Home = () => {
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
               ホーム画面
             </h2>
-            <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
-              {eventArr.map((event) => (
-                <div key={event.event_id}>
-                  <MiniEventCard
-                    id={event.event_id}
-                    eventName={event.event_name}
-                    genre={event.genre}
-                    location={event.location}
-                    image={event.image}
-                    eventDate={event?.event_date}
-                    startTime={event?.start_time}
-                    endTime={event?.end_time}
-                    buttonMessage="詳細を見る"
-                    onClick={() => onClickEvent(event.event_id)}
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="text-teal-600 hover:bg-teal-300 hover:text-gray-500">
-              <Link href="/events">
-                <a>イベント一覧画面へ</a>
-              </Link>
-            </div>
           </div>
+        </div>
+        <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+          {eventArr.map((event) => (
+            <div key={event.event_id}>
+              <MiniEventCard
+                id={event.event_id}
+                eventName={event.event_name}
+                genre={event.genre}
+                location={event.location}
+                image={event.image}
+                eventDate={event?.event_date}
+                startTime={event?.start_time}
+                endTime={event?.end_time}
+                buttonMessage="詳細を見る"
+                onClick={() => onClickEvent(event.event_id)}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="text-teal-600 hover:bg-teal-300 hover:text-gray-500">
+          <Link href="/events">
+            <a>イベント一覧画面へ</a>
+          </Link>
         </div>
       </div>
 
