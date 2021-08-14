@@ -8,27 +8,27 @@ import { useMyReserves } from "src/hooks/useMyReserves";
 import { useMyEvents } from "src/hooks/useMyEvents";
 import { MiniEventCard } from "src/components/MiniEventCard";
 import { useMyUserInfo } from "src/hooks/useMyUserInfo";
-import { UserCard } from "src/components/UserCard";
+// import { UserCard } from "src/components/UserCard";
 import { useRouter } from "next/router";
 import dayjs from "dayjs";
-import { useDeleteAccount } from "src/hooks/useDeleteAccount";
+// import { useDeleteAccount } from "src/hooks/useDeleteAccount";
 
 const MyPage = () => {
   const router = useRouter();
   const { getMyReserves, myReserves } = useMyReserves();
   const { getMyEvents, myEvents } = useMyEvents();
   const { getMyUserInfo, myUserInfo } = useMyUserInfo();
-  const { deleteAccount } = useDeleteAccount();
+  // const { deleteAccount } = useDeleteAccount();
   const [myReserveArr, setMyReserveArr] = useState([]);
   const [myEventArr, setMyEventArr] = useState([]);
 
-  const onClickUserEdit = () => {
-    router.push({ pathname: "/userEdit" });
-  };
+  // const onClickUserEdit = () => {
+  //   router.push({ pathname: "/userEdit" });
+  // };
 
-  const onClickDeleteAccount = () => {
-    deleteAccount();
-  };
+  // const onClickDeleteAccount = () => {
+  //   deleteAccount();
+  // };
 
   const onClickMyReserveDetail = (id) => {
     router.push({ pathname: "/myReserveDetail", query: { id: id } });
@@ -115,7 +115,136 @@ const MyPage = () => {
           </h1>
         </div>
       </div>
-      <div className="content">
+
+      <div className="bg-gray-100">
+        <div className="container mx-auto my-5 p-5">
+          <div className="md:flex no-wrap md:-mx-2 ">
+            <div className="w-full md:w-3/12 md:mx-2">
+              <div className="bg-white p-3 border-t-4 border-green-400 h-full">
+                <div className="image overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    className="h-auto w-full mx-auto"
+                    src={myUserInfo.image?.url}
+                    alt="アイコン画像"
+                  />
+                </div>
+                <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
+                  {myUserInfo.last_name} {myUserInfo.first_name}
+                </h1>
+                <h3 className="text-gray-600 font-lg text-semibold leading-6">
+                  自己紹介
+                </h3>
+
+                <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+                  <li className="flex items-center py-3">
+                    <span>会員状態</span>
+                    <span className="ml-auto">
+                      <span className="bg-green-500 py-1 px-2 rounded text-white text-sm">
+                        有効会員
+                      </span>
+                    </span>
+                  </li>
+                  <li className="flex items-center py-3">
+                    <span>ユーザーネーム</span>
+                    <span className="ml-auto">{myUserInfo.user_name}</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="my-4"></div>
+            </div>
+            {/* 右側部分 */}
+            <div className="w-full md:w-9/12 mx-2 ">
+              {/* ユーザー情報の項目 */}
+              <div className="bg-white p-3 shadow-sm rounded-sm h-full">
+                <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                  <span clas="text-green-500">
+                    <svg
+                      className="h-5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                  </span>
+                  <span className="tracking-wide">ユーザー情報</span>
+                </div>
+                <div className="text-gray-700">
+                  <div className="grid md:grid-cols-2 text-lg">
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">
+                        苗字（カナ）
+                      </div>
+                      <div className="px-4 py-2">
+                        {myUserInfo.last_name_kana}
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">
+                        名前（カナ）
+                      </div>
+                      <div className="px-4 py-2">
+                        {myUserInfo.first_name_kana}
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">苗字</div>
+                      <div className="px-4 py-2">{myUserInfo.last_name}</div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">名前</div>
+                      <div className="px-4 py-2">{myUserInfo.first_name}</div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">性別</div>
+                      <div className="px-4 py-2">女性</div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">電話番号</div>
+                      <div className="px-4 py-2">{myUserInfo.phone}</div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">
+                        ユーザーネーム
+                      </div>
+                      <div className="px-4 py-2">{myUserInfo.user_name}</div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">生年月日</div>
+                      <div className="px-4 py-2">{myUserInfo.birthday}</div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">
+                        メールアドレス
+                      </div>
+                      <div className="px-4 py-2">{myUserInfo.email}</div>
+                    </div>
+                  </div>
+                  <div className="">
+                    <h3 className="text-gray-600 font-lg text-semibold leading-6">
+                      自己紹介
+                    </h3>
+                    <p className="px-4 py-2 font-semibold text-sm text-gray-500 hover:text-gray-600 leading-6 whitespace-pre-line h-72 w-full overflow-auto ">
+                      {myUserInfo.introduce}
+                    </p>
+                  </div>
+                </div>
+                <button className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                  Show Full Information
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <div className="content">
         <div className="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
           <div className="mr-6">
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
@@ -128,11 +257,15 @@ const MyPage = () => {
         <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
           <div>
             <UserCard
-              userName={myUserInfo.userName}
-              lastName={myUserInfo.lastName}
-              firstName={myUserInfo.firstName}
+              userName={myUserInfo.user_name}
+              lastName={myUserInfo.last_name}
+              firstName={myUserInfo.first_name}
+              lastNameKana={myUserInfo.last_name_kana}
+              firstNameKana={myUserInfo.first_name_kana}
               email={myUserInfo.email}
+              birthday={myUserInfo.birthday}
               image={myUserInfo.image}
+              introduce={myUserInfo.introduce}
               buttonMessage="ユーザ詳細"
               subButtonMessage="退会する"
               onClick={() => onClickUserEdit()}
@@ -140,7 +273,7 @@ const MyPage = () => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="content">
         <div className="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
           <div className="mr-6">
@@ -164,7 +297,7 @@ const MyPage = () => {
                 startTime={myReserve?.start_time}
                 endTime={myReserve?.end_time}
                 buttonMessage="予約した内容をみる"
-                onClick={() => onClickMyReserveDetail(myReserve.event_id)}
+                onClick={() => onClickMyReserveDetail(myReserve?.event_id)}
               />
             </div>
           ))}
