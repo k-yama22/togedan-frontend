@@ -81,80 +81,105 @@ const MyReserves = () => {
           </h1>
         </div>
       </div>
-      <div className="content">
-        <div className="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
-          <div className="mr-6">
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
-              予約情報一覧
-            </h2>
-            <div className="font-base tracking-tight text-gray-600">一覧</div>
+      <div className="p-4 bg-gray-100">
+        <div className="container mx-auto my-5 p-5">
+          <div className="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
+            <div className="mr-6">
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
+                予約情報一覧
+              </h2>
+            </div>
           </div>
-        </div>
-        <div className="grid mt-8 gap-8 grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
-          <div
-            className="bg-gray-200 text-2xl pt-8 h-full w-full h-24 text-center"
-            role="button"
-            tabIndex={0}
-            onClick={onClickWillReserve}
-            onKeyDown={onClickWillReserve}
-          >
-            参加予定のイベント
-          </div>
-          <div
-            className="bg-gray-200 text-2xl pt-8 h-full w-full h-24 text-center"
-            role="button"
-            tabIndex={0}
-            onClick={onClickDidReserve}
-            onKeyDown={onClickDidReserve}
-          >
-            参加済みのイベント
-          </div>
-        </div>
-        {!changeFlg ? (
-          <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
-            {myReserveArr.map((myReserve) => (
-              <div key={myReserve.event_id}>
-                <EventCard
-                  id={myReserve.event_id}
-                  eventName={myReserve.event_name}
-                  genre={myReserve.genre}
-                  location={myReserve.location}
-                  image={myReserve.image}
-                  eventDate={myReserve.event_date}
-                  startTime={myReserve.start_time}
-                  endTime={myReserve.end_time}
-                  buttonMessage="予約した内容をみる"
-                  subButtonMessage="予約をキャンセルする"
-                  onClick={() => onClickMyReserveDetail(myReserve.event_id)}
-                  onClickSub={onClickReserveCancel}
-                />
+          {!changeFlg ? (
+            <>
+              <div className="grid mt-8 gap-2 grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
+                <div
+                  className="bg-teal-300 text-2xl pt-8 h-full w-full h-24 text-center"
+                  role="button"
+                  tabIndex={0}
+                  onClick={onClickWillReserve}
+                  onKeyDown={onClickWillReserve}
+                >
+                  参加予定のイベント
+                </div>
+                <div
+                  className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-2xl pt-8 h-full w-full h-24 text-center"
+                  role="button"
+                  tabIndex={0}
+                  onClick={onClickDidReserve}
+                  onKeyDown={onClickDidReserve}
+                >
+                  参加済みのイベント
+                </div>
               </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
-            {historyReserveArr.map((historyReserve) => (
-              <div key={historyReserve.event_id}>
-                <EventCard
-                  id={historyReserve.event_id}
-                  eventName={historyReserve.event_name}
-                  genre={historyReserve.genre}
-                  location={historyReserve.location}
-                  image={historyReserve.image}
-                  eventDate={historyReserve.event_date}
-                  startTime={historyReserve.start_time}
-                  endTime={historyReserve.end_time}
-                  buttonMessage="予約した内容をみる"
-                  subButtonMessage="予約をキャンセルする"
-                  onClick={() =>
-                    onClickMyReserveDetail(historyReserve.event_id)
-                  }
-                  onClickSub={onClickReserveCancel}
-                />
+              <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
+                {myReserveArr.map((myReserve) => (
+                  <div key={myReserve.event_id}>
+                    <EventCard
+                      id={myReserve.event_id}
+                      eventName={myReserve.event_name}
+                      genre={myReserve.genre}
+                      location={myReserve.location}
+                      image={myReserve.image}
+                      eventDate={myReserve.event_date}
+                      startTime={myReserve.start_time}
+                      endTime={myReserve.end_time}
+                      buttonMessage="予約した内容をみる"
+                      subButtonMessage="予約をキャンセルする"
+                      onClick={() => onClickMyReserveDetail(myReserve.event_id)}
+                      onClickSub={onClickReserveCancel}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        )}
+            </>
+          ) : (
+            <>
+              <div className="grid mt-8 gap-2 grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
+                <div
+                  className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-2xl pt-8 h-full w-full h-24 text-center"
+                  role="button"
+                  tabIndex={0}
+                  onClick={onClickWillReserve}
+                  onKeyDown={onClickWillReserve}
+                >
+                  参加予定のイベント
+                </div>
+                <div
+                  className="bg-teal-300 text-2xl pt-8 h-full w-full h-24 text-center"
+                  role="button"
+                  tabIndex={0}
+                  onClick={onClickDidReserve}
+                  onKeyDown={onClickDidReserve}
+                >
+                  参加済みのイベント
+                </div>
+              </div>
+              <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
+                {historyReserveArr.map((historyReserve) => (
+                  <div key={historyReserve.event_id}>
+                    <EventCard
+                      id={historyReserve.event_id}
+                      eventName={historyReserve.event_name}
+                      genre={historyReserve.genre}
+                      location={historyReserve.location}
+                      image={historyReserve.image}
+                      eventDate={historyReserve.event_date}
+                      startTime={historyReserve.start_time}
+                      endTime={historyReserve.end_time}
+                      buttonMessage="予約した内容をみる"
+                      subButtonMessage="予約をキャンセルする"
+                      onClick={() =>
+                        onClickMyReserveDetail(historyReserve.event_id)
+                      }
+                      onClickSub={onClickReserveCancel}
+                    />
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
       </div>
       <Footer />
     </div>
