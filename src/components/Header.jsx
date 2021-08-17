@@ -37,7 +37,7 @@ export const Header = () => {
       />
       <nav className="flex absolute items-center justify-between flex-wrap bg-teal-300 p-6 w-full pt-18">
         <Link href="/">
-          <a className="flex items-center flex-no-shrink text-white mr-6">
+          <a className="flex items-center flex-no-shrink text-white mr-6 hover:bg-teal-200 rounded-lg">
             <svg
               className="h-8 w-8 mr-2"
               width="54"
@@ -74,7 +74,7 @@ export const Header = () => {
               <>
                 <Link href="/myPage">
                   <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
-                    MyPage
+                    マイページ
                   </a>
                 </Link>
                 <Link href="/about">
@@ -98,7 +98,7 @@ export const Header = () => {
                     {lscache.get("loginImg") ? (
                       /* eslint-disable-next-line @next/next/no-img-element */
                       <img
-                        className="h-14 w-14 rounded-full border"
+                        className="h-14 w-14 rounded-full border hover:opacity-80"
                         src={loginImg?.url}
                         alt="アイコン画像"
                       />

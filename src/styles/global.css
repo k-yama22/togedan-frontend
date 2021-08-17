@@ -14,12 +14,37 @@
 .bm-cross {
   background: #bdc3c7;
 }
+
 .pagination {
   display: flex;
   margin: 0 auto;
 }
+
 .pagination li {
   margin: 0 12px;
+}
+
+.pagination li a {
+  position: relative;
+  font-size: 1.4rem;
+  width: 48px;
+  height: 48px;
+  outline: none;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.pagination :hover {
+  color: rgba(25, 200, 190, 0.8);
+}
+
+.pagination .active {
+  color: rgb(25, 210, 190);
+}
+
+.pagination__disabled {
+  color: gray;
+  pointer-events: none;
 }
 
 @tailwind utilities;

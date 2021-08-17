@@ -78,8 +78,10 @@ const Home = () => {
               </h2>
             </div>
           </div>
-          <div className="my-4 pl-4">おすすめイベント</div>
-          <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+          <div className="mt-8 pl-4 text-2xl font-semibold">
+            おすすめイベント
+          </div>
+          <div className="grid mt-4 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
             {eventArr.map((event) => (
               <div key={event.event_id}>
                 <MiniEventCard

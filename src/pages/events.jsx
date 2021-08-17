@@ -100,73 +100,80 @@ const Events = () => {
         </div>
       </div>
       <div>
-        <div className=" bg-gray-300">
-          <div>検索フォーム</div>
+        <div className="bg-gray-300">
+          <div className="text-center text-2xl p-4 font-semibold">
+            検索フォーム
+          </div>
           <div className="w-screen container mx-auto flex justify-center items-center p-2 md:p-0">
-            <div className=" border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6">
+            <div className="border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6">
               <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
                 <div className="grid grid-cols-5 gap-2 border border-gray-200 p-2 rounded">
-                  <div className="flex border rounded bg-gray-300 items-center p-2">
-                    <input
-                      type="text"
-                      placeholder="ジャンル"
-                      className="bg-gray-300 max-w-full focus:outline-none text-gray-700"
-                      value={genre}
-                      onChange={onChangeGenre}
-                    />
+                  <div className="text-center">
+                    <label htmlFor="genre">ジャンル</label>
+                    <div className="flex border rounded bg-gray-300 items-center p-2">
+                      <input
+                        id="genre"
+                        type="text"
+                        placeholder="例：HIPHOP"
+                        className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
+                        value={genre}
+                        onChange={onChangeGenre}
+                      />
+                    </div>
                   </div>
-                  <div className="flex border rounded bg-gray-300 items-center p-2">
-                    <input
-                      type="text"
-                      placeholder="場所"
-                      className="bg-gray-300 max-w-full focus:outline-none text-gray-700"
-                      value={location}
-                      onChange={onChangeLocation}
-                    />
+                  <div className="text-center">
+                    <label htmlFor="location">場所</label>
+                    <div className="flex border rounded bg-gray-300 items-center p-2">
+                      <input
+                        id="location"
+                        type="text"
+                        placeholder="例：渋谷"
+                        className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
+                        value={location}
+                        onChange={onChangeLocation}
+                      />
+                    </div>
                   </div>
-
-                  <div className="flex border rounded bg-gray-300 items-center p-2">
-                    <input
-                      type="date"
-                      min="1900-01-01"
-                      max="2100-12-31"
-                      placeholder="年月日"
-                      className="bg-gray-300 max-w-full focus:outline-none text-gray-700"
-                      value={eventDate}
-                      onChange={onChangeEventDate}
-                    />
+                  <div className="text-center">
+                    <label htmlFor="eventDate">開催日</label>
+                    <div className="flex border rounded bg-gray-300 items-center p-2">
+                      <input
+                        id="eventDate"
+                        type="date"
+                        min="1900-01-01"
+                        max="2100-12-31"
+                        placeholder="年月日"
+                        className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
+                        value={eventDate}
+                        onChange={onChangeEventDate}
+                      />
+                    </div>
                   </div>
-                  <div className="flex border rounded bg-gray-300 items-center p-2">
-                    {/* <label
-                        className="block text-sm text-white"
-                        htmlFor="startTime"
-                      >
-                        開始時刻
-                      </label> */}
-                    <input
-                      className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                      id="startTime"
-                      type="time"
-                      placeholder="開始時刻"
-                      value={startTime}
-                      onChange={onChangeStartTime}
-                    />
+                  <div className="text-center">
+                    <label htmlFor="startTime">開始時刻</label>
+                    <div className="flex border rounded bg-gray-300 items-center p-2">
+                      <input
+                        className="w-full px-5 py-1 h-10 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="startTime"
+                        type="time"
+                        placeholder="開始時刻"
+                        value={startTime}
+                        onChange={onChangeStartTime}
+                      />
+                    </div>
                   </div>
-                  <div className="flex border rounded bg-gray-300 items-center p-2">
-                    {/* <label
-                        className="block text-sm text-white"
-                        htmlFor="endTime"
-                      >
-                        終了時刻
-                      </label> */}
-                    <input
-                      className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                      id="endTime"
-                      type="time"
-                      placeholder="終了時刻"
-                      value={endTime}
-                      onChange={onChangeEndTime}
-                    />
+                  <div className="text-center">
+                    <label htmlFor="endTime">終了時刻</label>
+                    <div className="flex border rounded bg-gray-300 items-center p-2">
+                      <input
+                        className="w-full px-5 py-1 h-10 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        id="endTime"
+                        type="time"
+                        placeholder="終了時刻"
+                        value={endTime}
+                        onChange={onChangeEndTime}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -182,40 +189,44 @@ const Events = () => {
           </div>
         </div>
       </div>
-      <div>検索結果</div>
-      <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
-        {eventArr.slice(offset, offset + perPage).map((event) => (
-          <div key={event.event_id}>
-            <MiniEventCard
-              id={event.event_id}
-              eventName={event.event_name}
-              genre={event.genre}
-              location={event.location}
-              image={event.image}
-              eventDate={event.event_date}
-              startTime={event.start_time}
-              endTime={event.end_time}
-              buttonMessage="詳細を見る"
-              onClick={() => onClickEvent(event.event_id)}
-            />
+      <div className="p-4 bg-gray-100">
+        <div className="container mx-auto my-5 p-5">
+          <div className="text-center text-2xl font-semibold">検索結果</div>
+          <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+            {eventArr.slice(offset, offset + perPage).map((event) => (
+              <div key={event.event_id}>
+                <MiniEventCard
+                  id={event.event_id}
+                  eventName={event.event_name}
+                  genre={event.genre}
+                  location={event.location}
+                  image={event.image}
+                  eventDate={event.event_date}
+                  startTime={event.start_time}
+                  endTime={event.end_time}
+                  buttonMessage="詳細を見る"
+                  onClick={() => onClickEvent(event.event_id)}
+                />
+              </div>
+            ))}
           </div>
-        ))}
+          <ReactPaginate
+            previousLabel={"<"}
+            nextLabel={">"}
+            breakLabel={"..."}
+            pageCount={Math.ceil(eventArr.length / perPage)}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={handlePageChange}
+            containerClassName={"pagination"}
+            subContainerClassName={"pages pagination"}
+            activeClassName={"active"}
+            previousClassName={"pagination__previous"}
+            nextClassName={"pagination__next"}
+            disabledClassName={"pagination__disabled"}
+          />
+        </div>
       </div>
-      <ReactPaginate
-        previousLabel={"<"}
-        nextLabel={">"}
-        breakLabel={"..."}
-        pageCount={Math.ceil(eventArr.length / perPage)}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageChange}
-        containerClassName={"pagination"}
-        subContainerClassName={"pages pagination"}
-        activeClassName={"active"}
-        previousClassName={"pagination__previous"}
-        nextClassName={"pagination__next"}
-        disabledClassName={"pagination__disabled"}
-      />
       <Footer />
     </div>
   );
