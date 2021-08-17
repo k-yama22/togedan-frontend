@@ -19,6 +19,7 @@ export const useSignOut = () => {
       })
       .then((res) => {
         if (res.data) {
+          lscache.remove("loginCheck");
           lscache.flush();
           showNotify({ title: "ログアウトしました", status: "success" });
           router.push("/login");

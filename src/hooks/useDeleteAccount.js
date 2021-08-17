@@ -19,6 +19,7 @@ export const useDeleteAccount = () => {
       })
       .then((res) => {
         if (res.data) {
+          lscache.remove("loginCheck");
           lscache.flush();
           showNotify({ title: "退会しました", status: "success" });
           router.push("/login");
