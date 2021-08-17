@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useUserChange } from "src/hooks/useUserChange";
 import { Loading } from "src/components/Loading";
 import Link from "next/link";
@@ -10,8 +10,6 @@ import { useForm } from "react-hook-form";
 import { useMyUserInfo } from "src/hooks/useMyUserInfo";
 
 const UserEdit = () => {
-  const [image, setImage] = useState("");
-  const [preview, setPreview] = useState("");
   const { getMyUserInfo, myUserInfo } = useMyUserInfo();
 
   const { userChange, loading } = useUserChange();
@@ -37,20 +35,7 @@ const UserEdit = () => {
     formData.append("phone", data.phone);
     formData.append("introduce", data.introduce);
 
-    // imageはstateから取得
-    formData.append("image", image);
     return formData;
-  };
-
-  const onChangeImage = (e) => {
-    const iconFile = e.target.files[0];
-    if (iconFile) {
-      setImage(iconFile);
-      setPreview(window.URL.createObjectURL(iconFile));
-    } else {
-      setImage("");
-      setPreview("");
-    }
   };
 
   const onSubmit = (data) => {
@@ -73,8 +58,6 @@ const UserEdit = () => {
     setValue("phone", myUserInfo.phone);
     setValue("introduce", myUserInfo.introduce);
 
-    setImage(myUserInfo.image);
-    setPreview(myUserInfo.image?.url);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [myUserInfo]);
 
@@ -95,127 +78,136 @@ const UserEdit = () => {
         </div>
         <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
           <div className="container mx-auto h-full flex flex-1 justify-center items-center">
-            <div className="w-full max-w-md">
+            <div className="w-full max-w-2xl">
               <h1 className="bg-green-100">Together Dance</h1>
               <div className="leading-loose">
-                <div className="max-w-md m-4 p-10 bg-white bg-opacity-25 rounded shadow-xl">
+                <div className="max-w-2xl m-4 p-10 bg-white bg-opacity-25 rounded shadow-xl mx-auto">
                   <p className="text-white font-medium text-center text-lg font-bold">
                     ユーザ情報を入力してください
                   </p>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="">
-                      <label
-                        className="block text-sm text-white"
-                        htmlFor="lastName"
-                      >
-                        苗字
-                      </label>
-                      <input
-                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                        id="lastName"
-                        type="text"
-                        placeholder="苗字"
-                        {...register("lastName", {
-                          required: true,
-                          maxLength: 20,
-                        })}
-                      />
-                      {errors.lastName &&
-                        errors.lastName.type === "required" && (
-                          <span className="text-red-700">必須項目です</span>
-                        )}
-                      {errors.lastName &&
-                        errors.lastName.type === "maxLength" && (
-                          <span className="text-red-700">
-                            20文字以下で入力してください
-                          </span>
-                        )}
+                      <div className="grid md:grid-cols-2">
+                        <div className="m-2">
+                          <label
+                            className="block text-sm text-white"
+                            htmlFor="lastName"
+                          >
+                            苗字
+                          </label>
+
+                          <input
+                            className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                            id="lastName"
+                            type="text"
+                            placeholder="苗字"
+                            {...register("lastName", {
+                              required: true,
+                              maxLength: 20,
+                            })}
+                          />
+                          {errors.lastName &&
+                            errors.lastName.type === "required" && (
+                              <span className="text-red-700">必須項目です</span>
+                            )}
+                          {errors.lastName &&
+                            errors.lastName.type === "maxLength" && (
+                              <span className="text-red-700">
+                                20文字以下で入力してください
+                              </span>
+                            )}
+                        </div>
+
+                        <div className="m-2">
+                          <label
+                            className="block text-sm text-white"
+                            htmlFor="firstName"
+                          >
+                            名前
+                          </label>
+                          <input
+                            className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                            id="firstName"
+                            type="text"
+                            placeholder="名前"
+                            {...register("firstName", {
+                              required: true,
+                              maxLength: 20,
+                            })}
+                          />
+                          {errors.firstName &&
+                            errors.firstName.type === "required" && (
+                              <span className="text-red-700">必須項目です</span>
+                            )}
+                          {errors.firstName &&
+                            errors.firstName.type === "maxLength" && (
+                              <span className="text-red-700">
+                                20文字以下で入力してください
+                              </span>
+                            )}
+                        </div>
+                      </div>
                     </div>
-                    <div className="mt-2">
-                      <label
-                        className="block text-sm text-white"
-                        htmlFor="firstName"
-                      >
-                        名前
-                      </label>
-                      <input
-                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                        id="firstName"
-                        type="text"
-                        placeholder="名前"
-                        {...register("firstName", {
-                          required: true,
-                          maxLength: 20,
-                        })}
-                      />
-                      {errors.firstName &&
-                        errors.firstName.type === "required" && (
-                          <span className="text-red-700">必須項目です</span>
-                        )}
-                      {errors.firstName &&
-                        errors.firstName.type === "maxLength" && (
-                          <span className="text-red-700">
-                            20文字以下で入力してください
-                          </span>
-                        )}
+                    <div className="grid md:grid-cols-2">
+                      <div className="m-2">
+                        <label
+                          className="block text-sm text-white"
+                          htmlFor="lastNameKana"
+                        >
+                          苗字（カナ）
+                        </label>
+                        <input
+                          className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                          id="lastNameKana"
+                          type="text"
+                          placeholder="苗字（カナ）"
+                          {...register("lastNameKana", {
+                            required: true,
+                            maxLength: 40,
+                          })}
+                        />
+                        {errors.lastNameKana &&
+                          errors.lastNameKana.type === "required" && (
+                            <span className="text-red-700">必須項目です</span>
+                          )}
+                        {errors.lastNameKana &&
+                          errors.lastNameKana.type === "maxLength" && (
+                            <span className="text-red-700">
+                              40文字以下で入力してください
+                            </span>
+                          )}
+                      </div>
+                      <div className="m-2">
+                        <label
+                          className="block text-sm text-white"
+                          htmlFor="firstNameKana"
+                        >
+                          名前（カナ）
+                        </label>
+                        <input
+                          className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                          id="firstNameKana"
+                          type="text"
+                          placeholder="名前（カナ）"
+                          {...register("firstNameKana", {
+                            required: true,
+                            maxLength: 40,
+                          })}
+                        />
+                        {errors.firstNameKana &&
+                          errors.firstNameKana.type === "required" && (
+                            <span className="text-red-700">必須項目です</span>
+                          )}
+                        {errors.firstNameKana &&
+                          errors.firstNameKana.type === "maxLength" && (
+                            <span className="text-red-700">
+                              40文字以下で入力してください
+                            </span>
+                          )}
+                      </div>
                     </div>
-                    <div className="mt-2">
-                      <label
-                        className="block text-sm text-white"
-                        htmlFor="lastNameKana"
-                      >
-                        苗字（カナ）
-                      </label>
-                      <input
-                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                        id="lastNameKana"
-                        type="text"
-                        placeholder="苗字（カナ）"
-                        {...register("lastNameKana", {
-                          required: true,
-                          maxLength: 40,
-                        })}
-                      />
-                      {errors.lastNameKana &&
-                        errors.lastNameKana.type === "required" && (
-                          <span className="text-red-700">必須項目です</span>
-                        )}
-                      {errors.lastNameKana &&
-                        errors.lastNameKana.type === "maxLength" && (
-                          <span className="text-red-700">
-                            40文字以下で入力してください
-                          </span>
-                        )}
-                    </div>
-                    <div className="mt-2">
-                      <label
-                        className="block text-sm text-white"
-                        htmlFor="firstNameKana"
-                      >
-                        名前（カナ）
-                      </label>
-                      <input
-                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                        id="firstNameKana"
-                        type="text"
-                        placeholder="名前（カナ）"
-                        {...register("firstNameKana", {
-                          required: true,
-                          maxLength: 40,
-                        })}
-                      />
-                      {errors.firstNameKana &&
-                        errors.firstNameKana.type === "required" && (
-                          <span className="text-red-700">必須項目です</span>
-                        )}
-                      {errors.firstNameKana &&
-                        errors.firstNameKana.type === "maxLength" && (
-                          <span className="text-red-700">
-                            40文字以下で入力してください
-                          </span>
-                        )}
-                    </div>
-                    <div className="mt-2">
+
+                    <div className="m-2">
                       <label
                         className="block text-sm text-white"
                         htmlFor="userName"
@@ -243,7 +235,7 @@ const UserEdit = () => {
                           </span>
                         )}
                     </div>
-                    <div className="mt-2">
+                    <div className="m-2">
                       <label
                         className="block text-sm text-white"
                         htmlFor="email"
@@ -262,7 +254,7 @@ const UserEdit = () => {
                       )}
                     </div>
 
-                    <div className="mt-2">
+                    <div className="m-2">
                       <label
                         className="block text-sm text-white"
                         htmlFor="birthday"
@@ -283,7 +275,7 @@ const UserEdit = () => {
                           <span className="text-red-700">必須項目です</span>
                         )}
                     </div>
-                    <div className="mt-2">
+                    <div className="m-2">
                       <label
                         className="block text-sm text-white"
                         htmlFor="phone"
@@ -309,25 +301,7 @@ const UserEdit = () => {
                         </span>
                       )}
                     </div>
-                    <div className="mt-2">
-                      <label
-                        className="block text-sm text-white"
-                        htmlFor="image"
-                      >
-                        アイコン画像
-                      </label>
-                      <input
-                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                        id="image"
-                        type="file"
-                        accept="image/*"
-                        placeholder="アイコン画像"
-                        onChange={onChangeImage}
-                      />
-                    </div>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    {preview ? <img src={preview} alt="preview img" /> : null}
-                    <div className="mt-2">
+                    <div className="m-2">
                       <label
                         className="block text-sm text-white"
                         htmlFor="introduce"
@@ -337,7 +311,7 @@ const UserEdit = () => {
                       <textarea
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                         id="introduce"
-                        rows="3"
+                        rows="8"
                         wrap="hard"
                         placeholder="自己紹介"
                         {...register("introduce", {
@@ -353,7 +327,7 @@ const UserEdit = () => {
                         )}
                     </div>
                     <div className="mt-4 items-center flex justify-between">
-                      <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded">
+                      <button className="w-48 px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded mx-auto">
                         {loading ? <Loading /> : <>変更</>}
                       </button>
                     </div>
