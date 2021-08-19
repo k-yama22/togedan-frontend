@@ -12,15 +12,16 @@ const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     console.log("初期レンダーしてる");
     if (
-      router.pathname === "/login" ||
-      router.pathname === "/" ||
-      router.pathname === "/signUp" ||
-      router.pathname === "/tempRegistration"
+      router.pathname === "/login"
+      //   router.pathname === "/" ||
+      //   router.pathname === "/signUp" ||
+      //   router.pathname === "/tempRegistration"
     )
       return;
     if (lscache.get("loginCheck")) {
       lscache.flushExpired();
       if (!lscache.get("loginId")) {
+        lscache.remove("loginCheck");
         lscache.flush();
         showNotify({ title: "タイムアウトしました", status: "error" });
         router.push("/login");
@@ -31,7 +32,10 @@ const MyApp = ({ Component, pageProps }) => {
         router.pathname === "/" ||
         router.pathname === "/signUp" ||
         router.pathname === "/events" ||
-        router.pathname === "/eventDetail"
+        router.pathname === "/eventDetail" ||
+        router.pathname === "/tempRegistration" ||
+        router.pathname === "/passForget" ||
+        router.pathname === "/passReset"
       )
     ) {
       showNotify({
