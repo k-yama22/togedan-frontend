@@ -355,7 +355,7 @@ const SignUp = () => {
                         )}
                     </div>
                     <div className="mt-4 items-center flex justify-between">
-                      <button className="w-48 px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded mx-auto">
+                      <button className="w-48 px-4 py-1 flex items-center justify-center text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded mx-auto">
                         {loading ? <Loading /> : <>登録</>}
                       </button>
                     </div>
