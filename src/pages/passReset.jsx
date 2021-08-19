@@ -4,20 +4,37 @@ import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 
 import { Loading } from "src/components/Loading";
-import { usePassChange } from "src/hooks/usePassChange";
 import { useForm } from "react-hook-form";
+import { usePassReset } from "src/hooks/usePassReset";
 
-const PassChange = () => {
+//サーバーサイドレンダリング
+export async function getServerSideProps(context) {
+  //クエリパラメータのID取得
+  const accessToken = context.query["access-token"];
+  const client = context.query["client"];
+  const uid = context.query["uid"];
+
+  return {
+    props: {
+      accessToken: accessToken,
+      client: client,
+      uid: uid,
+    },
+  };
+}
+
+const PassReset = (props) => {
+  const { accessToken, client, uid } = props;
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { passChange, loading } = usePassChange();
+  const { passReset, loading } = usePassReset();
 
   const onSubmit = (data) => {
-    passChange(data);
+    passReset(data, accessToken, client, uid);
     console.log(data);
   };
 
@@ -41,34 +58,6 @@ const PassChange = () => {
                     パスワードを入力してください
                   </p>
                   <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="">
-                      <label
-                        className="block text-sm text-white"
-                        htmlFor="currentPassword"
-                      >
-                        現在のパスワード
-                      </label>
-                      <input
-                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                        id="currentPassword"
-                        type="password"
-                        placeholder="現在のパスワード"
-                        {...register("currentPassword", {
-                          required: true,
-                          minLength: 8,
-                        })}
-                      />
-                      {errors.currentPassword &&
-                        errors.currentPassword.type === "required" && (
-                          <span className="text-red-700">必須項目です</span>
-                        )}
-                      {errors.currentPassword &&
-                        errors.currentPassword.type === "minLength" && (
-                          <span className="text-red-700">
-                            8文字以上で入力してください
-                          </span>
-                        )}
-                    </div>
                     <div className="">
                       <label
                         className="block text-sm text-white"
@@ -144,4 +133,4 @@ const PassChange = () => {
   );
 };
 
-export default PassChange;
+export default PassReset;

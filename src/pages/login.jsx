@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useAuth } from "src/hooks/useAuth";
@@ -7,7 +7,8 @@ import { Loading } from "src/components/Loading";
 import { useForm } from "react-hook-form";
 import { Header } from "src/components/Header";
 
-const Login = () => {
+// eslint-disable-next-line react/display-name
+const Login = memo(() => {
   const { login, loading } = useAuth();
 
   const {
@@ -94,7 +95,7 @@ const Login = () => {
                       <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded">
                         {loading ? <Loading /> : <>ログイン</>}
                       </button>
-                      <Link href="/#">
+                      <Link href="/passForget">
                         <a className="inline-block right-0 align-baseline font-bold text-sm text-500 text-white hover:text-red-400">
                           パスワードを忘れた方はこちら
                         </a>
@@ -118,6 +119,6 @@ const Login = () => {
       </div>
     </>
   );
-};
+});
 
 export default Login;

@@ -19,7 +19,7 @@ const PassForget = () => {
   const createFormData = (data) => {
     const formData = new FormData();
     formData.append("email", data.email);
-    formData.append("redirect_url", "http://localhost:3000");
+    formData.append("redirect_url", "http://localhost:3000/passReset");
 
     return formData;
   };
