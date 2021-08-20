@@ -66,10 +66,13 @@ const Events = () => {
     const arr = [];
     for (let i = 0; i < events.length; i++) {
       arr.push(events[i]);
+      const eventDate = dayjs(events[i].event_date);
       const startTime = dayjs(events[i].start_time);
       const endTime = dayjs(events[i].end_time);
-      arr[i].start_time = startTime.format("HH:mm");
-      arr[i].end_time = endTime.format("HH:mm");
+
+      arr[i].event_date = eventDate.format("YYYY年MM月DD日");
+      arr[i].start_time = startTime.format("HH時mm分");
+      arr[i].end_time = endTime.format("HH時mm分");
     }
     setEventArr(arr);
   }, [events]);

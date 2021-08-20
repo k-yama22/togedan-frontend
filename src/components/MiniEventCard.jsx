@@ -17,25 +17,25 @@ export const MiniEventCard = memo((props) => {
   } = props;
   return (
     <div className="flex flex-col">
-      <div className="bg-white shadow-md  rounded-3xl p-4">
+      <div className="bg-white shadow-md rounded-3xl p-4">
         <div className="flex-none lg:flex">
           <div className=" h-full w-full lg:h-48 lg:w-48   lg:mb-0 mb-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={image?.url}
-              alt="Just a flower"
-              className=" w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl"
+              alt="アイコン画像"
+              className=" w-full object-scale-down lg:object-cover lg:h-48 rounded-2xl"
             />
           </div>
           <div className="flex-auto ml-3 justify-evenly py-2">
-            <div className="flex flex-wrap ">
-              <div className="w-full flex-none text-xs text-blue-700 font-medium ">
+            <div className="flex flex-wrap">
+              <h2 className="flex-auto text-2xl font-medium">{eventName}</h2>
+              <div className="w-full flex-none text-sm text-blue-700 font-medium">
                 {genre}
               </div>
-              <h2 className="flex-auto text-lg font-medium">{eventName}</h2>
             </div>
             <p className="mt-3"></p>
-            <div className="flex py-4  text-sm text-gray-600">
+            <div className="flex py-4 text-md text-gray-600">
               <div className="flex-1 inline-flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -74,9 +74,12 @@ export const MiniEventCard = memo((props) => {
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   ></path>
                 </svg>
-                <p className="">
-                  {eventDate}の{startTime}〜{endTime}
-                </p>
+                <div>
+                  <p className="">{eventDate}</p>
+                  <p className="">
+                    {startTime}〜{endTime}
+                  </p>
+                </div>
               </div>
             </div>
             <div className="flex p-4 pb-2 border-t border-gray-200 "></div>
