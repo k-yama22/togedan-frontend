@@ -95,16 +95,14 @@ const EventDetail = (props) => {
                   詳細を見る
                 </button>
               </div>
-
-              <div className="my-4"></div>
             </div>
 
-            <div className="w-full md:w-9/12 mx-2 h-64">
-              <div className="bg-white p-3 shadow-sm rounded-sm">
-                <div className="container px-5 py-11 mx-auto">
+            <div className="w-full md:w-9/12 mx-2 h-full">
+              <div className="bg-white p-3 shadow-sm rounded-sm h-full">
+                <div className="container px-5 py-12 mx-auto">
                   <div className=" mx-auto flex flex-wrap">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <div className=" w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 h-full">
+                    <div className="w-full sm:py-10 lg:pl-10 lg:py-16 mt-6 lg:mt-0 h-full">
                       <h2 className="text-sm title-font text-gray-500 tracking-widest">
                         イベント名称
                       </h2>

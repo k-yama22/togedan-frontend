@@ -15,6 +15,7 @@ export const MiniEventCard = memo((props) => {
     buttonMessage,
     onClick,
   } = props;
+
   return (
     <div className="flex flex-col">
       <div className="bg-white shadow-md rounded-3xl p-4">

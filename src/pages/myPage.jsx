@@ -53,18 +53,22 @@ const MyPage = () => {
     if (myReserves.length > 4) {
       for (let i = 0; i < 4; i++) {
         arr.push(myReserves[i]);
+        const eventDate = dayjs(myReserves[i].event_date);
         const startTime = dayjs(myReserves[i].start_time);
         const endTime = dayjs(myReserves[i].end_time);
-        arr[i].start_time = startTime.format("HH:mm");
-        arr[i].end_time = endTime.format("HH:mm");
+        arr[i].event_date = eventDate.format("YYYY年MM月DD日");
+        arr[i].start_time = startTime.format("HH時mm分");
+        arr[i].end_time = endTime.format("HH時mm分");
       }
     } else {
       for (let i = 0; i < myReserves.length; i++) {
         arr.push(myReserves[i]);
+        const eventDate = dayjs(myReserves[i].event_date);
         const startTime = dayjs(myReserves[i].start_time);
         const endTime = dayjs(myReserves[i].end_time);
-        arr[i].start_time = startTime.format("HH:mm");
-        arr[i].end_time = endTime.format("HH:mm");
+        arr[i].event_date = eventDate.format("YYYY年MM月DD日");
+        arr[i].start_time = startTime.format("HH時mm分");
+        arr[i].end_time = endTime.format("HH時mm分");
       }
     }
     setMyReserveArr(arr);
@@ -75,18 +79,22 @@ const MyPage = () => {
     if (myEvents.length > 4) {
       for (let i = 0; i < 4; i++) {
         arr.push(myEvents[i]);
+        const eventDate = dayjs(myEvents[i].event_date);
         const startTime = dayjs(myEvents[i].start_time);
         const endTime = dayjs(myEvents[i].end_time);
-        arr[i].start_time = startTime.format("HH:mm");
-        arr[i].end_time = endTime.format("HH:mm");
+        arr[i].event_date = eventDate.format("YYYY年MM月DD日");
+        arr[i].start_time = startTime.format("HH時mm分");
+        arr[i].end_time = endTime.format("HH時mm分");
       }
     } else {
       for (let i = 0; i < myEvents.length; i++) {
         arr.push(myEvents[i]);
+        const eventDate = dayjs(myEvents[i].event_date);
         const startTime = dayjs(myEvents[i].start_time);
         const endTime = dayjs(myEvents[i].end_time);
-        arr[i].start_time = startTime.format("HH:mm");
-        arr[i].end_time = endTime.format("HH:mm");
+        arr[i].event_date = eventDate.format("YYYY年MM月DD日");
+        arr[i].start_time = startTime.format("HH時mm分");
+        arr[i].end_time = endTime.format("HH時mm分");
       }
     }
     setMyEventArr(arr);
@@ -172,7 +180,9 @@ const MyPage = () => {
                       />
                     </svg>
                   </span>
-                  <span className="tracking-wide text-2xl">ユーザー情報</span>
+                  <span className="tracking-wide text-2xl m-2">
+                    ユーザー情報
+                  </span>
                 </div>
                 <div className="text-gray-700">
                   <div className="grid md:grid-cols-2 text-lg">
