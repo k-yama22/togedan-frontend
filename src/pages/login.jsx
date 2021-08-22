@@ -114,9 +114,8 @@ const Login = memo(() => {
             </div>
           </div>
         </main>
-
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 });
