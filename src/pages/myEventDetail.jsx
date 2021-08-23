@@ -8,6 +8,7 @@ import CancelConfirmModal from "src/components/CancelConfirmModal";
 import { useSelectMyEventDetail } from "src/hooks/useSelectMyEventDetail";
 import { useRouter } from "next/router";
 import { useDeleteEvent } from "src/hooks/useDeleteEvent";
+import Link from "next/link";
 
 //サーバーサイドレンダリング
 export async function getServerSideProps(context) {
@@ -57,6 +58,14 @@ const MyEventDetail = (props) => {
 
       <Header />
 
+      <div className="bg-gray-600">
+        <div className="flex relative text-center">
+          <h1 className="text-3xl tracking-wider text-white text-sha font-bold p-4 self-center z-10 content-center text-center w-full md:text-4xl">
+            マイイベント画面
+          </h1>
+        </div>
+      </div>
+
       <div className="bg-gray-100">
         <div className="container mx-auto my-5 p-5">
           <div className="md:flex no-wrap md:-mx-2 ">
@@ -87,12 +96,11 @@ const MyEventDetail = (props) => {
                     </span>
                   </li>
                 </ul>
-                {/* <button
-                  className="flex mx-auto mt-3 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
-                  onClick={onClickReserveCancel}
-                >
-                  マイページへ
-                </button> */}
+                <Link href="/myPage">
+                  <a className="flex mx-auto w-48 items-center justify-center mt-6 text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded">
+                    マイページへ
+                  </a>
+                </Link>
               </div>
             </div>
 
