@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useSelectEvent } from "src/hooks/useSelectEvent";
 import { useNewReserve } from "src/hooks/useNewReserve";
 import dayjs from "dayjs";
+import router from "next/router";
 
 //サーバーサイドレンダリング
 export async function getServerSideProps(context) {
@@ -28,6 +29,10 @@ const EventDetail = (props) => {
 
   const onClickReserve = () => {
     newReserve(selectedEvent.event_id);
+  };
+
+  const onClickHoldUser = (id) => {
+    router.push({ pathname: "/holdUser", query: { id: id } });
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -89,8 +94,8 @@ const EventDetail = (props) => {
                   </li>
                 </ul>
                 <button
-                  className="flex mx-auto mt-3 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
-                  onClick={onClickReserve}
+                  className="flex mx-auto mt-3 text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded"
+                  onClick={() => onClickHoldUser(selectedEvent.id)}
                 >
                   詳細を見る
                 </button>

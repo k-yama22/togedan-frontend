@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import { useDeleteReserve } from "src/hooks/useDeleteReserve";
 import CancelConfirmModal from "src/components/CancelConfirmModal";
 import { useSelectReservedEvent } from "src/hooks/useSelectReservedEvent";
+import router from "next/router";
 
 //サーバーサイドレンダリング
 export async function getServerSideProps(context) {
@@ -30,6 +31,10 @@ const MyReserveDetail = (props) => {
 
   const onClickReserveCancel = (id) => {
     deleteMyReserves(id);
+  };
+
+  const onClickHoldUser = (id) => {
+    router.push({ pathname: "/holdUser", query: { id: id } });
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -91,12 +96,12 @@ const MyReserveDetail = (props) => {
                     </span>
                   </li>
                 </ul>
-                {/* <button
-                  className="flex mx-auto mt-3 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
-                  onClick={onClickReserveCancel}
+                <button
+                  className="flex mx-auto mt-3 text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded"
+                  onClick={() => onClickHoldUser(selectedEvent.id)}
                 >
-                  マイページへ
-                </button> */}
+                  詳細を見る
+                </button>
               </div>
             </div>
 
