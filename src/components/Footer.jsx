@@ -12,13 +12,13 @@ export const Footer = () => {
             </div>
             <Link href="/events">
               <a className="my-3 block">
-                イベントを検索する
+                踊ろう会を検索する
                 <span className="text-teal-600 text-xs p-1"></span>
               </a>
             </Link>
             <Link href="/newEvent">
               <a className="my-3 block">
-                イベントを開催する
+                踊ろう会を開催する
                 <span className="text-teal-600 text-xs p-1"></span>
               </a>
             </Link>
@@ -27,7 +27,7 @@ export const Footer = () => {
             <div className="text-xs uppercase text-gray-400 font-medium">
               ご利用のみなさまへ
             </div>
-            <Link href="/#">
+            {/* <Link href="/#">
               <a className="my-3 block">
                 イベントに参加される方へ
                 <span className="text-teal-600 text-xs p-1"></span>
@@ -38,11 +38,11 @@ export const Footer = () => {
                 イベントを開催される方へ
                 <span className="text-teal-600 text-xs p-1"></span>
               </a>
-            </Link>
+            </Link> */}
             <Link href="/userEdit">
               <a className="my-3 block">ユーザー情報を変更する</a>
             </Link>
-            <Link href="/#">
+            <Link href="/quit">
               <a className="my-3 block">退会はこちら</a>
             </Link>
           </div>
@@ -53,14 +53,14 @@ export const Footer = () => {
             <Link href="/about">
               <a className="my-3 block">Together Danceとは</a>
             </Link>
-            <Link href="/#">
+            {/* <Link href="/#">
               <a className="my-3 block">ご利用ガイド</a>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
 
-      <div className="bg-gray-900 pt-2 ">
+      <div className="bg-gray-900 ">
         <div
           className="flex pb-5 px-3 m-auto pt-5 border-t text-gray-400 text-sm flex-col
       md:flex-row "

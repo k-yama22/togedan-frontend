@@ -18,17 +18,17 @@ export const SideMenu = (props) => {
           <>
             <Link href="/myPage">
               <a className="block mt-4 text-teal-lighter hover:text-gray-500 mr-4">
-                MyPage
+                マイページ
               </a>
             </Link>
-            <Link href="/about">
+            <Link href="/events">
               <a className="block mt-4 text-teal-lighter hover:text-gray-500 mr-4">
-                About
+                踊ろう会を探す
               </a>
             </Link>
             <Link href="/newEvent">
               <a className="block mt-4 text-teal-lighter hover:text-gray-500 mr-4">
-                踊ろう会の開催はこちら
+                踊ろう会を開催する
               </a>
             </Link>
             <button
@@ -42,7 +42,7 @@ export const SideMenu = (props) => {
           <>
             <Link href="/login">
               <a className="block mt-6 text-teal-lighter hover:text-gray-500 mr-4">
-                Login
+                ログイン
               </a>
             </Link>
             <Link href="/signUp">

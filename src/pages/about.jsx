@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
+import Link from "next/link";
 const About = () => {
   return (
     <div>
@@ -89,6 +90,13 @@ const About = () => {
                   <br />
                   などなど自由な形式でOK！！
                 </p>
+                <div className="mt-12">
+                  <Link href="newEvent">
+                    <a className="text-3xl text-blue-400 hover:text-blue-500">
+                      踊ろう会の開催はこちらから →
+                    </a>
+                  </Link>
+                </div>
               </div>
             </div>
             <div className="hidden lg:block lg:w-1/2 h-3/4">
@@ -108,7 +116,9 @@ const About = () => {
         <div className="bg-purple-600">
           <div className="container mx-auto">
             <div className="flex py-16 items-center ">
-              <div>誰でもイベントを開催</div>
+              <div className="text-4xl text-white ml-auto">
+                いつでも踊ろう会に参加
+              </div>
             </div>
           </div>
         </div>
@@ -134,10 +144,20 @@ const About = () => {
                 </h2>
                 <p className="mt-2 text-2xl text-gray-500">
                   好きな踊ろう会にいつでも自由に参加可能！
+                  <br />
                   好きなダンスが同じ人同士で一緒に踊ったり
+                  <br />
                   様々な踊ろう会に気軽に参加して様々ジャンルの経験を積んだり
+                  <br />
                   好きなタイミング好きな目的を持ってみんなで楽しくダンシング！！
                 </p>
+                <div className="mt-12">
+                  <Link href="/events">
+                    <a className="text-3xl text-blue-400 hover:text-blue-500">
+                      踊ろう会の検索はこちらから →
+                    </a>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

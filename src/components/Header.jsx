@@ -77,14 +77,14 @@ export const Header = () => {
                     マイページ
                   </a>
                 </Link>
-                <Link href="/about">
+                <Link href="/events">
                   <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
-                    About
+                    踊ろう会を探す
                   </a>
                 </Link>
                 <Link href="/newEvent">
                   <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
-                    踊ろう会の開催はこちら
+                    踊ろう会を開催する
                   </a>
                 </Link>
                 <button
@@ -117,7 +117,7 @@ export const Header = () => {
               <>
                 <Link href="/login">
                   <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
-                    Login
+                    ログイン
                   </a>
                 </Link>
                 <Link href="/signUp">
