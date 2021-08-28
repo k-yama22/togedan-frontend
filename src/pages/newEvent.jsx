@@ -45,6 +45,7 @@ const NewEvent = () => {
                         htmlFor="eventName"
                       >
                         イベント名称
+                        <span className="text-red-700">*</span>
                       </label>
                       <input
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -72,7 +73,7 @@ const NewEvent = () => {
                         className="block  text-sm text-white"
                         htmlFor="genre"
                       >
-                        ジャンル
+                        ジャンル<span className="text-red-700">*</span>
                       </label>
                       <input
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -98,7 +99,7 @@ const NewEvent = () => {
                         className="block  text-sm text-white"
                         htmlFor="location"
                       >
-                        開催場所
+                        開催場所<span className="text-red-700">*</span>
                       </label>
                       <input
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -126,7 +127,7 @@ const NewEvent = () => {
                         className="block  text-sm text-white"
                         htmlFor="eventDate"
                       >
-                        開催日
+                        開催日<span className="text-red-700">*</span>
                       </label>
                       <input
                         className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -148,7 +149,7 @@ const NewEvent = () => {
                           className="block text-sm text-white"
                           htmlFor="startTime"
                         >
-                          開始時刻
+                          開始時刻<span className="text-red-700">*</span>
                         </label>
                         <input
                           className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -167,7 +168,7 @@ const NewEvent = () => {
                           className="block text-sm text-white"
                           htmlFor="endTime"
                         >
-                          終了時刻
+                          終了時刻<span className="text-red-700">*</span>
                         </label>
                         <input
                           className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -186,7 +187,7 @@ const NewEvent = () => {
                           className="block text-sm text-white"
                           htmlFor="maxPeople"
                         >
-                          最大人数
+                          最大人数<span className="text-red-700">*</span>
                         </label>
                         <input
                           className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -215,7 +216,7 @@ const NewEvent = () => {
                         className="block text-sm text-white"
                         htmlFor="eventMessage"
                       >
-                        開催者メッセージ
+                        開催者メッセージ<span className="text-red-700">*</span>
                       </label>
                       <textarea
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"

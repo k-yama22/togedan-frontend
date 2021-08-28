@@ -78,7 +78,7 @@ const SignUp = () => {
                             className="block text-sm text-white"
                             htmlFor="lastName"
                           >
-                            苗字
+                            苗字<span className="text-red-700">*</span>
                           </label>
                           <input
                             className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -106,7 +106,7 @@ const SignUp = () => {
                             className="block  text-sm text-white"
                             htmlFor="firstName"
                           >
-                            名前
+                            名前<span className="text-red-700">*</span>
                           </label>
                           <input
                             className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -137,7 +137,7 @@ const SignUp = () => {
                           className="block text-sm text-white"
                           htmlFor="lastNameKana"
                         >
-                          苗字（カナ）
+                          苗字（カナ）<span className="text-red-700">*</span>
                         </label>
                         <input
                           className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -165,7 +165,7 @@ const SignUp = () => {
                           className="block  text-sm text-white"
                           htmlFor="firstNameKana"
                         >
-                          名前（カナ）
+                          名前（カナ）<span className="text-red-700">*</span>
                         </label>
                         <input
                           className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -194,7 +194,7 @@ const SignUp = () => {
                         className="block  text-sm text-white"
                         htmlFor="userName"
                       >
-                        ユーザーネーム
+                        ユーザーネーム<span className="text-red-700">*</span>
                       </label>
                       <input
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -222,7 +222,7 @@ const SignUp = () => {
                         className="block  text-sm text-white"
                         htmlFor="email"
                       >
-                        メールアドレス
+                        メールアドレス<span className="text-red-700">*</span>
                       </label>
                       <input
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -241,7 +241,7 @@ const SignUp = () => {
                         className="block text-sm text-white"
                         htmlFor="password"
                       >
-                        パスワード
+                        パスワード<span className="text-red-700">*</span>
                       </label>
                       <input
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -269,7 +269,7 @@ const SignUp = () => {
                         className="block text-sm text-white"
                         htmlFor="birthday"
                       >
-                        生年月日
+                        生年月日<span className="text-red-700">*</span>
                       </label>
                       <input
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -290,7 +290,7 @@ const SignUp = () => {
                         className="block text-sm text-white"
                         htmlFor="phone"
                       >
-                        電話番号
+                        電話番号<span className="text-red-700">*</span>
                       </label>
                       <input
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -331,7 +331,7 @@ const SignUp = () => {
                     {preview ? <img src={preview} alt="preview img" /> : null}
                     <div className="m-2">
                       <label
-                        className="block  text-sm text-white"
+                        className="block text-sm text-white"
                         htmlFor="introduce"
                       >
                         自己紹介
