@@ -26,7 +26,7 @@ export const useDeleteReserve = () => {
       .then((res) => {
         setDeleteReserve(res.data.data);
         showNotify({ title: res.data.message, status: "success" });
-        router.reload();
+        router.push("/myReserves");
       })
       .catch(() => {
         showNotify({ title: "取得できませんでした", status: "error" });
