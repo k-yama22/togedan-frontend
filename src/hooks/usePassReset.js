@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { PASSWORD_URL } from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const usePassReset = () => {
@@ -18,7 +19,7 @@ export const usePassReset = () => {
     };
     axios
       .put(
-        `http://localhost:3001/auth/password`,
+        PASSWORD_URL,
         {
           password: data.password,
           password_confirmation: data.confirmPassword,

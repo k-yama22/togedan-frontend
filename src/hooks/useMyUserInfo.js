@@ -3,6 +3,7 @@ import { useState } from "react";
 import lscache from "lscache";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
+import { USERS_URL } from "src/hooks/constants";
 
 export const useMyUserInfo = () => {
   const [myUserInfo, setMyUserInfo] = useState([]);
@@ -12,7 +13,7 @@ export const useMyUserInfo = () => {
   const getMyUserInfo = () => {
     const loginId = lscache.get("loginId");
     axios
-      .get(`http://localhost:3001/api/v1/users/${loginId}`, {
+      .get(`${USERS_URL}/${loginId}`, {
         headers: headers,
       })
       .then((res) => {

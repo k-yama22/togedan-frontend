@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
 import { authHeaders } from "src/hooks/authHeaders";
+import { AUTH_URL } from "src/hooks/constants";
 
 export const useDeleteAccount = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ export const useDeleteAccount = () => {
     setLoading(true);
     const headers = authHeaders();
     axios
-      .delete(`http://localhost:3001/auth/`, {
+      .delete(AUTH_URL, {
         headers: headers,
       })
       .then((res) => {

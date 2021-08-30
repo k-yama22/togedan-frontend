@@ -3,6 +3,7 @@ import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
+import { RESERVES_URL } from "src/hooks/constants";
 
 export const useSelectReservedEvent = () => {
   const { showNotify } = useNotify();
@@ -14,7 +15,7 @@ export const useSelectReservedEvent = () => {
     const headers = authHeaders();
     axios
       .post(
-        `http://localhost:3001/api/v1/reserves/${eventId}/event`,
+        `${RESERVES_URL}/${eventId}/event`,
         {
           event_id: eventId,
           user_id: loginId,

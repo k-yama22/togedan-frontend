@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
+import { RESERVES_URL } from "src/hooks/constants";
 
 export const useNewReserve = () => {
   const router = useRouter();
@@ -12,7 +13,7 @@ export const useNewReserve = () => {
     const headers = authHeaders();
     axios
       .post(
-        `http://localhost:3001/api/v1/reserves`,
+        RESERVES_URL,
         {
           event_id: eventId,
           user_id: lscache.get("loginId"),

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { AUTH_URL } from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useSignUp = () => {
@@ -11,7 +12,7 @@ export const useSignUp = () => {
   const signUp = (signUpData) => {
     setLoading(true);
     axios
-      .post(`http://localhost:3001/auth`, signUpData)
+      .post(AUTH_URL, signUpData)
       .then((res) => {
         if (res.data) {
           showNotify({ title: "仮登録完了しました", status: "success" });

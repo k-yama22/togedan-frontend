@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
+import { EVENTS_SEARCH_URL } from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useSearchEvent = () => {
@@ -15,7 +16,7 @@ export const useSearchEvent = () => {
     const headers = authHeaders();
     axios
       .post(
-        `http://localhost:3001/api/v1/events/search`,
+        EVENTS_SEARCH_URL,
         {
           genre: genre,
           location: location,

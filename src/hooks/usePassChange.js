@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
+import { PASSWORD_URL } from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const usePassChange = () => {
@@ -14,7 +15,7 @@ export const usePassChange = () => {
     const headers = authHeaders();
     axios
       .put(
-        `http://localhost:3001/auth/password`,
+        PASSWORD_URL,
         {
           current_password: data.currentPassword,
           password: data.password,

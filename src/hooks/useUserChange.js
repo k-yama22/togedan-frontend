@@ -4,6 +4,7 @@ import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
+import { SIGNUP_URL } from "src/hooks/constants";
 
 export const useUserChange = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ export const useUserChange = () => {
     setLoading(true);
     const headers = authHeaders();
     axios
-      .put(`http://localhost:3001/auth`, editData, { headers: headers })
+      .put(SIGNUP_URL, editData, { headers: headers })
       .then((res) => {
         if (res.data) {
           showNotify({ title: "変更完了しました", status: "success" });

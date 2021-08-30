@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
+import { EVENTS_URL } from "src/hooks/constants";
 
 export const useMyEvents = () => {
   const { showNotify } = useNotify();
@@ -11,7 +12,7 @@ export const useMyEvents = () => {
     const loginId = lscache.get("loginId");
     const headers = authHeaders();
     axios
-      .get(`http://localhost:3001/api/v1/events/${loginId}/own`, {
+      .get(`${EVENTS_URL}/${loginId}/own`, {
         headers: headers,
       })
       .then((res) => {

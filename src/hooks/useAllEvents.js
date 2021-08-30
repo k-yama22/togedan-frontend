@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
+import { EVENTS_URL } from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useAllEvents = () => {
@@ -7,7 +8,7 @@ export const useAllEvents = () => {
   const [events, setEvents] = useState([]);
   const getEvents = useCallback(() => {
     axios
-      .get("http://localhost:3001/api/v1/events")
+      .get(EVENTS_URL)
       .then((res) => {
         setEvents(res.data.data);
       })

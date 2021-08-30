@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
+import { LOGIN_URL } from "src/hooks/constants";
 
 export const useAuth = () => {
   const router = useRouter();
@@ -34,7 +35,7 @@ export const useAuth = () => {
   const login = (data) => {
     setLoading(true);
     axios
-      .post(`http://localhost:3001/auth/sign_in`, {
+      .post(LOGIN_URL, {
         email: data.email,
         password: data.password,
       })

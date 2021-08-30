@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { PASSWORD_URL } from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const usePassForget = () => {
@@ -11,7 +12,7 @@ export const usePassForget = () => {
   const passForget = (passForgetData) => {
     setLoading(true);
     axios
-      .post(`http://localhost:3001/auth/password`, passForgetData)
+      .post(PASSWORD_URL, passForgetData)
       .then((res) => {
         if (res.data) {
           console.log(res.data);

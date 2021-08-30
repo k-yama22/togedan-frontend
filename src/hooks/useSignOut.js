@@ -4,6 +4,7 @@ import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
+import { LOGOUT_URL } from "src/hooks/constants";
 
 export const useSignOut = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ export const useSignOut = () => {
     setLoading(true);
     const headers = authHeaders();
     axios
-      .delete(`http://localhost:3001/auth/sign_out`, {
+      .delete(LOGOUT_URL, {
         headers: headers,
       })
       .then((res) => {

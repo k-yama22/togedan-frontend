@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { EVENTS_URL } from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 export const useSelectEvent = () => {
   const { showNotify } = useNotify();
@@ -8,7 +9,7 @@ export const useSelectEvent = () => {
 
   const onSelectEvent = (id) => {
     axios
-      .get(`http://localhost:3001/api/v1/events/${id}`)
+      .get(`${EVENTS_URL}/${id}`)
       .then((res) => {
         setSelectedEvent(res.data.data);
         showNotify({ title: "取得に成功しました", status: "SUCCESS" });

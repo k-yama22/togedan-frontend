@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
+import { USERS_URL } from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useHoldUserInfo = () => {
@@ -10,7 +11,7 @@ export const useHoldUserInfo = () => {
 
   const getHoldUserInfo = (id) => {
     axios
-      .get(`http://localhost:3001/api/v1/users/${id}`, {
+      .get(`${USERS_URL}/${id}`, {
         headers: headers,
       })
       .then((res) => {

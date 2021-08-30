@@ -3,6 +3,7 @@ import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
+import { EVENTS_URL } from "src/hooks/constants";
 
 export const useSelectMyEventDetail = () => {
   const { showNotify } = useNotify();
@@ -14,7 +15,7 @@ export const useSelectMyEventDetail = () => {
     const headers = authHeaders();
     axios
       .post(
-        `http://localhost:3001/api/v1/events/${eventId}/detail`,
+        `${EVENTS_URL}/${eventId}/detail`,
         {
           id: eventId,
           user_id: loginId,

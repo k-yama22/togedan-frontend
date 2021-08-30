@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
 import { authHeaders } from "src/hooks/authHeaders";
+import { EVENTS_URL } from "src/hooks/constants";
 
 export const useNewEvent = () => {
   const router = useRouter();
@@ -17,7 +18,7 @@ export const useNewEvent = () => {
     console.log(headers);
     axios
       .post(
-        `http://localhost:3001/api/v1/events`,
+        EVENTS_URL,
         {
           user_id: loginId,
           event_name: data.eventName,
