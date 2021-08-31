@@ -54,7 +54,6 @@ const MyReserveDetail = (props) => {
     <div>
       <Head>
         <title>予約詳細</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />

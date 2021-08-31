@@ -26,7 +26,6 @@ const Login = memo(() => {
     <>
       <Head>
         <title>ログイン画面</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />

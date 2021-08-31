@@ -65,7 +65,6 @@ const UserEdit = () => {
     <>
       <Head>
         <title>ユーザ情報変更画面</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />

@@ -55,7 +55,6 @@ const Home = () => {
     <div>
       <Head>
         <title>Together Dance</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />

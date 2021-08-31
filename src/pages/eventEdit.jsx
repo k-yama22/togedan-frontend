@@ -61,7 +61,6 @@ const EventEdit = (props) => {
     <>
       <Head>
         <title>イベント情報編集画面</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />

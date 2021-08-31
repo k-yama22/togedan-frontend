@@ -14,7 +14,6 @@ const Quit = () => {
     <div>
       <Head>
         <title>退会手続き</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />

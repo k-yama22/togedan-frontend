@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import lscache from "lscache";
 import { useNotify } from "src/hooks/useNotify";
 import router from "next/router";
+import Head from "next/head";
 
 const MyApp = ({ Component, pageProps }) => {
   const { showNotify } = useNotify();
@@ -46,8 +47,12 @@ const MyApp = ({ Component, pageProps }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Component]);
+
   return (
     <>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="pt-20">
         <Component {...pageProps} />
         <Toaster />

@@ -25,7 +25,6 @@ const PassChange = () => {
     <>
       <Head>
         <title>パスワード変更画面</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />

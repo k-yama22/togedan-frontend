@@ -8,7 +8,6 @@ const About = () => {
     <div>
       <Head>
         <title>Together Danceについて</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />

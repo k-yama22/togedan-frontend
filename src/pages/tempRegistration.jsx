@@ -7,7 +7,6 @@ const TempRegistration = () => {
     <div>
       <Head>
         <title>仮登録完了</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       {/* <Header /> */}

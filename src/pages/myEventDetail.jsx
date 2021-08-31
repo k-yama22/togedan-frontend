@@ -53,7 +53,6 @@ const MyEventDetail = (props) => {
     <div>
       <Head>
         <title>マイイベント詳細</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />

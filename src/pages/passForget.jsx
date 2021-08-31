@@ -32,7 +32,6 @@ const PassForget = () => {
     <>
       <Head>
         <title>パスワードリセット</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />

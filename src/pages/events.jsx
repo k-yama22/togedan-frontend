@@ -91,7 +91,6 @@ const Events = () => {
     <div>
       <Head>
         <title>イベント一覧</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />

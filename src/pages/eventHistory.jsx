@@ -21,7 +21,6 @@ const EventHistory = () => {
     <div>
       <Head>
         <title>Together Dance</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
@@ -51,6 +50,10 @@ const EventHistory = () => {
                 eventName={historyEvent.event_name}
                 genre={historyEvent.genre}
                 location={historyEvent.location}
+                image={historyEvent.image}
+                eventDate={historyEvent.event_date}
+                startTime={historyEvent.start_time}
+                endTime={historyEvent.end_time}
                 buttonMessage="詳細を見る"
                 onClick={() => onClickEvent(historyEvent.id)}
               />

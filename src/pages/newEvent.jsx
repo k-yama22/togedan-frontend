@@ -23,7 +23,6 @@ const NewEvent = () => {
     <>
       <Head>
         <title>イベント新規登録画面</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
