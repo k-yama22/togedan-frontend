@@ -1,6 +1,10 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
-import { EVENTS_URL } from "src/hooks/constants";
+import {
+  COMMON_SELECT_ERROR,
+  ERROR_STATUS,
+  EVENTS_URL,
+} from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useAllEvents = () => {
@@ -13,7 +17,7 @@ export const useAllEvents = () => {
         setEvents(res.data.data);
       })
       .catch(() => {
-        showNotify({ title: "取得できませんでした", status: "error" });
+        showNotify({ title: COMMON_SELECT_ERROR, status: ERROR_STATUS });
       })
       .finally(() => {});
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -3,7 +3,11 @@ import { useCallback, useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
-import { RESERVES_URL } from "src/hooks/constants";
+import {
+  COMMON_SELECT_ERROR,
+  ERROR_STATUS,
+  RESERVES_URL,
+} from "src/hooks/constants";
 
 export const useHistoryReserves = () => {
   const { showNotify } = useNotify();
@@ -20,7 +24,7 @@ export const useHistoryReserves = () => {
         setHistoryReserves(res.data.data);
       })
       .catch(() => {
-        showNotify({ title: "取得できませんでした", status: "error" });
+        showNotify({ title: COMMON_SELECT_ERROR, status: ERROR_STATUS });
       })
       .finally(() => {});
     // eslint-disable-next-line react-hooks/exhaustive-deps

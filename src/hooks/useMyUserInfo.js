@@ -3,7 +3,11 @@ import { useState } from "react";
 import lscache from "lscache";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
-import { USERS_URL } from "src/hooks/constants";
+import {
+  COMMON_SELECT_ERROR,
+  ERROR_STATUS,
+  USERS_URL,
+} from "src/hooks/constants";
 
 export const useMyUserInfo = () => {
   const [myUserInfo, setMyUserInfo] = useState([]);
@@ -20,7 +24,7 @@ export const useMyUserInfo = () => {
         setMyUserInfo(res.data.data);
       })
       .catch(() => {
-        showNotify({ title: "取得できませんでした", status: "error" });
+        showNotify({ title: COMMON_SELECT_ERROR, status: ERROR_STATUS });
       })
       .finally(() => {});
     // eslint-disable-next-line react-hooks/exhaustive-deps

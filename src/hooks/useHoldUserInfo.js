@@ -1,7 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
-import { USERS_URL } from "src/hooks/constants";
+import {
+  COMMON_SELECT_ERROR,
+  ERROR_STATUS,
+  USERS_URL,
+} from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useHoldUserInfo = () => {
@@ -18,7 +22,7 @@ export const useHoldUserInfo = () => {
         setMyUserInfo(res.data.data);
       })
       .catch(() => {
-        showNotify({ title: "取得できませんでした", status: "error" });
+        showNotify({ title: COMMON_SELECT_ERROR, status: ERROR_STATUS });
       })
       .finally(() => {});
   };

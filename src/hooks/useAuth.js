@@ -3,7 +3,14 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
-import { LOGIN_URL } from "src/hooks/constants";
+import {
+  ERROR_STATUS,
+  LOGIN_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_URL,
+  NO_USER_ERROR,
+  SUCCESS_STATUS,
+} from "src/hooks/constants";
 
 export const useAuth = () => {
   const router = useRouter();
@@ -50,18 +57,17 @@ export const useAuth = () => {
           lscache.set("loginId", JSON.stringify(resData.id), 100);
           lscache.set("loginImg", resData.image, 100);
           lscache.set("loginCheck", true);
-          showNotify({ title: "ログインしました", status: "success" });
+          showNotify({ title: LOGIN_SUCCESS, status: SUCCESS_STATUS });
           router.push("/");
         } else {
-          showNotify({ title: "ユーザが存在しません", status: "error" });
+          showNotify({ title: NO_USER_ERROR, status: ERROR_STATUS });
         }
       })
       .catch(() => {
-        showNotify({ title: "ログインできません", status: "error" });
+        showNotify({ title: LOGIN_ERROR, status: ERROR_STATUS });
       })
       .finally(() => {
         setLoading(false);
-        console.log("finally確認用");
       });
   };
   return { login, loading };

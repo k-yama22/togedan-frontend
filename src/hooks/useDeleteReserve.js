@@ -4,7 +4,12 @@ import { useCallback, useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
-import { RESERVES_URL } from "src/hooks/constants";
+import {
+  COMMON_DELETE_ERROR,
+  ERROR_STATUS,
+  RESERVES_URL,
+  SUCCESS_STATUS,
+} from "src/hooks/constants";
 
 export const useDeleteReserve = () => {
   const { showNotify } = useNotify();
@@ -26,11 +31,11 @@ export const useDeleteReserve = () => {
       )
       .then((res) => {
         setDeleteReserve(res.data.data);
-        showNotify({ title: res.data.message, status: "success" });
+        showNotify({ title: res.data.message, status: SUCCESS_STATUS });
         router.push("/myReserves");
       })
       .catch(() => {
-        showNotify({ title: "取得できませんでした", status: "error" });
+        showNotify({ title: COMMON_DELETE_ERROR, status: ERROR_STATUS });
       })
       .finally(() => {});
     // eslint-disable-next-line react-hooks/exhaustive-deps
