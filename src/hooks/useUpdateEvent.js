@@ -4,7 +4,13 @@ import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
-import { EVENTS_URL } from "src/hooks/constants";
+import {
+  COMMON_UPDATE_ERROR,
+  ERROR_STATUS,
+  EVENTS_URL,
+  SUCCESS_STATUS,
+  UPDATE_FAILED,
+} from "src/hooks/constants";
 
 export const useUpdateEvent = () => {
   const router = useRouter();
@@ -34,22 +40,25 @@ export const useUpdateEvent = () => {
       )
       .then((res) => {
         if (res.data.status === 200) {
-          showNotify({ title: res.data.message, status: "success" });
+          showNotify({ title: res.data.message, status: SUCCESS_STATUS });
           router.push({
             pathname: "/eventEdit",
             query: { id: id },
           });
         } else if (res.data.status === 400) {
-          showNotify({ title: res.data.message, status: "error" });
+          showNotify({ title: res.data.message, status: ERROR_STATUS });
         } else if (res.data.status === 422) {
-          showNotify({ title: res.data.data.res_message, status: "error" });
+          showNotify({
+            title: res.data.data.res_message,
+            status: ERROR_STATUS,
+          });
         } else {
-          showNotify({ title: "変更に失敗しました", status: "error" });
+          showNotify({ title: UPDATE_FAILED, status: ERROR_STATUS });
           console.log(res);
         }
       })
       .catch(() => {
-        showNotify({ title: "変更できません", status: "error" });
+        showNotify({ title: COMMON_UPDATE_ERROR, status: ERROR_STATUS });
       })
       .finally(() => {
         setLoading(false);

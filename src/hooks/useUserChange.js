@@ -4,7 +4,14 @@ import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
-import { SIGNUP_URL } from "src/hooks/constants";
+import {
+  COMMON_UPDATE_ERROR,
+  ERROR_STATUS,
+  SIGNUP_URL,
+  SUCCESS_STATUS,
+  UPDATE_FAILED,
+  UPDATE_SUCCESS,
+} from "src/hooks/constants";
 
 export const useUserChange = () => {
   const router = useRouter();
@@ -18,15 +25,15 @@ export const useUserChange = () => {
       .put(SIGNUP_URL, editData, { headers: headers })
       .then((res) => {
         if (res.data) {
-          showNotify({ title: "変更完了しました", status: "success" });
+          showNotify({ title: UPDATE_SUCCESS, status: SUCCESS_STATUS });
           lscache.set("loginImg", res.data.data.image, 100);
           router.push("/myPage");
         } else {
-          showNotify({ title: "変更に失敗しました", status: "error" });
+          showNotify({ title: UPDATE_FAILED, status: ERROR_STATUS });
         }
       })
       .catch(() => {
-        showNotify({ title: "変更できません", status: "error" });
+        showNotify({ title: COMMON_UPDATE_ERROR, status: ERROR_STATUS });
       })
       .finally(() => {
         setLoading(false);

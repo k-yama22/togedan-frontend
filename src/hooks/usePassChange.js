@@ -2,7 +2,14 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
-import { PASSWORD_URL } from "src/hooks/constants";
+import {
+  COMMON_UPDATE_ERROR,
+  ERROR_STATUS,
+  PASSWORD_URL,
+  SUCCESS_STATUS,
+  UPDATE_FAILED,
+  UPDATE_SUCCESS,
+} from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const usePassChange = () => {
@@ -26,14 +33,14 @@ export const usePassChange = () => {
       .then((res) => {
         if (res.data) {
           console.log(res.data);
-          showNotify({ title: "変更完了しました", status: "success" });
+          showNotify({ title: UPDATE_SUCCESS, status: SUCCESS_STATUS });
           router.push("/myPage");
         } else {
-          showNotify({ title: "変更に失敗しました", status: "error" });
+          showNotify({ title: UPDATE_FAILED, status: ERROR_STATUS });
         }
       })
       .catch(() => {
-        showNotify({ title: "変更できません", status: "error" });
+        showNotify({ title: COMMON_UPDATE_ERROR, status: ERROR_STATUS });
       })
       .finally(() => {
         setLoading(false);

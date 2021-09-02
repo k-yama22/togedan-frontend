@@ -4,7 +4,13 @@ import { useState } from "react";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
 import { authHeaders } from "src/hooks/authHeaders";
-import { EVENTS_URL } from "src/hooks/constants";
+import {
+  COMMON_CREATE_ERROR,
+  CREATE_FAILED,
+  ERROR_STATUS,
+  EVENTS_URL,
+  SUCCESS_STATUS,
+} from "src/hooks/constants";
 
 export const useNewEvent = () => {
   const router = useRouter();
@@ -35,19 +41,19 @@ export const useNewEvent = () => {
       )
       .then((res) => {
         if (res.data.status === 200) {
-          showNotify({ title: res.data.message, status: "success" });
+          showNotify({ title: res.data.message, status: SUCCESS_STATUS });
           router.push("/newEvent");
         } else if (res.data.status === 400) {
           const errorMessages = res.data.data.join("\n");
-          showNotify({ title: errorMessages, status: "error" });
+          showNotify({ title: errorMessages, status: ERROR_STATUS });
         } else if (res.data.status === 422) {
-          showNotify({ title: res.data.message, status: "error" });
+          showNotify({ title: res.data.message, status: ERROR_STATUS });
         } else {
-          showNotify({ title: "登録に失敗しました", status: "error" });
+          showNotify({ title: CREATE_FAILED, status: ERROR_STATUS });
         }
       })
       .catch(() => {
-        showNotify({ title: "登録できません", status: "error" });
+        showNotify({ title: COMMON_CREATE_ERROR, status: ERROR_STATUS });
       })
       .finally(() => {
         setLoading(false);

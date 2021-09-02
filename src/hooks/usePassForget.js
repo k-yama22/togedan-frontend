@@ -1,7 +1,14 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { PASSWORD_URL } from "src/hooks/constants";
+import {
+  ERROR_STATUS,
+  PASSWORD_RESET_ERROR,
+  PASSWORD_RESET_FAILED,
+  PASSWORD_RESET_SUCCESS,
+  PASSWORD_URL,
+  SUCCESS_STATUS,
+} from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const usePassForget = () => {
@@ -17,19 +24,19 @@ export const usePassForget = () => {
         if (res.data) {
           console.log(res.data);
           showNotify({
-            title: "パスワードリセット用のメール送信しました",
-            status: "success",
+            title: PASSWORD_RESET_SUCCESS,
+            status: SUCCESS_STATUS,
           });
           router.push("/login");
         } else {
           showNotify({
-            title: "パスワードリセットに失敗しました",
-            status: "error",
+            title: PASSWORD_RESET_FAILED,
+            status: ERROR_STATUS,
           });
         }
       })
       .catch(() => {
-        showNotify({ title: "パスワードリセットできません", status: "error" });
+        showNotify({ title: PASSWORD_RESET_ERROR, status: ERROR_STATUS });
       })
       .finally(() => {
         setLoading(false);

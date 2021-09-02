@@ -1,7 +1,14 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { AUTH_URL } from "src/hooks/constants";
+import {
+  AUTH_URL,
+  ERROR_STATUS,
+  SIGN_UP_ERROR,
+  SIGN_UP_FAILED,
+  SIGN_UP_SUCCESS,
+  SUCCESS_STATUS,
+} from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useSignUp = () => {
@@ -15,10 +22,10 @@ export const useSignUp = () => {
       .post(AUTH_URL, signUpData)
       .then((res) => {
         if (res.data) {
-          showNotify({ title: "仮登録完了しました", status: "success" });
+          showNotify({ title: SIGN_UP_SUCCESS, status: SUCCESS_STATUS });
           router.push("/tempRegistration");
         } else {
-          showNotify({ title: "仮登録に失敗しました", status: "error" });
+          showNotify({ title: SIGN_UP_FAILED, status: ERROR_STATUS });
         }
       })
       .catch((error) => {
@@ -26,12 +33,12 @@ export const useSignUp = () => {
           if (error.response.data.errors.full_messages) {
             const errorMessages =
               error.response.data.errors.full_messages.join("\n");
-            showNotify({ title: errorMessages, status: "error" });
+            showNotify({ title: errorMessages, status: ERROR_STATUS });
           } else {
-            showNotify({ title: "仮登録できません", status: "error" });
+            showNotify({ title: SIGN_UP_ERROR, status: ERROR_STATUS });
           }
         } else {
-          showNotify({ title: "仮登録できません", status: "error" });
+          showNotify({ title: SIGN_UP_ERROR, status: ERROR_STATUS });
         }
       })
       .finally(() => {

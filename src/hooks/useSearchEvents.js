@@ -2,7 +2,13 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
-import { EVENTS_SEARCH_URL } from "src/hooks/constants";
+import {
+  COMMON_SELECT_ERROR,
+  ERROR_STATUS,
+  EVENTS_SEARCH_URL,
+  SELECT_FAILED,
+  SUCCESS_STATUS,
+} from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useSearchEvent = () => {
@@ -28,19 +34,22 @@ export const useSearchEvent = () => {
       )
       .then((res) => {
         if (res.data.status === 200) {
-          showNotify({ title: res.data.message, status: "success" });
+          showNotify({ title: res.data.message, status: SUCCESS_STATUS });
           setSearchEvents(res.data.data);
           router.push("/events");
         } else if (res.data.status === 400) {
-          showNotify({ title: res.data.message, status: "error" });
+          showNotify({ title: res.data.message, status: ERROR_STATUS });
         } else if (res.data.status === 422) {
-          showNotify({ title: res.data.data.res_message, status: "error" });
+          showNotify({
+            title: res.data.data.res_message,
+            status: ERROR_STATUS,
+          });
         } else {
-          showNotify({ title: "登録に失敗しました", status: "error" });
+          showNotify({ title: SELECT_FAILED, status: ERROR_STATUS });
         }
       })
       .catch(() => {
-        showNotify({ title: "登録できません", status: "error" });
+        showNotify({ title: COMMON_SELECT_ERROR, status: ERROR_STATUS });
       })
       .finally(() => {
         setLoading(false);

@@ -3,7 +3,13 @@ import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
 import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
-import { EVENTS_URL } from "src/hooks/constants";
+import {
+  COMMON_SELECT_ERROR,
+  ERROR_STATUS,
+  EVENTS_URL,
+  SELECT_SUCCESS,
+  SUCCESS_STATUS,
+} from "src/hooks/constants";
 
 export const useSelectMyEventDetail = () => {
   const { showNotify } = useNotify();
@@ -25,10 +31,10 @@ export const useSelectMyEventDetail = () => {
       )
       .then((res) => {
         setSelectedEvent(res.data.data);
-        showNotify({ title: "取得に成功しました", status: "SUCCESS" });
+        showNotify({ title: SELECT_SUCCESS, status: SUCCESS_STATUS });
       })
       .catch(() => {
-        showNotify({ title: "取得できませんでした", status: "error" });
+        showNotify({ title: COMMON_SELECT_ERROR, status: ERROR_STATUS });
       })
       .finally(() => {});
   };

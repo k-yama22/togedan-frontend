@@ -37,8 +37,10 @@ export const ERROR_STATUS = "error";
 
 // 共通メッセージ
 // エラーメッセージ
+export const COMMON_CREATE_ERROR = "登録できませんでした";
 export const COMMON_SELECT_ERROR = "取得できませんでした";
 export const COMMON_DELETE_ERROR = "削除できませんでした";
+export const COMMON_UPDATE_ERROR = "更新できませんでした";
 
 // 認証機能メッセージ
 export const LOGIN_SUCCESS = "ログインしました";
@@ -49,3 +51,30 @@ export const NO_USER_ERROR = "ユーザが存在しません";
 export const DELETE_ACCOUNT_SUCCESS = "退会しました";
 export const DELETE_ACCOUNT_ERROR = "退会できませんでした";
 export const DELETE_ACCOUNT_FAILED = "退会に失敗しました";
+
+// 登録機能メッセージ
+export const CREATE_FAILED = "登録に失敗しました";
+
+// 取得機能メッセージ
+export const SELECT_SUCCESS = "取得に成功しました";
+export const SELECT_FAILED = "取得に失敗しました";
+
+// 更新機能メッセージ
+export const UPDATE_SUCCESS = "変更が完了しました";
+export const UPDATE_FAILED = "登録に失敗しました";
+
+// パスワードリセットメッセージ
+export const PASSWORD_RESET_SUCCESS =
+  "パスワードリセット用のメール送信しました";
+export const PASSWORD_RESET_ERROR = "パスワードリセットできません";
+export const PASSWORD_RESET_FAILED = "パスワードリセットに失敗しました";
+
+// ログアウトメッセージ
+export const SIGN_OUT_SUCCESS = "ログアウトしました";
+export const SIGN_OUT_ERROR = "ログアウトできません";
+export const SIGN_OUT_FAILED = "ログアウトに失敗しました";
+
+// 仮登録メッセージ
+export const SIGN_UP_SUCCESS = "仮登録が完了しました";
+export const SIGN_UP_ERROR = "仮登録できません";
+export const SIGN_UP_FAILED = "仮登録に失敗しました";
