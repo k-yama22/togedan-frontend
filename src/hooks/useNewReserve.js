@@ -7,6 +7,7 @@ import {
   COMMON_CREATE_ERROR,
   ERROR_STATUS,
   RESERVES_URL,
+  RESERVE_STATUS_VALID,
   SUCCESS_STATUS,
 } from "src/hooks/constants";
 
@@ -22,7 +23,7 @@ export const useNewReserve = () => {
         {
           event_id: eventId,
           user_id: lscache.get("loginId"),
-          reserve_sts: "1",
+          reserve_sts: RESERVE_STATUS_VALID,
         },
         { headers: headers }
       )

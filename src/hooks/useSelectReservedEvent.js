@@ -7,6 +7,7 @@ import {
   COMMON_SELECT_ERROR,
   ERROR_STATUS,
   RESERVES_URL,
+  RESERVE_STATUS_VALID,
   SELECT_SUCCESS,
   SUCCESS_STATUS,
 } from "src/hooks/constants";
@@ -25,7 +26,7 @@ export const useSelectReservedEvent = () => {
         {
           event_id: eventId,
           user_id: loginId,
-          reserve_sts: "1",
+          reserve_sts: RESERVE_STATUS_VALID,
         },
         { headers: headers }
       )

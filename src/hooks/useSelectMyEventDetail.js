@@ -7,6 +7,7 @@ import {
   COMMON_SELECT_ERROR,
   ERROR_STATUS,
   EVENTS_URL,
+  EVENT_STATUS_VALID,
   SELECT_SUCCESS,
   SUCCESS_STATUS,
 } from "src/hooks/constants";
@@ -25,7 +26,7 @@ export const useSelectMyEventDetail = () => {
         {
           id: eventId,
           user_id: loginId,
-          event_sts: "1",
+          event_sts: EVENT_STATUS_VALID,
         },
         { headers: headers }
       )

@@ -9,6 +9,7 @@ import {
   CREATE_FAILED,
   ERROR_STATUS,
   EVENTS_URL,
+  EVENT_STATUS_VALID,
   SUCCESS_STATUS,
 } from "src/hooks/constants";
 
@@ -21,7 +22,6 @@ export const useNewEvent = () => {
     setLoading(true);
     const loginId = lscache.get("loginId");
     const headers = authHeaders();
-    console.log(headers);
     axios
       .post(
         EVENTS_URL,
@@ -35,7 +35,7 @@ export const useNewEvent = () => {
           end_time: data.endTime,
           event_message: data.eventMessage,
           max_people: data.maxPeople,
-          event_sts: "1",
+          event_sts: EVENT_STATUS_VALID,
         },
         { headers: headers }
       )

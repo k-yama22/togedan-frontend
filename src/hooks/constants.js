@@ -78,3 +78,11 @@ export const SIGN_OUT_FAILED = "ログアウトに失敗しました";
 export const SIGN_UP_SUCCESS = "仮登録が完了しました";
 export const SIGN_UP_ERROR = "仮登録できません";
 export const SIGN_UP_FAILED = "仮登録に失敗しました";
+
+// イベントステータス
+export const EVENT_STATUS_VALID = "1";
+export const EVENT_STATUS_INVALID = "2";
+
+// 予約情報ステータス
+export const RESERVE_STATUS_VALID = "1";
+export const RESERVE_STATUS_INVALID = "2";

@@ -8,6 +8,7 @@ import {
   COMMON_UPDATE_ERROR,
   ERROR_STATUS,
   EVENTS_URL,
+  EVENT_STATUS_VALID,
   SUCCESS_STATUS,
   UPDATE_FAILED,
 } from "src/hooks/constants";
@@ -34,7 +35,7 @@ export const useUpdateEvent = () => {
           end_time: data.endTime,
           event_message: data.eventMessage,
           max_people: data.maxPeople,
-          event_sts: "1",
+          event_sts: EVENT_STATUS_VALID,
         },
         { headers: headers }
       )
