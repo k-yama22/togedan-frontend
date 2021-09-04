@@ -11,7 +11,8 @@ import Head from "next/head";
 const MyApp = ({ Component, pageProps }) => {
   const { showNotify } = useNotify();
   useEffect(() => {
-    console.log("初期レンダーしてる");
+    // console.log("初期レンダーしてる");
+    // ログイン画面へのアクセスの場合、処理せずにreturn
     if (
       router.pathname === "/login"
       //   router.pathname === "/" ||
@@ -19,8 +20,11 @@ const MyApp = ({ Component, pageProps }) => {
       //   router.pathname === "/tempRegistration"
     )
       return;
+    // ローカルストレージにログインチェックのデータが存在する場合
     if (lscache.get("loginCheck")) {
+      // 期限切れのデータのみ削除処理
       lscache.flushExpired();
+      // ログインIDのデータが取得できなかった場合、データを全て削除してタイムアウト処理
       if (!lscache.get("loginId")) {
         lscache.remove("loginCheck");
         lscache.flush();
