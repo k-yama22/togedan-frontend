@@ -24,7 +24,9 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    // 取得したイベント情報の配列を作成しフォーマット処理
     const arr = [];
+    // イベント情報のレコード数が4件以上の場合
     if (events.length > 4) {
       for (let i = 0; i < 4; i++) {
         arr.push(events[i]);

@@ -56,6 +56,7 @@ const MyEvents = () => {
   }, [myEvents]);
 
   useEffect(() => {
+    // 取得したイベント情報の配列を作成しフォーマット処理
     const arr = [];
     for (let i = 0; i < historyEvents.length; i++) {
       arr.push(historyEvents[i]);

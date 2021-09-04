@@ -23,11 +23,11 @@ export async function getServerSideProps(context) {
 }
 
 const MyEventDetail = (props) => {
+  const router = useRouter();
   const [eventDate, setEventDate] = useState();
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
   const { onSelectMyEventDetail, selectedEvent } = useSelectMyEventDetail();
-  const router = useRouter();
   const { deleteMyEvent } = useDeleteEvent();
 
   const onClickEventCancel = (id) => {
@@ -42,6 +42,7 @@ const MyEventDetail = (props) => {
   useEffect(() => onSelectMyEventDetail(props.id), []);
 
   useEffect(() => {
+    // 取得したイベント情報の日付、開始時刻、終了時刻をフォーマット
     const formatEventDate = dayjs(selectedEvent.event_date);
     const formatStartTime = dayjs(selectedEvent.start_time);
     const formatEndTime = dayjs(selectedEvent.end_time);
