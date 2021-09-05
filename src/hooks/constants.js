@@ -1,6 +1,6 @@
 // API用URL
 // 本番環境URL
-export const PRODUCTION_URL = "http://togedan.com/";
+export const PRODUCTION_URL = "https://togedan.com/";
 // ローカル環境URL
 export const LOCAL_URL = "http://localhost:3001/";
 
@@ -86,3 +86,27 @@ export const EVENT_STATUS_INVALID = "2";
 // 予約情報ステータス
 export const RESERVE_STATUS_VALID = "1";
 export const RESERVE_STATUS_INVALID = "2";
+
+// フロント側URL
+export const INDEX_SCREEN = "/";
+export const LOGIN_SCREEN = "/login";
+export const SIGN_UP_SCREEN = "/signUp";
+export const SIGN_OUT_SCREEN = "/signOut";
+export const ABOUT_SCREEN = "/about";
+export const EVENT_DETAIL_SCREEN = "/eventDetail";
+export const EVENT_EDIT_SCREEN = "/eventEdit";
+export const EVENTS_SCREEN = "/events";
+export const HOLD_USER_SCREEN = "/holdUser";
+export const ICON_EDIT_SCREEN = "/iconEdit";
+export const MY_EVENT_DETAIL_SCREEN = "/myEventDetail";
+export const MY_EVENTS_SCREEN = "/myEvents";
+export const MY_PAGE_SCREEN = "/myPage";
+export const MY_RESERVE_DETAIL_SCREEN = "/myReserveDetail";
+export const MY_RESERVES_SCREEN = "/myReserveDetail";
+export const NEW_EVENT_SCREEN = "/newEvent";
+export const PASS_CHANGE_SCREEN = "/passChange";
+export const PASS_FORGET_SCREEN = "/passForget";
+export const PASS_RESET_SCREEN = "/passReset";
+export const QUIT_SCREEN = "/quit";
+export const TEMP_REGISTRATION_SCREEN = "/tempRegistration";
+export const USER_EDIT_SCREEN = "/userEdit";

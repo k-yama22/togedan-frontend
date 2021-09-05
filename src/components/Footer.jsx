@@ -1,5 +1,12 @@
 import Link from "next/link";
 import React from "react";
+import {
+  ABOUT_SCREEN,
+  EVENTS_SCREEN,
+  NEW_EVENT_SCREEN,
+  QUIT_SCREEN,
+  USER_EDIT_SCREEN,
+} from "src/hooks/constants";
 
 export const Footer = () => {
   return (
@@ -10,13 +17,13 @@ export const Footer = () => {
             <div className="text-xs uppercase text-gray-400 font-medium">
               イベントの参加と開催
             </div>
-            <Link href="/events">
+            <Link href={EVENTS_SCREEN}>
               <a className="my-3 block">
                 踊ろう会を検索する
                 <span className="text-teal-600 text-xs p-1"></span>
               </a>
             </Link>
-            <Link href="/newEvent">
+            <Link href={NEW_EVENT_SCREEN}>
               <a className="my-3 block">
                 踊ろう会を開催する
                 <span className="text-teal-600 text-xs p-1"></span>
@@ -39,10 +46,10 @@ export const Footer = () => {
                 <span className="text-teal-600 text-xs p-1"></span>
               </a>
             </Link> */}
-            <Link href="/userEdit">
+            <Link href={USER_EDIT_SCREEN}>
               <a className="my-3 block">ユーザー情報を変更する</a>
             </Link>
-            <Link href="/quit">
+            <Link href={QUIT_SCREEN}>
               <a className="my-3 block">退会はこちら</a>
             </Link>
           </div>
@@ -50,7 +57,7 @@ export const Footer = () => {
             <div className="text-xs uppercase text-gray-400 font-medium">
               Together Danceについて
             </div>
-            <Link href="/about">
+            <Link href={ABOUT_SCREEN}>
               <a className="my-3 block">Together Danceとは</a>
             </Link>
             {/* <Link href="/#">
