@@ -5,6 +5,7 @@ import { Loading } from "src/components/Loading";
 import { SideMenu } from "src/components/SideMenu";
 import { useSignOut } from "src/hooks/useSignOut";
 import lscache from "lscache";
+import { LOGIN_SCREEN, SIGN_UP_SCREEN } from "src/hooks/constants";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,7 +69,7 @@ export const Header = () => {
           </button>
         </div>
 
-        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto sm:hidden">
+        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden">
           <div className="text-sm lg:flex-grow">
             {loginId ? (
               <>
@@ -94,7 +95,7 @@ export const Header = () => {
                   {loading ? <Loading /> : <>ログアウト</>}
                 </button>
                 <Link href="/myPage">
-                  <a className="flex-shrink-0 h-14 w-14 absolute top-3 right-10">
+                  <a className="flex-shrink-0 h-14 w-14 absolute top-3 right-10 invisible md:visible">
                     {lscache.get("loginImg") ? (
                       /* eslint-disable-next-line @next/next/no-img-element */
                       <img
@@ -115,12 +116,12 @@ export const Header = () => {
               </>
             ) : (
               <>
-                <Link href="/login">
+                <Link href={LOGIN_SCREEN}>
                   <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
                     ログイン
                   </a>
                 </Link>
-                <Link href="/signUp">
+                <Link href={SIGN_UP_SCREEN}>
                   <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
                     新規登録
                   </a>

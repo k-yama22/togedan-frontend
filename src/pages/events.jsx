@@ -106,12 +106,14 @@ const Events = () => {
           <div className="text-center text-2xl p-4 font-semibold">
             検索フォーム
           </div>
-          <div className="w-screen container mx-auto flex justify-center items-center p-2 md:p-0">
+          <div className="w-screen container mx-auto block md:flex justify-center items-center p-2 md:p-0">
             <div className="border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6">
               <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-                <div className="grid grid-cols-5 gap-2 border border-gray-200 p-2 rounded">
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-2 border border-gray-200 p-2 rounded">
                   <div className="text-center">
-                    <label htmlFor="genre">ジャンル</label>
+                    <label htmlFor="genre" className="text-xs">
+                      ジャンル
+                    </label>
                     <div className="flex border rounded bg-gray-300 items-center p-2">
                       <input
                         id="genre"
@@ -124,7 +126,9 @@ const Events = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <label htmlFor="location">場所</label>
+                    <label htmlFor="location" className="text-xs">
+                      場所
+                    </label>
                     <div className="flex border rounded bg-gray-300 items-center p-2">
                       <input
                         id="location"
@@ -137,8 +141,10 @@ const Events = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <label htmlFor="eventDate">開催日</label>
-                    <div className="flex border rounded bg-gray-300 items-center p-2">
+                    <label htmlFor="eventDate" className="text-xs">
+                      開催日
+                    </label>
+                    <div className="flex border rounded bg-gray-300 items-center p-2 text-xs">
                       <input
                         id="eventDate"
                         type="date"
@@ -152,7 +158,9 @@ const Events = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <label htmlFor="startTime">開始時刻</label>
+                    <label htmlFor="startTime" className="text-xs">
+                      開始時刻
+                    </label>
                     <div className="flex border rounded bg-gray-300 items-center p-2">
                       <input
                         className="w-full px-5 py-1 h-10 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
@@ -165,7 +173,9 @@ const Events = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <label htmlFor="endTime">終了時刻</label>
+                    <label htmlFor="endTime" className="text-xs">
+                      終了時刻
+                    </label>
                     <div className="flex border rounded bg-gray-300 items-center p-2">
                       <input
                         className="w-full px-5 py-1 h-10 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
