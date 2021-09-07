@@ -151,7 +151,7 @@ const Events = () => {
                         min="1900-01-01"
                         max="2100-12-31"
                         placeholder="年月日"
-                        className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
+                        className="bg-gray-300 h-10 max-w-full w-full focus:outline-none text-gray-700"
                         value={eventDate}
                         onChange={onChangeEventDate}
                       />
@@ -163,7 +163,7 @@ const Events = () => {
                     </label>
                     <div className="flex border rounded bg-gray-300 items-center p-2">
                       <input
-                        className="w-full px-5 py-1 h-10 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        className="max-w-full w-full px-5 py-1 h-10 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                         id="startTime"
                         type="time"
                         placeholder="開始時刻"
@@ -176,9 +176,9 @@ const Events = () => {
                     <label htmlFor="endTime" className="text-xs">
                       終了時刻
                     </label>
-                    <div className="flex border rounded bg-gray-300 items-center p-2">
+                    <div className="flex border rounded w-full bg-gray-300 items-center p-2">
                       <input
-                        className="w-full px-5 py-1 h-10 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        className="max-w-full w-full px-5 py-1 h-10 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                         id="endTime"
                         type="time"
                         placeholder="終了時刻"
@@ -201,10 +201,10 @@ const Events = () => {
           </div>
         </div>
       </div>
-      <div className="p-4 bg-gray-100">
-        <div className="container mx-auto my-5 p-5">
+      <div className="pt-4 bg-gray-100">
+        <div className="container mx-auto p-5">
           <div className="text-center text-2xl font-semibold">検索結果</div>
-          <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+          <div className="grid mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
             {eventArr.slice(offset, offset + perPage).map((event) => (
               <div key={event.event_id}>
                 <MiniEventCard

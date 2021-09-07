@@ -19,7 +19,6 @@ const Login = memo(() => {
 
   const onSubmit = (data) => {
     login(data);
-    console.log(data);
   };
 
   return (
@@ -30,13 +29,13 @@ const Login = memo(() => {
 
       <Header />
 
-      <div className="bg-gray-500 flex flex-col items-center justify-center min-h-screen py-2">
-        <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+      <div className="bg-gray-500 flex flex-col items-center justify-center min-h-hull md:min-h-screen py-2">
+        <main className="flex flex-col items-center justify-center w-full flex-1 px-10 md:px-20 text-center">
           <div className="container mx-auto h-full flex flex-1 justify-center items-center">
             <div className="w-full max-w-md">
               <h1 className="bg-green-100">Together Dance</h1>
               <div className="leading-loose">
-                <div className="max-w-md m-4 p-10 bg-white bg-opacity-25 rounded shadow-xl">
+                <div className="max-w-md m-4 p-5 md:p-10 bg-white bg-opacity-25 rounded shadow-xl">
                   <p className="text-white font-medium text-center text-lg font-bold">
                     LOGIN
                   </p>
@@ -90,12 +89,12 @@ const Login = memo(() => {
                         )}
                     </div>
 
-                    <div className="mt-4 items-center flex justify-between">
+                    <div className="mt-4 items-center md:flex md:justify-between text-sm">
                       <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded">
                         {loading ? <Loading /> : <>ログイン</>}
                       </button>
                       <Link href="/passForget">
-                        <a className="inline-block right-0 align-baseline font-bold text-sm text-500 text-white hover:text-red-400">
+                        <a className="mt-4 md:mt-0 inline-block right-0 align-baseline font-bold text-sm text-500 text-white hover:text-red-400">
                           パスワードを忘れた方はこちら
                         </a>
                       </Link>

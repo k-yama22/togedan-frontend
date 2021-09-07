@@ -12,15 +12,21 @@ export const MiniEventCard = memo((props) => {
     eventDate,
     startTime,
     endTime,
-    buttonMessage,
+    // buttonMessage,
     onClick,
   } = props;
 
   return (
-    <div className="flex flex-col">
+    <div
+      className="flex flex-col hover:opacity-75"
+      role="button"
+      tabIndex={0}
+      onClick={() => onClick(id)}
+      onKeyDown={() => onClick(id)}
+    >
       <div className="bg-white shadow-md rounded-3xl p-4">
-        <div className="flex-none lg:flex">
-          <div className=" h-full w-full lg:h-48 lg:w-48   lg:mb-0 mb-3">
+        <div className="flex-none flex">
+          <div className="h-20 w-20 md:w-full md:h-full lg:h-48 lg:w-48 lg:mb-0 mb-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={image?.url}
@@ -28,19 +34,19 @@ export const MiniEventCard = memo((props) => {
               className=" w-full object-scale-down lg:object-cover lg:h-48 rounded-2xl"
             />
           </div>
-          <div className="flex-auto ml-3 justify-evenly py-2">
+          <div className="text-xs flex-auto ml-3 justify-evenly py-2">
             <div className="flex flex-wrap">
-              <h2 className="flex-auto text-2xl font-medium">{eventName}</h2>
-              <div className="w-full flex-none text-sm text-blue-700 font-medium">
+              <h2 className="flex-auto md:text-2xl font-medium">{eventName}</h2>
+              <div className="w-full flex-none md:text-sm text-blue-700 font-medium">
                 {genre}
               </div>
             </div>
             <p className="mt-3"></p>
-            <div className="flex py-4 text-md text-gray-600">
-              <div className="flex-1 inline-flex items-center">
+            <div className="flex py-0 md:py-4 md:text-md text-gray-600">
+              <div className="mr-3 md:flex-1 inline-flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-3"
+                  className="h-5 w-5 mr-1 md:mr-3"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -63,7 +69,7 @@ export const MiniEventCard = memo((props) => {
               <div className="flex-1 inline-flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2"
+                  className="h-5 w-5 mr-1 md:mr-2"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -83,8 +89,8 @@ export const MiniEventCard = memo((props) => {
                 </div>
               </div>
             </div>
-            <div className="flex p-4 pb-2 border-t border-gray-200 "></div>
-            <div className="flex space-x-3 text-sm font-medium">
+            {/* <div className="flex p-4 pb-2 border-t border-gray-200 "></div>
+            <div className="flex space-x-3 md:text-sm font-medium">
               <div className="flex-auto flex space-x-3"></div>
               <button
                 className="mb-2 md:mb-0 bg-gray-900 px-5 py-2 shadow-sm tracking-wider text-white rounded-full hover:bg-gray-800"
@@ -94,7 +100,7 @@ export const MiniEventCard = memo((props) => {
               >
                 {buttonMessage}
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
