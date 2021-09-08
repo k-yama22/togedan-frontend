@@ -116,7 +116,7 @@ const MyPage = () => {
         </div>
       </div>
 
-      <div className="bg-gray-100">
+      <div className="py-4 bg-gray-100">
         <div className="container mx-auto my-5 p-5">
           <div className="md:flex no-wrap md:-mx-2">
             <div className="w-full md:w-3/12 md:mx-2">
@@ -130,14 +130,14 @@ const MyPage = () => {
                   />
                 </div>
                 <Link href="/iconEdit">
-                  <a className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                  <a className="block w-full text-blue-800 text-xs md:text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs md:p-3 my-4">
                     プロフィール画像の変更はこちら
                   </a>
                 </Link>
-                <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
+                <h1 className="text-gray-900 font-bold text-md md:text-xl leading-8 my-1">
                   {myUserInfo.last_name} {myUserInfo.first_name}
                 </h1>
-                <h3 className="text-gray-600 font-lg text-semibold leading-6">
+                <h3 className="text-gray-600 text-sm md:font-lg text-semibold leading-6">
                   自己紹介
                 </h3>
 
@@ -159,7 +159,7 @@ const MyPage = () => {
               <div className="my-4"></div>
             </div>
             {/* 右側部分 */}
-            <div className="w-full md:w-9/12 mx-2 ">
+            <div className="w-full md:w-9/12 md:mx-2 ">
               {/* ユーザー情報の項目 */}
               <div className="bg-white p-3 shadow-sm rounded-sm h-full">
                 <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
@@ -179,12 +179,12 @@ const MyPage = () => {
                       />
                     </svg>
                   </span>
-                  <span className="tracking-wide text-2xl m-2">
+                  <span className="tracking-wide text-lg md:text-2xl m-2">
                     ユーザー情報
                   </span>
                 </div>
                 <div className="text-gray-700">
-                  <div className="grid md:grid-cols-2 text-lg">
+                  <div className="grid md:grid-cols-2 text-xs md:text-lg">
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">
                         苗字（カナ）
@@ -231,21 +231,23 @@ const MyPage = () => {
                       <div className="px-4 py-2 font-semibold">
                         メールアドレス
                       </div>
-                      <div className="px-4 py-2">{myUserInfo.email}</div>
+                      <div className="px-4 py-2 text-xs break-words">
+                        {myUserInfo.email}
+                      </div>
                     </div>
                   </div>
                   <div className="mx-4 my-2">
-                    <h3 className="text-gray-600 text-lg font-semibold leading-6 ">
+                    <h3 className="text-gray-600 text-xs md:text-lg font-semibold leading-6 ">
                       自己紹介
                     </h3>
-                    <p className="px-4 py-4 text-lg text-gray-700 hover:text-gray-600 leading-7 whitespace-pre-line h-72 w-full overflow-auto ">
+                    <p className="px-1 md:px-4 py-1 md:py-4 text-xs md:text-lg text-gray-700 hover:text-gray-600 leading-5 md:leading-7 whitespace-pre-line h-auto md:h-72 w-full overflow-auto ">
                       {myUserInfo.introduce}
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={onClickUserEdit}
-                  className="block w-full text-blue-800 text-md font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
+                  className="block w-full text-blue-800 text-xs md:text-md font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
                 >
                   ユーザ情報の変更はこちら
                 </button>
@@ -253,15 +255,15 @@ const MyPage = () => {
             </div>
           </div>
           <div className="content">
-            <div className="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
+            <div className="flex items-center justify-between w-full md:my-4 pl-4 sm:pr-4">
               <div className="mt-8">
-                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
+                <h2 className="text-xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
                   予約情報一覧
                 </h2>
               </div>
             </div>
 
-            <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+            <div className="grid md:mt-8 md:gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
               {myReserveArr.map((myReserve) => (
                 <div key={myReserve?.event_id}>
                   <MiniEventCard
@@ -280,7 +282,7 @@ const MyPage = () => {
               ))}
             </div>
             <button
-              className="text-blue-800 text-md font-semibold rounded-lg hover:bg-gray-300 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
+              className="text-blue-800 text-xs md:text-md font-semibold rounded-lg hover:bg-gray-300 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 md:my-4"
               onClick={onClickMyReserves}
             >
               全ての予約イベントを見る →
@@ -288,13 +290,13 @@ const MyPage = () => {
           </div>
           <div className="content">
             <div className="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
-              <div className="mt-8">
-                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
+              <div className="md:mt-8">
+                <h2 className="text-xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
                   開催しているイベント一覧
                 </h2>
               </div>
             </div>
-            <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+            <div className="grid mt-2 md:mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
               {myEventArr.map((myEvent) => (
                 <div key={myEvent?.event_id}>
                   <MiniEventCard
@@ -313,7 +315,7 @@ const MyPage = () => {
               ))}
             </div>
             <button
-              className="text-blue-800 text-md font-semibold rounded-lg hover:bg-gray-300 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
+              className="text-blue-800 text-xs md:text-md font-semibold rounded-lg hover:bg-gray-300 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 md:my-4"
               onClick={onClickMyEvents}
             >
               全ての開催イベントを見る →
