@@ -66,19 +66,19 @@ const EventEdit = (props) => {
       <Header />
 
       <div className="bg-gray-500 flex flex-col items-center justify-center min-h-screen py-2">
-        <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+        <main className="flex flex-col items-center justify-center w-full flex-1 px-10 md:px-20 text-center">
           <div className="container mx-auto h-full flex flex-1 justify-center items-center">
             <div className="w-full max-w-2xl">
               <h1 className="bg-green-100">Together Dance</h1>
               <div className="leading-loose">
                 <div className="max-w-2xl m-4 p-10 bg-white bg-opacity-25 rounded shadow-xl mx-auto">
-                  <p className="text-white font-medium text-center text-lg font-bold">
+                  <p className="text-white font-medium text-center pb-2 text-md md:text-lg font-bold">
                     開催情報を入力してください
                   </p>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="">
                       <label
-                        className="block text-sm text-white"
+                        className="block text-xs md:text-sm text-white"
                         htmlFor="eventName"
                       >
                         イベント名称
@@ -106,7 +106,7 @@ const EventEdit = (props) => {
                     </div>
                     <div className="mt-2">
                       <label
-                        className="block  text-sm text-white"
+                        className="block text-xs md:text-sm text-white"
                         htmlFor="genre"
                       >
                         ジャンル
@@ -132,7 +132,7 @@ const EventEdit = (props) => {
                     </div>
                     <div className="mt-2">
                       <label
-                        className="block  text-sm text-white"
+                        className="block text-xs md:text-sm text-white"
                         htmlFor="location"
                       >
                         開催場所
@@ -160,7 +160,7 @@ const EventEdit = (props) => {
                     </div>
                     <div className="mt-2">
                       <label
-                        className="block  text-sm text-white"
+                        className="block text-xs md:text-sm text-white"
                         htmlFor="eventDate"
                       >
                         開催日
@@ -180,9 +180,9 @@ const EventEdit = (props) => {
                         )}
                     </div>
                     <div className="grid md:grid-cols-3">
-                      <div className="mr-2 mt-2">
+                      <div className="md:mr-2 mt-2">
                         <label
-                          className="block text-sm text-white"
+                          className="block text-xs md:text-sm text-white"
                           htmlFor="startTime"
                         >
                           開始時刻
@@ -199,9 +199,9 @@ const EventEdit = (props) => {
                             <span className="text-red-700">必須項目です</span>
                           )}
                       </div>
-                      <div className="mr-2 mt-2">
+                      <div className="md:mr-2 mt-2">
                         <label
-                          className="block  text-sm text-white"
+                          className="block text-xs md:text-sm text-white"
                           htmlFor="endTime"
                         >
                           終了時刻
@@ -221,7 +221,7 @@ const EventEdit = (props) => {
 
                       <div className="mt-2">
                         <label
-                          className="block  text-sm text-white"
+                          className="block text-xs md:text-sm text-white"
                           htmlFor="maxPeople"
                         >
                           最大人数
@@ -250,7 +250,7 @@ const EventEdit = (props) => {
                     </div>
                     <div className="mt-2">
                       <label
-                        className="block  text-sm text-white"
+                        className="block text-xs md:text-sm text-white"
                         htmlFor="eventMessage"
                       >
                         開催者メッセージ

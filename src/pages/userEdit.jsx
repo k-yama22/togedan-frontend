@@ -75,21 +75,21 @@ const UserEdit = () => {
             <a>パスワードの変更はこちら</a>
           </Link>
         </div>
-        <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+        <main className="flex flex-col items-center justify-center w-full flex-1 px-10 md:px-20 text-center">
           <div className="container mx-auto h-full flex flex-1 justify-center items-center">
             <div className="w-full max-w-2xl">
               <h1 className="bg-green-100">Together Dance</h1>
               <div className="leading-loose">
                 <div className="max-w-2xl m-4 p-10 bg-white bg-opacity-25 rounded shadow-xl mx-auto">
-                  <p className="text-white font-medium text-center text-lg font-bold">
+                  <p className="text-white font-medium text-center text-md md:text-lg font-bold">
                     ユーザ情報を入力してください
                   </p>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="">
-                      <div className="grid md:grid-cols-2">
+                      <div className="md:grid md:grid-cols-2">
                         <div className="m-2">
                           <label
-                            className="block text-sm text-white"
+                            className="block text-xs md:text-sm text-white"
                             htmlFor="lastName"
                           >
                             苗字
@@ -119,7 +119,7 @@ const UserEdit = () => {
 
                         <div className="m-2">
                           <label
-                            className="block text-sm text-white"
+                            className="block text-xs md:text-sm text-white"
                             htmlFor="firstName"
                           >
                             名前
@@ -147,10 +147,10 @@ const UserEdit = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="grid md:grid-cols-2">
+                    <div className="md:grid md:grid-cols-2">
                       <div className="m-2">
                         <label
-                          className="block text-sm text-white"
+                          className="block text-xs md:text-sm text-white"
                           htmlFor="lastNameKana"
                         >
                           苗字（カナ）
@@ -178,7 +178,7 @@ const UserEdit = () => {
                       </div>
                       <div className="m-2">
                         <label
-                          className="block text-sm text-white"
+                          className="block text-xs md:text-sm text-white"
                           htmlFor="firstNameKana"
                         >
                           名前（カナ）
@@ -208,7 +208,7 @@ const UserEdit = () => {
 
                     <div className="m-2">
                       <label
-                        className="block text-sm text-white"
+                        className="block text-xs md:text-sm text-white"
                         htmlFor="userName"
                       >
                         ユーザーネーム
@@ -236,7 +236,7 @@ const UserEdit = () => {
                     </div>
                     <div className="m-2">
                       <label
-                        className="block text-sm text-white"
+                        className="block text-xs md:text-sm text-white"
                         htmlFor="email"
                       >
                         メールアドレス
@@ -255,7 +255,7 @@ const UserEdit = () => {
 
                     <div className="m-2">
                       <label
-                        className="block text-sm text-white"
+                        className="block text-xs md:text-sm text-white"
                         htmlFor="birthday"
                       >
                         生年月日
@@ -276,7 +276,7 @@ const UserEdit = () => {
                     </div>
                     <div className="m-2">
                       <label
-                        className="block text-sm text-white"
+                        className="block text-xs md:text-sm text-white"
                         htmlFor="phone"
                       >
                         電話番号
@@ -302,7 +302,7 @@ const UserEdit = () => {
                     </div>
                     <div className="m-2">
                       <label
-                        className="block text-sm text-white"
+                        className="block text-xs md:text-sm text-white"
                         htmlFor="introduce"
                       >
                         自己紹介
