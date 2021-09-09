@@ -11,7 +11,6 @@ import Head from "next/head";
 const MyApp = ({ Component, pageProps }) => {
   const { showNotify } = useNotify();
   useEffect(() => {
-    // console.log("初期レンダーしてる");
     // ログイン画面へのアクセスの場合、処理せずにreturn
     if (
       router.pathname === "/login"
@@ -30,6 +29,7 @@ const MyApp = ({ Component, pageProps }) => {
         lscache.flush();
         showNotify({ title: "タイムアウトしました", status: "error" });
         router.push("/login");
+        return;
       }
     } else if (
       !(
@@ -40,14 +40,16 @@ const MyApp = ({ Component, pageProps }) => {
         router.pathname === "/eventDetail" ||
         router.pathname === "/tempRegistration" ||
         router.pathname === "/passForget" ||
-        router.pathname === "/passReset"
+        router.pathname === "/passReset" ||
+        router.pathname === "/about"
       )
     ) {
       showNotify({
         title: "ログインまたは新規登録をしてください",
-        status: "success",
+        status: "error",
       });
       router.push("/login");
+      return;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Component]);
