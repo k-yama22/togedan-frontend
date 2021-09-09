@@ -4,7 +4,6 @@ import {
   COMMON_SELECT_ERROR,
   ERROR_STATUS,
   EVENTS_URL,
-  SELECT_SUCCESS,
 } from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 export const useSelectEvent = () => {
@@ -17,7 +16,6 @@ export const useSelectEvent = () => {
       .get(`${EVENTS_URL}/${id}`)
       .then((res) => {
         setSelectedEvent(res.data.data);
-        showNotify({ title: SELECT_SUCCESS, status: ERROR_STATUS });
       })
       .catch(() => {
         showNotify({ title: COMMON_SELECT_ERROR, status: ERROR_STATUS });

@@ -8,8 +8,6 @@ import {
   ERROR_STATUS,
   RESERVES_URL,
   RESERVE_STATUS_VALID,
-  SELECT_SUCCESS,
-  SUCCESS_STATUS,
 } from "src/hooks/constants";
 
 export const useSelectReservedEvent = () => {
@@ -32,7 +30,6 @@ export const useSelectReservedEvent = () => {
       )
       .then((res) => {
         setSelectedEvent(res.data.data);
-        showNotify({ title: SELECT_SUCCESS, status: SUCCESS_STATUS });
       })
       .catch(() => {
         showNotify({ title: COMMON_SELECT_ERROR, status: ERROR_STATUS });
