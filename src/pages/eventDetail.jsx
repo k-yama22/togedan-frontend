@@ -67,23 +67,28 @@ const EventDetail = (props) => {
         <div className="container mx-auto my-5 p-5">
           <div className="md:flex no-wrap md:-mx-2 ">
             <div className="w-full md:w-3/12 md:mx-2">
-              <div className="bg-white p-3 border-t-4 border-green-400 h-full">
-                <div className="image overflow-hidden">
+              <div className="flex md:flex-col bg-white p-3 border-t-4 border-green-400 md:h-full justify-center items-center md:justify-start">
+                <div className="w-4/12 md:w-full image overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    className="h-auto w-full mx-auto"
+                    className="h-auto md:w-full mx-auto"
                     src={selectedEvent.image?.url}
                     alt="アイコン画像"
                   />
                 </div>
-                <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
-                  {selectedEvent.last_name} {selectedEvent.first_name}
-                </h1>
-                <h3 className="text-gray-600 font-lg text-semibold leading-6">
-                  {selectedEvent.introduce}
-                </h3>
+                <div className="p-2 w-5/12  md:w-full">
+                  <div className="md:hidden text-gray-600 text-sm">
+                    開催者名
+                  </div>
+                  <h1 className="text-gray-900 text-center font-bold text-md md:text-xl leading-5 md:leading-8 my-1">
+                    {selectedEvent.last_name} {selectedEvent.first_name}
+                  </h1>
+                  <h3 className="hidden md:block text-gray-600 text-xs md:text-base whitespace-pre-line text-semibold leading-6">
+                    {selectedEvent.introduce}
+                  </h3>
+                </div>
 
-                <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+                {/* <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                   <li className="flex items-center py-3">
                     <span>会員状態</span>
                     <span className="ml-auto">
@@ -92,43 +97,43 @@ const EventDetail = (props) => {
                       </span>
                     </span>
                   </li>
-                </ul>
+                </ul> */}
                 <button
-                  className="flex mx-auto mt-3 text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded"
+                  className="flex w-3/12 md:w-full text-xs mx-auto md:mt-3 text-white bg-teal-500 border-0 py-2 h-12 items-center justify-center md:px-6 focus:outline-none shadow hover:shadow-lg hover:bg-teal-600 rounded"
                   onClick={() => onClickHoldUser(selectedEvent.id)}
                 >
-                  詳細を見る
+                  開催者の詳細
                 </button>
               </div>
             </div>
 
-            <div className="w-full md:w-9/12 mx-2 h-full">
-              <div className="bg-white p-3 shadow-sm rounded-sm h-full">
-                <div className="container px-5 py-12 mx-auto">
+            <div className="w-full md:w-9/12 md:mx-2 h-full">
+              <div className="bg-white mt-2 md:mt-0 p-3 shadow-sm rounded-sm h-full">
+                <div className="container px-5 py-2 md:py-12 mx-auto">
                   <div className=" mx-auto flex flex-wrap">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <div className="w-full sm:py-10 lg:pl-10 lg:py-16 mt-6 lg:mt-0 h-full">
                       <h2 className="text-sm title-font text-gray-500 tracking-widest">
                         イベント名称
                       </h2>
-                      <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+                      <h1 className="text-gray-900 text-xl md:text-3xl title-font font-medium mb-1">
                         {selectedEvent.event_name}
                       </h1>
                       <div className="flex mb-4">
-                        <span className="flex items-center justify-center">
+                        <span className="flex items-center justify-center pl-1 text-sm">
                           {selectedEvent.genre}
                         </span>
-                        <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
+                        <span className="hidden md:block flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
                           {eventDate} {startTime}〜{endTime}
                         </span>
                       </div>
-                      <p className="leading-relaxed whitespace-pre-line">
+                      <p className="text-sm md:text-base leading-relaxed whitespace-pre-line">
                         {selectedEvent.event_message}
                       </p>
                       <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
                         <div className="flex items-center ">
                           <span className="mr-3">最大人数</span>
-                          <span className="font-semibold text-lg mb-1">
+                          <span className="font-semibold md:text-lg">
                             {selectedEvent.max_people}
                           </span>
                         </div>
@@ -136,28 +141,29 @@ const EventDetail = (props) => {
                       <h2 className="text-sm title-font text-gray-500 tracking-widest">
                         開催日
                       </h2>
-                      <div className="flex">
-                        <div className="title-font font-medium text-2xl text-gray-900">
-                          {eventDate} {startTime}〜{endTime}
+                      <div className="">
+                        <div className="title-font font-medium text-lg md:text-2xl text-gray-900">
+                          {eventDate}
+                        </div>
+                        <div className="title-font font-medium text-lg md:text-2xl text-gray-900 md:mt-2">
+                          {startTime}〜{endTime}
                         </div>
                       </div>
                       <h2 className="text-sm title-font text-gray-500 tracking-widest mt-4">
                         開催場所
                       </h2>
                       <div className="flex">
-                        <div className="title-font font-medium text-2xl text-gray-900">
+                        <div className="title-font font-medium text-lg md:text-2xl text-gray-900">
                           {selectedEvent.location}
                         </div>
-                        <div className="flex ml-auto focus:outline-none rounded">
-                          <ConfirmModal
-                            id={selectedEvent.event_id}
-                            buttonMessage={"予約申込をする"}
-                            eventName={selectedEvent.event_name}
-                            onClick={() =>
-                              onClickReserve(selectedEvent.event_id)
-                            }
-                          />
-                        </div>
+                      </div>
+                      <div className="flex items-center justify-center mt-4 ml-auto focus:outline-none rounded">
+                        <ConfirmModal
+                          id={selectedEvent.event_id}
+                          buttonMessage={"予約申込をする"}
+                          eventName={selectedEvent.event_name}
+                          onClick={() => onClickReserve(selectedEvent.event_id)}
+                        />
                       </div>
                     </div>
                   </div>

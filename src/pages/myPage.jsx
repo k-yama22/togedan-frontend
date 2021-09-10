@@ -120,7 +120,7 @@ const MyPage = () => {
         <div className="container mx-auto my-5 p-5">
           <div className="md:flex no-wrap md:-mx-2">
             <div className="w-full md:w-3/12 md:mx-2">
-              <div className="bg-white p-3 border-t-4 border-green-400 h-full">
+              <div className="flex md:flex-col bg-white p-3 border-t-4 border-green-400 h-full">
                 <div className="image overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -130,18 +130,18 @@ const MyPage = () => {
                   />
                 </div>
                 <Link href="/iconEdit">
-                  <a className="block w-full text-blue-800 text-xs md:text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs md:p-3 my-4">
+                  <a className="block w-full text-blue-800 text-xs md:text-xs font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs md:p-3 my-4">
                     プロフィール画像の変更はこちら
                   </a>
                 </Link>
-                <h1 className="text-gray-900 font-bold text-md md:text-xl leading-8 my-1">
+                {/* <h1 className="text-gray-900 font-bold text-md md:text-xl leading-8 my-1">
                   {myUserInfo.last_name} {myUserInfo.first_name}
-                </h1>
-                <h3 className="text-gray-600 text-sm md:font-lg text-semibold leading-6">
+                </h1> */}
+                {/* <h3 className="text-gray-600 text-sm md:font-lg text-semibold leading-6">
                   自己紹介
-                </h3>
+                </h3> */}
 
-                <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+                {/* <ul className="hidden md:block bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                   <li className="flex items-center py-3">
                     <span>会員状態</span>
                     <span className="ml-auto">
@@ -154,7 +154,7 @@ const MyPage = () => {
                     <span>ユーザーネーム</span>
                     <span className="ml-auto">{myUserInfo.user_name}</span>
                   </li>
-                </ul>
+                </ul> */}
               </div>
               <div className="my-4"></div>
             </div>
@@ -231,7 +231,7 @@ const MyPage = () => {
                       <div className="px-4 py-2 font-semibold">
                         メールアドレス
                       </div>
-                      <div className="px-4 py-2 text-xs break-words">
+                      <div className="px-4 py-2 text-xs md:text-lg break-words md:break-normal">
                         {myUserInfo.email}
                       </div>
                     </div>
@@ -247,7 +247,7 @@ const MyPage = () => {
                 </div>
                 <button
                   onClick={onClickUserEdit}
-                  className="block w-full text-blue-800 text-xs md:text-md font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
+                  className="block w-full text-blue-800 text-xs md:text-base font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
                 >
                   ユーザ情報の変更はこちら
                 </button>
@@ -282,7 +282,7 @@ const MyPage = () => {
               ))}
             </div>
             <button
-              className="text-blue-800 text-xs md:text-md font-semibold rounded-lg hover:bg-gray-300 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 md:my-4"
+              className="text-blue-800 text-xs md:text-base font-semibold rounded-lg hover:bg-gray-300 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 md:my-4"
               onClick={onClickMyReserves}
             >
               全ての予約イベントを見る →
@@ -315,7 +315,7 @@ const MyPage = () => {
               ))}
             </div>
             <button
-              className="text-blue-800 text-xs md:text-md font-semibold rounded-lg hover:bg-gray-300 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 md:my-4"
+              className="text-blue-800 text-xs md:text-base font-semibold rounded-lg hover:bg-gray-300 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 md:my-4"
               onClick={onClickMyEvents}
             >
               全ての開催イベントを見る →

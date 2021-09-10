@@ -25,7 +25,7 @@ export const MiniEventCard = memo((props) => {
       onKeyDown={() => onClick(id)}
     >
       <div className="bg-white shadow-md rounded-3xl p-4">
-        <div className="flex-none flex">
+        <div className="flex">
           <div className="h-20 w-20 md:w-full md:h-full lg:h-48 lg:w-48 lg:mb-0 mb-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -42,7 +42,7 @@ export const MiniEventCard = memo((props) => {
               </div>
             </div>
             <p className="mt-3"></p>
-            <div className="flex py-0 md:py-4 md:text-md text-gray-600">
+            <div className="flex py-0 md:py-4 md:text-base text-gray-600">
               <div className="mr-3 md:flex-1 inline-flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
