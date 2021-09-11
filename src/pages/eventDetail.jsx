@@ -63,7 +63,7 @@ const EventDetail = (props) => {
         </div>
       </div>
 
-      <div className="bg-gray-100">
+      <div className="py-4 bg-gray-100">
         <div className="container mx-auto my-5 p-5">
           <div className="md:flex no-wrap md:-mx-2 ">
             <div className="w-full md:w-3/12 md:mx-2">
@@ -76,11 +76,11 @@ const EventDetail = (props) => {
                     alt="アイコン画像"
                   />
                 </div>
-                <div className="p-2 w-5/12  md:w-full">
+                <div className="p-2 w-5/12 md:w-full">
                   <div className="md:hidden text-gray-600 text-sm">
                     開催者名
                   </div>
-                  <h1 className="text-gray-900 text-center font-bold text-md md:text-xl leading-5 md:leading-8 my-1">
+                  <h1 className="text-gray-900 text-center font-bold text-base md:text-xl leading-5 md:leading-8 my-1">
                     {selectedEvent.last_name} {selectedEvent.first_name}
                   </h1>
                   <h3 className="hidden md:block text-gray-600 text-xs md:text-base whitespace-pre-line text-semibold leading-6">
@@ -99,7 +99,7 @@ const EventDetail = (props) => {
                   </li>
                 </ul> */}
                 <button
-                  className="flex w-3/12 md:w-full text-xs mx-auto md:mt-3 text-white bg-teal-500 border-0 py-2 h-12 items-center justify-center md:px-6 focus:outline-none shadow hover:shadow-lg hover:bg-teal-600 rounded"
+                  className="flex w-3/12 md:w-full text-xs md:text-base mx-auto md:mt-3 text-white bg-teal-500 border-0 py-2 h-12 items-center justify-center md:px-6 focus:outline-none shadow hover:shadow-lg hover:bg-teal-600 rounded"
                   onClick={() => onClickHoldUser(selectedEvent.id)}
                 >
                   開催者の詳細
@@ -157,7 +157,7 @@ const EventDetail = (props) => {
                           {selectedEvent.location}
                         </div>
                       </div>
-                      <div className="flex items-center justify-center mt-4 ml-auto focus:outline-none rounded">
+                      <div className="flex items-center justify-center md:mt-4 ml-auto focus:outline-none rounded">
                         <ConfirmModal
                           id={selectedEvent.event_id}
                           buttonMessage={"予約申込をする"}

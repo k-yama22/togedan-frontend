@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { useMyEvents } from "src/hooks/useMyEvents";
-import { EventCard } from "src/components/EventCard";
+// import { EventCard } from "src/components/EventCard";
 import { useRouter } from "next/router";
 import { useDeleteEvent } from "src/hooks/useDeleteEvent";
 import { useHistoryEvents } from "src/hooks/useHistoryEvents";
@@ -25,8 +25,8 @@ const MyEvents = () => {
     deleteMyEvent(id);
   };
 
-  const onClickEventEdit = (id) => {
-    router.push({ pathname: "/eventEdit", query: { id: id } });
+  const onClickMyEventDetail = (id) => {
+    router.push({ pathname: "/myEventDetail", query: { id: id } });
   };
 
   const onClickWillEvent = () => {
@@ -88,7 +88,7 @@ const MyEvents = () => {
           <div className="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
             <div className="mr-6">
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
-                開催しているイベント一覧
+                開催イベント一覧
               </h2>
             </div>
           </div>
@@ -96,7 +96,7 @@ const MyEvents = () => {
             <>
               <div className="grid mt-8 gap-2 grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
                 <div
-                  className="bg-teal-300 text-2xl pt-8 h-full w-full h-24 text-center"
+                  className="bg-teal-300 text-base md:text-2xl pt-5 md:pt-8 h-full w-full h-16 md:h-24 text-center"
                   role="button"
                   tabIndex={0}
                   onClick={onClickWillEvent}
@@ -105,18 +105,18 @@ const MyEvents = () => {
                   開催予定のイベント
                 </div>
                 <div
-                  className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-2xl pt-8 h-full w-full h-24 text-center"
+                  className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-base md:text-2xl pt-5 md:pt-8 w-full h-16 md:h-24 text-center"
                   role="button"
                   tabIndex={0}
                   onClick={onClickDidEvent}
                   onKeyDown={onClickDidEvent}
                 >
-                  過去に開催済みのイベント
+                  開催済みのイベント
                 </div>
               </div>
               <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
                 {myEventArr.map((myEvent) => (
-                  <EventCard
+                  <MiniEventCard
                     key={myEvent.event_id}
                     id={myEvent.event_id}
                     eventName={myEvent.event_name}
@@ -128,7 +128,7 @@ const MyEvents = () => {
                     endTime={myEvent.end_time}
                     buttonMessage="開催情報を修正する"
                     subButtonMessage="開催を取り消す"
-                    onClick={onClickEventEdit}
+                    onClick={onClickMyEventDetail}
                     onClickSub={onClickEventCancel}
                   />
                 ))}
@@ -138,7 +138,7 @@ const MyEvents = () => {
             <>
               <div className="grid mt-8 gap-2 grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
                 <div
-                  className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-2xl pt-8 h-full w-full h-24 text-center"
+                  className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-base md:text-2xl pt-5 md:pt-8 w-full h-16 md:h-24 text-center"
                   role="button"
                   tabIndex={0}
                   onClick={onClickWillEvent}
@@ -147,13 +147,13 @@ const MyEvents = () => {
                   開催予定のイベント
                 </div>
                 <div
-                  className="bg-teal-300 text-2xl pt-8 h-full w-full h-24 text-center"
+                  className="bg-teal-300 text-base md:text-2xl pt-5 md:pt-8 w-full h-16 md:h-24 text-center"
                   role="button"
                   tabIndex={0}
                   onClick={onClickDidEvent}
                   onKeyDown={onClickDidEvent}
                 >
-                  過去に開催済みのイベント
+                  開催済みのイベント
                 </div>
               </div>
               <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
@@ -169,7 +169,7 @@ const MyEvents = () => {
                     startTime={historyEvent.start_time}
                     endTime={historyEvent.end_time}
                     buttonMessage="開催情報を確認する"
-                    onClick={onClickEventEdit}
+                    onClick={onClickMyEventDetail}
                   />
                 ))}
               </div>
