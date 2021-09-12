@@ -25,27 +25,26 @@ const Quit = () => {
           </h1>
         </div> */}
         <div className="container">
-          <div className=" w-full my-4 pl-4 sm:pr-4">
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 truncate text-center">
+          <div className="w-full my-4 md:pl-4 sm:pr-4">
+            <h2 className="text-xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 truncate text-center">
               退会するにあたって
             </h2>
             <div className="mr-6 flex items-center justify-center">
-              <div className="text-2xl tracking-tight text-gray-600  p-10">
-                <p className="mt-4">
+              <div className="text-base md:text-2xl tracking-tight text-gray-600 p-2 md:p-10">
+                <p className="mt-4 font-semibold">
                   ・踊ろう会の開催をされている場合は退会することができません。
                 </p>
-                <p className="mt-2 text-lg text-gray-600">
-                  {"　 "}
+                <p className="mt-2 ml-4 md:ml-6 text-xs md:text-lg text-gray-600">
                   開催をキャンセルもしくは終了後に退会手続きをしてください。
                 </p>
-                <p className="mt-4">
+                <p className="mt-4 font-semibold">
                   ・踊ろう会に参加予約している場合は退会することができません。
                 </p>
-                <p className="mt-2 text-lg text-gray-600">
+                <p className="mt-2 ml-4 md:ml-6 text-xs md:text-lg text-gray-600">
                   {"　 "}
                   ご予約をキャンセルもしくは参加終了後に退会手続きをしてください。
                 </p>
-                <p className="mt-4">
+                <p className="mt-4 font-semibold">
                   ・退会後はアカウントを復元することはできませんのでご注意ください。
                 </p>
               </div>

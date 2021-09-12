@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
@@ -123,11 +124,16 @@ const MyPage = () => {
               <div className="flex md:flex-col bg-white p-3 border-t-4 border-green-400 h-full">
                 <div className="image overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    className="h-auto w-full mx-auto "
-                    src={myUserInfo.image?.url}
-                    alt="アイコン画像"
-                  />
+                  {myUserInfo.image ? (
+                    <Image
+                      className="h-auto w-full mx-auto"
+                      src={myUserInfo.image?.url}
+                      alt="アイコン画像"
+                      width={256}
+                      height={256}
+                      // layout={"responsive"}
+                    />
+                  ) : null}
                 </div>
                 <Link href="/iconEdit">
                   <a className="block w-full text-blue-800 text-xs md:text-xs font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs md:p-3 my-4">
