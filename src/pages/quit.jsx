@@ -41,7 +41,6 @@ const Quit = () => {
                   ・踊ろう会に参加予約している場合は退会することができません。
                 </p>
                 <p className="mt-2 ml-4 md:ml-6 text-xs md:text-lg text-gray-600">
-                  {"　 "}
                   ご予約をキャンセルもしくは参加終了後に退会手続きをしてください。
                 </p>
                 <p className="mt-4 font-semibold">

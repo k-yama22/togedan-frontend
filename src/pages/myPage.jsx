@@ -269,7 +269,7 @@ const MyPage = () => {
               </div>
             </div>
 
-            <div className="grid md:mt-8 md:gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+            <div className="grid mt-2 md:mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
               {myReserveArr.map((myReserve) => (
                 <div key={myReserve?.event_id}>
                   <MiniEventCard

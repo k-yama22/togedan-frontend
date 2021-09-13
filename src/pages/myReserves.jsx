@@ -9,6 +9,7 @@ import { useDeleteReserve } from "src/hooks/useDeleteReserve";
 import { useMyReserves } from "src/hooks/useMyReserves";
 import { useHistoryReserves } from "src/hooks/useHistoryReserves";
 import dayjs from "dayjs";
+import { MiniEventCard } from "src/components/MiniEventCard";
 
 const MyReserves = () => {
   const router = useRouter();
@@ -114,7 +115,7 @@ const MyReserves = () => {
               <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
                 {myReserveArr.map((myReserve) => (
                   <div key={myReserve.event_id}>
-                    <EventCard
+                    <MiniEventCard
                       id={myReserve.event_id}
                       eventName={myReserve.event_name}
                       genre={myReserve.genre}
