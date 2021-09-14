@@ -42,7 +42,7 @@ export const useNewEvent = () => {
       .then((res) => {
         if (res.data.status === 200) {
           showNotify({ title: res.data.message, status: SUCCESS_STATUS });
-          router.push("/newEvent");
+          router.push("/myEvents");
         } else if (res.data.status === 400) {
           const errorMessages = res.data.data.join("\n");
           showNotify({ title: errorMessages, status: ERROR_STATUS });
