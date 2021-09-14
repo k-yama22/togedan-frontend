@@ -3,7 +3,6 @@ import Head from "next/head";
 import { useEffect } from "react";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import { EventCard } from "src/components/EventCard";
 import { useRouter } from "next/router";
 import { useDeleteReserve } from "src/hooks/useDeleteReserve";
 import { useMyReserves } from "src/hooks/useMyReserves";
@@ -94,7 +93,7 @@ const MyReserves = () => {
             <>
               <div className="grid mt-8 gap-2 grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
                 <div
-                  className="bg-teal-300 text-2xl pt-8 h-full w-full h-24 text-center"
+                  className="bg-teal-300 text-base md:text-2xl pt-5 md:pt-8 h-full w-full h-16 md:h-24 text-center"
                   role="button"
                   tabIndex={0}
                   onClick={onClickWillReserve}
@@ -103,7 +102,7 @@ const MyReserves = () => {
                   参加予定のイベント
                 </div>
                 <div
-                  className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-2xl pt-8 h-full w-full h-24 text-center"
+                  className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-base md:text-2xl pt-5 md:pt-8 h-full w-full h-16 md:h-24 text-center"
                   role="button"
                   tabIndex={0}
                   onClick={onClickDidReserve}
@@ -137,7 +136,7 @@ const MyReserves = () => {
             <>
               <div className="grid mt-8 gap-2 grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
                 <div
-                  className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-2xl pt-8 h-full w-full h-24 text-center"
+                  className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-base md:text-2xl pt-5 md:pt-8 h-full w-full h-16 md:h-24 text-center"
                   role="button"
                   tabIndex={0}
                   onClick={onClickWillReserve}
@@ -146,7 +145,7 @@ const MyReserves = () => {
                   参加予定のイベント
                 </div>
                 <div
-                  className="bg-teal-300 text-2xl pt-8 h-full w-full h-24 text-center"
+                  className="bg-teal-300 text-base md:text-2xl pt-5 md:pt-8 h-full w-full h-16 md:h-24 text-center"
                   role="button"
                   tabIndex={0}
                   onClick={onClickDidReserve}
@@ -158,7 +157,7 @@ const MyReserves = () => {
               <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
                 {historyReserveArr.map((historyReserve) => (
                   <div key={historyReserve.event_id}>
-                    <EventCard
+                    <MiniEventCard
                       id={historyReserve.event_id}
                       eventName={historyReserve.event_name}
                       genre={historyReserve.genre}

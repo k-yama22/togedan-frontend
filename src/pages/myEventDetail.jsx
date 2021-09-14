@@ -111,7 +111,7 @@ const MyEventDetail = (props) => {
             <div className="w-full md:w-9/12 md:mx-2 h-full">
               <div className="bg-white mt-2 md:mt-0 p-3 shadow-sm rounded-sm h-full">
                 <div className="container px-5 py-2 md:py-12 mx-auto">
-                  <div className=" mx-auto flex flex-wrap">
+                  <div className="mx-auto flex flex-wrap">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <div className="w-full sm:py-10 lg:pl-10 lg:py-16 mt-6 lg:mt-0 h-full">
                       <h2 className="text-sm title-font text-gray-500 tracking-widest">
