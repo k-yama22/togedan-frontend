@@ -64,7 +64,7 @@ const Events = () => {
 
   useEffect(() => {
     const arr = [];
-    for (let i = 0; i < events.length; i++) {
+    for (let i = 0; i < events?.length; i++) {
       arr.push(events[i]);
       const eventDate = dayjs(events[i].event_date);
       const startTime = dayjs(events[i].start_time);
