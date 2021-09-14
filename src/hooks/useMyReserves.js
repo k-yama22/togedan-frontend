@@ -16,6 +16,9 @@ export const useMyReserves = () => {
   const getMyReserves = useCallback(() => {
     const loginId = lscache.get("loginId");
     const headers = authHeaders();
+    if (!loginId) {
+      return;
+    }
     axios
       .get(`${RESERVES_URL}/${loginId}/events`, {
         headers: headers,

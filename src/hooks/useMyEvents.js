@@ -15,6 +15,9 @@ export const useMyEvents = () => {
   const getMyEvents = useCallback(() => {
     const loginId = lscache.get("loginId");
     const headers = authHeaders();
+    if (!loginId) {
+      return;
+    }
     axios
       .get(`${EVENTS_URL}/${loginId}/own`, {
         headers: headers,

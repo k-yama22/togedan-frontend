@@ -16,6 +16,9 @@ export const useMyUserInfo = () => {
 
   const getMyUserInfo = () => {
     const loginId = lscache.get("loginId");
+    if (!loginId) {
+      return;
+    }
     axios
       .get(`${USERS_URL}/${loginId}`, {
         headers: headers,

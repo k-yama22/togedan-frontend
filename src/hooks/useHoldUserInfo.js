@@ -1,4 +1,5 @@
 import axios from "axios";
+import lscache from "lscache";
 import { useState } from "react";
 import { authHeaders } from "src/hooks/authHeaders";
 import {
@@ -12,8 +13,12 @@ export const useHoldUserInfo = () => {
   const [holdUserInfo, setMyUserInfo] = useState([]);
   const headers = authHeaders();
   const { showNotify } = useNotify();
+  const loginId = lscache.get("loginId");
 
   const getHoldUserInfo = (id) => {
+    if (!loginId) {
+      return;
+    }
     axios
       .get(`${USERS_URL}/${id}`, {
         headers: headers,
