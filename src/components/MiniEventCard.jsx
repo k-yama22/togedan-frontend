@@ -18,7 +18,7 @@ export const MiniEventCard = memo((props) => {
 
   return (
     <div
-      className="flex flex-col hover:opacity-75"
+      className="flex flex-col hover:opacity-75 focus:outline-none"
       role="button"
       tabIndex={0}
       onClick={() => onClick(id)}
