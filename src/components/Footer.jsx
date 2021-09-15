@@ -19,7 +19,7 @@ export const Footer = () => {
   return (
     <>
       <div className="bg-gray-800">
-        <div className="hidden md:block m-auto text-gray-100 flex flex-wrap ml-10">
+        <div className="hidden md:flex m-auto text-gray-100 flex-wrap ml-10">
           <div className="p-5 w-72">
             <div className="text-xs uppercase text-gray-400 font-medium">
               イベントの参加と開催
