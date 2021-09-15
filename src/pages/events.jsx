@@ -9,6 +9,13 @@ import { useRouter } from "next/router";
 import { useSearchEvent } from "src/hooks/useSearchEvents";
 import dayjs from "dayjs";
 import ReactPaginate from "react-paginate";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from "react-accessible-accordion";
 
 const Events = () => {
   const router = useRouter();
@@ -106,7 +113,7 @@ const Events = () => {
           <div className="text-center text-2xl p-4 font-semibold">
             検索フォーム
           </div>
-          <div className="w-screen container mx-auto block md:flex justify-center items-center p-2 md:p-0">
+          <div className="hidden w-screen container mx-auto block md:flex justify-center items-center p-2 md:p-0">
             <div className="border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6">
               <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-2 border border-gray-200 p-2 rounded">
@@ -199,11 +206,119 @@ const Events = () => {
               </div>
             </div>
           </div>
+
+          {/* スマホ表示 */}
+          <div className="md:hidden w-screen container mx-auto block md:flex justify-center items-center p-2 md:p-0">
+            <div className="border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6">
+              <Accordion allowMultipleExpanded allowZeroExpanded>
+                <AccordionItem>
+                  <AccordionItemHeading>
+                    <AccordionItemButton>
+                      <div className="text-base text-center uppercase text-gray-800 font-medium hover:text-gray-400">
+                        絞り込み
+                      </div>
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel>
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-5 gap-2 border border-gray-200 p-2 rounded">
+                        <div className="text-center">
+                          <label htmlFor="genre" className="text-xs">
+                            ジャンル
+                          </label>
+                          <div className="flex border rounded bg-gray-300 items-center p-2">
+                            <input
+                              id="genre"
+                              type="text"
+                              placeholder="例：HIPHOP"
+                              className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
+                              value={genre}
+                              onChange={onChangeGenre}
+                            />
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <label htmlFor="location" className="text-xs">
+                            場所
+                          </label>
+                          <div className="flex border rounded bg-gray-300 items-center p-2">
+                            <input
+                              id="location"
+                              type="text"
+                              placeholder="例：渋谷"
+                              className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
+                              value={location}
+                              onChange={onChangeLocation}
+                            />
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <label htmlFor="eventDate" className="text-xs">
+                            開催日
+                          </label>
+                          <div className="flex border rounded bg-gray-300 items-center p-2 text-xs">
+                            <input
+                              id="eventDate"
+                              type="date"
+                              min="1900-01-01"
+                              max="2100-12-31"
+                              placeholder="年月日"
+                              className="bg-gray-300 h-10 max-w-full w-full focus:outline-none text-gray-700"
+                              value={eventDate}
+                              onChange={onChangeEventDate}
+                            />
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <label htmlFor="startTime" className="text-xs">
+                            開始時刻
+                          </label>
+                          <div className="flex border rounded bg-gray-300 items-center p-2">
+                            <input
+                              className="max-w-full w-full px-5 py-1 h-10 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                              id="startTime"
+                              type="time"
+                              placeholder="開始時刻"
+                              value={startTime}
+                              onChange={onChangeStartTime}
+                            />
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <label htmlFor="endTime" className="text-xs">
+                            終了時刻
+                          </label>
+                          <div className="flex border rounded w-full bg-gray-300 items-center p-2">
+                            <input
+                              className="max-w-full w-full px-5 py-1 h-10 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                              id="endTime"
+                              type="time"
+                              placeholder="終了時刻"
+                              value={endTime}
+                              onChange={onChangeEndTime}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex justify-center pt-4">
+                      <button
+                        onClick={onClickSearch}
+                        className="p-2 border w-1/4 rounded-md bg-gray-800 text-white"
+                      >
+                        検索
+                      </button>
+                    </div>
+                  </AccordionItemPanel>
+                </AccordionItem>
+              </Accordion>
+            </div>
+          </div>
         </div>
       </div>
       <div className="pt-4 bg-gray-100">
         <div className="container mx-auto p-5">
-          <div className="text-center text-2xl font-semibold">検索結果</div>
+          <div className="text-center text-2xl font-semibold">イベント一覧</div>
           <div className="grid mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
             {eventArr.slice(offset, offset + perPage).map((event) => (
               <div key={event.event_id}>
