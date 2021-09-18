@@ -49,7 +49,7 @@ const HoldUser = memo((props) => {
                 <div className="w-4/12 md:w-full image overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    className="h-auto w-full mx-auto "
+                    className="h-auto w-full object-cover w-64 h-32 md:h-64 rounded-2xl"
                     src={holdUserInfo.image?.url}
                     alt="アイコン画像"
                   />

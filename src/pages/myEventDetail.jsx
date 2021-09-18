@@ -9,7 +9,7 @@ import { useSelectMyEventDetail } from "src/hooks/useSelectMyEventDetail";
 import { useRouter } from "next/router";
 import { useDeleteEvent } from "src/hooks/useDeleteEvent";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 
 //サーバーサイドレンダリング
 export async function getServerSideProps(context) {
@@ -73,16 +73,16 @@ const MyEventDetail = (props) => {
             <div className="w-full md:w-3/12 md:mx-2">
               <div className="flex md:flex-col bg-white p-3 border-t-4 border-green-400 h-full justify-center items-center md:justify-start">
                 <div className="w-4/12 md:w-auto image overflow-hidden mx-auto">
+                  {/* {selectedEvent.image ? ( */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  {selectedEvent.image ? (
-                    <Image
-                      className="h-auto md:w-full mx-auto object-cover rounded-2xl"
-                      src={selectedEvent.image?.url}
-                      alt="アイコン画像"
-                      width={256}
-                      height={256}
-                    />
-                  ) : null}
+                  <img
+                    className="h-auto w-full object-cover w-64 h-32 md:h-64 rounded-2xl"
+                    src={selectedEvent.image?.url}
+                    alt="アイコン画像"
+                    width="256"
+                    height="256"
+                  />
+                  {/* ) : null} */}
                 </div>
                 <div className="p-2 w-5/12  md:w-full">
                   <div className="md:hidden text-gray-600 text-sm">
