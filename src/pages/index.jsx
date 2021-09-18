@@ -63,12 +63,12 @@ const Home = () => {
 
       <div className="bg-black">
         <div className="flex relative text-center">
-          <h1 className="text-3xl tracking-wider text-white text-sha uppercase font-bold p-4 self-center content-center absolute text-center w-full md:text-4xl">
+          <h1 className="text-3xl tracking-wider text-white text-sha uppercase font-bold p-4 self-center content-center absolute text-center w-full md:text-4xl z-10">
             ようこそ！！Together Danceへ
           </h1>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            className="w-full object-cover h-3/4 block mx-auto sm:block sm:w-full"
+            className="w-full object-cover h-3/4 block mx-auto sm:block sm:w-full opacity-70"
             src="https://source.unsplash.com/FC4z3l4sUYc/1920x588"
             alt="Banner"
             width="1920"

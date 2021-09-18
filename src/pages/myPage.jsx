@@ -122,11 +122,11 @@ const MyPage = () => {
           <div className="md:flex no-wrap md:-mx-2">
             <div className="w-full md:w-3/12 md:mx-2">
               <div className="flex md:flex-col bg-white p-3 border-t-4 border-green-400 h-full">
-                <div className="image overflow-hidden">
+                <div className="image overflow-hidden mx-auto">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   {myUserInfo.image ? (
                     <Image
-                      className="h-auto w-full mx-auto"
+                      className="h-auto w-full mx-auto object-cover rounded-2xl"
                       src={myUserInfo.image?.url}
                       alt="アイコン画像"
                       width={256}
@@ -135,11 +135,13 @@ const MyPage = () => {
                     />
                   ) : null}
                 </div>
-                <Link href="/iconEdit">
-                  <a className="block w-full text-blue-800 text-xs md:text-xs font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs md:p-3 my-4">
-                    プロフィール画像の変更はこちら
-                  </a>
-                </Link>
+                <div className="ml-3 w-full">
+                  <Link href="/iconEdit">
+                    <a className="block w-full text-blue-800 text-xs md:text-xs font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs md:p-3 my-4">
+                      プロフィール画像を変更する
+                    </a>
+                  </Link>
+                </div>
                 {/* <h1 className="text-gray-900 font-bold text-md md:text-xl leading-8 my-1">
                   {myUserInfo.last_name} {myUserInfo.first_name}
                 </h1> */}

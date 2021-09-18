@@ -8,6 +8,7 @@ import { useNewReserve } from "src/hooks/useNewReserve";
 import dayjs from "dayjs";
 import router from "next/router";
 import ConfirmModal from "src/components/ConfirmModal";
+import Image from "next/image";
 
 //サーバーサイドレンダリング
 export async function getServerSideProps(context) {
@@ -68,13 +69,17 @@ const EventDetail = (props) => {
           <div className="md:flex no-wrap md:-mx-2 ">
             <div className="w-full md:w-3/12 md:mx-2">
               <div className="flex md:flex-col bg-white p-3 border-t-4 border-green-400 md:h-full justify-center items-center md:justify-start">
-                <div className="w-4/12 md:w-full image overflow-hidden">
+                <div className="w-4/12 md:w-auto image overflow-hidden mx-auto">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    className="h-auto md:w-full mx-auto"
-                    src={selectedEvent.image?.url}
-                    alt="アイコン画像"
-                  />
+                  {selectedEvent.image ? (
+                    <Image
+                      className="h-auto md:w-auto mx-auto object-cover rounded-2xl"
+                      src={selectedEvent.image?.url}
+                      alt="アイコン画像"
+                      width={256}
+                      height={256}
+                    />
+                  ) : null}
                 </div>
                 <div className="p-2 w-5/12 md:w-full">
                   <div className="md:hidden text-gray-600 text-sm">

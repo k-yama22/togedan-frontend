@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 import CancelConfirmModal from "src/components/CancelConfirmModal";
@@ -31,13 +32,17 @@ export const DetailPage = (props) => {
           <div className="md:flex no-wrap md:-mx-2 ">
             <div className="w-full md:w-3/12 md:mx-2">
               <div className="flex md:flex-col bg-white p-3 border-t-4 border-green-400 h-full justify-center items-center md:justify-start">
-                <div className="w-4/12 md:w-full image overflow-hidden">
+                <div className="w-4/12 md:w-auto md:mx-auto image overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    className="h-auto w-full mx-auto"
-                    src={image?.url}
-                    alt="アイコン画像"
-                  />
+                  {image ? (
+                    <Image
+                      className="h-auto w-full mx-auto object-cover rounded-2xl"
+                      src={image?.url}
+                      alt="アイコン画像"
+                      width={256}
+                      height={256}
+                    />
+                  ) : null}
                 </div>
                 <div className="p-2 w-5/12  md:w-full">
                   <div className="md:hidden text-gray-600 text-sm">
