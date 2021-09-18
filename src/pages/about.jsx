@@ -74,57 +74,6 @@ const About = () => {
         </div>
         {/* <div className="container mx-auto"> */}
 
-        <div className="relative ">
-          <div className="sliderAx h-4/5">
-            <div id="slider-1" className="mx-auto">
-              <div className="bg-black">
-                <div className="flex relative text-center">
-                  <div className="text-xs tracking-wider text-white uppercase font-bold pt-20 content-center absolute text-center w-full md:text-4xl z-10">
-                    <p className="text-base md:text-6xl text-white font-bold opacity-100 p-2">
-                      参加も開催も自由
-                    </p>
-                    <div className="text-white font-bold opacity-100">
-                      参加したい人はダンスを踊る会（踊ろう会）を探して参加することができます！
-                      <br />
-                      開催したい人は主催者として参加者を募り、踊ろう会を開催することができます！
-                      <br />
-                      自分で振り付けを考えたダンスをみんなに教えながら一緒に踊るもよし！
-                      <br />
-                      同じアーティストが好きな同士を集めてダンスの振りコピを踊るもよし！
-                      <br />
-                      いつでもどこでも誰とでも好きなダンスを楽しむ機会を作り出す！
-                      <br />
-                      それがTogether Danceというサービスです！
-                      <br />
-                      こんな人にぴったり
-                      <br />
-                      好きなダンスを気楽に踊る場が欲しい
-                      <br />
-                      ダンスを一緒に踊る人が見つけたい
-                      <br />
-                      自分で作った振り付けを振り入れしたいけど振り入れできる場がない
-                      <br />
-                      ダンスを教えてみたいけどレッスンを開講する機会はがなかなかない
-                      <br />
-                      そんな方々に使って欲しいと思っています！ぜひ一度使ってみてください！
-                      <br />
-                    </div>
-                  </div>
-                  {/* <div className="opacity-100"> */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    className="w-full object-cover h-3/4 block mx-auto sm:block sm:w-full opacity-30 "
-                    src="https://source.unsplash.com/3v3EMQI3pYQ/4000x5000"
-                    alt="Banner"
-                    width="4000"
-                    height="5000"
-                  />
-                  {/* </div> */}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         {/* <div className="text-gray-900">
           <div className="grid grid-cols-6 mb-20">
             <div className="col-span-5">
