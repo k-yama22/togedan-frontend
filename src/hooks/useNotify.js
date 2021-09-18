@@ -10,7 +10,7 @@ export const useNotify = () => {
     } else if (status === "error") {
       toast.error(title, {
         id: "toastId",
-        duration: 10000,
+        duration: 4000,
         style: {
           whiteSpace: "pre-line",
           maxWidth: "600px",

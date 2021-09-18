@@ -94,7 +94,7 @@ const Login = memo(() => {
                         {loading ? <Loading /> : <>ログイン</>}
                       </button>
                       <Link href="/passForget">
-                        <a className="mt-4 md:mt-0 inline-block right-0 align-baseline font-bold text-sm text-500 text-white hover:text-red-400">
+                        <a className="mt-4 md:mt-0 block md:inline-block right-0 align-baseline font-bold text-sm text-500 text-white hover:text-red-400">
                           パスワードを忘れた方はこちら
                         </a>
                       </Link>

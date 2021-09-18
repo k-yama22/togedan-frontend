@@ -121,7 +121,7 @@ const NewEvent = () => {
                           </span>
                         )}
                     </div>
-                    <div className="mt-2">
+                    <div className="mt-2 w-64">
                       <label
                         className="block text-xs md:text-sm text-white"
                         htmlFor="eventDate"
@@ -129,7 +129,7 @@ const NewEvent = () => {
                         開催日<span className="text-red-700">*</span>
                       </label>
                       <input
-                        className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        className="w-64 h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                         id="eventDate"
                         type="date"
                         min="1900-01-01"
@@ -143,7 +143,7 @@ const NewEvent = () => {
                         )}
                     </div>
                     <div className="grid md:grid-cols-3 w-hull">
-                      <div className="md:mr-2 mt-2">
+                      <div className="md:mr-2 mt-2 w-64">
                         <label
                           className="block text-xs md:text-sm text-white"
                           htmlFor="startTime"
@@ -151,7 +151,7 @@ const NewEvent = () => {
                           開始時刻<span className="text-red-700">*</span>
                         </label>
                         <input
-                          className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                          className="w-64 h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                           id="startTime"
                           type="time"
                           placeholder="開始時刻"
@@ -162,7 +162,7 @@ const NewEvent = () => {
                             <span className="text-red-700">必須項目です</span>
                           )}
                       </div>
-                      <div className="md:mr-2 mt-2">
+                      <div className="md:mr-2 mt-2 w-64">
                         <label
                           className="block text-xs md:text-sm text-white"
                           htmlFor="endTime"
@@ -170,7 +170,7 @@ const NewEvent = () => {
                           終了時刻<span className="text-red-700">*</span>
                         </label>
                         <input
-                          className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                          className="w-64 h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                           id="endTime"
                           type="time"
                           placeholder="終了時刻"
