@@ -128,15 +128,17 @@ const NewEvent = () => {
                       >
                         開催日<span className="text-red-700">*</span>
                       </label>
-                      <input
-                        className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                        id="eventDate"
-                        type="date"
-                        min="1900-01-01"
-                        max="2100-12-31"
-                        placeholder="開催日"
-                        {...register("eventDate", { required: true })}
-                      />
+                      <div className=" w-full">
+                        <input
+                          className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                          id="eventDate"
+                          type="date"
+                          min="1900-01-01"
+                          max="2100-12-31"
+                          placeholder="開催日"
+                          {...register("eventDate", { required: true })}
+                        />
+                      </div>
                       {errors.eventDate &&
                         errors.eventDate.type === "required" && (
                           <span className="text-red-700">必須項目です</span>
