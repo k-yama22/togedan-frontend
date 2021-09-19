@@ -123,7 +123,7 @@ const NewEvent = () => {
                     </div>
                     <div className="mt-2 w-full">
                       <label
-                        className="block text-xs md:text-sm text-white"
+                        className="block text-xs md:text-sm text-white w-full"
                         htmlFor="eventDate"
                       >
                         開催日<span className="text-red-700">*</span>
