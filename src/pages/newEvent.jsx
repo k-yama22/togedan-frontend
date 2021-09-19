@@ -130,7 +130,7 @@ const NewEvent = () => {
                       </label>
                       <div className=" w-full">
                         <input
-                          className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                          className="w-full block h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                           id="eventDate"
                           type="date"
                           min="1900-01-01"
