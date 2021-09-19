@@ -34,7 +34,7 @@ const NewEvent = () => {
               <h1 className="bg-green-100">Together Dance</h1>
               <div className="leading-loose">
                 <div className="max-w-2xl m-4 p-10 bg-white bg-opacity-25 rounded shadow-xl mx-auto">
-                  <p className="text-white font-medium text-center pb-2 text-md md:text-lg font-bold">
+                  <p className="text-white font-medium text-center pb-2 text-base md:text-lg font-bold">
                     開催情報を入力してください
                   </p>
                   <form onSubmit={handleSubmit(onSubmit)}>
@@ -121,7 +121,7 @@ const NewEvent = () => {
                           </span>
                         )}
                     </div>
-                    <div className="mt-2 w-64">
+                    <div className="mt-2 w-full">
                       <label
                         className="block text-xs md:text-sm text-white"
                         htmlFor="eventDate"
@@ -129,7 +129,7 @@ const NewEvent = () => {
                         開催日<span className="text-red-700">*</span>
                       </label>
                       <input
-                        className="w-64 h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                        className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                         id="eventDate"
                         type="date"
                         min="1900-01-01"
@@ -142,8 +142,8 @@ const NewEvent = () => {
                           <span className="text-red-700">必須項目です</span>
                         )}
                     </div>
-                    <div className="grid md:grid-cols-3 w-hull">
-                      <div className="md:mr-2 mt-2 w-64">
+                    <div className="grid md:grid-cols-3 w-full">
+                      <div className="md:mr-2 mt-2 w-full md:w-auto">
                         <label
                           className="block text-xs md:text-sm text-white"
                           htmlFor="startTime"
@@ -151,7 +151,7 @@ const NewEvent = () => {
                           開始時刻<span className="text-red-700">*</span>
                         </label>
                         <input
-                          className="w-64 h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                          className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                           id="startTime"
                           type="time"
                           placeholder="開始時刻"
@@ -162,7 +162,7 @@ const NewEvent = () => {
                             <span className="text-red-700">必須項目です</span>
                           )}
                       </div>
-                      <div className="md:mr-2 mt-2 w-64">
+                      <div className="md:mr-2 mt-2 w-full md:w-auto">
                         <label
                           className="block text-xs md:text-sm text-white"
                           htmlFor="endTime"
@@ -170,7 +170,7 @@ const NewEvent = () => {
                           終了時刻<span className="text-red-700">*</span>
                         </label>
                         <input
-                          className="w-64 h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                          className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                           id="endTime"
                           type="time"
                           placeholder="終了時刻"
