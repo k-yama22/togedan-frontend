@@ -6,13 +6,14 @@ import { Loading } from "src/components/Loading";
 import { Header } from "src/components/Header";
 import { useForm } from "react-hook-form";
 import { DatePicker } from "src/components/DatePicker";
+import { TimeOnlyPicker } from "src/components/TimeOnlyPicker";
 
 const NewEvent = () => {
   const { newEvent, loading } = useNewEvent();
   const {
     register,
-    control,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm();
 
@@ -143,6 +144,7 @@ const NewEvent = () => {
                           // label="datetime"
                           name="eventDate"
                           control={control}
+                          placeholderText="開催日"
                           {...register("eventDate", { required: true })}
                         />
                         {/* </div> */}
@@ -160,14 +162,21 @@ const NewEvent = () => {
                           htmlFor="startTime"
                         >
                           開始時刻<span className="text-red-700">*</span>
+                          <TimeOnlyPicker
+                            // label="datetime"
+                            name="startTime"
+                            control={control}
+                            placeholderText="開始時刻"
+                            {...register("startTime", { required: true })}
+                          />
                         </label>
-                        <input
+                        {/* <input
                           className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                           id="startTime"
                           type="time"
                           placeholder="開始時刻"
                           {...register("startTime", { required: true })}
-                        />
+                        /> */}
                         {errors.startTime &&
                           errors.startTime.type === "required" && (
                             <span className="text-red-700">必須項目です</span>
@@ -180,13 +189,20 @@ const NewEvent = () => {
                         >
                           終了時刻<span className="text-red-700">*</span>
                         </label>
-                        <input
+                        <TimeOnlyPicker
+                          // label="datetime"
+                          name="endTime"
+                          control={control}
+                          placeholderText="終了時刻"
+                          {...register("endTime", { required: true })}
+                        />
+                        {/* <input
                           className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                           id="endTime"
                           type="time"
                           placeholder="終了時刻"
                           {...register("endTime", { required: true })}
-                        />
+                        /> */}
                         {errors.endTime &&
                           errors.endTime.type === "required" && (
                             <span className="text-red-700">必須項目です</span>
