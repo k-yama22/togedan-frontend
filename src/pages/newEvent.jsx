@@ -5,11 +5,13 @@ import { Footer } from "src/components/Footer";
 import { Loading } from "src/components/Loading";
 import { Header } from "src/components/Header";
 import { useForm } from "react-hook-form";
+import { DatePicker } from "src/components/DatePicker";
 
 const NewEvent = () => {
   const { newEvent, loading } = useNewEvent();
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -127,7 +129,7 @@ const NewEvent = () => {
                         htmlFor="eventDate"
                       >
                         開催日<span className="text-red-700">*</span>
-                        <input
+                        {/* <input
                           className="text-base w-full block h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                           id="eventDate"
                           type="date"
@@ -135,7 +137,15 @@ const NewEvent = () => {
                           max="2100-12-31"
                           placeholder="開催日"
                           {...register("eventDate", { required: true })}
+                        /> */}
+                        {/* <div className="text-base w-full block h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"> */}
+                        <DatePicker
+                          // label="datetime"
+                          name="eventDate"
+                          control={control}
+                          {...register("eventDate", { required: true })}
                         />
+                        {/* </div> */}
                       </label>
 
                       {errors.eventDate &&
