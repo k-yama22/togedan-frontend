@@ -111,7 +111,7 @@ const MyReserves = () => {
                   参加済みのイベント
                 </div>
               </div>
-              <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
+              <div className="grid mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
                 {myReserveArr.map((myReserve) => (
                   <div key={myReserve.event_id}>
                     <MiniEventCard
@@ -154,7 +154,7 @@ const MyReserves = () => {
                   参加済みのイベント
                 </div>
               </div>
-              <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
+              <div className="grid mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
                 {historyReserveArr.map((historyReserve) => (
                   <div key={historyReserve.event_id}>
                     <MiniEventCard

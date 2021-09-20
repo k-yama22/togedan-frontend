@@ -114,7 +114,7 @@ const MyEvents = () => {
                   開催済みのイベント
                 </div>
               </div>
-              <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
+              <div className="grid mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
                 {myEventArr.map((myEvent) => (
                   <MiniEventCard
                     key={myEvent.event_id}
@@ -156,7 +156,7 @@ const MyEvents = () => {
                   開催済みのイベント
                 </div>
               </div>
-              <div className="grid mt-8 gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
+              <div className="grid mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
                 {historyEventArr.map((historyEvent) => (
                   <MiniEventCard
                     key={historyEvent.event_id}
