@@ -8,6 +8,8 @@ import { useUpdateEvent } from "src/hooks/useUpdateEvent";
 import { Loading } from "src/components/Loading";
 import { useForm } from "react-hook-form";
 import dayjs from "dayjs";
+import { DatePicker } from "src/components/DatePicker";
+import { TimeOnlyPicker } from "src/components/TimeOnlyPicker";
 
 //サーバーサイドレンダリング
 export async function getServerSideProps(context) {
@@ -30,6 +32,7 @@ const EventEdit = (props) => {
     register,
     handleSubmit,
     setValue,
+    control,
     formState: { errors },
   } = useForm();
 
@@ -45,13 +48,19 @@ const EventEdit = (props) => {
   useEffect(() => {
     const startTime = dayjs(selectedEvent.start_time);
     const endTime = dayjs(selectedEvent.end_time);
+    const eventDate = dayjs(selectedEvent.event_date);
     setId(selectedEvent.event_id);
     setValue("eventName", selectedEvent.event_name);
     setValue("genre", selectedEvent.genre);
     setValue("location", selectedEvent.location);
-    setValue("eventDate", selectedEvent.event_date);
-    setValue("startTime", startTime.format("HH:mm"));
-    setValue("endTime", endTime.format("HH:mm"));
+    // if (!selectedEvent.event_date === undefined) {
+    setValue("eventDate", new Date(eventDate.format("YYYY/MM/DD")));
+    // setValue("eventDate", new Date(eventDate.format("yyyy/mm/dd")));
+    // }
+    console.log(eventDate.format("YYYY/MM/DD"));
+    setValue("startTime", new Date(startTime.format("YYYY/MM/DD HH:mm:ss")));
+    console.log(startTime.format("YYYY/MM/DD HH:mm:ss"));
+    setValue("endTime", new Date(endTime.format("YYYY/MM/DD HH:mm:ss")));
     setValue("eventMessage", selectedEvent.event_message);
     setValue("maxPeople", selectedEvent.max_people);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -164,8 +173,16 @@ const EventEdit = (props) => {
                         htmlFor="eventDate"
                       >
                         開催日
+                        <DatePicker
+                          // label="datetime"
+                          name="eventDate"
+                          control={control}
+                          placeholderText="開催日"
+                          openToDate={new Date()}
+                          {...register("eventDate", { required: true })}
+                        />
                       </label>
-                      <input
+                      {/* <input
                         className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                         id="eventDate"
                         type="date"
@@ -173,7 +190,7 @@ const EventEdit = (props) => {
                         max="2100-12-31"
                         placeholder="開催日"
                         {...register("eventDate", { required: true })}
-                      />
+                      /> */}
                       {errors.eventDate &&
                         errors.eventDate.type === "required" && (
                           <span className="text-red-700">必須項目です</span>
@@ -186,14 +203,21 @@ const EventEdit = (props) => {
                           htmlFor="startTime"
                         >
                           開始時刻
+                          <TimeOnlyPicker
+                            // label="datetime"
+                            name="startTime"
+                            control={control}
+                            placeholderText="開始時刻"
+                            {...register("startTime", { required: true })}
+                          />
                         </label>
-                        <input
+                        {/* <input
                           className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                           id="startTime"
                           type="time"
                           placeholder="開催時刻"
                           {...register("startTime", { required: true })}
-                        />
+                        /> */}
                         {errors.startTime &&
                           errors.startTime.type === "required" && (
                             <span className="text-red-700">必須項目です</span>
@@ -205,14 +229,21 @@ const EventEdit = (props) => {
                           htmlFor="endTime"
                         >
                           終了時刻
+                          <TimeOnlyPicker
+                            // label="datetime"
+                            name="endTime"
+                            control={control}
+                            placeholderText="終了時刻"
+                            {...register("endTime", { required: true })}
+                          />
                         </label>
-                        <input
+                        {/* <input
                           className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                           id="endTime"
                           type="time"
                           placeholder="終了時刻"
                           {...register("endTime", { required: true })}
-                        />
+                        /> */}
                         {errors.endTime &&
                           errors.endTime.type === "required" && (
                             <span className="text-red-700">必須項目です</span>

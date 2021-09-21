@@ -21,11 +21,11 @@ export const TimeOnlyPicker = ({
           render={({ field: { onChange, value } }) => (
             <ReactDatePicker
               className="text-base w-full block h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-              dateFormat="hh:mm"
+              dateFormat="HH:mm"
               placeholderText={placeholderText}
               showTimeSelect
               showTimeSelectOnly
-              timeCaption="Time"
+              timeCaption="時刻"
               locale="ja"
               timeIntervals={timeIntervals}
               onChange={onChange}

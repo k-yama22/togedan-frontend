@@ -6,6 +6,7 @@ import { Footer } from "src/components/Footer";
 import { Loading } from "src/components/Loading";
 import { Header } from "src/components/Header";
 import { useForm } from "react-hook-form";
+import { DatePicker } from "src/components/DatePicker";
 
 const SignUp = () => {
   const [image, setImage] = useState("");
@@ -16,6 +17,7 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm();
 
@@ -269,8 +271,16 @@ const SignUp = () => {
                         htmlFor="birthday"
                       >
                         生年月日<span className="text-red-700">*</span>
+                        <DatePicker
+                          // label="datetime"
+                          name="birthday"
+                          control={control}
+                          placeholderText="生年月日"
+                          openToDate={new Date("1990/01/01")}
+                          {...register("birthday", { required: true })}
+                        />
                       </label>
-                      <input
+                      {/* <input
                         className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                         id="birthday"
                         type="date"
@@ -278,7 +288,7 @@ const SignUp = () => {
                         max="2100-12-31"
                         placeholder="生年月日"
                         {...register("birthday", { required: true })}
-                      />
+                      /> */}
                       {errors.birthday &&
                         errors.birthday.type === "required" && (
                           <span className="text-red-700">必須項目です</span>

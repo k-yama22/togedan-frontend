@@ -30,7 +30,7 @@ export const useUpdateEvent = () => {
           event_name: data.eventName,
           genre: data.genre,
           location: data.location,
-          event_date: data.eventDate,
+          event_date: data.eventDate + 1000 * 60 * 60 * 9,
           start_time: data.startTime,
           end_time: data.endTime,
           event_message: data.eventMessage,

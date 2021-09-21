@@ -145,6 +145,7 @@ const NewEvent = () => {
                           name="eventDate"
                           control={control}
                           placeholderText="開催日"
+                          openToDate={new Date()}
                           {...register("eventDate", { required: true })}
                         />
                         {/* </div> */}

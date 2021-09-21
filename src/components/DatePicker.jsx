@@ -11,6 +11,7 @@ export const DatePicker = ({
   name,
   control,
   placeholderText,
+  openToDate,
   //   error,
   timeIntervals = 15,
 }) => {
@@ -22,12 +23,18 @@ export const DatePicker = ({
         <Controller
           control={control}
           name={name}
+          // defaultValue={new Date()}
           render={({ field: { onChange, value } }) => (
             <ReactDatePicker
               className="text-base w-full block h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-              dateFormat="yyyy-MM-dd"
+              dateFormat="yyyy/MM/dd"
               placeholderText={placeholderText}
+              openToDate={openToDate}
               //   showTimeSelect
+              peekNextMonth
+              showMonthDropdown
+              showYearDropdown
+              dropdownMode="select"
               locale="ja"
               timeIntervals={timeIntervals}
               onChange={onChange}
