@@ -5,6 +5,7 @@ import { authHeaders } from "src/hooks/authHeaders";
 import {
   COMMON_SELECT_ERROR,
   ERROR_STATUS,
+  EVENTS_SCREEN,
   EVENTS_SEARCH_URL,
   SELECT_FAILED,
   SUCCESS_STATUS,
@@ -36,7 +37,7 @@ export const useSearchEvent = () => {
         if (res.data.status === 200) {
           showNotify({ title: res.data.message, status: SUCCESS_STATUS });
           setSearchEvents(res.data.data);
-          router.push("/events");
+          router.push(EVENTS_SCREEN);
         } else if (res.data.status === 400) {
           showNotify({ title: res.data.message, status: ERROR_STATUS });
         } else if (res.data.status === 422) {

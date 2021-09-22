@@ -8,6 +8,7 @@ import {
   COMMON_UPDATE_ERROR,
   ERROR_STATUS,
   EVENTS_URL,
+  EVENT_EDIT_SCREEN,
   EVENT_STATUS_VALID,
   SUCCESS_STATUS,
   UPDATE_FAILED,
@@ -43,7 +44,7 @@ export const useUpdateEvent = () => {
         if (res.data.status === 200) {
           showNotify({ title: res.data.message, status: SUCCESS_STATUS });
           router.push({
-            pathname: "/eventEdit",
+            pathname: EVENT_EDIT_SCREEN,
             query: { id: id },
           });
         } else if (res.data.status === 400) {

@@ -5,7 +5,14 @@ import { Loading } from "src/components/Loading";
 import { SideMenu } from "src/components/SideMenu";
 import { useSignOut } from "src/hooks/useSignOut";
 import lscache from "lscache";
-import { LOGIN_SCREEN, SIGN_UP_SCREEN } from "src/hooks/constants";
+import {
+  EVENTS_SCREEN,
+  INDEX_SCREEN,
+  LOGIN_SCREEN,
+  MY_PAGE_SCREEN,
+  NEW_EVENT_SCREEN,
+  SIGN_UP_SCREEN,
+} from "src/hooks/constants";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +44,7 @@ export const Header = () => {
         onClick={onClickLogout}
       />
       <nav className="flex absolute items-center justify-between flex-wrap bg-teal-300 p-6 w-full pt-18">
-        <Link href="/">
+        <Link href={INDEX_SCREEN}>
           <a className="flex items-center flex-no-shrink text-white mr-6 hover:bg-teal-200 rounded-lg">
             {/* <svg
               className="h-8 w-8 mr-2"
@@ -73,17 +80,17 @@ export const Header = () => {
           <div className="text-sm lg:flex-grow">
             {loginId ? (
               <>
-                <Link href="/myPage">
+                <Link href={MY_PAGE_SCREEN}>
                   <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
                     マイページ
                   </a>
                 </Link>
-                <Link href="/events">
+                <Link href={EVENTS_SCREEN}>
                   <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
                     踊ろう会を探す
                   </a>
                 </Link>
-                <Link href="/newEvent">
+                <Link href={NEW_EVENT_SCREEN}>
                   <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
                     踊ろう会を開催する
                   </a>
@@ -94,7 +101,7 @@ export const Header = () => {
                 >
                   {loading ? <Loading /> : <>ログアウト</>}
                 </button>
-                <Link href="/myPage">
+                <Link href={MY_PAGE_SCREEN}>
                   <a className="flex-shrink-0 h-14 w-14 absolute top-3 right-10 invisible md:visible">
                     {lscache.get("loginImg") ? (
                       /* eslint-disable-next-line @next/next/no-img-element */

@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import {
   ERROR_STATUS,
+  LOGIN_SCREEN,
   PASSWORD_RESET_ERROR,
   PASSWORD_RESET_FAILED,
   PASSWORD_RESET_SUCCESS,
@@ -27,7 +28,7 @@ export const usePassForget = () => {
             title: PASSWORD_RESET_SUCCESS,
             status: SUCCESS_STATUS,
           });
-          router.push("/login");
+          router.push(LOGIN_SCREEN);
         } else {
           showNotify({
             title: PASSWORD_RESET_FAILED,

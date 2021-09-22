@@ -16,6 +16,7 @@ export const useSelectEvent = () => {
       .get(`${EVENTS_URL}/${id}`)
       .then((res) => {
         setSelectedEvent(res.data.data);
+        console.log(res.data.data);
       })
       .catch(() => {
         showNotify({ title: COMMON_SELECT_ERROR, status: ERROR_STATUS });

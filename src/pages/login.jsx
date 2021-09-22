@@ -6,6 +6,7 @@ import { Footer } from "src/components/Footer";
 import { Loading } from "src/components/Loading";
 import { useForm } from "react-hook-form";
 import { Header } from "src/components/Header";
+import { PASS_FORGET_SCREEN, SIGN_UP_SCREEN } from "src/hooks/constants";
 
 // eslint-disable-next-line react/display-name
 const Login = memo(() => {
@@ -93,14 +94,14 @@ const Login = memo(() => {
                       <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded">
                         {loading ? <Loading /> : <>ログイン</>}
                       </button>
-                      <Link href="/passForget">
+                      <Link href={PASS_FORGET_SCREEN}>
                         <a className="mt-4 md:mt-0 block md:inline-block right-0 align-baseline font-bold text-sm text-500 text-white hover:text-red-400">
                           パスワードを忘れた方はこちら
                         </a>
                       </Link>
                     </div>
                     <div className="text-center">
-                      <Link href="/signUp">
+                      <Link href={SIGN_UP_SCREEN}>
                         <a className="inline-block right-0 align-baseline font-light text-sm text-500 hover:text-red-400">
                           新規登録はこちら
                         </a>

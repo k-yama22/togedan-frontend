@@ -5,6 +5,7 @@ import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
 import {
   ERROR_STATUS,
+  INDEX_SCREEN,
   LOGIN_ERROR,
   LOGIN_SUCCESS,
   LOGIN_URL,
@@ -58,7 +59,7 @@ export const useAuth = () => {
           lscache.set("loginImg", resData.image, 100);
           lscache.set("loginCheck", true);
           showNotify({ title: LOGIN_SUCCESS, status: SUCCESS_STATUS });
-          router.push("/");
+          router.push(INDEX_SCREEN);
         } else {
           showNotify({ title: NO_USER_ERROR, status: ERROR_STATUS });
         }

@@ -10,6 +10,7 @@ import {
   DELETE_ACCOUNT_FAILED,
   DELETE_ACCOUNT_SUCCESS,
   ERROR_STATUS,
+  LOGIN_SCREEN,
   SUCCESS_STATUS,
 } from "src/hooks/constants";
 
@@ -30,7 +31,7 @@ export const useDeleteAccount = () => {
           lscache.remove("loginCheck");
           lscache.flush();
           showNotify({ title: DELETE_ACCOUNT_SUCCESS, status: SUCCESS_STATUS });
-          router.push("/login");
+          router.push(LOGIN_SCREEN);
         } else {
           showNotify({ title: DELETE_ACCOUNT_FAILED, status: ERROR_STATUS });
         }

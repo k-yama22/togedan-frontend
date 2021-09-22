@@ -7,6 +7,7 @@ import lscache from "lscache";
 import {
   COMMON_DELETE_ERROR,
   ERROR_STATUS,
+  MY_RESERVES_SCREEN,
   RESERVES_URL,
   SUCCESS_STATUS,
 } from "src/hooks/constants";
@@ -32,7 +33,7 @@ export const useDeleteReserve = () => {
       .then((res) => {
         setDeleteReserve(res.data.data);
         showNotify({ title: res.data.message, status: SUCCESS_STATUS });
-        router.push("/myReserves");
+        router.push(MY_RESERVES_SCREEN);
       })
       .catch(() => {
         showNotify({ title: COMMON_DELETE_ERROR, status: ERROR_STATUS });

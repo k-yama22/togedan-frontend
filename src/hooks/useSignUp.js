@@ -8,6 +8,7 @@ import {
   SIGN_UP_FAILED,
   SIGN_UP_SUCCESS,
   SUCCESS_STATUS,
+  TEMP_REGISTRATION_SCREEN,
 } from "src/hooks/constants";
 import { useNotify } from "src/hooks/useNotify";
 
@@ -23,7 +24,7 @@ export const useSignUp = () => {
       .then((res) => {
         if (res.data) {
           showNotify({ title: SIGN_UP_SUCCESS, status: SUCCESS_STATUS });
-          router.push("/tempRegistration");
+          router.push(TEMP_REGISTRATION_SCREEN);
         } else {
           showNotify({ title: SIGN_UP_FAILED, status: ERROR_STATUS });
         }

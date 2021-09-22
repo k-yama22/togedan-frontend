@@ -6,6 +6,7 @@ import lscache from "lscache";
 import {
   COMMON_CREATE_ERROR,
   ERROR_STATUS,
+  EVENTS_SCREEN,
   RESERVES_URL,
   RESERVE_STATUS_VALID,
   SUCCESS_STATUS,
@@ -30,7 +31,7 @@ export const useNewReserve = () => {
       .then((res) => {
         if (res.data.status === 200) {
           showNotify({ title: res.data.message, status: SUCCESS_STATUS });
-          router.push("/events");
+          router.push(EVENTS_SCREEN);
         } else if (res.data.status === 400) {
           showNotify({ title: res.data.message, status: ERROR_STATUS });
         }

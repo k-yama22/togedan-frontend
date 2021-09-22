@@ -8,6 +8,7 @@ import {
   AUTH_URL,
   COMMON_UPDATE_ERROR,
   ERROR_STATUS,
+  MY_PAGE_SCREEN,
   SUCCESS_STATUS,
   UPDATE_FAILED,
   UPDATE_SUCCESS,
@@ -27,7 +28,7 @@ export const useUserChange = () => {
         if (res.data) {
           showNotify({ title: UPDATE_SUCCESS, status: SUCCESS_STATUS });
           lscache.set("loginImg", res.data.data.image, 100);
-          router.push("/myPage");
+          router.push(MY_PAGE_SCREEN);
         } else {
           showNotify({ title: UPDATE_FAILED, status: ERROR_STATUS });
         }

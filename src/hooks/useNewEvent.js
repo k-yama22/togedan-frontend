@@ -10,6 +10,7 @@ import {
   ERROR_STATUS,
   EVENTS_URL,
   EVENT_STATUS_VALID,
+  MY_EVENTS_SCREEN,
   SUCCESS_STATUS,
 } from "src/hooks/constants";
 
@@ -42,7 +43,8 @@ export const useNewEvent = () => {
       .then((res) => {
         if (res.data.status === 200) {
           showNotify({ title: res.data.message, status: SUCCESS_STATUS });
-          router.push("/myEvents");
+          console.log(res.data);
+          router.push(MY_EVENTS_SCREEN);
         } else if (res.data.status === 400) {
           const errorMessages = res.data.data.join("\n");
           showNotify({ title: errorMessages, status: ERROR_STATUS });

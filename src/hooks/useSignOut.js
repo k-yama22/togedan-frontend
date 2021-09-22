@@ -6,6 +6,7 @@ import { useNotify } from "src/hooks/useNotify";
 import lscache from "lscache";
 import {
   ERROR_STATUS,
+  LOGIN_SCREEN,
   LOGOUT_URL,
   SIGN_OUT_ERROR,
   SIGN_OUT_FAILED,
@@ -30,7 +31,7 @@ export const useSignOut = () => {
           lscache.remove("loginCheck");
           lscache.flush();
           showNotify({ title: SIGN_OUT_SUCCESS, status: SUCCESS_STATUS });
-          router.push("/login");
+          router.push(LOGIN_SCREEN);
         } else {
           showNotify({ title: SIGN_OUT_FAILED, status: ERROR_STATUS });
         }

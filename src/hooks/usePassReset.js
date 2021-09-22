@@ -4,6 +4,7 @@ import { useState } from "react";
 import {
   COMMON_UPDATE_ERROR,
   ERROR_STATUS,
+  LOGIN_SCREEN,
   PASSWORD_URL,
   SUCCESS_STATUS,
   UPDATE_FAILED,
@@ -37,7 +38,7 @@ export const usePassReset = () => {
         if (res.data) {
           console.log(res.data);
           showNotify({ title: UPDATE_SUCCESS, status: SUCCESS_STATUS });
-          router.push("/login");
+          router.push(LOGIN_SCREEN);
         } else {
           showNotify({ title: UPDATE_FAILED, status: ERROR_STATUS });
         }
