@@ -7,13 +7,27 @@ import lscache from "lscache";
 import { useNotify } from "src/hooks/useNotify";
 import router from "next/router";
 import Head from "next/head";
+import {
+  ABOUT_SCREEN,
+  ERROR_STATUS,
+  EVENTS_SCREEN,
+  EVENT_DETAIL_SCREEN,
+  INDEX_SCREEN,
+  LOGIN_SCREEN,
+  PASS_FORGET_SCREEN,
+  PASS_RESET_SCREEN,
+  SIGN_UP_SCREEN,
+  SUCCESS_STATUS,
+  TEMP_REGISTRATION_SCREEN,
+} from "src/hooks/constants";
 
 const MyApp = ({ Component, pageProps }) => {
   const { showNotify } = useNotify();
+
   useEffect(() => {
     // ログイン画面へのアクセスの場合、処理せずにreturn
     if (
-      router.pathname === "/login"
+      router.pathname === LOGIN_SCREEN
       //   router.pathname === "/" ||
       //   router.pathname === "/signUp" ||
       //   router.pathname === "/tempRegistration"
@@ -27,28 +41,28 @@ const MyApp = ({ Component, pageProps }) => {
       if (!lscache.get("loginId")) {
         lscache.remove("loginCheck");
         lscache.flush();
-        showNotify({ title: "タイムアウトしました", status: "error" });
-        router.push("/login");
+        showNotify({ title: "タイムアウトしました", status: SUCCESS_STATUS });
+        router.push(LOGIN_SCREEN);
         return;
       }
     } else if (
       !(
-        router.pathname === "/login" ||
-        router.pathname === "/" ||
-        router.pathname === "/signUp" ||
-        router.pathname === "/events" ||
-        router.pathname === "/eventDetail" ||
-        router.pathname === "/tempRegistration" ||
-        router.pathname === "/passForget" ||
-        router.pathname === "/passReset" ||
-        router.pathname === "/about"
+        router.pathname === LOGIN_SCREEN ||
+        router.pathname === INDEX_SCREEN ||
+        router.pathname === SIGN_UP_SCREEN ||
+        router.pathname === EVENTS_SCREEN ||
+        router.pathname === EVENT_DETAIL_SCREEN ||
+        router.pathname === TEMP_REGISTRATION_SCREEN ||
+        router.pathname === PASS_FORGET_SCREEN ||
+        router.pathname === PASS_RESET_SCREEN ||
+        router.pathname === ABOUT_SCREEN
       )
     ) {
       showNotify({
         title: "ログインまたは新規登録をしてください",
-        status: "error",
+        status: ERROR_STATUS,
       });
-      router.push("/login");
+      router.push(LOGIN_SCREEN);
       return;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
