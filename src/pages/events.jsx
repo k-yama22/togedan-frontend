@@ -23,11 +23,6 @@ import { TimeOnlyPicker } from "src/components/TimeOnlyPicker";
 const Events = () => {
   const router = useRouter();
   const { getEvents, events, setEvents } = useAllEvents();
-  const [genre, setGenre] = useState("");
-  const [location, setLocation] = useState("");
-  const [eventDate, setEventDate] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
 
   const { searchEvent, searchEvents } = useSearchEvent();
   const [eventArr, setEventArr] = useState([]);
@@ -48,39 +43,28 @@ const Events = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    searchEvent(data);
-    console.log(data);
-  };
+    const eventDate = data.eventDate
+      ? dayjs(data.eventDate).format("YYYY-MM-DD")
+      : null;
+    const startTime = data.startTime
+      ? dayjs(data.startTime).format("HH:mm:ss")
+      : null;
+    const endTime = data.endTime
+      ? dayjs(data.endTime).format("HH:mm:ss")
+      : null;
 
-  const onChangeGenre = (e) => {
-    setGenre(e.target.value);
-  };
-  const onChangeLocation = (e) => {
-    setLocation(e.target.value);
-  };
-  const onChangeEventDate = (e) => {
-    setEventDate(e.target.value);
-  };
-  const onChangeStartTime = (e) => {
-    setStartTime(e.target.value);
-  };
-  const onChangeEndTime = (e) => {
-    setEndTime(e.target.value);
+    searchEvent(data, eventDate, startTime, endTime);
   };
 
   const onClickEvent = (id) => {
     router.push({ pathname: "/eventDetail", query: { id: id } });
   };
 
-  const onClickSearch = () => {
-    searchEvent(genre, location, eventDate, startTime, endTime);
-  };
   const isFirstRender = useRef(false);
 
   useEffect(() => {
     getEvents();
     isFirstRender.current = true;
-    console.log(events);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -230,112 +214,120 @@ const Events = () => {
           </form>
 
           {/* スマホ表示 */}
-          <div className="md:hidden w-screen container mx-auto block md:flex justify-center items-center p-2 md:p-0">
-            <div className="border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6">
-              <Accordion allowMultipleExpanded allowZeroExpanded>
-                <AccordionItem>
-                  <AccordionItemHeading>
-                    <AccordionItemButton>
-                      <div className="text-base text-center uppercase text-gray-800 font-medium hover:text-gray-400">
-                        絞り込み
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="md:hidden w-screen container mx-auto block md:flex justify-center items-center p-2 md:p-0">
+              <div className="border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6">
+                <Accordion allowMultipleExpanded allowZeroExpanded>
+                  <AccordionItem>
+                    <AccordionItemHeading>
+                      <AccordionItemButton>
+                        <div className="text-base text-center uppercase text-gray-800 font-medium hover:text-gray-400">
+                          絞り込み
+                        </div>
+                      </AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                      <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-5 gap-2 border border-gray-200 p-2 rounded">
+                          <div className="text-center">
+                            <label htmlFor="genre" className="text-xs">
+                              ジャンル
+                            </label>
+                            <div className="flex border rounded bg-gray-300 items-center p-2">
+                              <input
+                                className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
+                                id="genre"
+                                type="text"
+                                placeholder="例：HIPHOP"
+                                {...register("genre", {
+                                  required: false,
+                                  maxLength: 20,
+                                })}
+                              />
+                            </div>
+                            {errors.genre &&
+                              errors.genre.type === "maxLength" && (
+                                <span className="text-red-700">
+                                  20文字以下で入力してください
+                                </span>
+                              )}
+                          </div>
+                          <div className="text-center">
+                            <label htmlFor="location" className="text-xs">
+                              場所
+                            </label>
+                            <div className="flex border rounded bg-gray-300 items-center p-2">
+                              <input
+                                className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
+                                id="location"
+                                type="text"
+                                placeholder="例：渋谷"
+                                {...register("location", {
+                                  required: false,
+                                  maxLength: 20,
+                                })}
+                              />
+                            </div>
+                            {errors.location &&
+                              errors.location.type === "maxLength" && (
+                                <span className="text-red-700">
+                                  20文字以下で入力してください
+                                </span>
+                              )}
+                          </div>
+                          <div className="text-center">
+                            <label htmlFor="eventDate" className="text-xs">
+                              開催日
+                            </label>
+                            <div className="flex border rounded bg-gray-300 items-center p-2 text-xs">
+                              <DatePicker
+                                name="eventDate"
+                                control={control}
+                                placeholderText="開催日"
+                                openToDate={new Date()}
+                                {...register("eventDate", { required: false })}
+                              />
+                            </div>
+                          </div>
+                          <div className="text-center">
+                            <label htmlFor="startTime" className="text-xs">
+                              開始時刻
+                            </label>
+                            <div className="flex border rounded bg-gray-300 items-center p-2">
+                              <TimeOnlyPicker
+                                name="startTime"
+                                control={control}
+                                placeholderText="開始時刻"
+                                {...register("startTime", { required: false })}
+                              />
+                            </div>
+                          </div>
+                          <div className="text-center">
+                            <label htmlFor="endTime" className="text-xs">
+                              終了時刻
+                            </label>
+                            <div className="flex border rounded w-full bg-gray-300 items-center p-2">
+                              <TimeOnlyPicker
+                                name="endTime"
+                                control={control}
+                                placeholderText="終了時刻"
+                                {...register("endTime", { required: false })}
+                              />
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel>
-                    <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-                      <div className="grid grid-cols-1 md:grid-cols-5 gap-2 border border-gray-200 p-2 rounded">
-                        <div className="text-center">
-                          <label htmlFor="genre" className="text-xs">
-                            ジャンル
-                          </label>
-                          <div className="flex border rounded bg-gray-300 items-center p-2">
-                            <input
-                              id="genre"
-                              type="text"
-                              placeholder="例：HIPHOP"
-                              className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
-                              value={genre}
-                              onChange={onChangeGenre}
-                            />
-                          </div>
-                        </div>
-                        <div className="text-center">
-                          <label htmlFor="location" className="text-xs">
-                            場所
-                          </label>
-                          <div className="flex border rounded bg-gray-300 items-center p-2">
-                            <input
-                              id="location"
-                              type="text"
-                              placeholder="例：渋谷"
-                              className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
-                              value={location}
-                              onChange={onChangeLocation}
-                            />
-                          </div>
-                        </div>
-                        <div className="text-center">
-                          <label htmlFor="eventDate" className="text-xs">
-                            開催日
-                          </label>
-                          <div className="flex border rounded bg-gray-300 items-center p-2 text-xs">
-                            <input
-                              id="eventDate"
-                              type="date"
-                              min="1900-01-01"
-                              max="2100-12-31"
-                              placeholder="年月日"
-                              className="bg-gray-300 h-10 max-w-full w-full focus:outline-none text-gray-700"
-                              value={eventDate}
-                              onChange={onChangeEventDate}
-                            />
-                          </div>
-                        </div>
-                        <div className="text-center">
-                          <label htmlFor="startTime" className="text-xs">
-                            開始時刻
-                          </label>
-                          <div className="flex border rounded bg-gray-300 items-center p-2">
-                            <input
-                              className="max-w-full w-full px-5 py-1 h-10 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                              id="startTime"
-                              type="time"
-                              placeholder="開始時刻"
-                              value={startTime}
-                              onChange={onChangeStartTime}
-                            />
-                          </div>
-                        </div>
-                        <div className="text-center">
-                          <label htmlFor="endTime" className="text-xs">
-                            終了時刻
-                          </label>
-                          <div className="flex border rounded w-full bg-gray-300 items-center p-2">
-                            <input
-                              className="max-w-full w-full px-5 py-1 h-10 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                              id="endTime"
-                              type="time"
-                              placeholder="終了時刻"
-                              value={endTime}
-                              onChange={onChangeEndTime}
-                            />
-                          </div>
-                        </div>
+                      <div className="flex justify-center pt-4">
+                        <button className="p-2 border w-1/4 rounded-md bg-gray-800 text-white">
+                          検索
+                        </button>
                       </div>
-                    </div>
-                    <div className="flex justify-center pt-4">
-                      <button
-                        onClick={onClickSearch}
-                        className="p-2 border w-1/4 rounded-md bg-gray-800 text-white"
-                      >
-                        検索
-                      </button>
-                    </div>
-                  </AccordionItemPanel>
-                </AccordionItem>
-              </Accordion>
+                    </AccordionItemPanel>
+                  </AccordionItem>
+                </Accordion>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
       <div className="pt-4 bg-gray-100">

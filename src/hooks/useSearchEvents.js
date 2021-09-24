@@ -18,7 +18,7 @@ export const useSearchEvent = () => {
   const [loading, setLoading] = useState(false);
   const [searchEvents, setSearchEvents] = useState({});
 
-  const searchEvent = (data) => {
+  const searchEvent = (data, eventDate, startTime, endTime) => {
     setLoading(true);
     const headers = authHeaders();
     axios
@@ -27,9 +27,9 @@ export const useSearchEvent = () => {
         {
           genre: data.genre,
           location: data.location,
-          event_date: data.eventDate,
-          start_time: data.startTime,
-          end_time: data.endTime,
+          event_date: eventDate,
+          start_time: startTime,
+          end_time: endTime,
         },
         { headers: headers }
       )
