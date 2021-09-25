@@ -73,7 +73,7 @@ const EventDetail = (props) => {
                   {/* {selectedEvent.image ? ( */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    className="h-auto w-full object-cover w-64 h-32 md:h-64 rounded-2xl"
+                    className="h-auto w-full object-cover w-64 h-32 lg:h-64 rounded-2xl"
                     src={selectedEvent.image?.url}
                     alt="アイコン画像"
                     width="256"

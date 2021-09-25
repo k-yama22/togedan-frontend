@@ -46,7 +46,7 @@ const HoldUser = memo((props) => {
           <div className="md:flex no-wrap md:-mx-2">
             <div className="w-full md:w-3/12 md:mx-2">
               <div className="flex md:flex-col bg-white p-3 border-t-4 border-green-400 h-full">
-                <div className="w-4/12 md:w-full image overflow-hidden">
+                <div className="w-4/12 md:w-auto image overflow-hidden mx-auto">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     className="h-auto w-full object-cover w-64 h-32 md:h-64 rounded-2xl"

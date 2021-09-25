@@ -336,8 +336,14 @@ const SignUp = () => {
                         onChange={onChangeImage}
                       />
                     </div>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    {preview ? <img src={preview} alt="preview img" /> : null}
+                    {preview ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={preview}
+                        className="mx-auto object-cover lg:h-48 lg:w-48 rounded-2xl h-48 w-48"
+                        alt="preview img"
+                      />
+                    ) : null}
                     <div className="m-2">
                       <label
                         className="block text-xs md:text-sm text-white"

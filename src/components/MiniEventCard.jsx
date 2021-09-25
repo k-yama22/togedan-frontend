@@ -26,7 +26,7 @@ export const MiniEventCard = memo((props) => {
     >
       <div className="bg-white shadow-md rounded-3xl pt-3 pl-3 md:p-4">
         <div className="flex">
-          <div className="h-20 w-20 md:w-full md:h-full lg:h-48 lg:w-48 lg:mb-0 mb-3">
+          <div className="h-20 w-20 md:w-48 md:h-48 lg:h-48 lg:w-48 lg:mb-0 mb-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={image?.url}

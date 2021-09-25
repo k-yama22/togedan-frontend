@@ -333,7 +333,7 @@ const Events = () => {
       <div className="pt-4 bg-gray-100">
         <div className="container mx-auto p-5">
           <div className="text-center text-2xl font-semibold">イベント一覧</div>
-          <div className="grid mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+          <div className="grid mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
             {eventArr.slice(offset, offset + perPage).map((event) => (
               <div key={event.event_id}>
                 <MiniEventCard
