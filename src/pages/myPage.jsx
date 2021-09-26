@@ -205,7 +205,7 @@ const MyPage = () => {
                       <div className="px-4 py-2 font-semibold">
                         苗字（カナ）
                       </div>
-                      <div className="px-4 py-2">
+                      <div className="px-0 py-2">
                         {myUserInfo.last_name_kana}
                       </div>
                     </div>
@@ -213,41 +213,41 @@ const MyPage = () => {
                       <div className="px-4 py-2 font-semibold">
                         名前（カナ）
                       </div>
-                      <div className="px-4 py-2">
+                      <div className="px-0 py-2">
                         {myUserInfo.first_name_kana}
                       </div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">苗字</div>
-                      <div className="px-4 py-2">{myUserInfo.last_name}</div>
+                      <div className="px-0 py-2">{myUserInfo.last_name}</div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">名前</div>
-                      <div className="px-4 py-2">{myUserInfo.first_name}</div>
+                      <div className="px-0 py-2">{myUserInfo.first_name}</div>
                     </div>
-                    <div className="grid grid-cols-2">
+                    {/* <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">性別</div>
                       <div className="px-4 py-2">女性</div>
-                    </div>
+                    </div> */}
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">電話番号</div>
-                      <div className="px-4 py-2">{myUserInfo.phone}</div>
+                      <div className="px-0 py-2">{myUserInfo.phone}</div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">
                         ユーザーネーム
                       </div>
-                      <div className="px-4 py-2">{myUserInfo.user_name}</div>
+                      <div className="px-0 py-2">{myUserInfo.user_name}</div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">生年月日</div>
-                      <div className="px-4 py-2">{myUserInfo.birthday}</div>
+                      <div className="px-0 py-2">{myUserInfo.birthday}</div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">
                         メールアドレス
                       </div>
-                      <div className="px-4 py-2 text-xs md:text-lg break-words md:break-normal">
+                      <div className="px-0 py-2 text-xs md:text-lg break-words ">
                         {myUserInfo.email}
                       </div>
                     </div>
