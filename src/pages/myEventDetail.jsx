@@ -9,6 +9,7 @@ import { useSelectMyEventDetail } from "src/hooks/useSelectMyEventDetail";
 import { useRouter } from "next/router";
 import { useDeleteEvent } from "src/hooks/useDeleteEvent";
 import Link from "next/link";
+import { EVENT_EDIT_SCREEN, MY_PAGE_SCREEN } from "src/hooks/constants";
 // import Image from "next/image";
 
 //サーバーサイドレンダリング
@@ -36,7 +37,7 @@ const MyEventDetail = (props) => {
   };
 
   const onClickEventEdit = (id) => {
-    router.push({ pathname: "/eventEdit", query: { id: id } });
+    router.push({ pathname: EVENT_EDIT_SCREEN, query: { id: id } });
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -105,7 +106,7 @@ const MyEventDetail = (props) => {
                     </span>
                   </li>
                 </ul> */}
-                <Link href="/myPage">
+                <Link href={MY_PAGE_SCREEN}>
                   <a className="flex mx-auto w-3/12 md:w-48 text-xs md:text-base items-center justify-center md:mt-6 text-white bg-teal-500 border-0 h-12 py-2 md:px-6 focus:outline-none hover:bg-teal-600 rounded">
                     マイページへ
                   </a>

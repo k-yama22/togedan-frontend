@@ -3,6 +3,7 @@ import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import Link from "next/link";
+import { EVENTS_SCREEN } from "src/hooks/constants";
 const About = () => {
   return (
     <div>
@@ -204,7 +205,7 @@ const About = () => {
                   好きなタイミング好きな目的を持ってみんなで楽しくダンシング！！
                 </p>
                 <div className="m-4 md:mt-12">
-                  <Link href="/events">
+                  <Link href={EVENTS_SCREEN}>
                     <a className="text-lg md:text-3xl text-blue-400 hover:text-blue-500">
                       踊ろう会の検索はこちらから →
                     </a>

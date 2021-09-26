@@ -19,6 +19,7 @@ import {
 import { useForm } from "react-hook-form";
 import { DatePicker } from "src/components/DatePicker";
 import { TimeOnlyPicker } from "src/components/TimeOnlyPicker";
+import { EVENT_DETAIL_SCREEN } from "src/hooks/constants";
 
 const Events = () => {
   const router = useRouter();
@@ -57,7 +58,7 @@ const Events = () => {
   };
 
   const onClickEvent = (id) => {
-    router.push({ pathname: "/eventDetail", query: { id: id } });
+    router.push({ pathname: EVENT_DETAIL_SCREEN, query: { id: id } });
   };
 
   const isFirstRender = useRef(false);

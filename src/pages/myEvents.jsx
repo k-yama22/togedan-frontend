@@ -11,6 +11,7 @@ import { useDeleteEvent } from "src/hooks/useDeleteEvent";
 import { useHistoryEvents } from "src/hooks/useHistoryEvents";
 import { MiniEventCard } from "src/components/MiniEventCard";
 import dayjs from "dayjs";
+import { MY_EVENT_DETAIL_SCREEN } from "src/hooks/constants";
 
 const MyEvents = () => {
   const router = useRouter();
@@ -26,7 +27,7 @@ const MyEvents = () => {
   };
 
   const onClickMyEventDetail = (id) => {
-    router.push({ pathname: "/myEventDetail", query: { id: id } });
+    router.push({ pathname: MY_EVENT_DETAIL_SCREEN, query: { id: id } });
   };
 
   const onClickWillEvent = () => {

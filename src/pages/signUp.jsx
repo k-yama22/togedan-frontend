@@ -7,6 +7,7 @@ import { Loading } from "src/components/Loading";
 import { Header } from "src/components/Header";
 import { useForm } from "react-hook-form";
 import { DatePicker } from "src/components/DatePicker";
+import { CONFIRM_SUCCESS_URL, USER_STATUS_VALID } from "src/hooks/constants";
 
 const SignUp = () => {
   const [image, setImage] = useState("");
@@ -41,8 +42,8 @@ const SignUp = () => {
     formData.append("birthday", data.birthday);
     formData.append("phone", data.phone);
     formData.append("introduce", data.introduce);
-    formData.append("user_sts", "1");
-    formData.append("confirm_success_url", "http://localhost:3000/login");
+    formData.append("user_sts", USER_STATUS_VALID);
+    formData.append("confirm_success_url", CONFIRM_SUCCESS_URL);
 
     // imageはstateから取得
     formData.append("image", image);

@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { useMyUserInfo } from "src/hooks/useMyUserInfo";
 import { DatePicker } from "src/components/DatePicker";
 import dayjs from "dayjs";
+import { PASS_CHANGE_SCREEN } from "src/hooks/constants";
 
 const UserEdit = () => {
   const { getMyUserInfo, myUserInfo } = useMyUserInfo();
@@ -81,7 +82,7 @@ const UserEdit = () => {
 
       <div className="bg-gray-500 flex flex-col items-center justify-center min-h-screen py-2">
         <div className="text-teal-100 ml-auto mb-5 mt-5 mr-5 border-solid	border-2 border-light-blue-500 rounded-md">
-          <Link href="/passChange">
+          <Link href={PASS_CHANGE_SCREEN}>
             <a>パスワードの変更はこちら</a>
           </Link>
         </div>

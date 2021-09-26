@@ -11,6 +11,14 @@ import { MiniEventCard } from "src/components/MiniEventCard";
 import { useMyUserInfo } from "src/hooks/useMyUserInfo";
 import { useRouter } from "next/router";
 import dayjs from "dayjs";
+import {
+  ICON_EDIT_SCREEN,
+  MY_EVENTS_SCREEN,
+  MY_EVENT_DETAIL_SCREEN,
+  MY_RESERVES_SCREEN,
+  MY_RESERVE_DETAIL_SCREEN,
+  USER_EDIT_SCREEN,
+} from "src/hooks/constants";
 
 const MyPage = () => {
   const router = useRouter();
@@ -21,25 +29,25 @@ const MyPage = () => {
   const [myEventArr, setMyEventArr] = useState([]);
 
   const onClickUserEdit = () => {
-    router.push({ pathname: "/userEdit" });
+    router.push({ pathname: USER_EDIT_SCREEN });
   };
 
   const onClickMyReserveDetail = (id) => {
-    router.push({ pathname: "/myReserveDetail", query: { id: id } });
+    router.push({ pathname: MY_RESERVE_DETAIL_SCREEN, query: { id: id } });
   };
 
   const onClickMyEventDetail = (id) => {
     router.push({
-      pathname: "/myEventDetail",
+      pathname: MY_EVENT_DETAIL_SCREEN,
       query: { id: id },
     });
   };
 
   const onClickMyEvents = () => {
-    router.push({ pathname: "/myEvents" });
+    router.push({ pathname: MY_EVENTS_SCREEN });
   };
   const onClickMyReserves = () => {
-    router.push({ pathname: "/myReserves" });
+    router.push({ pathname: MY_RESERVES_SCREEN });
   };
 
   useEffect(() => {
@@ -136,7 +144,7 @@ const MyPage = () => {
                   {/* ) : null} */}
                 </div>
                 <div className="ml-3 w-full">
-                  <Link href="/iconEdit">
+                  <Link href={ICON_EDIT_SCREEN}>
                     <a className="block w-full text-blue-800 text-xs md:text-xs font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs md:p-3 my-4">
                       プロフィール画像を変更する
                     </a>

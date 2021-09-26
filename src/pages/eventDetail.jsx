@@ -8,6 +8,7 @@ import { useNewReserve } from "src/hooks/useNewReserve";
 import dayjs from "dayjs";
 import router from "next/router";
 import ConfirmModal from "src/components/ConfirmModal";
+import { HOLD_USER_SCREEN } from "src/hooks/constants";
 // import Image from "next/image";
 
 //サーバーサイドレンダリング
@@ -34,7 +35,7 @@ const EventDetail = (props) => {
   };
 
   const onClickHoldUser = (id) => {
-    router.push({ pathname: "/holdUser", query: { id: id } });
+    router.push({ pathname: HOLD_USER_SCREEN, query: { id: id } });
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

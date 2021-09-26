@@ -80,6 +80,10 @@ export const SIGN_UP_ERROR = "仮登録できません";
 export const SIGN_UP_FAILED = "仮登録に失敗しました";
 
 // イベントステータス
+export const USER_STATUS_VALID = "1";
+export const USER_STATUS_INVALID = "2";
+
+// イベントステータス
 export const EVENT_STATUS_VALID = "1";
 export const EVENT_STATUS_INVALID = "2";
 
@@ -88,6 +92,11 @@ export const RESERVE_STATUS_VALID = "1";
 export const RESERVE_STATUS_INVALID = "2";
 
 // フロント側URL
+export const PRODUCTION_REDIRECT_URL = "https://togedan-vercel-app/";
+export const LOCAL_REDIRECT_URL = "http://localhost:3000/";
+
+export const BASE_REDIRECT_URL = PRODUCTION_REDIRECT_URL;
+
 export const INDEX_SCREEN = "/";
 export const LOGIN_SCREEN = "/login";
 export const SIGN_UP_SCREEN = "/signUp";
@@ -110,3 +119,6 @@ export const PASS_RESET_SCREEN = "/passReset";
 export const QUIT_SCREEN = "/quit";
 export const TEMP_REGISTRATION_SCREEN = "/tempRegistration";
 export const USER_EDIT_SCREEN = "/userEdit";
+
+export const PASS_RESET_REDIRECT_URL = `${BASE_REDIRECT_URL}passReset`;
+export const CONFIRM_SUCCESS_URL = `${BASE_REDIRECT_URL}login`;

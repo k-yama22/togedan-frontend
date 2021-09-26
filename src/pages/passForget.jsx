@@ -5,6 +5,7 @@ import { Loading } from "src/components/Loading";
 import { Header } from "src/components/Header";
 import { useForm } from "react-hook-form";
 import { usePassForget } from "src/hooks/usePassForget";
+import { PASS_RESET_REDIRECT_URL } from "src/hooks/constants";
 
 const PassForget = () => {
   const { passForget, loading } = usePassForget();
@@ -19,13 +20,14 @@ const PassForget = () => {
   const createFormData = (data) => {
     const formData = new FormData();
     formData.append("email", data.email);
-    formData.append("redirect_url", "http://localhost:3000/passReset");
-
+    formData.append("redirect_url", PASS_RESET_REDIRECT_URL);
     return formData;
   };
   const onSubmit = (data) => {
     const passForgetData = createFormData(data);
     passForget(passForgetData);
+    console.log(PASS_RESET_REDIRECT_URL);
+    console.log(passForgetData);
   };
 
   return (

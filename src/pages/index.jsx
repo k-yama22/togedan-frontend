@@ -8,6 +8,7 @@ import { Header } from "src/components/Header";
 import { useAllEvents } from "src/hooks/useAllEvents";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
+import { EVENTS_SCREEN, EVENT_DETAIL_SCREEN } from "src/hooks/constants";
 
 const Home = () => {
   const { getEvents, events } = useAllEvents();
@@ -15,7 +16,7 @@ const Home = () => {
   const router = useRouter();
 
   const onClickEvent = (id) => {
-    router.push({ pathname: "/eventDetail", query: { id: id } });
+    router.push({ pathname: EVENT_DETAIL_SCREEN, query: { id: id } });
   };
 
   useEffect(() => {
@@ -107,7 +108,7 @@ const Home = () => {
             ))}
           </div>
           <div className="w-48">
-            <Link href="/events">
+            <Link href={EVENTS_SCREEN}>
               <a className="block text-blue-800 text-md font-semibold rounded-lg hover:bg-gray-300 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
                 イベント一覧画面へ →
               </a>

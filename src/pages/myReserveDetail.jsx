@@ -10,6 +10,7 @@ import { useDeleteReserve } from "src/hooks/useDeleteReserve";
 import { useSelectReservedEvent } from "src/hooks/useSelectReservedEvent";
 import router from "next/router";
 import DetailPage from "src/components/DetailPage";
+import { HOLD_USER_SCREEN } from "src/hooks/constants";
 
 //サーバーサイドレンダリング
 export async function getServerSideProps(context) {
@@ -35,7 +36,7 @@ const MyReserveDetail = (props) => {
   };
 
   const onClickHoldUser = (id) => {
-    router.push({ pathname: "/holdUser", query: { id: id } });
+    router.push({ pathname: HOLD_USER_SCREEN, query: { id: id } });
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
