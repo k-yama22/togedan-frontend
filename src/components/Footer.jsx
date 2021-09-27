@@ -35,18 +35,6 @@ export const Footer = () => {
             <div className="text-xs uppercase text-gray-400 font-medium">
               ご利用のみなさまへ
             </div>
-            {/* <Link href="/#">
-              <a className="my-3 block">
-                イベントに参加される方へ
-                <span className="text-teal-600 text-xs p-1"></span>
-              </a>
-            </Link>
-            <Link href="/#">
-              <a className="my-3 block">
-                イベントを開催される方へ
-                <span className="text-teal-600 text-xs p-1"></span>
-              </a>
-            </Link> */}
             <Link href={USER_EDIT_SCREEN}>
               <a className="my-3 block">ユーザー情報を変更する</a>
             </Link>
@@ -61,9 +49,6 @@ export const Footer = () => {
             <Link href={ABOUT_SCREEN}>
               <a className="my-3 block">Together Danceとは</a>
             </Link>
-            {/* <Link href="/#">
-              <a className="my-3 block">ご利用ガイド</a>
-            </Link> */}
           </div>
         </div>
 

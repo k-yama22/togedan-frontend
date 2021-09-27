@@ -33,7 +33,6 @@ export const DetailPage = (props) => {
             <div className="w-full md:w-3/12 md:mx-2">
               <div className="flex md:flex-col bg-white p-3 border-t-4 border-green-400 h-full justify-center items-center md:justify-start">
                 <div className="w-4/12 md:w-auto md:mx-auto image overflow-hidden">
-                  {/* {image ? ( */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     className="h-auto w-full object-cover w-64 h-32 md:h-64 rounded-2xl"
@@ -42,7 +41,6 @@ export const DetailPage = (props) => {
                     width="256"
                     height="256"
                   />
-                  {/* ) : null} */}
                 </div>
                 <div className="p-2 w-5/12  md:w-full">
                   <div className="md:hidden text-gray-600 text-sm">
@@ -55,16 +53,6 @@ export const DetailPage = (props) => {
                     {introduce}
                   </h3>
                 </div>
-                {/* <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-                  <li className="flex items-center py-3">
-                    <span>会員状態</span>
-                    <span className="ml-auto">
-                      <span className="bg-green-500 py-1 px-2 rounded text-white text-sm">
-                        有効会員
-                      </span>
-                    </span>
-                  </li>
-                </ul> */}
                 <button
                   className="flex mx-auto mt-3 text-white text-xs md:text-base bg-teal-500 border-0 py-2 px-3 md:px-6 focus:outline-none hover:bg-teal-600 rounded"
                   onClick={() => onClick(id)}
@@ -78,7 +66,6 @@ export const DetailPage = (props) => {
               <div className="bg-white mt-2 md:mt-0 p-3 shadow-sm rounded-sm h-full">
                 <div className="container px-5 py-2 md:py-12 mx-auto">
                   <div className="mx-auto flex flex-wrap">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <div className="w-full sm:py-10 lg:pl-10 lg:py-16 mt-6 lg:mt-0 h-full">
                       <h2 className="text-sm title-font text-gray-500 tracking-widest">
                         イベント名称

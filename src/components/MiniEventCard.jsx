@@ -12,7 +12,6 @@ export const MiniEventCard = memo((props) => {
     eventDate,
     startTime,
     endTime,
-    // buttonMessage,
     onClick,
   } = props;
 
@@ -89,18 +88,6 @@ export const MiniEventCard = memo((props) => {
                 </div>
               </div>
             </div>
-            {/* <div className="flex p-4 pb-2 border-t border-gray-200 "></div>
-            <div className="flex space-x-3 md:text-sm font-medium">
-              <div className="flex-auto flex space-x-3"></div>
-              <button
-                className="mb-2 md:mb-0 bg-gray-900 px-5 py-2 shadow-sm tracking-wider text-white rounded-full hover:bg-gray-800"
-                type="button"
-                aria-label="like"
-                onClick={() => onClick(id)}
-              >
-                {buttonMessage}
-              </button>
-            </div> */}
           </div>
         </div>
       </div>
