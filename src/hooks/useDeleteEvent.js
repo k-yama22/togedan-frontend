@@ -8,7 +8,7 @@ import {
   COMMON_DELETE_ERROR,
   ERROR_STATUS,
   EVENTS_URL,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useDeleteEvent = () => {
   const router = useRouter();

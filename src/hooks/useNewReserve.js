@@ -10,7 +10,7 @@ import {
   RESERVES_URL,
   RESERVE_STATUS_VALID,
   SUCCESS_STATUS,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useNewReserve = () => {
   const router = useRouter();

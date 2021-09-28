@@ -9,7 +9,7 @@ import {
   SIGN_UP_SUCCESS,
   SUCCESS_STATUS,
   TEMP_REGISTRATION_SCREEN,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useSignUp = () => {

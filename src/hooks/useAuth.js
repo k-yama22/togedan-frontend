@@ -11,7 +11,7 @@ import {
   LOGIN_URL,
   NO_USER_ERROR,
   SUCCESS_STATUS,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useAuth = () => {
   const router = useRouter();

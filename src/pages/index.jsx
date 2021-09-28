@@ -8,7 +8,7 @@ import { Header } from "src/components/Header";
 import { useAllEvents } from "src/hooks/useAllEvents";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
-import { EVENTS_SCREEN, EVENT_DETAIL_SCREEN } from "src/hooks/constants";
+import { EVENTS_SCREEN, EVENT_DETAIL_SCREEN } from "src/utils/constants";
 
 const Home = () => {
   const { getEvents, events } = useAllEvents();

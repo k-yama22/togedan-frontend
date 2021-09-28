@@ -13,7 +13,7 @@ import {
   NEW_EVENT_SCREEN,
   QUIT_SCREEN,
   USER_EDIT_SCREEN,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const Footer = () => {
   return (

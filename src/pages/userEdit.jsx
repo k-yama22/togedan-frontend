@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { useMyUserInfo } from "src/hooks/useMyUserInfo";
 import { DatePicker } from "src/components/DatePicker";
 import dayjs from "dayjs";
-import { PASS_CHANGE_SCREEN } from "src/hooks/constants";
+import { PASS_CHANGE_SCREEN } from "src/utils/constants";
 
 const UserEdit = () => {
   const { getMyUserInfo, myUserInfo } = useMyUserInfo();

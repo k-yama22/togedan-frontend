@@ -12,7 +12,7 @@ import {
   MY_PAGE_SCREEN,
   NEW_EVENT_SCREEN,
   SIGN_UP_SCREEN,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

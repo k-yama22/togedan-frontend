@@ -11,7 +11,7 @@ import { useDeleteEvent } from "src/hooks/useDeleteEvent";
 import { useHistoryEvents } from "src/hooks/useHistoryEvents";
 import { MiniEventCard } from "src/components/MiniEventCard";
 import dayjs from "dayjs";
-import { MY_EVENT_DETAIL_SCREEN } from "src/hooks/constants";
+import { MY_EVENT_DETAIL_SCREEN } from "src/utils/constants";
 
 const MyEvents = () => {
   const router = useRouter();

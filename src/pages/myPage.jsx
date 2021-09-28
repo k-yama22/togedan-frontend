@@ -18,7 +18,7 @@ import {
   MY_RESERVES_SCREEN,
   MY_RESERVE_DETAIL_SCREEN,
   USER_EDIT_SCREEN,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 const MyPage = () => {
   const router = useRouter();

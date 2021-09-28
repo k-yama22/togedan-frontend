@@ -9,7 +9,7 @@ import {
   SUCCESS_STATUS,
   UPDATE_FAILED,
   UPDATE_SUCCESS,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const usePassReset = () => {

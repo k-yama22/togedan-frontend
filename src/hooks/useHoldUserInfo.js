@@ -6,7 +6,7 @@ import {
   COMMON_SELECT_ERROR,
   ERROR_STATUS,
   USERS_URL,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useHoldUserInfo = () => {

@@ -12,7 +12,7 @@ import {
   SUCCESS_STATUS,
   UPDATE_FAILED,
   UPDATE_SUCCESS,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useUserChange = () => {
   const router = useRouter();

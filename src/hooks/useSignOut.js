@@ -12,7 +12,7 @@ import {
   SIGN_OUT_FAILED,
   SIGN_OUT_SUCCESS,
   SUCCESS_STATUS,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useSignOut = () => {
   const router = useRouter();

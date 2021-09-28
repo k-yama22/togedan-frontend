@@ -12,7 +12,7 @@ import {
   ERROR_STATUS,
   LOGIN_SCREEN,
   SUCCESS_STATUS,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useDeleteAccount = () => {
   const router = useRouter();

@@ -7,7 +7,7 @@ import {
   COMMON_SELECT_ERROR,
   ERROR_STATUS,
   EVENTS_URL,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useHistoryEvents = () => {
   const { showNotify } = useNotify();

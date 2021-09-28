@@ -9,7 +9,7 @@ import { useMyReserves } from "src/hooks/useMyReserves";
 import { useHistoryReserves } from "src/hooks/useHistoryReserves";
 import dayjs from "dayjs";
 import { MiniEventCard } from "src/components/MiniEventCard";
-import { MY_RESERVE_DETAIL_SCREEN } from "src/hooks/constants";
+import { MY_RESERVE_DETAIL_SCREEN } from "src/utils/constants";
 
 const MyReserves = () => {
   const router = useRouter();

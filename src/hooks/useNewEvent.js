@@ -12,7 +12,7 @@ import {
   EVENT_STATUS_VALID,
   MY_EVENTS_SCREEN,
   SUCCESS_STATUS,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useNewEvent = () => {
   const router = useRouter();

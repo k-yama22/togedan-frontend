@@ -9,7 +9,7 @@ import {
   EVENTS_SEARCH_URL,
   SELECT_FAILED,
   SUCCESS_STATUS,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const useSearchEvent = () => {

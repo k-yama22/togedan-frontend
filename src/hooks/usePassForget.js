@@ -9,7 +9,7 @@ import {
   PASSWORD_RESET_SUCCESS,
   PASSWORD_URL,
   SUCCESS_STATUS,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 import { useNotify } from "src/hooks/useNotify";
 
 export const usePassForget = () => {

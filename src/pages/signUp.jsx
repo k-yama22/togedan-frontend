@@ -7,7 +7,7 @@ import { Loading } from "src/components/Loading";
 import { Header } from "src/components/Header";
 import { useForm } from "react-hook-form";
 import { DatePicker } from "src/components/DatePicker";
-import { CONFIRM_SUCCESS_URL, USER_STATUS_VALID } from "src/hooks/constants";
+import { CONFIRM_SUCCESS_URL, USER_STATUS_VALID } from "src/utils/constants";
 
 const SignUp = () => {
   const [image, setImage] = useState("");

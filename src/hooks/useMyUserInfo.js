@@ -7,7 +7,7 @@ import {
   COMMON_SELECT_ERROR,
   ERROR_STATUS,
   USERS_URL,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useMyUserInfo = () => {
   const [myUserInfo, setMyUserInfo] = useState([]);

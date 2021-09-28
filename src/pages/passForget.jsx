@@ -5,7 +5,7 @@ import { Loading } from "src/components/Loading";
 import { Header } from "src/components/Header";
 import { useForm } from "react-hook-form";
 import { usePassForget } from "src/hooks/usePassForget";
-import { PASS_RESET_REDIRECT_URL } from "src/hooks/constants";
+import { PASS_RESET_REDIRECT_URL } from "src/utils/constants";
 
 const PassForget = () => {
   const { passForget, loading } = usePassForget();

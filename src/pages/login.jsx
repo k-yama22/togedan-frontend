@@ -6,7 +6,7 @@ import { Footer } from "src/components/Footer";
 import { Loading } from "src/components/Loading";
 import { useForm } from "react-hook-form";
 import { Header } from "src/components/Header";
-import { PASS_FORGET_SCREEN, SIGN_UP_SCREEN } from "src/hooks/constants";
+import { PASS_FORGET_SCREEN, SIGN_UP_SCREEN } from "src/utils/constants";
 
 // eslint-disable-next-line react/display-name
 const Login = memo(() => {

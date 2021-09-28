@@ -10,7 +10,7 @@ import { useDeleteReserve } from "src/hooks/useDeleteReserve";
 import { useSelectReservedEvent } from "src/hooks/useSelectReservedEvent";
 import router from "next/router";
 import DetailPage from "src/components/DetailPage";
-import { HOLD_USER_SCREEN } from "src/hooks/constants";
+import { HOLD_USER_SCREEN } from "src/utils/constants";
 
 //サーバーサイドレンダリング
 export async function getServerSideProps(context) {

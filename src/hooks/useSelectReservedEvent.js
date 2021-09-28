@@ -8,7 +8,7 @@ import {
   ERROR_STATUS,
   RESERVES_URL,
   RESERVE_STATUS_VALID,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useSelectReservedEvent = () => {
   const { showNotify } = useNotify();

@@ -3,7 +3,7 @@ import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import Link from "next/link";
-import { EVENTS_SCREEN } from "src/hooks/constants";
+import { EVENTS_SCREEN } from "src/utils/constants";
 const About = () => {
   return (
     <div>

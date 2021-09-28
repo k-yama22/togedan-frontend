@@ -12,7 +12,7 @@ import {
   EVENT_STATUS_VALID,
   SUCCESS_STATUS,
   UPDATE_FAILED,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useUpdateEvent = () => {
   const router = useRouter();

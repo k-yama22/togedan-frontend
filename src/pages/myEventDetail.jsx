@@ -9,7 +9,7 @@ import { useSelectMyEventDetail } from "src/hooks/useSelectMyEventDetail";
 import { useRouter } from "next/router";
 import { useDeleteEvent } from "src/hooks/useDeleteEvent";
 import Link from "next/link";
-import { EVENT_EDIT_SCREEN, MY_PAGE_SCREEN } from "src/hooks/constants";
+import { EVENT_EDIT_SCREEN, MY_PAGE_SCREEN } from "src/utils/constants";
 // import Image from "next/image";
 
 //サーバーサイドレンダリング

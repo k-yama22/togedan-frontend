@@ -19,7 +19,7 @@ import {
 import { useForm } from "react-hook-form";
 import { DatePicker } from "src/components/DatePicker";
 import { TimeOnlyPicker } from "src/components/TimeOnlyPicker";
-import { EVENT_DETAIL_SCREEN } from "src/hooks/constants";
+import { EVENT_DETAIL_SCREEN } from "src/utils/constants";
 
 const Events = () => {
   const router = useRouter();

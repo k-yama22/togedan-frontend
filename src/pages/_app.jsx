@@ -19,7 +19,7 @@ import {
   SIGN_UP_SCREEN,
   SUCCESS_STATUS,
   TEMP_REGISTRATION_SCREEN,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 const MyApp = ({ Component, pageProps }) => {
   const { showNotify } = useNotify();
@@ -81,4 +81,47 @@ const MyApp = ({ Component, pageProps }) => {
   );
 };
 
+// MyApp.getInitialProps = async (appContext) => {
+//   // eslint-disable-next-line react-hooks/rules-of-hooks
+//   const { showNotify } = useNotify();
+//   await if (
+//     router.pathname === "/login"
+//     //   router.pathname === "/" ||
+//     //   router.pathname === "/signUp" ||
+//     //   router.pathname === "/tempRegistration"
+//   )
+//     return;
+//   // ローカルストレージにログインチェックのデータが存在する場合
+//   if (lscache.get("loginCheck")) {
+//     // 期限切れのデータのみ削除処理
+//     lscache.flushExpired();
+//     // ログインIDのデータが取得できなかった場合、データを全て削除してタイムアウト処理
+//     if (!lscache.get("loginId")) {
+//       lscache.remove("loginCheck");
+//       lscache.flush();
+//       showNotify({ title: "タイムアウトしました", status: "error" });
+//       router.push("/login");
+//       return;
+//     }
+//   } else if (
+//     !(
+//       router.pathname === "/login" ||
+//       router.pathname === "/" ||
+//       router.pathname === "/signUp" ||
+//       router.pathname === "/events" ||
+//       router.pathname === "/eventDetail" ||
+//       router.pathname === "/tempRegistration" ||
+//       router.pathname === "/passForget" ||
+//       router.pathname === "/passReset" ||
+//       router.pathname === "/about"
+//     )
+//   ) {
+//     showNotify({
+//       title: "ログインまたは新規登録をしてください",
+//       status: "error",
+//     });
+//     router.push("/login");
+//     return;
+//   }
+// };
 export default MyApp;

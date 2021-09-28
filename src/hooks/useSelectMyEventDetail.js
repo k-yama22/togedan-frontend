@@ -8,7 +8,7 @@ import {
   ERROR_STATUS,
   EVENTS_URL,
   EVENT_STATUS_VALID,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useSelectMyEventDetail = () => {
   const { showNotify } = useNotify();

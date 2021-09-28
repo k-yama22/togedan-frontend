@@ -8,7 +8,7 @@ import { useNewReserve } from "src/hooks/useNewReserve";
 import dayjs from "dayjs";
 import router from "next/router";
 import ConfirmModal from "src/components/ConfirmModal";
-import { HOLD_USER_SCREEN } from "src/hooks/constants";
+import { HOLD_USER_SCREEN } from "src/utils/constants";
 // import Image from "next/image";
 
 //サーバーサイドレンダリング

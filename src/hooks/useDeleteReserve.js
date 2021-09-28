@@ -10,7 +10,7 @@ import {
   MY_RESERVES_SCREEN,
   RESERVES_URL,
   SUCCESS_STATUS,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useDeleteReserve = () => {
   const { showNotify } = useNotify();

@@ -5,7 +5,7 @@ export const PRODUCTION_URL = "https://togedan.com/";
 export const LOCAL_URL = "http://localhost:3001/";
 
 // ベースURL(切替)
-export const BASE_URL = PRODUCTION_URL;
+export const BASE_URL = LOCAL_URL;
 
 // 認証情報URL
 // 認証
@@ -95,7 +95,7 @@ export const RESERVE_STATUS_INVALID = "2";
 export const PRODUCTION_REDIRECT_URL = "https://togedan-vercel-app/";
 export const LOCAL_REDIRECT_URL = "http://localhost:3000/";
 
-export const BASE_REDIRECT_URL = PRODUCTION_REDIRECT_URL;
+export const BASE_REDIRECT_URL = LOCAL_REDIRECT_URL;
 
 export const INDEX_SCREEN = "/";
 export const LOGIN_SCREEN = "/login";

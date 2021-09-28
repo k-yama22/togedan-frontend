@@ -7,7 +7,7 @@ import {
   COMMON_SELECT_ERROR,
   ERROR_STATUS,
   RESERVES_URL,
-} from "src/hooks/constants";
+} from "src/utils/constants";
 
 export const useMyReserves = () => {
   const { showNotify } = useNotify();
