@@ -1,4 +1,3 @@
-// import React, { useState } from "react";
 import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
@@ -14,7 +13,6 @@ import { PASS_CHANGE_SCREEN } from "src/utils/constants";
 
 const UserEdit = () => {
   const { getMyUserInfo, myUserInfo } = useMyUserInfo();
-  // const [birthday, setBirthday] = useState();
   const { userChange, loading } = useUserChange();
 
   const {
@@ -53,9 +51,6 @@ const UserEdit = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    // register({
-    //   name: "birthday",
-    // });
     const birthday = dayjs(myUserInfo.birthday);
     setValue("lastName", myUserInfo.last_name);
     setValue("firstName", myUserInfo.first_name);
@@ -63,9 +58,7 @@ const UserEdit = () => {
     setValue("firstNameKana", myUserInfo.first_name_kana);
     setValue("userName", myUserInfo.user_name);
     setValue("email", myUserInfo.email);
-    // setValue("birthday", myUserInfo.birthday);
     setValue("birthday", new Date(birthday.format("YYYY/MM/DD")));
-    // setBirthday(myUserInfo.birthday);
     setValue("phone", myUserInfo.phone);
     setValue("introduce", myUserInfo.introduce);
 
@@ -271,7 +264,6 @@ const UserEdit = () => {
                       >
                         生年月日
                         <DatePicker
-                          // label="datetime"
                           name="birthday"
                           control={control}
                           placeholderText="生年月日"
@@ -279,15 +271,6 @@ const UserEdit = () => {
                           {...register("birthday", { required: true })}
                         />
                       </label>
-                      {/* <input
-                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                        id="birthday"
-                        type="date"
-                        min="1900-01-01"
-                        max="2100-12-31"
-                        placeholder="生年月日"
-                        {...register("birthday", { required: true })}
-                      /> */}
                       {errors.birthday &&
                         errors.birthday.type === "required" && (
                           <span className="text-red-700">必須項目です</span>

@@ -94,16 +94,6 @@ const EventDetail = (props) => {
                   </h3>
                 </div>
 
-                {/* <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-                  <li className="flex items-center py-3">
-                    <span>会員状態</span>
-                    <span className="ml-auto">
-                      <span className="bg-green-500 py-1 px-2 rounded text-white text-sm">
-                        有効会員
-                      </span>
-                    </span>
-                  </li>
-                </ul> */}
                 <button
                   className="flex w-3/12 md:w-full text-xs md:text-base mx-auto md:mt-3 text-white bg-teal-500 border-0 py-2 h-12 items-center justify-center md:px-6 focus:outline-none shadow hover:shadow-lg hover:bg-teal-600 rounded"
                   onClick={() => onClickHoldUser(selectedEvent.id)}

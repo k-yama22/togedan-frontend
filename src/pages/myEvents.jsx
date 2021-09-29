@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import Head from "next/head";
-// import Link from "next/link";
 import { useEffect } from "react";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { useMyEvents } from "src/hooks/useMyEvents";
-// import { EventCard } from "src/components/EventCard";
 import { useRouter } from "next/router";
 import { useDeleteEvent } from "src/hooks/useDeleteEvent";
 import { useHistoryEvents } from "src/hooks/useHistoryEvents";

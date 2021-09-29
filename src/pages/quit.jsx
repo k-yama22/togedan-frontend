@@ -19,11 +19,6 @@ const Quit = () => {
       <Header />
 
       <div className="bg-gray-200 p-4">
-        {/* <div className="flex relative text-center">
-          <h1 className="text-3xl tracking-wider text-black text-sha uppercase font-bold p-4 self-center z-10 content-center text-center w-full md:text-4xl">
-            退会の手続き
-          </h1>
-        </div> */}
         <div className="container">
           <div className="w-full my-4 md:pl-4 sm:pr-4">
             <h2 className="text-xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 truncate text-center">

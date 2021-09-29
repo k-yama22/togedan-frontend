@@ -62,24 +62,6 @@ const HoldUser = memo((props) => {
                     {holdUserInfo.last_name} {holdUserInfo.first_name}
                   </h1>
                 </div>
-                {/* <h3 className="text-gray-600 font-lg text-semibold leading-6">
-                  自己紹介
-                </h3> */}
-
-                {/* <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-                  <li className="flex items-center py-3">
-                    <span>会員状態</span>
-                    <span className="ml-auto">
-                      <span className="bg-green-500 py-1 px-2 rounded text-white text-sm">
-                        有効会員
-                      </span>
-                    </span>
-                  </li>
-                  <li className="flex items-center py-3">
-                    <span>ユーザーネーム</span>
-                    <span className="ml-auto">{holdUserInfo.user_name}</span>
-                  </li>
-                </ul> */}
               </div>
               <div className="my-4"></div>
             </div>

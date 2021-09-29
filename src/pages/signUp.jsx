@@ -273,7 +273,6 @@ const SignUp = () => {
                       >
                         生年月日<span className="text-red-700">*</span>
                         <DatePicker
-                          // label="datetime"
                           name="birthday"
                           control={control}
                           placeholderText="生年月日"
@@ -281,15 +280,6 @@ const SignUp = () => {
                           {...register("birthday", { required: true })}
                         />
                       </label>
-                      {/* <input
-                        className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                        id="birthday"
-                        type="date"
-                        min="1900-01-01"
-                        max="2100-12-31"
-                        placeholder="生年月日"
-                        {...register("birthday", { required: true })}
-                      /> */}
                       {errors.birthday &&
                         errors.birthday.type === "required" && (
                           <span className="text-red-700">必須項目です</span>

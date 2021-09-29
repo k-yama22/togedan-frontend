@@ -53,13 +53,8 @@ const EventEdit = (props) => {
     setValue("eventName", selectedEvent.event_name);
     setValue("genre", selectedEvent.genre);
     setValue("location", selectedEvent.location);
-    // if (!selectedEvent.event_date === undefined) {
     setValue("eventDate", new Date(eventDate.format("YYYY/MM/DD")));
-    // setValue("eventDate", new Date(eventDate.format("yyyy/mm/dd")));
-    // }
-    console.log(eventDate.format("YYYY/MM/DD"));
     setValue("startTime", new Date(startTime.format("YYYY/MM/DD HH:mm:ss")));
-    console.log(startTime.format("YYYY/MM/DD HH:mm:ss"));
     setValue("endTime", new Date(endTime.format("YYYY/MM/DD HH:mm:ss")));
     setValue("eventMessage", selectedEvent.event_message);
     setValue("maxPeople", selectedEvent.max_people);
@@ -174,7 +169,6 @@ const EventEdit = (props) => {
                       >
                         開催日
                         <DatePicker
-                          // label="datetime"
                           name="eventDate"
                           control={control}
                           placeholderText="開催日"
@@ -182,15 +176,6 @@ const EventEdit = (props) => {
                           {...register("eventDate", { required: true })}
                         />
                       </label>
-                      {/* <input
-                        className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                        id="eventDate"
-                        type="date"
-                        min="1900-01-01"
-                        max="2100-12-31"
-                        placeholder="開催日"
-                        {...register("eventDate", { required: true })}
-                      /> */}
                       {errors.eventDate &&
                         errors.eventDate.type === "required" && (
                           <span className="text-red-700">必須項目です</span>
@@ -204,20 +189,12 @@ const EventEdit = (props) => {
                         >
                           開始時刻
                           <TimeOnlyPicker
-                            // label="datetime"
                             name="startTime"
                             control={control}
                             placeholderText="開始時刻"
                             {...register("startTime", { required: true })}
                           />
                         </label>
-                        {/* <input
-                          className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                          id="startTime"
-                          type="time"
-                          placeholder="開催時刻"
-                          {...register("startTime", { required: true })}
-                        /> */}
                         {errors.startTime &&
                           errors.startTime.type === "required" && (
                             <span className="text-red-700">必須項目です</span>
@@ -230,20 +207,12 @@ const EventEdit = (props) => {
                         >
                           終了時刻
                           <TimeOnlyPicker
-                            // label="datetime"
                             name="endTime"
                             control={control}
                             placeholderText="終了時刻"
                             {...register("endTime", { required: true })}
                           />
                         </label>
-                        {/* <input
-                          className="w-full h-10 px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
-                          id="endTime"
-                          type="time"
-                          placeholder="終了時刻"
-                          {...register("endTime", { required: true })}
-                        /> */}
                         {errors.endTime &&
                           errors.endTime.type === "required" && (
                             <span className="text-red-700">必須項目です</span>

@@ -19,8 +19,6 @@ export const Header = () => {
   const [loginId, setLoginId] = useState("");
   const loginImg = lscache.get("loginImg");
 
-  // console.log(loginImg);
-  // console.log(loginImg?.url);
   const { signOut, loading } = useSignOut();
 
   useEffect(() => {
