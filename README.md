@@ -1,29 +1,68 @@
-# Next.js + Tailwind CSS Example
+# Together Dance
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) (v2.1) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+<img width="810" alt="スクリーンショット 2021-09-30 17 11 12" src="https://user-images.githubusercontent.com/66157921/135413698-f557cf69-ec74-42da-9505-7a93f5ce1f98.png">
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
 
-## Preview
+# サービス概要
+Together Danceはいつでもどこでも誰とでもをコンセプトにしてダンス用マッチングサービスです。
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+## URL
+[`App`](https://togedan.vercel.app/)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
 
-## Deploy your own
+## 使用技術
+- フロントエンド
+  - React
+  - Next.js
+  - Tailwind CSS
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+- バックエンド
+  - Ruby
+  - Ruby on Rails
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+- DB
+  - PostgreSQL
 
-## How to use
+- インフラ
+  - AWS(EC2,VPC,RDS,Route53)
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+- その他ライブラリ
+  - react-hook-form(フォームバリデーション)
+  - react-hot-toast(トースト表示)
+  - react-datepicker(日時フォーム)
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## 機能一覧
+- ユーザー
+  - 新規登録、ログイン、ログアウト、ユーザー情報更新、退会
+  - プロフィール画像登録
+  - 画像プレビュー
+
+- イベント情報
+  - イベント新規登録、イベント情報更新、イベント削除
+  - イベント検索機能
+  - ページネーション機能
+
+- 予約情報
+  - 予約情報登録、予約情報更新、予約情報削除
+
+## 使用方法、画面説明
+■aboutページ
+　　  
+サービスの概要を記載しています
+
+■ホーム画面
+
+イベントの一部を表示しています。
+
+■マイページ
+
+ご自身のユーザ情報の確認、編集ができます。
+
+また、開催したイベントの情報や予約したイベントの情報も確認、修正、キャンセルできます。
+
+
+## 工夫した点
+
+
+
