@@ -92,7 +92,7 @@ export const RESERVE_STATUS_VALID = "1";
 export const RESERVE_STATUS_INVALID = "2";
 
 // フロント側URL
-export const PRODUCTION_REDIRECT_URL = "https://togedan-vercel-app/";
+export const PRODUCTION_REDIRECT_URL = "https://www.togedan.jp/";
 export const LOCAL_REDIRECT_URL = "http://localhost:3000/";
 
 export const BASE_REDIRECT_URL = PRODUCTION_REDIRECT_URL;
