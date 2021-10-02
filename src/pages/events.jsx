@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { useSearchEvent } from "src/hooks/useSearchEvents";
 import dayjs from "dayjs";
 import ReactPaginate from "react-paginate";
+import MediaQuery from "react-responsive";
 import {
   Accordion,
   AccordionItem,
@@ -44,6 +45,7 @@ const Events = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data);
     const eventDate = data.eventDate
       ? dayjs(data.eventDate).format("YYYY-MM-DD")
       : null;
@@ -113,222 +115,229 @@ const Events = () => {
           <div className="text-center text-2xl p-4 font-semibold">
             検索フォーム
           </div>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="hidden w-screen container mx-auto block md:flex justify-center items-center p-2 md:p-0">
+          <MediaQuery query="(min-width: 768px)">
+            <div className="w-screen container mx-auto block md:flex justify-center items-center p-2 md:p-0">
               <div className="border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6">
-                <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-                  <div className="grid grid-cols-1 md:grid-cols-5 gap-2 border border-gray-200 p-2 rounded">
-                    <div className="text-center">
-                      <label className="text-xs" htmlFor="genre">
-                        ジャンル
-                      </label>
-                      <div className="flex border rounded bg-gray-300 items-center p-2">
-                        <input
-                          className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
-                          id="genre"
-                          type="text"
-                          placeholder="例：HIPHOP"
-                          {...register("genre", {
-                            required: false,
-                            maxLength: 20,
-                          })}
-                        />
-                      </div>
-                      {errors.genre && errors.genre.type === "maxLength" && (
-                        <span className="text-red-700">
-                          20文字以下で入力してください
-                        </span>
-                      )}
-                    </div>
-                    <div className="text-center">
-                      <label className="text-xs" htmlFor="location">
-                        開催場所
-                      </label>
-                      <div className="flex border rounded bg-gray-300 items-center p-2">
-                        <input
-                          className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
-                          id="location"
-                          type="text"
-                          placeholder="例：渋谷"
-                          {...register("location", {
-                            required: false,
-                            maxLength: 20,
-                          })}
-                        />
-                      </div>
-                      {errors.location &&
-                        errors.location.type === "maxLength" && (
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-5 gap-2 border border-gray-200 p-2 rounded">
+                      <div className="text-center">
+                        <label className="text-xs" htmlFor="genre">
+                          ジャンル
+                        </label>
+                        <div className="flex border rounded bg-gray-300 items-center p-2">
+                          <input
+                            className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
+                            id="genre"
+                            type="text"
+                            placeholder="例：HIPHOP"
+                            {...register("genre", {
+                              required: false,
+                              maxLength: 20,
+                            })}
+                          />
+                        </div>
+                        {errors.genre && errors.genre.type === "maxLength" && (
                           <span className="text-red-700">
                             20文字以下で入力してください
                           </span>
                         )}
-                    </div>
-                    <div className="text-center">
-                      <label htmlFor="eventDate" className="text-xs">
-                        開催日
-                      </label>
-                      <div className="flex border rounded bg-gray-300 items-center p-2 text-xs">
-                        <DatePicker
-                          name="eventDate"
-                          control={control}
-                          placeholderText="開催日"
-                          openToDate={new Date()}
-                          {...register("eventDate", { required: false })}
-                        />
                       </div>
-                    </div>
-                    <div className="text-center">
-                      <label htmlFor="startTime" className="text-xs">
-                        開始時刻
-                      </label>
-                      <div className="flex border rounded bg-gray-300 items-center p-2">
-                        <TimeOnlyPicker
-                          name="startTime"
-                          control={control}
-                          placeholderText="開始時刻"
-                          {...register("startTime", { required: false })}
-                        />
+                      <div className="text-center">
+                        <label className="text-xs" htmlFor="location">
+                          開催場所
+                        </label>
+                        <div className="flex border rounded bg-gray-300 items-center p-2">
+                          <input
+                            className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
+                            id="location"
+                            type="text"
+                            placeholder="例：渋谷"
+                            {...register("location", {
+                              required: false,
+                              maxLength: 20,
+                            })}
+                          />
+                        </div>
+                        {errors.location &&
+                          errors.location.type === "maxLength" && (
+                            <span className="text-red-700">
+                              20文字以下で入力してください
+                            </span>
+                          )}
                       </div>
-                    </div>
-                    <div className="text-center">
-                      <label htmlFor="endTime" className="text-xs">
-                        終了時刻
-                      </label>
-                      <div className="flex border rounded w-full bg-gray-300 items-center p-2">
-                        <TimeOnlyPicker
-                          name="endTime"
-                          control={control}
-                          placeholderText="終了時刻"
-                          {...register("endTime", { required: false })}
-                        />
+                      <div className="text-center">
+                        <label htmlFor="eventDate" className="text-xs">
+                          開催日
+                        </label>
+                        <div className="flex border rounded bg-gray-300 items-center p-2 text-xs">
+                          <DatePicker
+                            name="eventDate"
+                            control={control}
+                            placeholderText="開催日"
+                            openToDate={new Date()}
+                            {...register("eventDate", { required: false })}
+                          />
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <label htmlFor="startTime" className="text-xs">
+                          開始時刻
+                        </label>
+                        <div className="flex border rounded bg-gray-300 items-center p-2">
+                          <TimeOnlyPicker
+                            name="startTime"
+                            control={control}
+                            placeholderText="開始時刻"
+                            {...register("startTime", { required: false })}
+                          />
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <label htmlFor="endTime" className="text-xs">
+                          終了時刻
+                        </label>
+                        <div className="flex border rounded w-full bg-gray-300 items-center p-2">
+                          <TimeOnlyPicker
+                            name="endTime"
+                            control={control}
+                            placeholderText="終了時刻"
+                            {...register("endTime", { required: false })}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="flex justify-center">
-                  <button className="p-2 border w-1/4 rounded-md bg-gray-800 text-white">
-                    検索
-                  </button>
-                </div>
+                  <div className="flex justify-center">
+                    <button className="p-2 border w-1/4 rounded-md bg-gray-800 text-white">
+                      検索
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
-          </form>
-
+          </MediaQuery>
           {/* スマホ表示 */}
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="md:hidden w-screen container mx-auto block md:flex justify-center items-center p-2 md:p-0">
-              <div className="border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6">
-                <Accordion allowMultipleExpanded allowZeroExpanded>
-                  <AccordionItem>
-                    <AccordionItemHeading>
-                      <AccordionItemButton>
-                        <div className="text-base text-center uppercase text-gray-800 font-medium hover:text-gray-400">
-                          絞り込み
+          <MediaQuery query="(max-width: 768px)">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="md:hidden w-screen container mx-auto block md:flex justify-center items-center p-2 md:p-0">
+                <div className="border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg mb-6">
+                  <Accordion allowMultipleExpanded allowZeroExpanded>
+                    <AccordionItem>
+                      <AccordionItemHeading>
+                        <AccordionItemButton>
+                          <div className="text-base text-center uppercase text-gray-800 font-medium hover:text-gray-400">
+                            絞り込み
+                          </div>
+                        </AccordionItemButton>
+                      </AccordionItemHeading>
+                      <AccordionItemPanel>
+                        <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                          <div className="grid grid-cols-1 md:grid-cols-5 gap-2 border border-gray-200 p-2 rounded">
+                            <div className="text-center">
+                              <label htmlFor="genre" className="text-xs">
+                                ジャンル
+                              </label>
+                              <div className="flex border rounded bg-gray-300 items-center p-2">
+                                <input
+                                  className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
+                                  id="genre"
+                                  type="text"
+                                  placeholder="例：HIPHOP"
+                                  {...register("genre", {
+                                    required: false,
+                                    maxLength: 20,
+                                  })}
+                                />
+                              </div>
+                              {errors.genre &&
+                                errors.genre.type === "maxLength" && (
+                                  <span className="text-red-700">
+                                    20文字以下で入力してください
+                                  </span>
+                                )}
+                            </div>
+                            <div className="text-center">
+                              <label htmlFor="location" className="text-xs">
+                                場所
+                              </label>
+                              <div className="flex border rounded bg-gray-300 items-center p-2">
+                                <input
+                                  className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
+                                  id="location"
+                                  type="text"
+                                  placeholder="例：渋谷"
+                                  {...register("location", {
+                                    required: false,
+                                    maxLength: 20,
+                                  })}
+                                />
+                              </div>
+                              {errors.location &&
+                                errors.location.type === "maxLength" && (
+                                  <span className="text-red-700">
+                                    20文字以下で入力してください
+                                  </span>
+                                )}
+                            </div>
+                            <div className="text-center">
+                              <label htmlFor="eventDate" className="text-xs">
+                                開催日
+                              </label>
+                              <div className="flex border rounded bg-gray-300 items-center p-2 text-xs">
+                                <DatePicker
+                                  name="eventDate"
+                                  control={control}
+                                  placeholderText="開催日"
+                                  openToDate={new Date()}
+                                  {...register("eventDate", {
+                                    required: false,
+                                  })}
+                                />
+                              </div>
+                            </div>
+                            <div className="text-center">
+                              <label htmlFor="startTime" className="text-xs">
+                                開始時刻
+                              </label>
+                              <div className="flex border rounded bg-gray-300 items-center p-2">
+                                <TimeOnlyPicker
+                                  name="startTime"
+                                  control={control}
+                                  placeholderText="開始時刻"
+                                  {...register("startTime", {
+                                    required: false,
+                                  })}
+                                />
+                              </div>
+                            </div>
+                            <div className="text-center">
+                              <label htmlFor="endTime" className="text-xs">
+                                終了時刻
+                              </label>
+                              <div className="flex border rounded w-full bg-gray-300 items-center p-2">
+                                <TimeOnlyPicker
+                                  name="endTime"
+                                  control={control}
+                                  placeholderText="終了時刻"
+                                  {...register("endTime", { required: false })}
+                                />
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </AccordionItemButton>
-                    </AccordionItemHeading>
-                    <AccordionItemPanel>
-                      <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-                        <div className="grid grid-cols-1 md:grid-cols-5 gap-2 border border-gray-200 p-2 rounded">
-                          <div className="text-center">
-                            <label htmlFor="genre" className="text-xs">
-                              ジャンル
-                            </label>
-                            <div className="flex border rounded bg-gray-300 items-center p-2">
-                              <input
-                                className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
-                                id="genre"
-                                type="text"
-                                placeholder="例：HIPHOP"
-                                {...register("genre", {
-                                  required: false,
-                                  maxLength: 20,
-                                })}
-                              />
-                            </div>
-                            {errors.genre &&
-                              errors.genre.type === "maxLength" && (
-                                <span className="text-red-700">
-                                  20文字以下で入力してください
-                                </span>
-                              )}
-                          </div>
-                          <div className="text-center">
-                            <label htmlFor="location" className="text-xs">
-                              場所
-                            </label>
-                            <div className="flex border rounded bg-gray-300 items-center p-2">
-                              <input
-                                className="bg-gray-300 h-10 max-w-full focus:outline-none text-gray-700"
-                                id="location"
-                                type="text"
-                                placeholder="例：渋谷"
-                                {...register("location", {
-                                  required: false,
-                                  maxLength: 20,
-                                })}
-                              />
-                            </div>
-                            {errors.location &&
-                              errors.location.type === "maxLength" && (
-                                <span className="text-red-700">
-                                  20文字以下で入力してください
-                                </span>
-                              )}
-                          </div>
-                          <div className="text-center">
-                            <label htmlFor="eventDate" className="text-xs">
-                              開催日
-                            </label>
-                            <div className="flex border rounded bg-gray-300 items-center p-2 text-xs">
-                              <DatePicker
-                                name="eventDate"
-                                control={control}
-                                placeholderText="開催日"
-                                openToDate={new Date()}
-                                {...register("eventDate", { required: false })}
-                              />
-                            </div>
-                          </div>
-                          <div className="text-center">
-                            <label htmlFor="startTime" className="text-xs">
-                              開始時刻
-                            </label>
-                            <div className="flex border rounded bg-gray-300 items-center p-2">
-                              <TimeOnlyPicker
-                                name="startTime"
-                                control={control}
-                                placeholderText="開始時刻"
-                                {...register("startTime", { required: false })}
-                              />
-                            </div>
-                          </div>
-                          <div className="text-center">
-                            <label htmlFor="endTime" className="text-xs">
-                              終了時刻
-                            </label>
-                            <div className="flex border rounded w-full bg-gray-300 items-center p-2">
-                              <TimeOnlyPicker
-                                name="endTime"
-                                control={control}
-                                placeholderText="終了時刻"
-                                {...register("endTime", { required: false })}
-                              />
-                            </div>
-                          </div>
+                        <div className="flex justify-center pt-4">
+                          <button className="p-2 border w-1/4 rounded-md bg-gray-800 text-white">
+                            検索
+                          </button>
                         </div>
-                      </div>
-                      <div className="flex justify-center pt-4">
-                        <button className="p-2 border w-1/4 rounded-md bg-gray-800 text-white">
-                          検索
-                        </button>
-                      </div>
-                    </AccordionItemPanel>
-                  </AccordionItem>
-                </Accordion>
+                      </AccordionItemPanel>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </MediaQuery>
         </div>
       </div>
       <div className="pt-4 bg-gray-100">
