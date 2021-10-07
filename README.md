@@ -14,6 +14,11 @@ Together Danceはいつでもどこでも誰とでもをコンセプトにした
 ![サーバ概要図](https://user-images.githubusercontent.com/66157921/135754214-172720da-de36-4e3b-819b-16fe28d468fd.png)
 
 
+## インフラ構成図
+
+![AWS構成図](https://user-images.githubusercontent.com/66157921/136402269-560c80ae-2587-4d7d-af14-8ef47601c2de.png)
+
+
 
 
 ## 使用技術
