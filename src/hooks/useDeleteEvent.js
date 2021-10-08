@@ -8,6 +8,7 @@ import {
   COMMON_DELETE_ERROR,
   ERROR_STATUS,
   EVENTS_URL,
+  MY_EVENTS_SCREEN,
 } from "src/utils/constants";
 
 export const useDeleteEvent = () => {
@@ -30,7 +31,7 @@ export const useDeleteEvent = () => {
       )
       .then((res) => {
         setDeleteEvent(res.data.data);
-        router.reload();
+        router.push(MY_EVENTS_SCREEN);
       })
       .catch(() => {
         showNotify({ title: COMMON_DELETE_ERROR, status: ERROR_STATUS });
