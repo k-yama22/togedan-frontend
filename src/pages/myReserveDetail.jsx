@@ -1,7 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { Footer } from "src/components/Footer";
-import { Header } from "src/components/Header";
+import { Layout } from "src/components/Layout";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { useDeleteReserve } from "src/hooks/useDeleteReserve";
@@ -55,38 +54,36 @@ const MyReserveDetail = (props) => {
         <title>予約詳細</title>
       </Head>
 
-      <Header />
-
-      <div className="bg-gray-600">
-        <div className="flex relative text-center">
-          <h1 className="text-3xl tracking-wider text-white text-sha font-bold p-4 self-center z-10 content-center text-center w-full md:text-4xl">
-            予約詳細画面
-          </h1>
+      <Layout>
+        <div className="bg-gray-600">
+          <div className="flex relative text-center">
+            <h1 className="text-3xl tracking-wider text-white text-sha font-bold p-4 self-center z-10 content-center text-center w-full md:text-4xl">
+              予約詳細画面
+            </h1>
+          </div>
         </div>
-      </div>
 
-      <DetailPage
-        id={selectedEvent?.id}
-        lastName={selectedEvent?.last_name}
-        firstName={selectedEvent?.first_name}
-        introduce={selectedEvent?.introduce}
-        image={selectedEvent?.image}
-        eventId={selectedEvent?.event_id}
-        eventName={selectedEvent?.event_name}
-        genre={selectedEvent?.genre}
-        eventMessage={selectedEvent?.event_message}
-        maxPeople={selectedEvent?.max_people}
-        eventDate={eventDate}
-        startTime={startTime}
-        endTime={endTime}
-        location={selectedEvent.location}
-        buttonMessage="詳細を見る"
-        confirmMessage="予約をキャンセルする"
-        onClick={() => onClickHoldUser(selectedEvent?.id)}
-        onClickConfirm={() => onClickReserveCancel(selectedEvent?.event_id)}
-      />
-
-      <Footer />
+        <DetailPage
+          id={selectedEvent?.id}
+          lastName={selectedEvent?.last_name}
+          firstName={selectedEvent?.first_name}
+          introduce={selectedEvent?.introduce}
+          image={selectedEvent?.image}
+          eventId={selectedEvent?.event_id}
+          eventName={selectedEvent?.event_name}
+          genre={selectedEvent?.genre}
+          eventMessage={selectedEvent?.event_message}
+          maxPeople={selectedEvent?.max_people}
+          eventDate={eventDate}
+          startTime={startTime}
+          endTime={endTime}
+          location={selectedEvent.location}
+          buttonMessage="詳細を見る"
+          confirmMessage="予約をキャンセルする"
+          onClick={() => onClickHoldUser(selectedEvent?.id)}
+          onClickConfirm={() => onClickReserveCancel(selectedEvent?.event_id)}
+        />
+      </Layout>
     </div>
   );
 };
