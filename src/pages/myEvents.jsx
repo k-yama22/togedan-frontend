@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import { useEffect } from "react";
-import { Footer } from "src/components/Footer";
-import { Header } from "src/components/Header";
+import { Layout } from "src/components/Layout";
 import { useMyEvents } from "src/hooks/useMyEvents";
 import { useRouter } from "next/router";
 import { useDeleteEvent } from "src/hooks/useDeleteEvent";
@@ -73,110 +72,109 @@ const MyEvents = () => {
         <title>Together Dance</title>
       </Head>
 
-      <Header />
-
-      <div className="bg-gray-600">
-        <div className="flex relative text-center">
-          <h1 className="text-3xl tracking-wider text-white text-sha font-bold p-4 self-center z-10 content-center text-center w-full md:text-4xl">
-            開催イベント一覧
-          </h1>
-        </div>
-      </div>
-      <div className="p-4 bg-gray-100">
-        <div className="container mx-auto my-5 p-5">
-          <div className="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
-            <div className="mr-6">
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
-                開催イベント一覧
-              </h2>
-            </div>
+      <Layout>
+        <div className="bg-gray-600">
+          <div className="flex relative text-center">
+            <h1 className="text-3xl tracking-wider text-white text-sha font-bold p-4 self-center z-10 content-center text-center w-full md:text-4xl">
+              開催イベント一覧
+            </h1>
           </div>
-          {!changeFlg ? (
-            <>
-              <div className="grid mt-8 gap-2 grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
-                <div
-                  className="bg-teal-300 text-base md:text-2xl pt-5 md:pt-8 h-full w-full h-16 md:h-24 text-center"
-                  role="button"
-                  tabIndex={0}
-                  onClick={onClickWillEvent}
-                  onKeyDown={onClickWillEvent}
-                >
-                  開催予定のイベント
-                </div>
-                <div
-                  className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-base md:text-2xl pt-5 md:pt-8 w-full h-16 md:h-24 text-center"
-                  role="button"
-                  tabIndex={0}
-                  onClick={onClickDidEvent}
-                  onKeyDown={onClickDidEvent}
-                >
-                  開催済みのイベント
-                </div>
-              </div>
-              <div className="grid mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
-                {myEventArr.map((myEvent) => (
-                  <MiniEventCard
-                    key={myEvent.event_id}
-                    id={myEvent.event_id}
-                    eventName={myEvent.event_name}
-                    genre={myEvent.genre}
-                    location={myEvent.location}
-                    image={myEvent.image}
-                    eventDate={myEvent.event_date}
-                    startTime={myEvent.start_time}
-                    endTime={myEvent.end_time}
-                    buttonMessage="開催情報を修正する"
-                    subButtonMessage="開催を取り消す"
-                    onClick={onClickMyEventDetail}
-                    onClickSub={onClickEventCancel}
-                  />
-                ))}
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="grid mt-8 gap-2 grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
-                <div
-                  className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-base md:text-2xl pt-5 md:pt-8 w-full h-16 md:h-24 text-center"
-                  role="button"
-                  tabIndex={0}
-                  onClick={onClickWillEvent}
-                  onKeyDown={onClickWillEvent}
-                >
-                  開催予定のイベント
-                </div>
-                <div
-                  className="bg-teal-300 text-base md:text-2xl pt-5 md:pt-8 w-full h-16 md:h-24 text-center"
-                  role="button"
-                  tabIndex={0}
-                  onClick={onClickDidEvent}
-                  onKeyDown={onClickDidEvent}
-                >
-                  開催済みのイベント
-                </div>
-              </div>
-              <div className="grid mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
-                {historyEventArr.map((historyEvent) => (
-                  <MiniEventCard
-                    key={historyEvent.event_id}
-                    id={historyEvent.event_id}
-                    eventName={historyEvent.event_name}
-                    genre={historyEvent.genre}
-                    location={historyEvent.location}
-                    image={historyEvent.image}
-                    eventDate={historyEvent.event_date}
-                    startTime={historyEvent.start_time}
-                    endTime={historyEvent.end_time}
-                    buttonMessage="開催情報を確認する"
-                    onClick={onClickMyEventDetail}
-                  />
-                ))}
-              </div>
-            </>
-          )}
         </div>
-      </div>
-      <Footer />
+        <div className="p-4 bg-gray-100">
+          <div className="container mx-auto my-5 p-5">
+            <div className="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
+              <div className="mr-6">
+                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-7 md:leading-10 mb-1 truncate">
+                  開催イベント一覧
+                </h2>
+              </div>
+            </div>
+            {!changeFlg ? (
+              <>
+                <div className="grid mt-8 gap-2 grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
+                  <div
+                    className="bg-teal-300 text-base md:text-2xl pt-5 md:pt-8 h-full w-full h-16 md:h-24 text-center"
+                    role="button"
+                    tabIndex={0}
+                    onClick={onClickWillEvent}
+                    onKeyDown={onClickWillEvent}
+                  >
+                    開催予定のイベント
+                  </div>
+                  <div
+                    className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-base md:text-2xl pt-5 md:pt-8 w-full h-16 md:h-24 text-center"
+                    role="button"
+                    tabIndex={0}
+                    onClick={onClickDidEvent}
+                    onKeyDown={onClickDidEvent}
+                  >
+                    開催済みのイベント
+                  </div>
+                </div>
+                <div className="grid mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
+                  {myEventArr.map((myEvent) => (
+                    <MiniEventCard
+                      key={myEvent.event_id}
+                      id={myEvent.event_id}
+                      eventName={myEvent.event_name}
+                      genre={myEvent.genre}
+                      location={myEvent.location}
+                      image={myEvent.image}
+                      eventDate={myEvent.event_date}
+                      startTime={myEvent.start_time}
+                      endTime={myEvent.end_time}
+                      buttonMessage="開催情報を修正する"
+                      subButtonMessage="開催を取り消す"
+                      onClick={onClickMyEventDetail}
+                      onClickSub={onClickEventCancel}
+                    />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="grid mt-8 gap-2 grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
+                  <div
+                    className="bg-gray-300 hover:bg-teal-100 hover:shadow-md text-base md:text-2xl pt-5 md:pt-8 w-full h-16 md:h-24 text-center"
+                    role="button"
+                    tabIndex={0}
+                    onClick={onClickWillEvent}
+                    onKeyDown={onClickWillEvent}
+                  >
+                    開催予定のイベント
+                  </div>
+                  <div
+                    className="bg-teal-300 text-base md:text-2xl pt-5 md:pt-8 w-full h-16 md:h-24 text-center"
+                    role="button"
+                    tabIndex={0}
+                    onClick={onClickDidEvent}
+                    onKeyDown={onClickDidEvent}
+                  >
+                    開催済みのイベント
+                  </div>
+                </div>
+                <div className="grid mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
+                  {historyEventArr.map((historyEvent) => (
+                    <MiniEventCard
+                      key={historyEvent.event_id}
+                      id={historyEvent.event_id}
+                      eventName={historyEvent.event_name}
+                      genre={historyEvent.genre}
+                      location={historyEvent.location}
+                      image={historyEvent.image}
+                      eventDate={historyEvent.event_date}
+                      startTime={historyEvent.start_time}
+                      endTime={historyEvent.end_time}
+                      buttonMessage="開催情報を確認する"
+                      onClick={onClickMyEventDetail}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </Layout>
     </div>
   );
 };
