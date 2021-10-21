@@ -3,7 +3,15 @@ import Head from "next/head";
 import Link from "next/link";
 import { Layout } from "src/components/Layout";
 import { EVENTS_SCREEN } from "src/utils/constants";
+import { useTestAuth } from "src/hooks/useTestAuth";
+import { Loading } from "src/components/Loading";
 const About = () => {
+  const { testLogin, testLoading } = useTestAuth();
+
+  const onClickTestLogin = () => {
+    testLogin();
+  };
+
   return (
     <div>
       <Head>
@@ -17,9 +25,21 @@ const About = () => {
               <div id="slider-1" className="mx-auto">
                 <div className="bg-black">
                   <div className="flex relative text-center">
-                    <h1 className="text-3xl tracking-wider text-white text-sha uppercase font-bold p-4 self-center content-center absolute text-center w-full md:text-6xl">
+                    <h1 className="text-2xl sm:text-3xl tracking-wider text-white text-sha uppercase font-bold p-4 self-center content-center absolute text-center w-full md:text-6xl">
                       Together Danceとは
                     </h1>
+                    <div className="tracking-wider mx-auto mb-8 sm:mb-4 lg:mb-0 bottom-0 lg:bottom-1/4 absolute w-full self-center content-center">
+                      <button
+                        onClick={onClickTestLogin}
+                        className="py-2 px-4 lg:p-8 text-sm md:text-lg lg:text-3xl text-white bg-purple-700 text-center hover:bg-purple-600 rounded"
+                      >
+                        {testLoading ? (
+                          <Loading />
+                        ) : (
+                          <>テストユーザーでログイン</>
+                        )}
+                      </button>
+                    </div>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       className="w-full object-cover h-3/4 block mx-auto sm:block sm:w-full"

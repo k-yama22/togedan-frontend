@@ -6,10 +6,12 @@ import { useAuth } from "src/hooks/useAuth";
 import { Loading } from "src/components/Loading";
 import { useForm } from "react-hook-form";
 import { PASS_FORGET_SCREEN, SIGN_UP_SCREEN } from "src/utils/constants";
+import { useTestAuth } from "src/hooks/useTestAuth";
 
 // eslint-disable-next-line react/display-name
 const Login = memo(() => {
   const { login, loading } = useAuth();
+  const { testLogin, testLoading } = useTestAuth();
 
   const {
     register,
@@ -19,6 +21,10 @@ const Login = memo(() => {
 
   const onSubmit = (data) => {
     login(data);
+  };
+
+  const onClickTestLogin = () => {
+    testLogin();
   };
 
   return (
@@ -106,6 +112,18 @@ const Login = memo(() => {
                         </Link>
                       </div>
                     </form>
+                    <div>
+                      <button
+                        onClick={onClickTestLogin}
+                        className="px-4 py-1 text-white font-light tracking-wider bg-blue-700 hover:bg-blue-600 rounded"
+                      >
+                        {testLoading ? (
+                          <Loading />
+                        ) : (
+                          <>テストユーザーでログイン</>
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
