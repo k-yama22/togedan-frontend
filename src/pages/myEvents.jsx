@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { Layout } from "src/components/Layout";
 import { useMyEvents } from "src/hooks/useMyEvents";
 import { useRouter } from "next/router";
-import { useDeleteEvent } from "src/hooks/useDeleteEvent";
 import { useHistoryEvents } from "src/hooks/useHistoryEvents";
 import { MiniEventCard } from "src/components/MiniEventCard";
 import dayjs from "dayjs";
@@ -14,14 +13,9 @@ const MyEvents = () => {
   const router = useRouter();
   const { getMyEvents, myEvents } = useMyEvents();
   const { getHistoryEvents, historyEvents } = useHistoryEvents();
-  const { deleteMyEvent } = useDeleteEvent();
   const [myEventArr, setMyEventArr] = useState([]);
   const [historyEventArr, setHistoryEventArr] = useState([]);
   const [changeFlg, setChangeFlg] = useState(false);
-
-  const onClickEventCancel = (id) => {
-    deleteMyEvent(id);
-  };
 
   const onClickMyEventDetail = (id) => {
     router.push({ pathname: MY_EVENT_DETAIL_SCREEN, query: { id: id } });
@@ -123,10 +117,7 @@ const MyEvents = () => {
                       eventDate={myEvent.event_date}
                       startTime={myEvent.start_time}
                       endTime={myEvent.end_time}
-                      buttonMessage="開催情報を修正する"
-                      subButtonMessage="開催を取り消す"
                       onClick={onClickMyEventDetail}
-                      onClickSub={onClickEventCancel}
                     />
                   ))}
                 </div>
@@ -165,7 +156,6 @@ const MyEvents = () => {
                       eventDate={historyEvent.event_date}
                       startTime={historyEvent.start_time}
                       endTime={historyEvent.end_time}
-                      buttonMessage="開催情報を確認する"
                       onClick={onClickMyEventDetail}
                     />
                   ))}
