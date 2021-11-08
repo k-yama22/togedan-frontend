@@ -1,6 +1,6 @@
 # Together Dance
 
-<img width="810" alt="スクリーンショット 2021-09-30 17 11 12" src="https://user-images.githubusercontent.com/66157921/135413698-f557cf69-ec74-42da-9505-7a93f5ce1f98.png">
+<img width="720" alt="スクリーンショット 2021-11-08 17 28 57" src="https://user-images.githubusercontent.com/66157921/140708683-f7869361-8f84-4670-b8a2-77592fda9b3f.png">
 
 
 # サービス概要
