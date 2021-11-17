@@ -41,9 +41,9 @@ Together Danceはいつでもどこでも誰とでもをコンセプトにした
   - AWS(EC2,VPC,RDS,Route53)
   - Nginx
 
--　開発環境
-  -　Vscode
-  -　ESLint/Prettier
+- 開発環境
+  - Vscode
+  - ESLint/Prettier
 
 - その他ライブラリ
   - react-hook-form(フォームバリデーション)
