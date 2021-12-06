@@ -97,11 +97,11 @@ const Login = memo(() => {
 
                       <div className="mt-4 items-center md:flex md:justify-between text-sm">
                         <DefaultButton loading={loading}>
-                          デフォルトログイン
+                          ログイン
                         </DefaultButton>
-                        <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded">
+                        {/* <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded">
                           {loading ? <Loading /> : <>ログイン</>}
-                        </button>
+                        </button> */}
                         <Link href={PASS_FORGET_SCREEN}>
                           <a className="mt-4 md:mt-0 block md:inline-block right-0 align-baseline font-bold text-sm text-500 text-white hover:text-red-400">
                             パスワードを忘れた方はこちら
