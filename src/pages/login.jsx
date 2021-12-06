@@ -7,6 +7,7 @@ import { Loading } from "src/components/Loading";
 import { useForm } from "react-hook-form";
 import { PASS_FORGET_SCREEN, SIGN_UP_SCREEN } from "src/utils/constants";
 import { useTestAuth } from "src/hooks/useTestAuth";
+import { DefaultButton } from "src/components/atoms/button/DefaultButton";
 
 // eslint-disable-next-line react/display-name
 const Login = memo(() => {
@@ -95,9 +96,12 @@ const Login = memo(() => {
                       </div>
 
                       <div className="mt-4 items-center md:flex md:justify-between text-sm">
-                        <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded">
+                        <DefaultButton loading={loading}>
+                          ログイン
+                        </DefaultButton>
+                        {/* <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded">
                           {loading ? <Loading /> : <>ログイン</>}
-                        </button>
+                        </button> */}
                         <Link href={PASS_FORGET_SCREEN}>
                           <a className="mt-4 md:mt-0 block md:inline-block right-0 align-baseline font-bold text-sm text-500 text-white hover:text-red-400">
                             パスワードを忘れた方はこちら
