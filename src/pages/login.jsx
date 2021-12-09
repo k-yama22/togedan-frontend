@@ -8,6 +8,9 @@ import { useForm } from "react-hook-form";
 import { PASS_FORGET_SCREEN, SIGN_UP_SCREEN } from "src/utils/constants";
 import { useTestAuth } from "src/hooks/useTestAuth";
 import { DefaultButton } from "src/components/atoms/button/DefaultButton";
+// import { DefaultInput } from "src/components/atoms/input/DefaultInput";
+// import { DefaultLabel } from "src/components/atoms/label/DefaultLabel";
+import { InputForm } from "src/components/molecules/form/InputForm";
 
 // eslint-disable-next-line react/display-name
 const Login = memo(() => {
@@ -47,7 +50,21 @@ const Login = memo(() => {
                     </p>
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <div className="">
-                        <label
+                        <InputForm
+                          type={"email"}
+                          id={"email"}
+                          placeholder={"メールアドレス"}
+                          arial={"email"}
+                          register={{
+                            ...register("email", {
+                              required: true,
+                            }),
+                          }}
+                          htmlFor={"email"}
+                        >
+                          メールアドレス
+                        </InputForm>
+                        {/* <label
                           className="block text-sm text-white"
                           htmlFor="email"
                         >
@@ -60,19 +77,49 @@ const Login = memo(() => {
                           placeholder="メールアドレス"
                           aria-label="email"
                           {...register("email", { required: true })}
-                        />
+                        /> */}
                         {errors.email && errors.email.type === "required" && (
                           <span className="text-red-700">必須項目です</span>
                         )}
                       </div>
                       <div className="mt-2">
-                        <label
+                        <InputForm
+                          type={"password"}
+                          id={"password"}
+                          placeholder={"パスワード"}
+                          arial={"password"}
+                          register={{
+                            ...register("password", {
+                              required: true,
+                              minLength: 8,
+                            }),
+                          }}
+                          htmlFor={"password"}
+                        >
+                          パスワード
+                        </InputForm>
+                        {/* <DefaultLabel htmlFor={"password"}>
+                          パスワード
+                        </DefaultLabel> */}
+                        {/* <label
                           className="block text-sm text-white"
                           htmlFor="password"
                         >
                           パスワード
-                        </label>
-                        <input
+                        </label> */}
+                        {/* <DefaultInput
+                          type={"password"}
+                          id="password"
+                          placeholder={"パスワード"}
+                          arial={"password"}
+                          register={{
+                            ...register("password", {
+                              required: true,
+                              minLength: 8,
+                            }),
+                          }}
+                        /> */}
+                        {/* <input
                           className="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
                           type="password"
                           id="password"
@@ -82,7 +129,7 @@ const Login = memo(() => {
                             required: true,
                             minLength: 8,
                           })}
-                        />
+                        /> */}
                         {errors.password &&
                           errors.password.type === "required" && (
                             <span className="text-red-700">必須項目です</span>
