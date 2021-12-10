@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { useDeleteEvent } from "src/hooks/useDeleteEvent";
 import Link from "next/link";
 import { EVENT_EDIT_SCREEN, MY_PAGE_SCREEN } from "src/utils/constants";
+import { PrimaryButton } from "src/components/atoms/button/PrimaryButton";
 // import Image from "next/image";
 
 //サーバーサイドレンダリング
@@ -165,14 +166,20 @@ const MyEventDetail = (props) => {
                           </div>
                         </div>
                         <div className="flex items-center justify-center">
-                          <button
+                          <PrimaryButton
+                            onClick={onClickEventEdit}
+                            eventId={selectedEvent.event_id}
+                          >
+                            開催情報を編集をする
+                          </PrimaryButton>
+                          {/* <button
                             className="flex mr-auto h-14 md:h-14 text-xs md:text-sm text-white font-bold items-center justify-center bg-teal-500 border-0 py-3 px-4 focus:outline-none hover:bg-teal-600 rounded"
                             onClick={() =>
                               onClickEventEdit(selectedEvent.event_id)
                             }
                           >
                             開催情報を編集をする
-                          </button>
+                          </button> */}
                           <div className="flex items-center justify-center md:mt-4 ml-1 md:ml-auto focus:outline-none rounded">
                             <CancelConfirmModal
                               id={selectedEvent.event_id}

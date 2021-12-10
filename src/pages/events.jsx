@@ -20,6 +20,8 @@ import { useForm } from "react-hook-form";
 import { DatePicker } from "src/components/DatePicker";
 import { TimeOnlyPicker } from "src/components/TimeOnlyPicker";
 import { EVENT_DETAIL_SCREEN } from "src/utils/constants";
+import { DefaultTitle } from "src/components/atoms/title/DefaultTitle";
+import { SubTitle } from "src/components/atoms/title/SubTitle";
 
 const Events = () => {
   const router = useRouter();
@@ -102,13 +104,14 @@ const Events = () => {
       </Head>
 
       <Layout>
-        <div className="bg-gray-600">
+        <DefaultTitle>イベント一覧画面</DefaultTitle>
+        {/* <div className="bg-gray-600">
           <div className="flex relative text-center">
             <h1 className="text-3xl tracking-wider text-white text-sha font-bold p-4 self-center z-10 content-center text-center w-full md:text-4xl">
               イベント一覧画面
             </h1>
           </div>
-        </div>
+        </div> */}
         <div>
           <div className="bg-gray-300">
             <div className="text-center text-2xl p-4 font-semibold">
@@ -344,9 +347,10 @@ const Events = () => {
         </div>
         <div className="pt-4 bg-gray-100">
           <div className="container mx-auto p-5">
-            <div className="text-center text-2xl font-semibold">
+            <SubTitle>イベント一覧</SubTitle>
+            {/* <div className="text-center text-2xl font-semibold">
               イベント一覧
-            </div>
+            </div> */}
             <div className="grid mt-8 gap-4 md:gap-8 grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
               {eventArr.slice(offset, offset + perPage).map((event) => (
                 <div key={event.event_id}>

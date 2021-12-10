@@ -17,6 +17,7 @@ import {
   MY_RESERVE_DETAIL_SCREEN,
   USER_EDIT_SCREEN,
 } from "src/utils/constants";
+import { DefaultTitle } from "src/components/atoms/title/DefaultTitle";
 
 const MyPage = () => {
   const router = useRouter();
@@ -114,13 +115,14 @@ const MyPage = () => {
       </Head>
 
       <Layout>
-        <div className="bg-gray-600">
+        <DefaultTitle>マイページ</DefaultTitle>
+        {/* <div className="bg-gray-600">
           <div className="flex relative text-center">
             <h1 className="text-3xl tracking-wider text-white text-sha font-bold p-4 self-center z-10 content-center text-center w-full md:text-4xl">
               マイページ
             </h1>
           </div>
-        </div>
+        </div> */}
 
         <div className="py-4 bg-gray-100">
           <div className="container mx-auto my-5 p-5">

@@ -8,6 +8,7 @@ import { useHistoryEvents } from "src/hooks/useHistoryEvents";
 import { MiniEventCard } from "src/components/MiniEventCard";
 import dayjs from "dayjs";
 import { MY_EVENT_DETAIL_SCREEN } from "src/utils/constants";
+import { DefaultTitle } from "src/components/atoms/title/DefaultTitle";
 
 const MyEvents = () => {
   const router = useRouter();
@@ -67,13 +68,14 @@ const MyEvents = () => {
       </Head>
 
       <Layout>
-        <div className="bg-gray-600">
+        <DefaultTitle>開催イベント一覧</DefaultTitle>
+        {/* <div className="bg-gray-600">
           <div className="flex relative text-center">
             <h1 className="text-3xl tracking-wider text-white text-sha font-bold p-4 self-center z-10 content-center text-center w-full md:text-4xl">
               開催イベント一覧
             </h1>
           </div>
-        </div>
+        </div> */}
         <div className="p-4 bg-gray-100">
           <div className="container mx-auto my-5 p-5">
             <div className="flex items-center justify-between w-full my-4 pl-4 sm:pr-4">
