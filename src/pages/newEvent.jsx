@@ -6,6 +6,7 @@ import { Loading } from "src/components/Loading";
 import { useForm } from "react-hook-form";
 import { DatePicker } from "src/components/DatePicker";
 import { TimeOnlyPicker } from "src/components/TimeOnlyPicker";
+import { RequiredInputForm } from "src/components/molecules/form/RequiredInputForm";
 
 const NewEvent = () => {
   const { newEvent, loading } = useNewEvent();
@@ -40,7 +41,22 @@ const NewEvent = () => {
                     </p>
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <div className="">
-                        <label
+                        <RequiredInputForm
+                          type={"text"}
+                          id={"eventName"}
+                          placeholder={"イベント名称"}
+                          arial={"eventName"}
+                          register={{
+                            ...register("eventName", {
+                              required: true,
+                              maxLength: 30,
+                            }),
+                          }}
+                          htmlFor={"eventName"}
+                        >
+                          イベント名称
+                        </RequiredInputForm>
+                        {/* <label
                           className="block text-xs md:text-sm text-white"
                           htmlFor="eventName"
                         >
@@ -56,7 +72,7 @@ const NewEvent = () => {
                             required: true,
                             maxLength: 30,
                           })}
-                        />
+                        /> */}
                         {errors.eventName &&
                           errors.eventName.type === "required" && (
                             <span className="text-red-700">必須項目です</span>
@@ -69,7 +85,22 @@ const NewEvent = () => {
                           )}
                       </div>
                       <div className="mt-2">
-                        <label
+                        <RequiredInputForm
+                          type={"text"}
+                          id={"genre"}
+                          placeholder={"例：HIPHOP"}
+                          arial={"genre"}
+                          register={{
+                            ...register("genre", {
+                              required: true,
+                              maxLength: 20,
+                            }),
+                          }}
+                          htmlFor={"genre"}
+                        >
+                          ジャンル
+                        </RequiredInputForm>
+                        {/* <label
                           className="block text-xs md:text-sm text-white"
                           htmlFor="genre"
                         >
@@ -84,7 +115,7 @@ const NewEvent = () => {
                             required: true,
                             maxLength: 20,
                           })}
-                        />
+                        /> */}
                         {errors.genre && errors.genre.type === "required" && (
                           <span className="text-red-700">必須項目です</span>
                         )}
@@ -95,7 +126,22 @@ const NewEvent = () => {
                         )}
                       </div>
                       <div className="mt-2">
-                        <label
+                        <RequiredInputForm
+                          type={"text"}
+                          id={"location"}
+                          placeholder={"例：渋谷"}
+                          arial={"location"}
+                          register={{
+                            ...register("location", {
+                              required: true,
+                              maxLength: 20,
+                            }),
+                          }}
+                          htmlFor={"location"}
+                        >
+                          開催場所
+                        </RequiredInputForm>
+                        {/* <label
                           className="block text-xs md:text-sm text-white"
                           htmlFor="location"
                         >
@@ -110,7 +156,7 @@ const NewEvent = () => {
                             required: true,
                             maxLength: 20,
                           })}
-                        />
+                        /> */}
                         {errors.location &&
                           errors.location.type === "required" && (
                             <span className="text-red-700">必須項目です</span>
@@ -208,7 +254,22 @@ const NewEvent = () => {
                             )}
                         </div>
                         <div className="mt-2">
-                          <label
+                          <RequiredInputForm
+                            type={"text"}
+                            id={"maxPeople"}
+                            placeholder={"最大人数"}
+                            arial={"maxPeople"}
+                            register={{
+                              ...register("maxPeople", {
+                                required: true,
+                                max: 99,
+                              }),
+                            }}
+                            htmlFor={"maxPeople"}
+                          >
+                            最大人数
+                          </RequiredInputForm>
+                          {/* <label
                             className="block text-xs md:text-sm text-white"
                             htmlFor="maxPeople"
                           >
@@ -223,7 +284,7 @@ const NewEvent = () => {
                               required: true,
                               max: 99,
                             })}
-                          />
+                          /> */}
                           {errors.maxPeople &&
                             errors.maxPeople.type === "required" && (
                               <span className="text-red-700">必須項目です</span>
