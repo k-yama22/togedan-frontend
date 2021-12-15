@@ -5,11 +5,15 @@ import { memo } from "react";
 export const UserCard = memo((props) => {
   const {
     id,
-    userName,
+    // userName,
     lastName,
     firstName,
-    email,
+    lastNameKana,
+    firstNameKana,
+    // email,
+    // birthday,
     image,
+    introduce,
     buttonMessage,
     subButtonMessage,
     onClick,
@@ -19,13 +23,13 @@ export const UserCard = memo((props) => {
     <div className="flex flex-col">
       <div className="bg-white shadow-md  rounded-3xl p-4">
         <div className="flex-none lg:flex">
-          <div className=" h-full w-full lg:h-48 lg:w-48   lg:mb-0 mb-3">
+          <div className=" h-full w-full lg:h-48 lg:w-48 lg:mb-0 mb-3">
             {image ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={image?.url}
                 alt="アイコン画像"
-                className=" w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl"
+                className="w-full object-scale-down lg:object-cover lg:h-48 rounded-2xl"
               />
             ) : (
               // eslint-disable-next-line @next/next/no-img-element
@@ -38,21 +42,28 @@ export const UserCard = memo((props) => {
           </div>
           <div className="flex-auto ml-3 justify-evenly py-2">
             <div className="flex flex-wrap ">
-              <div className="w-full flex-none text-xs text-blue-700 font-medium ">
-                {userName}
+              {/* <label htmlFor="userName" className="text-xs">
+                ユーザーネーム
+              </label> */}
+              <div
+                id="userName"
+                className="w-full flex-none text-xs text-blue-700 font-medium "
+              >
+                {lastNameKana} {firstNameKana}
               </div>
-              <h2 className="flex-auto text-lg font-medium">
+              <h2 className="flex-auto text-xl font-medium">
                 {lastName} {firstName}
               </h2>
             </div>
             <p className="mt-3"></p>
-            <div className="flex py-4  text-sm text-gray-600">
+            <div className="flex py-4  text-md text-gray-600">
               <div className="flex-1 inline-flex items-center">
-                <p className="">{email}</p>
+                {/* <p className="">{email}</p> */}
+                <p className="whitespace-pre-line">{introduce}</p>
               </div>
-              <div className="flex-1 inline-flex items-center">
-                <p className="">2021年6月25日 17:00〜</p>
-              </div>
+              {/* <div className="flex-1 inline-flex items-center">
+                <p className="">{introduce}</p>
+              </div> */}
             </div>
             <div className="flex p-4 pb-2 border-t border-gray-200 "></div>
             <div className="flex space-x-3 text-sm font-medium">

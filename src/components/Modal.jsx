@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 
-export const Modal = () => {
+export const Modal = (props) => {
+  const { id, buttonMessage, eventName, onClick } = props;
   const [showModal, setShowModal] = useState(false);
+  const [modalId, setSModalId] = useState();
+
   return (
     <>
       <button
         className="bg-teal-500 text-white active:bg-teal-600 font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          setShowModal(true);
+          setSModalId(id);
+        }}
       >
-        {/* propsの値を表示する予定 */}
-        モーダル表示
+        {buttonMessage}
       </button>
       {showModal ? (
         <>
@@ -34,12 +39,12 @@ export const Modal = () => {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
-                    モーダル画面表示
+                  <p className="my-4 text-red-500 text-lg leading-relaxed">
+                    ■{eventName}
                     <br />
-                    ○○
                     <br />
-                    ○○
+                    上記の予約を削除しますがよろしいですか？
+                    <br />
                   </p>
                 </div>
                 {/*footer*/}
@@ -54,9 +59,12 @@ export const Modal = () => {
                   <button
                     className="bg-teal-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => {
+                      onClick(modalId);
+                      setShowModal(false);
+                    }}
                   >
-                    登録
+                    予約を削除
                   </button>
                 </div>
               </div>
