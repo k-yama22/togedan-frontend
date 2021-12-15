@@ -20,29 +20,39 @@ export const EventCard = memo((props) => {
   } = props;
   return (
     <div className="flex flex-col">
-      <div className="bg-white shadow-md  rounded-3xl p-4">
-        <div className="flex-none lg:flex">
-          <div className=" h-full w-full lg:h-48 lg:w-48   lg:mb-0 mb-3">
+      <div className="bg-white shadow-md rounded-3xl p-4">
+        <div className="flex">
+          <div className="h-28 w-28 md:h-full md:w-full lg:h-48 lg:w-48   lg:mb-0 mb-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={image?.url}
-              alt="Just a flower"
-              className=" w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl"
+              alt="アイコン画像"
+              className="w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl"
             />
+            {/* <div className="md:hidden flex-col space-x-3">
+              <CancelConfirmModal
+                id={id}
+                buttonMessage={subButtonMessage}
+                eventName={eventName}
+                onClick={() => onClickSub(id)}
+              />
+            </div> */}
           </div>
-          <div className="flex-auto ml-3 justify-evenly py-2">
+          <div className="text-xs flex-auto ml-3 justify-evenly py-2">
             <div className="flex flex-wrap ">
               <div className="w-full flex-none text-xs text-blue-700 font-medium ">
                 {genre}
               </div>
-              <h2 className="flex-auto text-lg font-medium">{eventName}</h2>
+              <h2 className="flex-auto text-sm md:text-lg font-medium">
+                {eventName}
+              </h2>
             </div>
             <p className="mt-3"></p>
-            <div className="flex py-4  text-sm text-gray-600">
-              <div className="flex-1 inline-flex items-center">
+            <div className="flex py-0 md:py-4 text-xs md:text-sm text-gray-600">
+              <div className="mr-3 md:flex-1 inline-flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-3"
+                  className="h-5 w-5 mr-1 md:mr-3"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -65,7 +75,7 @@ export const EventCard = memo((props) => {
               <div className="flex-1 inline-flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2"
+                  className="h-5 w-5 mr-1 md:mr-2"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -77,13 +87,16 @@ export const EventCard = memo((props) => {
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   ></path>
                 </svg>
-                <p className="">
-                  {eventDate}の{startTime}〜{endTime}
-                </p>
+                <div>
+                  <p className="">{eventDate}</p>
+                  <p className="">
+                    {startTime}〜{endTime}
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="flex p-4 pb-2 border-t border-gray-200 "></div>
-            <div className="flex space-x-3 text-sm font-medium">
+            <div className="hidden md:block flex p-4 pb-2 border-t border-gray-200 "></div>
+            <div className="hidden md:block md:flex space-x-3 text-xs md:text-sm font-medium">
               <div className="flex-auto flex space-x-3">
                 <CancelConfirmModal
                   id={id}
@@ -102,6 +115,25 @@ export const EventCard = memo((props) => {
               </button>
             </div>
           </div>
+        </div>
+        <div className="md:hidden flex p-4 pb-2 border-t border-gray-200 "></div>
+        <div className="flex md:hidden md:flex space-x-3 text-xs md:text-sm font-medium">
+          <div className=" md:block flex-auto flex space-x-3">
+            <CancelConfirmModal
+              id={id}
+              buttonMessage={subButtonMessage}
+              eventName={eventName}
+              onClick={() => onClickSub(id)}
+            />
+          </div>
+          <button
+            className="mb-2 md:mb-0 bg-gray-900 px-5 py-2 shadow-sm tracking-wider text-white rounded-full hover:bg-gray-800"
+            type="button"
+            aria-label="like"
+            onClick={() => onClick(id)}
+          >
+            {buttonMessage}
+          </button>
         </div>
       </div>
     </div>
